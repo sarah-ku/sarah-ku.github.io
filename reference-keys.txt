@@ -61,3 +61,4 @@ færdig-for-i-dag-og-næste-gang
 ekstra-links
 fig:unnamed-chunk-1
 fig:unnamed-chunk-2
+inledning-til-kapital
