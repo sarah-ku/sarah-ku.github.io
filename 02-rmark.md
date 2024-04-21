@@ -290,6 +290,16 @@ knitr::opts_knit$set(root.dir = '/tmp')
 
 Man kan også skrive matematik (LaTeX) i R Markdown - for eksempel vil `$\int_0^5 x^2 dx$` se ud som $\int_0^5 x^2 dx$ i dit HTML-dokument. Jeg forventer ikke, at du lærer LaTeX, men det er af og til brugbart - for eksempel en retlinjet ligning er `$y = 3.4x + 2.1$` giver $y = 3.4x + 2.1$ eller en hypotese: `$H0: \mu = 0$` giver $H0: \mu = 0$. Det er op til dig, hvor meget du bruger matematik i dine egne dokumenter.
 
+## Ofte set fejl
+
+Jeg tilføjer også ting, der opstå under kurset:
+
+:::pin
+* Hvis du installerer en pakke, husk at slet `install.pakages(pakkenavn)` fra din .Rmd-fil
+* Hvis du bruger en pakke, husk at indlæse den i selve fil `library(pakkenavn)`
+* Når du udviker din kode er det er en god ide at tjekke af og til at din fil knitter til HTML form
+:::
+
 ## Problemstillinger
 
 1) Der er en kort __quiz__ i Absalon, som hedder "Quiz - R Markdown".
