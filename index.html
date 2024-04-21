@@ -51,7 +51,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -260,7 +259,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Først og fremmest, velkommen til kurset! Det her dokument er kursusnotaterne, som indeholder bla. videoer, forklaringer og problemstillinger, og jeg opdaterer dem løbende gennem hele forløbet. Vær opmærksom på, at der også vil være flere dokumenter på Absalon vedrørende forelæsninger, workshops og løsningerne til øvelserne.</p>
 <p>I dette kapitel opsummerer jeg nogle grundlæggende elementer inden for R og statistik, der betragtes som forudsætninger i dette kursus. Selvom vi i kurset skifter hurtigt over til tidyverse-pakken, som erstatter en stor del af funktionaliteten fra base-R, er det stadig vigtigt at have et grundlæggende kendskab til hvordan tingene fungerer i base-R. Hvis du har begrænset erfaring med base-R, anbefaler jeg, at du bruger ekstra tid ud over de første mødegange for at nå det nødvendige niveau.</p>
 <p>For at bestå kurset forventes det ikke, at du kender til alle detaljer og teorier bag de statistiske metoder, men at du kan anvende dem hensigtsmæssigt i praksis i R og fortolke resultaterne korrekte. Der vil være masser af muligheder for at øve dig I at anvende statistik hele vejen gennem kurset, og under eksamen vil jeg ikke stille spørgsmål om metoder, der ikke er dækket i de forskellige øvelser (herunder workshop-opgaver). Lineær regression vil også blive gennemgået i forelæsningerne så vær ikke bekymret hvis du ikke har set det hele før.</p>
+<div class="checklist">
 <p>Se gerne også “Quiz - grundlæggende” på Absalon for at tjekke din forståelse og udfylde eventuelle huller i din viden (OBS: Quizzen er tilgængelig kort tid inden kursets start).</p>
+</div>
 </div>
 <div id="rstudio" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> RStudio<a href="index.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -623,21 +624,20 @@ Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" cl
 <p>Man kan nemt lave sin egne ‘fake’ data ved at simulere det fra en fordeling, der typisk er normalfordelingen, da den er den mest almindelige fordeling i den virkelige verden (husk den klassiske klokkeform). I R kan funktionen rnorm bruges til at simulere data. Først angiver man antallet af observationer, og derefter den gennemsnitlige værdi og standardafvigelsen (sd), som er de to nødvendige parametre for at beskrive en normalfordeling.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="index.html#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>) <span class="co">#standard normal distribution</span></span>
 <span id="cb52-2"><a href="index.html#cb52-2" aria-hidden="true" tabindex="-1"></a>x <span class="co">#så har vi 25 værdier fra en normal distribution med mean=0 og standard deviation=1.</span></span></code></pre></div>
-<pre><code>##  [1] -0.702747010  0.416890487  0.852133778  1.213825426 -0.001879849
-##  [6] -2.438761895 -1.664517372  0.033160754  0.604470640  0.269465911
-## [11]  1.522264309 -0.620503031 -0.065619363  0.097429933  0.394943771
-## [16] -0.799289058 -0.327825024  0.776945650  0.206677439  0.327883222
-## [21]  0.375026440  0.159786744 -2.597699825  0.994680949  0.376714631</code></pre>
+<pre><code>##  [1] -0.6261154 -1.0568314 -1.8236086  1.8592414 -2.2583870 -0.9448264
+##  [7]  0.2302812 -0.1505121 -1.7092069  0.6356097  1.4020097  1.0438417
+## [13]  0.5507439  0.7769684 -0.1375386 -0.9389805  0.5719766  2.1184295
+## [19]  0.5988463 -1.4673772 -0.1168813  0.2493271 -0.1797362 -0.3439180
+## [25] -0.3251341</code></pre>
 <p>I stedet for at kigge på alle værdier på én gang, vil vi måske hellere kigge kun på de første (eller sidste) værdier:</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="index.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x) <span class="co">#første 6</span></span>
-<span id="cb54-2"><a href="index.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -0.702747010  0.416890487  0.852133778  1.213825426 -0.001879849</span></span>
-<span id="cb54-3"><a href="index.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [6] -2.438761895</span></span>
-<span id="cb54-4"><a href="index.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(x) <span class="co">#sidste 6</span></span>
-<span id="cb54-5"><a href="index.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0.3278832  0.3750264  0.1597867 -2.5976998  0.9946809  0.3767146</span></span>
-<span id="cb54-6"><a href="index.html#cb54-6" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="co">#første værdi</span></span>
-<span id="cb54-7"><a href="index.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -0.702747</span></span>
-<span id="cb54-8"><a href="index.html#cb54-8" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">length</span>(x)] <span class="co">#sidste data point</span></span>
-<span id="cb54-9"><a href="index.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.3767146</span></span></code></pre></div>
+<span id="cb54-2"><a href="index.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -0.6261154 -1.0568314 -1.8236086  1.8592414 -2.2583870 -0.9448264</span></span>
+<span id="cb54-3"><a href="index.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(x) <span class="co">#sidste 6</span></span>
+<span id="cb54-4"><a href="index.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.4673772 -0.1168813  0.2493271 -0.1797362 -0.3439180 -0.3251341</span></span>
+<span id="cb54-5"><a href="index.html#cb54-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="co">#første værdi</span></span>
+<span id="cb54-6"><a href="index.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -0.6261154</span></span>
+<span id="cb54-7"><a href="index.html#cb54-7" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">length</span>(x)] <span class="co">#sidste data point</span></span>
+<span id="cb54-8"><a href="index.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -0.3251341</span></span></code></pre></div>
 <p>Bemærk, at i modsætning til Python og mange andre programmeringssprog, bruger R en 1-baseret indeksering. Det betyder, at den første værdi er x[1] og ikke x[0] som i Python.</p>
 </div>
 <div id="measures-of-central-tendency" class="section level3 hasAnchor" number="1.10.2">
@@ -688,11 +688,11 @@ Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" cl
 <span id="cb55-5"><a href="index.html#cb55-5" aria-hidden="true" tabindex="-1"></a>my_var <span class="ot">&lt;-</span> <span class="fu">var</span>(x)</span>
 <span id="cb55-6"><a href="index.html#cb55-6" aria-hidden="true" tabindex="-1"></a>my_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
 <span id="cb55-7"><a href="index.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(my_mean,my_median,my_max,my_min,my_var,my_sd) <span class="co">#print results</span></span></code></pre></div>
-<pre><code>## [1] -0.02386169  0.20667744  1.52226431 -2.59769983  1.01783395  1.00887757</code></pre>
+<pre><code>## [1] -0.08167112 -0.13753855  2.11842954 -2.25838704  1.25167660  1.11878353</code></pre>
 <p>Man kan også lave et summary af dataen, som består af mange af de statistiker navnt ovenpå:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="index.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.59770 -0.32782  0.20668 -0.02386  0.41689  1.52226</code></pre>
+## -2.25839 -0.93898 -0.13754 -0.08167  0.59885  2.11843</code></pre>
 </div>
 <div id="tapply" class="section level3 hasAnchor" number="1.10.3">
 <h3><span class="header-section-number">1.10.3</span> <code>tapply()</code><a href="index.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
