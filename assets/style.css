@@ -56,7 +56,7 @@ h1, h2, h3, h4 {
 /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
-div.rstudio-tip, div.tip, div.checklist, div.design, div.hat{
+div.rstudio-tip, div.tip, div.checklist, div.pin, div.hat{
   border: 4px #aed6d963;
   border-style: dashed solid;
   padding: 1em;
@@ -83,8 +83,8 @@ div.checklist {
   background-image: url("../plots/checklist.png");
 }
 
-div.design {
-  background-image: url("../images/divs/design.png");
+div.pin {
+  background-image: url("../plots/pin.png");
 }
 
 div.hat {

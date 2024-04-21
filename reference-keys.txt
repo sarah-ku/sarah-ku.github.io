@@ -61,3 +61,5 @@ matematik
 problemstillinger-1
 færdig-for-i-dag-og-næste-gang
 ekstra-links
+video-1
+video-2
