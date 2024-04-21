@@ -198,7 +198,13 @@ Bemærk, at når du arbejder med dit R Markdown dokument, er det generelt hurtig
 
 ### Et godt råd når man arbejder med chunks
 
-For længere opgaver er det god praksis løbende at sikre, at du kan generere et HTML-dokument ved at knitte, selvom du kører din chunks lokalt, mens du udvikler din kode. Med andre ord skal du sørge for, at du ikke få alvorlige fejlmeddelelser, der forhindrer din kode i at blive knittet. __Det er dit ansvar at sikre, at din kode fungerer som helhed, og at du dermed kan producere et HTML-dokument med din løsninger.__  
+For længere opgaver er det god praksis løbende at sikre, at du kan generere et HTML-dokument ved at knitte, selvom du kører din chunks lokalt, mens du udvikler din kode. Med andre ord skal du sørge for, at du ikke få alvorlige fejlmeddelelser, der forhindrer din kode i at blive knittet. 
+
+:::pin
+
+__Det er dit ansvar at sikre, at din kode fungerer som helhed, og at du dermed kan producere et HTML-dokument med din løsninger.__  
+
+:::
 
 ### Chunk indstillinger
 

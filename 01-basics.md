@@ -1162,6 +1162,16 @@ seq(1,13,by=3)
 ```
 
 
+
+```r
+c(1,2,3,4)>2 #giver bare TRUE eller FALSE
+ifelse(c(1,2,3,4)>2,"yes","no") #omsætte TRUE eller FALSE til "yes" eller "no"
+ifelse(c(1,2,3,4)>=2,"yes","no") #se forskellen
+c(1,2,3,4)==2 #logic
+c(1,2,3,4)!=2 #logic
+```
+
+
 __3)__ (**helt baserende viden**) Kør følgende kode til at åbne nogle af de indbygget datasæt, som vi bruger i kurset. 
   * Prøve `head()`, `nrow()`, `summary()` osv. 
   * Prøve også fk. `?cars` for at se en beskrivelse.
@@ -1198,6 +1208,7 @@ __5)__ (**dataframes**) Brug datasættet `cars` (`data(cars)`) til at:
 ```r
 cars$fast <- cars$speed>15
 ```
+  * Brug `ifelse` så at du får `fast` eller `slow` i din nye kolon stedet for TRUE/FALSE
   * Brug `mean` på den nye kolon `fast` for at finde ud af proportionen af biler, der er hurtige
   * Beregn gennemsnitsværdien af variablen `dist` for hurtige biler og ikke-hurtige biler hver for sig (brug funktionen `tapply`). Gem resultatet med `<-`. 
   * Brug `barplot` til at lave et plot af den gennemsnitlige `dist` for hurtige og ikke-hurtige biler.
@@ -1211,13 +1222,19 @@ dim(mydf) # fire række og tre kolonner
 mydf
 ```
 
-__7)__ (**dataframes**) Tilføj en ny kolon `random` til din oprettede dataframe - hvor værdierne kommer fra en normalfordeling med et gennemsnit på 5 og standardafvigelse på 1 (bruge funktionen `rnorm()`).
+__7)__ (**dataframes**) 
+
+* Tilføj en ny kolon `random` til din oprettede dataframe - hvor værdierne kommer fra en normalfordeling med et gennemsnit på 5 og standardafvigelse på 1 (bruge funktionen `rnorm()`).
 
 
 ```r
 mydf$random <- #??
 ```
 
+
+
+
+* Tilføj endnu en kolonne, `lucky_number`,  til din dataframe ved at bruge funktionen `sample()` til at tildele et tilfælg tal mellem 1 og 4 (prøv også på `replace=TRUE` og `replace=FALSE` og forstå forskellen)
 
 
 
