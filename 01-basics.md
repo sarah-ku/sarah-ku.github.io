@@ -1383,10 +1383,11 @@ Husk at skrive en kort sætning med din endelige konklusioner.
 __15)__ (**t-test med CO2**)
 
 * Indlæs datasættet med kommandoen `data(CO2)`
-* Opret en delmængde med kun observationer for planten "Qn1"
+* Opret en delmængde med kun observationer for "Quebec" (variablen `Type`)
 * Beregn den gennemsnitlige optagelse (variablen `uptake`) for hvert behandlingstype (variablen `Treatment`) i din delmængde ved hjælp af `tapply()`-funktionen. 
 * Udfør en t-test ved hjælp af `t.test()`-funktionen for at sammenligne optagelsen mellem de to behandlinger i din delmængde.
 * Skriv en kort sætning med din konklusion.
+
 
 
 
@@ -1451,8 +1452,10 @@ cor.test(???, ???,method="pearson")
 
 
 
-* Hvad er korrelationen mellem `Girth` og `Volume`?
+* Hvad er korrelationen mellem `Girth` og `Volume`? Anvend den log-transformerde værdier til variablen `Volume` inden du laver testen (dvs. brug `log()` funktion)
 * Hvad er p-værdien? Er den signifikant?
+
+
 
 
 __18)__ (**ANOVA**) OBS: hvis du føler dig utryg med funktionen `lm()` - der kommer en video om det i morgen (i forbindelse med emnet Rmarkdown). 
@@ -1485,14 +1488,22 @@ anova(model_h0,model_h1)
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
+```r
+#check assumptions for alternative model
+par(mfrow=c(1,2))
+plot(model_h1,which=c(1,2))
+```
+
+<img src="01-basics_files/figure-html/unnamed-chunk-103-1.svg" width="672" style="display: block; margin: auto;" />
+
 Kig på outputtet:
 
 * Hvilken model reflekterer nulhypotesen? 
 * Hvilken model reflekterer alternativhypotesen?
 * Hvor er p-værdien?
 * Er der en signifikant forskel i den gennemsnitlige `Sepal.Width` efter de forskellige `Species`? 
+* Kan vi stole på testen (tjek forudsætninger til ANOVA)
 
-Brug funktionen `tapply` for at finde ud af, hvad er den middelværdi `Sepal.Width` til hver af de tre arter.
 
 
 __19)__ (**ANOVA**) Lav en lignende analyse på datasættet `chickwts` for at svare på spørgsmålet:

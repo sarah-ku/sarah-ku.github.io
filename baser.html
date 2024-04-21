@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Kapital 1 Grundlæggende R | Analyse og visualisering af biologiske datasæt - 2024" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
   <meta property="og:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
   
 
@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Kapital 1 Grundlæggende R | Analyse og visualisering af biologiske datasæt - 2024" />
   
   <meta name="twitter:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
-  
+  <meta name="twitter:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
 
 <meta name="author" content="Sarah Rennie" />
 
@@ -1223,7 +1223,7 @@ Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" cl
 <p><strong>15)</strong> (<strong>t-test med CO2</strong>)</p>
 <ul>
 <li>Indlæs datasættet med kommandoen <code>data(CO2)</code></li>
-<li>Opret en delmængde med kun observationer for planten “Qn1”</li>
+<li>Opret en delmængde med kun observationer for “Quebec” (variablen <code>Type</code>)</li>
 <li>Beregn den gennemsnitlige optagelse (variablen <code>uptake</code>) for hvert behandlingstype (variablen <code>Treatment</code>) i din delmængde ved hjælp af <code>tapply()</code>-funktionen.</li>
 <li>Udfør en t-test ved hjælp af <code>t.test()</code>-funktionen for at sammenligne optagelsen mellem de to behandlinger i din delmængde.</li>
 <li>Skriv en kort sætning med din konklusion.</li>
@@ -1258,7 +1258,7 @@ Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" cl
 </ul>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="baser.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(???, ???,<span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <ul>
-<li>Hvad er korrelationen mellem <code>Girth</code> og <code>Volume</code>?</li>
+<li>Hvad er korrelationen mellem <code>Girth</code> og <code>Volume</code>? Anvend den log-transformerde værdier til variablen <code>Volume</code> inden du laver testen (dvs. brug <code>log()</code> funktion)</li>
 <li>Hvad er p-værdien? Er den signifikant?</li>
 </ul>
 <p><strong>18)</strong> (<strong>ANOVA</strong>) OBS: hvis du føler dig utryg med funktionen <code>lm()</code> - der kommer en video om det i morgen (i forbindelse med emnet Rmarkdown).</p>
@@ -1282,25 +1282,29 @@ Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" cl
 #&gt; 2    147 16.962  2    11.345 49.16 &lt; 2.2e-16 ***
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="baser.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check assumptions for alternative model</span></span>
+<span id="cb118-2"><a href="baser.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb118-3"><a href="baser.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model_h1,<span class="at">which=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<p><img src="01-basics_files/figure-html/unnamed-chunk-103-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Kig på outputtet:</p>
 <ul>
 <li>Hvilken model reflekterer nulhypotesen?</li>
 <li>Hvilken model reflekterer alternativhypotesen?</li>
 <li>Hvor er p-værdien?</li>
 <li>Er der en signifikant forskel i den gennemsnitlige <code>Sepal.Width</code> efter de forskellige <code>Species</code>?</li>
+<li>Kan vi stole på testen (tjek forudsætninger til ANOVA)</li>
 </ul>
-<p>Brug funktionen <code>tapply</code> for at finde ud af, hvad er den middelværdi <code>Sepal.Width</code> til hver af de tre arter.</p>
 <p><strong>19)</strong> (<strong>ANOVA</strong>) Lav en lignende analyse på datasættet <code>chickwts</code> for at svare på spørgsmålet:</p>
 <ul>
 <li>Er der en forskel i den gennemsnitlige vægt (variablen <code>weight</code>) efter fodertypen (variablen <code>feed</code>)? Med andre ord er vægt afhængig af fodertypen?</li>
 </ul>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="baser.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(chickwts)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="baser.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(chickwts)</span></code></pre></div>
 <p><strong>OBS - hvis du er usikker med linær regression gennemgå gerne videoerne til emnet R Markdown og kom tilbage til følgende spørgsmål</strong></p>
 <p><strong>20)</strong> (<strong>Lineær regression</strong>)</p>
 <ul>
 <li>Brug <code>lm</code> til at lave en simpel lineær regression, således at respons variablen <code>Volume</code> er afhængig af variablen <code>Girth</code> (datasæstet <code>trees</code>).</li>
 </ul>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="baser.html#cb119-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(???, <span class="at">data=</span>trees) </span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="baser.html#cb120-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(???, <span class="at">data=</span>trees) </span></code></pre></div>
 <p>Brug <code>summary</code> på din model for at finde følgende værdier:</p>
 <ul>
 <li>Hvad er r.squared? (multiple)</li>
@@ -1308,8 +1312,8 @@ Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" cl
 <li>Hvad er ligningen på den bedste rette linje (husk formen y = ax + b)?</li>
 </ul>
 <p><strong>21)</strong> (<strong>Kort intro til multiple lineær regression</strong>) Tag ovenstående model og tilføj variablen <code>Height</code> som en ekstra prediktær (uafhængig) variabel i modellen med en “+” tegn:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="baser.html#cb120-1" aria-hidden="true" tabindex="-1"></a>mylm_height <span class="ot">&lt;-</span> <span class="fu">lm</span>(??? <span class="sc">~</span> ??? <span class="sc">+</span> ???, <span class="at">data=</span>trees) </span>
-<span id="cb120-2"><a href="baser.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_height)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="baser.html#cb121-1" aria-hidden="true" tabindex="-1"></a>mylm_height <span class="ot">&lt;-</span> <span class="fu">lm</span>(??? <span class="sc">~</span> ??? <span class="sc">+</span> ???, <span class="at">data=</span>trees) </span>
+<span id="cb121-2"><a href="baser.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_height)</span></code></pre></div>
 <p><em>Bemærk at det ikke betyder, at de to variabler skal lægges sammen, men at vi gerne vil have både variablerne i modellen som uafhængig variabler (med andre ord er <code>Volume</code> afhængig af både <code>Girth</code> og <code>Height</code>).</em></p>
 <p>Benyt <code>summary</code> på modellen og prøv at finde følgende:</p>
 <ul>
@@ -1318,7 +1322,7 @@ Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" cl
 <li>Er <code>Volume</code> signifikant afhængig af <code>Height</code> (efter at man har taget højde for <code>Girth</code>)?</li>
 </ul>
 <p>Brug funktionen <code>anova</code> til at sammenligne modellen uden <code>Height</code> med modellen med <code>Height</code></p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="baser.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="co">#model without height,#model with height)</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="baser.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="co">#model without height,#model with height)</span></span></code></pre></div>
 <p>Bemærk, at i dette tilfælde er p-værdien fra ANOVA samme p-værdi fra <code>summary(mylm_height)</code>.</p>
 
 </div>

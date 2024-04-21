@@ -10,6 +10,8 @@ link-citations: yes
 always_allow_html: true
 output: bookdown::gitbook
 url: https://sarah-ku.github.io/
+cover-image: ai_cover.jpeg
+graphics: yes
 description: "Course materials for Analyse og visualisering af biologiske datasæt 2024"
 rmd_files: ["00-basics.Rmd", "01-rmark.Rmd","02-visual.Rmd","03-tidyverse.Rmd"]
 ---
@@ -19,6 +21,8 @@ rmd_files: ["00-basics.Rmd", "01-rmark.Rmd","02-visual.Rmd","03-tidyverse.Rmd"]
 
 
 \mainmatter
+
+
 
 # Lidt om kurset {-}
 
