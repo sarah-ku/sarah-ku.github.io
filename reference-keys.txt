@@ -1,3 +1,4 @@
+fig:unnamed-chunk-2
 baser
 inledning-til-kapitel
 rstudio
@@ -40,6 +41,7 @@ kort-analyse-med-reaktionstider
 øvelse-med-co2
 ekstra-øvelser-med-statistik-tests
 rmarkdown
+inledning-til-kapital
 hvad-er-r-markdown
 installere-r-markdown
 videodemonstrationer
@@ -59,6 +61,3 @@ matematik
 problemstillinger-1
 færdig-for-i-dag-og-næste-gang
 ekstra-links
-fig:unnamed-chunk-1
-fig:unnamed-chunk-2
-inledning-til-kapital
