@@ -100,3 +100,130 @@ a {
   a:hover {
     color: #396892; /* darker color when hovering */
   }
+  
+  
+
+
+
+
+
+
+/*------------ TOC --------------*/
+
+.book .book-summary {
+  background: white;
+  border-right: 1px solid purple;
+}
+
+.summary{
+    font-family: 'Prata', sans-serif;
+    background-color: white;
+}
+  
+
+/* TOC items*/
+  .book .book-summary ul.summary li a, 
+  .book .book-summary ul.summary li span {
+    padding-top: 0.2em;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 20px;
+    border-left: solid 4px transparent;
+    letter-spacing: 1pt;
+    color: #27425C;
+  }
+
+  .summary a:hover {
+    color: #27425C !important;
+  } 
+
+/*active TOC links*/
+.book .book-summary ul.summary li.active>a,
+.book .book-summary ul.summary li.focus>a,
+.book .book-summary > nav > ul > li.chapter.active > a:hover { 
+  color: #1c3248;
+  border-left: solid 4px purple;
+  padding-left: 16px;
+} 
+  
+.summary > li.chapter {
+  padding-bottom: 1.75em;
+}
+
+.book .book-summary > nav > ul > li > a {
+  text-transform: uppercase !important;
+  font-weight: 500;
+  padding-top: 1em !important;
+}
+
+.book .book-summary > nav > ul > li > a:hover {
+  border-left: solid 4px #fcfcfc;
+}
+  
+.book .book-summary ul li ul li.chapter a {
+  padding-top: 0.65em !important;
+  font-weight: 400 !important;
+}
+
+.book .book-summary ul li ul li.chapter.active > a,
+.book .book-summary ul li ul li.chapter.active > a:hover { 
+      margin-left: -20px !important;
+      padding-left: 36px !important;
+      color: #1c3248;
+      border-left: solid 4px purple;
+} 
+    
+.book .book-summary ul li ul li.chapter a:hover {
+    margin-left: -20px !important;
+    padding-left: 36px !important;
+    border-left: solid 4px #fcfcfc;
+}
+
+.book .book-summary ul li ul li ul li.chapter.active > a,
+.book .book-summary ul li ul li ul li.chapter.active > a:hover { 
+  margin-left: -40px !important;
+  padding-left: 56px !important;
+  color: #1c3248;
+  border-left: solid 4px purple;
+} 
+  
+.book .book-summary ul li ul li ul li > a:hover{
+  margin-left: -40px !important;
+  padding-left: 56px !important;
+  border-left: solid 4px #fcfcfc;
+}
+    
+li.appendix span, 
+li.part span {
+  margin-top: 1.5em;
+  border-top: solid 1pt #69696926;
+  padding-top: 30px !important;
+  color: #4070a0 !important;
+  opacity: 1 !important;
+  text-transform: uppercase;
+  font-family: 'Prata', sans-serif;
+  font-size: 1em;
+  font-weight: 700 !important;
+  letter-spacing: 1pt;
+}
+
+
+
+
+
+
+/*------------- CODE --------------*/
+
+.book .book-body .page-wrapper .page-inner section.normal code, 
+.book .book-body .page-wrapper .page-inner section.normal pre {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.sourceCode pre {
+  margin: 0 !important; /* makes space above and below symmetrical*/
+}
+
+.sourceCode {
+  margin-bottom: 0.85em; /* adds same amount of margin beneath chunk as a <p> would */
+}
+    
