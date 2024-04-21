@@ -10,6 +10,7 @@ importering-af-data-fra-.txt-fil
 importering-af-data-fra-excel
 kaggle
 beregninger-i-r
+objektor
 vectorer
 datatyper
 dataframes
@@ -58,3 +59,5 @@ matematik
 problemstillinger-1
 færdig-for-i-dag-og-næste-gang
 ekstra-links
+fig:unnamed-chunk-1
+fig:unnamed-chunk-2

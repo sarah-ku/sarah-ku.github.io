@@ -51,7 +51,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -158,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#beregninger-i-r"><i class="fa fa-check"></i><b>1.6</b> Beregninger i R</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#vectorer"><i class="fa fa-check"></i><b>1.6.1</b> Vectorer</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#datatyper"><i class="fa fa-check"></i><b>1.6.2</b> datatyper</a></li>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#objektor"><i class="fa fa-check"></i><b>1.6.1</b> Objektor</a></li>
+<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#vectorer"><i class="fa fa-check"></i><b>1.6.2</b> Vectorer</a></li>
+<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#datatyper"><i class="fa fa-check"></i><b>1.6.3</b> datatyper</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#dataframes"><i class="fa fa-check"></i><b>1.7</b> Dataframes</a>
 <ul>
@@ -247,10 +247,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Analyse og visualisering af biologiske datasæt - 2024</h1>
 <p class="author"><em>Sarah Rennie</em></p>
-<p class="date"><em>Last updated: 2024-04-17</em></p>
+<p class="date"><em>Last updated: 2024-04-21</em></p>
 </div>
 <div id="baser" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Grundlæggende R<a href="index.html#baser" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="plots/logo_baseR.png" width="20%" height="20%" /></p>
 <p>“Det er ikke, fordi noget er svært, at vi ikke tør, det er, fordi vi ikke tør, at noget er svært” - Seneca</p>
 <div id="inledning-til-kapitel" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Inledning til kapitel<a href="index.html#inledning-til-kapitel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -267,6 +268,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Følg venligst RStudios egne anvisninger til at få det installeret. Bemærk, at installering af RStudio er ikke den samme som at have R installeret på din computer - man skal installere dem begge to (man kan bruge R uden RStudio men ikke omvendt.</p>
 <div id="de-forskellige-vinduer-i-rstudio" class="section level3 hasAnchor" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> De forskellige vinduer i RStudio<a href="index.html#de-forskellige-vinduer-i-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="plots/RStudio_overview.png" alt="Image source: https://epirhandbook.com/en/r-basics.html" width="90%" height="90%" />
+<p class="caption">
+Figure 1.1: Image source: <a href="https://epirhandbook.com/en/r-basics.html" class="uri">https://epirhandbook.com/en/r-basics.html</a>
+</p>
+</div>
 <p>Du kan læse følgende for at lære de fire forskellige vinduer i RStudio at kende:</p>
 <p><a href="https://bookdown.org/ndphillips/YaRrr/the-four-rstudio-windows.html" class="uri">https://bookdown.org/ndphillips/YaRrr/the-four-rstudio-windows.html</a></p>
 <p>Her er et kort oversigt:</p>
@@ -346,28 +353,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="beregninger-i-r" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> Beregninger i R<a href="index.html#beregninger-i-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Her er nogle helt grundlæggende koncepter når man arbejder med R. Du må selvfølgelige gerne springe sektionen over, hvis du allerede har meget erfaring med base R, men det kan være værd at tjekke, om der noget ting, der lige skal gennemgås. En god tilgang er bare at arbejde gennem problemstillingerne nedenfor, og bruger følgende notater som en reference.</p>
-<div id="vectorer" class="section level3 hasAnchor" number="1.6.1">
-<h3><span class="header-section-number">1.6.1</span> Vectorer<a href="index.html#vectorer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="objektor" class="section level3 hasAnchor" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Objektor<a href="index.html#objektor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man definere en objekt med brug af <code>&lt;-</code> tegn</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co">#x er defineret som 2</span></span></code></pre></div>
+<p>OBS: en objekts værdi kan nem overskrives - vær opmærksomt på rækkefølgen af de udførte kommandoer:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co">#x er defineret som 2</span></span>
+<span id="cb11-2"><a href="index.html#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co">#nu er x omdefineret som 4</span></span></code></pre></div>
+</div>
+<div id="vectorer" class="section level3 hasAnchor" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Vectorer<a href="index.html#vectorer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I R laver man en vector med <code>c()</code>, hvor man adskiller de forskellige elementer med en komma, som i nedenstående eksempel:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="co">#sæt objektet &#39;a&#39; til at være en vector af tal </span></span>
-<span id="cb10-2"><a href="index.html#cb10-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="co">#sæt objektet &#39;a&#39; til at være en vector af tal </span></span>
+<span id="cb12-2"><a href="index.html#cb12-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
 <!-- Man kan også  -->
 <!-- ```{r} -->
 <!-- a <- 1:5 -->
 <!-- ``` -->
 <p>Man er ikke begrænset til tal:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;horse&quot;</span>,<span class="st">&quot;sheep&quot;</span>,<span class="st">&quot;dog&quot;</span>)</span>
-<span id="cb12-2"><a href="index.html#cb12-2" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>,<span class="st">&quot;mouse&quot;</span>,<span class="st">&quot;horse&quot;</span>,<span class="st">&quot;sheep&quot;</span>,<span class="st">&quot;dog&quot;</span>)</span>
+<span id="cb14-2"><a href="index.html#cb14-2" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
 <pre><code>## [1] &quot;cat&quot;   &quot;mouse&quot; &quot;horse&quot; &quot;sheep&quot; &quot;dog&quot;</code></pre>
 </div>
-<div id="datatyper" class="section level3 hasAnchor" number="1.6.2">
-<h3><span class="header-section-number">1.6.2</span> datatyper<a href="index.html#datatyper" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="datatyper" class="section level3 hasAnchor" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> datatyper<a href="index.html#datatyper" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nar vi kommer til at arbejde med visualiseringer og data beardejdning er det vigtigt at have styr på datatyper i datasættet. For eksempel har vectoren <code>c</code> ovenpå typen <code>character</code> (forkortet <code>chr</code>) og ikke <code>numeric</code> (forkortet <code>num</code>):</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(c)</span>
-<span id="cb14-2"><a href="index.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
-<span id="cb14-3"><a href="index.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(c)</span>
-<span id="cb14-4"><a href="index.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(c)</span>
+<span id="cb16-2"><a href="index.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb16-3"><a href="index.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(c)</span>
+<span id="cb16-4"><a href="index.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
 <p>Her er en list overfor nogle af de vigtigste datatyper:</p>
 <table>
 <colgroup>
@@ -416,18 +431,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>En datatype, der bør få særlig opmærksomhed er <code>fct</code> (factor). I følgende vector <code>tea_coffee</code> har vi tekst, men blandt de fem elementer er der kun to bestemte niveauer (nemlig “tea” og “coffee”).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" aria-hidden="true" tabindex="-1"></a>tea_coffee <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tea&quot;</span>,<span class="st">&quot;tea&quot;</span>,<span class="st">&quot;coffee&quot;</span>,<span class="st">&quot;coffee&quot;</span>,<span class="st">&quot;tea&quot;</span>)</span>
-<span id="cb15-2"><a href="index.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(tea_coffee)</span>
-<span id="cb15-3"><a href="index.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
-<span id="cb15-4"><a href="index.html#cb15-4" aria-hidden="true" tabindex="-1"></a>tea_coffee</span>
-<span id="cb15-5"><a href="index.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;tea&quot;    &quot;tea&quot;    &quot;coffee&quot; &quot;coffee&quot; &quot;tea&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" aria-hidden="true" tabindex="-1"></a>tea_coffee <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tea&quot;</span>,<span class="st">&quot;tea&quot;</span>,<span class="st">&quot;coffee&quot;</span>,<span class="st">&quot;coffee&quot;</span>,<span class="st">&quot;tea&quot;</span>)</span>
+<span id="cb17-2"><a href="index.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(tea_coffee)</span>
+<span id="cb17-3"><a href="index.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb17-4"><a href="index.html#cb17-4" aria-hidden="true" tabindex="-1"></a>tea_coffee</span>
+<span id="cb17-5"><a href="index.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;tea&quot;    &quot;tea&quot;    &quot;coffee&quot; &quot;coffee&quot; &quot;tea&quot;</span></span></code></pre></div>
 <p>Vi vil derfor gerne fortælle R, at <code>tea_coffee</code> er ikke bare nogle tilfældig tekst men at der er en struktur med, så vi bruger funktionen <code>as.factor</code> for at lave den om til datatypen <code>fct</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1" aria-hidden="true" tabindex="-1"></a>tea_coffee <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tea_coffee)</span>
-<span id="cb16-2"><a href="index.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(tea_coffee)</span>
-<span id="cb16-3"><a href="index.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
-<span id="cb16-4"><a href="index.html#cb16-4" aria-hidden="true" tabindex="-1"></a>tea_coffee</span>
-<span id="cb16-5"><a href="index.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] tea    tea    coffee coffee tea   </span></span>
-<span id="cb16-6"><a href="index.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Levels: coffee tea</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1" aria-hidden="true" tabindex="-1"></a>tea_coffee <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tea_coffee)</span>
+<span id="cb18-2"><a href="index.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(tea_coffee)</span>
+<span id="cb18-3"><a href="index.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
+<span id="cb18-4"><a href="index.html#cb18-4" aria-hidden="true" tabindex="-1"></a>tea_coffee</span>
+<span id="cb18-5"><a href="index.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] tea    tea    coffee coffee tea   </span></span>
+<span id="cb18-6"><a href="index.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Levels: coffee tea</span></span></code></pre></div>
 <p>Den ‘ekstra’ oplysninger man har ved at sige, at en variabel betragtes som factor bliver vigtigt når man arbejder med visualiseringer - for eksempel, hvis vi gerne vil lave et barplot hvor man gerne vil adskille søjlerne efter de to niveauer “tea” og “coffee” (visualiseringer er emnet fra kapitel 3).</p>
 </div>
 </div>
@@ -438,8 +453,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- height <-  c(140,187,154,132,165) -->
 <!-- age <- c(34,31,25,43,29) -->
 <!-- score <- c(56,82,48,75,79) -->
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;personID&quot;</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="st">&quot;height&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">187</span>,<span class="dv">154</span>,<span class="dv">132</span>,<span class="dv">165</span>), <span class="st">&quot;age&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">31</span>,<span class="dv">25</span>,<span class="dv">43</span>,<span class="dv">29</span>))</span>
-<span id="cb17-2"><a href="index.html#cb17-2" aria-hidden="true" tabindex="-1"></a>mydf</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;personID&quot;</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="st">&quot;height&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">187</span>,<span class="dv">154</span>,<span class="dv">132</span>,<span class="dv">165</span>), <span class="st">&quot;age&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">31</span>,<span class="dv">25</span>,<span class="dv">43</span>,<span class="dv">29</span>))</span>
+<span id="cb19-2"><a href="index.html#cb19-2" aria-hidden="true" tabindex="-1"></a>mydf</span></code></pre></div>
 <pre><code>##   personID height age
 ## 1        1    140  34
 ## 2        2    187  31
@@ -447,11 +462,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4        4    132  43
 ## 5        5    165  29</code></pre>
 <p>Man kan fa adgang til variabler i en dataframe ved at bruge det dollar tegn <code>$</code>. For eksempel giver følgende variablen <code>personID</code> fra dataframen <code>mydf</code>:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>personID</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>personID</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
 <p>Husk, at vores dataframe, ligesom et matrix (i R: <code>matrix()</code>) har to dimensioner - række og kolonner Forskellen mellem en matrix og en dataramme er, at datarammer kan indeholde mange forskellige data typer (herunder numeriske, faktorer, karakterer osv.), men matrix indeholder kun numeriske data. For eksempel i tilfældet af ovenstående dataframen er alle variabler numeriske, men vi kan godt tilføje en variabel som er ikke-numeriske:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>colour <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;purple&quot;</span>) <span class="co">#make new variable which is non-numeric</span></span>
-<span id="cb21-2"><a href="index.html#cb21-2" aria-hidden="true" tabindex="-1"></a>mydf</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>colour <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;purple&quot;</span>) <span class="co">#make new variable which is non-numeric</span></span>
+<span id="cb23-2"><a href="index.html#cb23-2" aria-hidden="true" tabindex="-1"></a>mydf</span></code></pre></div>
 <pre><code>##   personID height age colour
 ## 1        1    140  34    red
 ## 2        2    187  31   blue
@@ -459,9 +474,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4        4    132  43 orange
 ## 5        5    165  29 purple</code></pre>
 <p>Nu er <code>mydf</code> er en dataframe, der blander forskellige datatyper, men følgende er en matrix</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), </span>
-<span id="cb23-2"><a href="index.html#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow=</span><span class="dv">3</span>,</span>
-<span id="cb23-3"><a href="index.html#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), </span>
+<span id="cb25-2"><a href="index.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow=</span><span class="dv">3</span>,</span>
+<span id="cb25-3"><a href="index.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    4
 ## [2,]    2    5
@@ -471,23 +486,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.7.1</span> Delmængder af dataframes<a href="index.html#delmængder-af-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Selvom vi kommer til at redefinere hvordan man laver delmængde når vi kommer til at arbejde med pakken <strong>tidyverse</strong>, er det alligevel vigtigt at forstå, hvordan man laver en delmængde i base-R, og det er et område, der ofte skaber forvirring blandt de uerfarne.</p>
 <p>Når man vil gerne har en bestemt delmængde af en vector, bruger man firkantet paranteser <code>[ ]</code>. Følgende kode giver mig de første to værdier fra vectoren <code>a</code>:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="index.html#cb27-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 <p>Bemærk, at mens vectorer har kun en dimension, <strong>har dataframes to dimensioner</strong>. Når man skal lave en delmægde af en dataframe, skal man derfor fortælle R, hvilke række og hvilke kolonner skal være med.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="index.html#cb27-1" aria-hidden="true" tabindex="-1"></a>mydf[række indekser, kolonner indekser]  <span class="co">#not run</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="index.html#cb29-1" aria-hidden="true" tabindex="-1"></a>mydf[række indekser, kolonner indekser]  <span class="co">#not run</span></span></code></pre></div>
 <p>For eksempel, hvis vi gerne vil have de første to observationer med, samt kun den anden variabel, skriver man følgende:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="index.html#cb28-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span>]  <span class="co">#first two rows (observations), second column (variable) only</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span>]  <span class="co">#first two rows (observations), second column (variable) only</span></span></code></pre></div>
 <pre><code>## [1] 140 187</code></pre>
 <p>Hvis vi vil beholde den første to observationer og samtlige variabler, kan den anden plads være tom:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]  <span class="co">#first two rows, all columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]  <span class="co">#first two rows, all columns</span></span></code></pre></div>
 <pre><code>##   personID height age colour
 ## 1        1    140  34    red
 ## 2        2    187  31   blue</code></pre>
 <p>Jeg kan også angive et variabelnavn direkte:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="st">&quot;height&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="st">&quot;height&quot;</span>]</span></code></pre></div>
 <pre><code>## [1] 140 187</code></pre>
 <p>Man kan kigge på en subset af rækkerne i de data ved at</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" aria-hidden="true" tabindex="-1"></a>mydf[mydf<span class="sc">$</span>height<span class="sc">&gt;=</span><span class="dv">165</span>,] <span class="co">#alle rækker i datarammen med height = 165 eller over</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="index.html#cb36-1" aria-hidden="true" tabindex="-1"></a>mydf[mydf<span class="sc">$</span>height<span class="sc">&gt;=</span><span class="dv">165</span>,] <span class="co">#alle rækker i datarammen med height = 165 eller over</span></span></code></pre></div>
 <pre><code>##   personID height age colour
 ## 2        2    187  31   blue
 ## 5        5    165  29 purple</code></pre>
@@ -543,13 +558,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Jeg mener, at <code>%in%</code> er særlig brugbart og er værd at lære:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="index.html#cb36-1" aria-hidden="true" tabindex="-1"></a>mydf[mydf<span class="sc">$</span>personID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>),] <span class="co">#alle personer med personID 1,3 eller 5 </span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="index.html#cb38-1" aria-hidden="true" tabindex="-1"></a>mydf[mydf<span class="sc">$</span>personID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>),] <span class="co">#alle personer med personID 1,3 eller 5 </span></span></code></pre></div>
 <pre><code>##   personID height age colour
 ## 1        1    140  34    red
 ## 3        3    154  25  green
 ## 5        5    165  29 purple</code></pre>
 <p>Her er et eksempel på, hvordan man bruger udråbstegnet: personer med personID, der ikke er 1,3 eller 5:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="index.html#cb38-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="sc">!</span>(mydf<span class="sc">$</span>personID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)),] <span class="co">#alle personer med personID 2 eller 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="index.html#cb40-1" aria-hidden="true" tabindex="-1"></a>mydf[<span class="sc">!</span>(mydf<span class="sc">$</span>personID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)),] <span class="co">#alle personer med personID 2 eller 4</span></span></code></pre></div>
 <pre><code>##   personID height age colour
 ## 2        2    187  31   blue
 ## 4        4    132  43 orange</code></pre>
@@ -558,39 +573,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ifelse" class="section level2 hasAnchor" number="1.8">
 <h2><span class="header-section-number">1.8</span> If/else<a href="index.html#ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If/else kodekonstruktioner giver mulighed for at udføre forskellige handlinger baseret på, om en bestemt betingelse er opfyldt. Her er et eksempel med <code>if</code> med betingelsen <code>number &gt; 0</code>:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="index.html#cb40-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">42</span></span>
-<span id="cb40-2"><a href="index.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (number <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb40-3"><a href="index.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Number is positive&quot;</span>)</span>
-<span id="cb40-4"><a href="index.html#cb40-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="index.html#cb42-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb42-2"><a href="index.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (number <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb42-3"><a href="index.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Number is positive&quot;</span>)</span>
+<span id="cb42-4"><a href="index.html#cb42-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Number is positive&quot;</code></pre>
 <p>Hvis betingelse er sand udføres den handling indenfor <code>{ }</code>, dvs. “Number is positive” printes.</p>
 <p>If/else konstruktioner gør det samme, men hvis betingelsen er falsk, udføres en alternativ handling:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="index.html#cb42-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
-<span id="cb42-2"><a href="index.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (number <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb42-3"><a href="index.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Number is positive&quot;</span>)</span>
-<span id="cb42-4"><a href="index.html#cb42-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb42-5"><a href="index.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Number is not positive&quot;</span>)</span>
-<span id="cb42-6"><a href="index.html#cb42-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="index.html#cb44-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
+<span id="cb44-2"><a href="index.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (number <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb44-3"><a href="index.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Number is positive&quot;</span>)</span>
+<span id="cb44-4"><a href="index.html#cb44-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb44-5"><a href="index.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Number is not positive&quot;</span>)</span>
+<span id="cb44-6"><a href="index.html#cb44-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Number is not positive&quot;</code></pre>
 <p>Man kan også opnå samme resultat med at bruge <code>ifelse</code>:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="index.html#cb44-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb44-2"><a href="index.html#cb44-2" aria-hidden="true" tabindex="-1"></a>numbers_of_interest <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>)</span>
-<span id="cb44-3"><a href="index.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="at">test =</span> number <span class="sc">%in%</span> numbers_of_interest, </span>
-<span id="cb44-4"><a href="index.html#cb44-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">yes =</span> <span class="st">&quot;Number is interesting&quot;</span>,</span>
-<span id="cb44-5"><a href="index.html#cb44-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">no =</span>  <span class="st">&quot;Number is uninteresting&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="index.html#cb46-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb46-2"><a href="index.html#cb46-2" aria-hidden="true" tabindex="-1"></a>numbers_of_interest <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>)</span>
+<span id="cb46-3"><a href="index.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="at">test =</span> number <span class="sc">%in%</span> numbers_of_interest, </span>
+<span id="cb46-4"><a href="index.html#cb46-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">yes =</span> <span class="st">&quot;Number is interesting&quot;</span>,</span>
+<span id="cb46-5"><a href="index.html#cb46-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">no =</span>  <span class="st">&quot;Number is uninteresting&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Number is interesting&quot;</code></pre>
 <p>Man behøver ikke at skrive ordene “test”, “yes” og “no” hver gang, såfremt at du bruger samme rækkefølgen som funktionen forventer:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="index.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(number <span class="sc">%in%</span> numbers_of_interest, </span>
-<span id="cb46-2"><a href="index.html#cb46-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Number is interesting&quot;</span>,</span>
-<span id="cb46-3"><a href="index.html#cb46-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Number is uninteresting&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="index.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(number <span class="sc">%in%</span> numbers_of_interest, </span>
+<span id="cb48-2"><a href="index.html#cb48-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Number is interesting&quot;</span>,</span>
+<span id="cb48-3"><a href="index.html#cb48-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Number is uninteresting&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Number is interesting&quot;</code></pre>
 </div>
 <div id="loops" class="section level2 hasAnchor" number="1.9">
 <h2><span class="header-section-number">1.9</span> Loops<a href="index.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>I base-R kan man laver simpel loops med følgende konstruktion:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="index.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb48-2"><a href="index.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb48-3"><a href="index.html#cb48-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>I base-R kan man laver simpel loops(løkke) med følgende konstruktion:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="index.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb50-2"><a href="index.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb50-3"><a href="index.html#cb50-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -604,22 +619,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.10.1</span> Simulere data fra den normale fordeling<a href="index.html#simulere-data-fra-den-normale-fordeling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Hvis du har bruge for at vide mere om den normale fordeling: <a href="http://www.r-tutor.com/elementary-statistics/probability-distributions/normal-distribution" class="uri">http://www.r-tutor.com/elementary-statistics/probability-distributions/normal-distribution</a></p>
 <p>Man kan nemt lave sin egne ‘fake’ data ved at simulere det fra en fordeling, der typisk er normalfordelingen, da den er den mest almindelige fordeling i den virkelige verden (husk den klassiske klokkeform). I R kan funktionen rnorm bruges til at simulere data. Først angiver man antallet af observationer, og derefter den gennemsnitlige værdi og standardafvigelsen (sd), som er de to nødvendige parametre for at beskrive en normalfordeling.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="index.html#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>) <span class="co">#standard normal distribution</span></span>
-<span id="cb50-2"><a href="index.html#cb50-2" aria-hidden="true" tabindex="-1"></a>x <span class="co">#så har vi 25 værdier fra en normal distribution med mean=0 og standard deviation=1.</span></span></code></pre></div>
-<pre><code>##  [1]  0.2561891 -0.7355696 -0.2194266  0.8091691 -0.7517669 -1.3013024
-##  [7]  0.2983026  0.6473799  0.3333304  0.8699178  1.8490375  0.1071644
-## [13]  0.8835284  1.6031146  1.8121252  0.4684795 -0.2553134  1.2213031
-## [19]  2.1568287 -1.0078886 -1.8416403 -1.0132917  1.6649110  0.4293651
-## [25] -1.1955800</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="index.html#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>) <span class="co">#standard normal distribution</span></span>
+<span id="cb52-2"><a href="index.html#cb52-2" aria-hidden="true" tabindex="-1"></a>x <span class="co">#så har vi 25 værdier fra en normal distribution med mean=0 og standard deviation=1.</span></span></code></pre></div>
+<pre><code>##  [1] -1.4139871  0.2502124 -0.3912598 -0.4824100 -1.2717291 -0.7362316
+##  [7] -1.8481195  0.7604495 -0.3144039 -2.9931008  0.7906720  1.7970506
+## [13]  0.1078086  1.2052472 -0.3368032 -1.3515995 -1.1415679 -0.8826875
+## [19] -0.3660583 -1.4363128  0.2563310 -0.8398150 -0.5402076 -2.1305973
+## [25] -1.5264541</code></pre>
 <p>I stedet for at kigge på alle værdier på én gang, vil vi måske hellere kigge kun på de første (eller sidste) værdier:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="index.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x) <span class="co">#første 6</span></span>
-<span id="cb52-2"><a href="index.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0.2561891 -0.7355696 -0.2194266  0.8091691 -0.7517669 -1.3013024</span></span>
-<span id="cb52-3"><a href="index.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(x) <span class="co">#sidste 6</span></span>
-<span id="cb52-4"><a href="index.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.0078886 -1.8416403 -1.0132917  1.6649110  0.4293651 -1.1955800</span></span>
-<span id="cb52-5"><a href="index.html#cb52-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="co">#første værdi</span></span>
-<span id="cb52-6"><a href="index.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.2561891</span></span>
-<span id="cb52-7"><a href="index.html#cb52-7" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">length</span>(x)] <span class="co">#sidste data point</span></span>
-<span id="cb52-8"><a href="index.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.19558</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="index.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x) <span class="co">#første 6</span></span>
+<span id="cb54-2"><a href="index.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.4139871  0.2502124 -0.3912598 -0.4824100 -1.2717291 -0.7362316</span></span>
+<span id="cb54-3"><a href="index.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(x) <span class="co">#sidste 6</span></span>
+<span id="cb54-4"><a href="index.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.4363128  0.2563310 -0.8398150 -0.5402076 -2.1305973 -1.5264541</span></span>
+<span id="cb54-5"><a href="index.html#cb54-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="co">#første værdi</span></span>
+<span id="cb54-6"><a href="index.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.413987</span></span>
+<span id="cb54-7"><a href="index.html#cb54-7" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">length</span>(x)] <span class="co">#sidste data point</span></span>
+<span id="cb54-8"><a href="index.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.526454</span></span></code></pre></div>
 <p>Bemærk, at i modsætning til Python og mange andre programmeringssprog, bruger R en 1-baseret indeksering. Det betyder, at den første værdi er x[1] og ikke x[0] som i Python.</p>
 </div>
 <div id="measures-of-central-tendency" class="section level3 hasAnchor" number="1.10.2">
@@ -663,38 +678,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Lad os afprøve dem på vores simulerede data:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="index.html#cb53-1" aria-hidden="true" tabindex="-1"></a>my_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb53-2"><a href="index.html#cb53-2" aria-hidden="true" tabindex="-1"></a>my_median <span class="ot">&lt;-</span> <span class="fu">median</span>(x)</span>
-<span id="cb53-3"><a href="index.html#cb53-3" aria-hidden="true" tabindex="-1"></a>my_max <span class="ot">&lt;-</span> <span class="fu">max</span>(x)</span>
-<span id="cb53-4"><a href="index.html#cb53-4" aria-hidden="true" tabindex="-1"></a>my_min <span class="ot">&lt;-</span> <span class="fu">min</span>(x)</span>
-<span id="cb53-5"><a href="index.html#cb53-5" aria-hidden="true" tabindex="-1"></a>my_var <span class="ot">&lt;-</span> <span class="fu">var</span>(x)</span>
-<span id="cb53-6"><a href="index.html#cb53-6" aria-hidden="true" tabindex="-1"></a>my_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
-<span id="cb53-7"><a href="index.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(my_mean,my_median,my_max,my_min,my_var,my_sd) <span class="co">#print results</span></span></code></pre></div>
-<pre><code>## [1]  0.2835347  0.3333304  2.1568287 -1.8416403  1.2186332  1.1039172</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="index.html#cb55-1" aria-hidden="true" tabindex="-1"></a>my_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb55-2"><a href="index.html#cb55-2" aria-hidden="true" tabindex="-1"></a>my_median <span class="ot">&lt;-</span> <span class="fu">median</span>(x)</span>
+<span id="cb55-3"><a href="index.html#cb55-3" aria-hidden="true" tabindex="-1"></a>my_max <span class="ot">&lt;-</span> <span class="fu">max</span>(x)</span>
+<span id="cb55-4"><a href="index.html#cb55-4" aria-hidden="true" tabindex="-1"></a>my_min <span class="ot">&lt;-</span> <span class="fu">min</span>(x)</span>
+<span id="cb55-5"><a href="index.html#cb55-5" aria-hidden="true" tabindex="-1"></a>my_var <span class="ot">&lt;-</span> <span class="fu">var</span>(x)</span>
+<span id="cb55-6"><a href="index.html#cb55-6" aria-hidden="true" tabindex="-1"></a>my_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb55-7"><a href="index.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(my_mean,my_median,my_max,my_min,my_var,my_sd) <span class="co">#print results</span></span></code></pre></div>
+<pre><code>## [1] -0.5934230 -0.5402076  1.7970506 -2.9931008  1.1802229  1.0863807</code></pre>
 <p>Man kan også lave et summary af dataen, som består af mange af de statistiker navnt ovenpå:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="index.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="index.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -1.8416 -0.7356  0.3333  0.2835  0.8835  2.1568</code></pre>
+## -2.9931 -1.3516 -0.5402 -0.5934  0.1078  1.7971</code></pre>
 </div>
 <div id="tapply" class="section level3 hasAnchor" number="1.10.3">
 <h3><span class="header-section-number">1.10.3</span> <code>tapply()</code><a href="index.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>tapply()</code> er en meget nyttig funktion i R, som kan bruges til at anvende en funktion på en gruppe af data baseret på værdier i en anden vektor. Funktionen tager tre hovedargumenter: den vektor, som vi ønsker at anvende funktionen på, den vektor, som bruges til at gruppere dataene, og funktionen, som vi ønsker at anvende på hver gruppe. <code>tapply()</code> vil derefter opdele dataene i grupper baseret på den anden vektor og anvende funktionen på hver gruppe.</p>
 <p>Resultatet af <code>tapply()</code> vil være en vektor, som indeholder resultaterne af funktionen anvendt på hver gruppe af data. For eksempel:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="index.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb57-2"><a href="index.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length,iris<span class="sc">$</span>Species,mean) <span class="co"># ovenstående i kun en linje</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="index.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb59-2"><a href="index.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length,iris<span class="sc">$</span>Species,mean) <span class="co"># ovenstående i kun en linje</span></span></code></pre></div>
 <pre><code>##     setosa versicolor  virginica 
 ##      5.006      5.936      6.588</code></pre>
 <p>Her tager vi en vektor ved navn Sepal.Length, opdeler den efter Species og beregner gennemsnittet ved hjælp af funktionen mean for hver af de tre arter i variablen <code>Species</code> (setosa, versicolor og virginica). Alternativt kunne man have beregnet gennemsnittet for hver af de tre Species separat (en tilgang, der ikke skalerer godt!):</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="index.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gennemsnit Sepal Length for Species setosa</span></span>
-<span id="cb59-2"><a href="index.html#cb59-2" aria-hidden="true" tabindex="-1"></a>mean_setosa <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>])</span>
-<span id="cb59-3"><a href="index.html#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="index.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gennemsnit Sepal Length for Species versicolor</span></span>
-<span id="cb59-5"><a href="index.html#cb59-5" aria-hidden="true" tabindex="-1"></a>mean_versi <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>]) </span>
-<span id="cb59-6"><a href="index.html#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-7"><a href="index.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># gennemsnit Sepal Length for Species virginica</span></span>
-<span id="cb59-8"><a href="index.html#cb59-8" aria-hidden="true" tabindex="-1"></a>mean_virgin <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>])</span>
-<span id="cb59-9"><a href="index.html#cb59-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-10"><a href="index.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(mean_setosa,mean_versi,mean_virgin)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="index.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gennemsnit Sepal Length for Species setosa</span></span>
+<span id="cb61-2"><a href="index.html#cb61-2" aria-hidden="true" tabindex="-1"></a>mean_setosa <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>])</span>
+<span id="cb61-3"><a href="index.html#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="index.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gennemsnit Sepal Length for Species versicolor</span></span>
+<span id="cb61-5"><a href="index.html#cb61-5" aria-hidden="true" tabindex="-1"></a>mean_versi <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>]) </span>
+<span id="cb61-6"><a href="index.html#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="index.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co"># gennemsnit Sepal Length for Species virginica</span></span>
+<span id="cb61-8"><a href="index.html#cb61-8" aria-hidden="true" tabindex="-1"></a>mean_virgin <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>])</span>
+<span id="cb61-9"><a href="index.html#cb61-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-10"><a href="index.html#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(mean_setosa,mean_versi,mean_virgin)</span></code></pre></div>
 <pre><code>## [1] 5.006 5.936 6.588</code></pre>
 <p>Det er også værd at ved koncepten, fordi vi kommer til lære en lignende koncept i <strong>tidyverse</strong> (med <code>group_by</code> og <code>summarise</code>).</p>
 </div>
@@ -723,12 +738,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(&lt;0\)</span> betyder, at der er en negativ sammenhæng</li>
 <li><span class="math inline">\(=0\)</span> betyder, at der er ingen sammenhængen mellem de to variabler</li>
 </ul>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="index.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cars)</span>
-<span id="cb61-2"><a href="index.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cars<span class="sc">$</span>speed, cars<span class="sc">$</span>dist) </span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="index.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cars)</span>
+<span id="cb63-2"><a href="index.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cars<span class="sc">$</span>speed, cars<span class="sc">$</span>dist) </span></code></pre></div>
 <pre><code>## [1] 0.8068949</code></pre>
 <p>Husk dog, at “Correlation does not equal causation” - dvs. at korrelation er bare en sammenhæng og ikke nødvendigvis angiver en årsagssammenhæng mellem de to variable.</p>
 <p>Funktionen <code>cor.test()</code> kan bruges til at teste, om korrelationen mellem to variable er statistisk signifikant. Null-hypotesen antager, at der ikke er nogen korrelation mellem de to variable i den population, som datasættet repræsenterer.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="index.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cars<span class="sc">$</span>speed, cars<span class="sc">$</span>dist) </span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="index.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cars<span class="sc">$</span>speed, cars<span class="sc">$</span>dist) </span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -775,7 +790,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(H_{1}:\)</span> antal gen copi og phenotype er afhængie af hinanden</li>
 </ul>
 <p>Testen går ud på, at man beregner forventede værdier under nulhypotesen om, at der ikke er nogen sammenhæng mellem de to kategorier, og sammenligner disse forventede værdier med observerede værdier. Man laver testen i R ved at benytte funktionen <code>chisq.test()</code>:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="index.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="index.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(dat)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -786,15 +801,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sample-t-test" class="section level3 hasAnchor" number="1.11.4">
 <h3><span class="header-section-number">1.11.4</span> 1 sample t-test<a href="index.html#sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For at vise en 1-sample t-test, simulerer jeg nogle data fra en normalfordeling med middelværdi på 3 ved hjælp af rnorm()-funktionen:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="index.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">290223</span>) <span class="co"># bare for at få den samme resultat hver gang</span></span>
-<span id="cb67-2"><a href="index.html#cb67-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">3</span>,<span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="index.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">290223</span>) <span class="co"># bare for at få den samme resultat hver gang</span></span>
+<span id="cb69-2"><a href="index.html#cb69-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">3</span>,<span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>Forestil dig, at du ikke helt stoler på funktionen <code>rnorm()</code> og ønsker at teste, om <code>x</code> stammer fra en normalfordeling med en middelværdi på 3. Nulhypotesen og den alternative hypotese (to-sidet test) er derfor:</p>
 <ul>
 <li><span class="math inline">\(H_{0}: \mu = 3\)</span>, VS</li>
 <li><span class="math inline">\(H_{1}: \mu \neq 3\)</span></li>
 </ul>
 <p>For at lave testen i R, bruger man funktionen <code>t.test()</code> og angiver <code>mu = 3</code> for at reflektere vores hypoteser:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="index.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x,<span class="at">mu =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="index.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x,<span class="at">mu =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -817,10 +832,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(H_{1}: \mu_{1} \neq \mu_{2}\)</span></li>
 </ul>
 <p>I følgende kode simulere jeg to stikprøver, der kommer fra en normal fordeling med forskellige gennemsnitte og bruger funktionen <code>t.test</code>. Man kan angive at de to stikprøver har samme variance ved at skrive <code>var.equal = T</code> indenfor funktionen <code>t.test</code>:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="index.html#cb70-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb70-2"><a href="index.html#cb70-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">1</span>)</span>
-<span id="cb70-3"><a href="index.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="index.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x,y,<span class="at">var.equal =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="index.html#cb72-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb72-2"><a href="index.html#cb72-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">1</span>)</span>
+<span id="cb72-3"><a href="index.html#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="index.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x,y,<span class="at">var.equal =</span> T)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -833,10 +848,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean of x mean of y 
 ##  2.783056  4.730025</code></pre>
 <p>Hvis man til gengæld ikke kan antage, at variansen er den samme i de to grupper:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="index.html#cb72-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb72-2"><a href="index.html#cb72-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>) <span class="co">#større variance</span></span>
-<span id="cb72-3"><a href="index.html#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-4"><a href="index.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x,y,<span class="at">var.equal =</span> F) <span class="co">#var.equal=F er &#39;default&#39; så man behøver ikke at specifere</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="index.html#cb74-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb74-2"><a href="index.html#cb74-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>) <span class="co">#større variance</span></span>
+<span id="cb74-3"><a href="index.html#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="index.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x,y,<span class="at">var.equal =</span> F) <span class="co">#var.equal=F er &#39;default&#39; så man behøver ikke at specifere</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -853,11 +868,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="paired-t-test" class="section level3 hasAnchor" number="1.11.6">
 <h3><span class="header-section-number">1.11.6</span> Paired t-test<a href="index.html#paired-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En paired t-test bruges når man for eksempel har målinger for den samme sæt personer i hver stikprøve, og man gerne vil teste om forskellen i værdier mellem de to stikprøver er signifikant. For eksempel hvis vi har “before” og “after” målinger for den samme 10 individer:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="index.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">320</span>)</span>
-<span id="cb74-2"><a href="index.html#cb74-2" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb74-3"><a href="index.html#cb74-3" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">6</span>,<span class="dv">2</span>)</span>
-<span id="cb74-4"><a href="index.html#cb74-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-5"><a href="index.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(before,after,<span class="at">paired=</span>T) <span class="co">#specificy paired data</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="index.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">320</span>)</span>
+<span id="cb76-2"><a href="index.html#cb76-2" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb76-3"><a href="index.html#cb76-3" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">6</span>,<span class="dv">2</span>)</span>
+<span id="cb76-4"><a href="index.html#cb76-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-5"><a href="index.html#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(before,after,<span class="at">paired=</span>T) <span class="co">#specificy paired data</span></span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -869,7 +884,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean difference 
 ##       -4.358399</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="index.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(before<span class="sc">-</span>after,<span class="at">mu=</span><span class="dv">0</span>) <span class="co">#exactly the same result</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="index.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(before<span class="sc">-</span>after,<span class="at">mu=</span><span class="dv">0</span>) <span class="co">#exactly the same result</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -889,21 +904,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(H_{0}: \mu_{1} = \mu_{2} = \ldots = \mu_{k}\)</span></li>
 <li><span class="math inline">\(H_{1}:\)</span> ikke alle middelværdier er enes</li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="index.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">#simulere data til 3 forskellige grupper fra den normale fordeling med standard afvigelse af 3</span></span>
-<span id="cb78-2"><a href="index.html#cb78-2" aria-hidden="true" tabindex="-1"></a>group1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">10</span>,<span class="dv">3</span>)</span>
-<span id="cb78-3"><a href="index.html#cb78-3" aria-hidden="true" tabindex="-1"></a>group2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">55</span>,<span class="dv">10</span>,<span class="dv">3</span>)</span>
-<span id="cb78-4"><a href="index.html#cb78-4" aria-hidden="true" tabindex="-1"></a>group3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">48</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
-<span id="cb78-5"><a href="index.html#cb78-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-6"><a href="index.html#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="co">#data må være i en dataramme, med den ene kolon = vores værdier, og den anden kolon = grupper</span></span>
-<span id="cb78-7"><a href="index.html#cb78-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(group1,group2,group3)</span>
-<span id="cb78-8"><a href="index.html#cb78-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;G1&quot;</span>,<span class="dv">50</span>),<span class="fu">rep</span>(<span class="st">&quot;G2&quot;</span>,<span class="dv">55</span>),<span class="fu">rep</span>(<span class="st">&quot;G3&quot;</span>,<span class="dv">48</span>))</span>
-<span id="cb78-9"><a href="index.html#cb78-9" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;group&quot;</span><span class="ot">=</span>x,<span class="st">&quot;value&quot;</span><span class="ot">=</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="index.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#simulere data til 3 forskellige grupper fra den normale fordeling med standard afvigelse af 3</span></span>
+<span id="cb80-2"><a href="index.html#cb80-2" aria-hidden="true" tabindex="-1"></a>group1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">10</span>,<span class="dv">3</span>)</span>
+<span id="cb80-3"><a href="index.html#cb80-3" aria-hidden="true" tabindex="-1"></a>group2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">55</span>,<span class="dv">10</span>,<span class="dv">3</span>)</span>
+<span id="cb80-4"><a href="index.html#cb80-4" aria-hidden="true" tabindex="-1"></a>group3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">48</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
+<span id="cb80-5"><a href="index.html#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-6"><a href="index.html#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="co">#data må være i en dataramme, med den ene kolon = vores værdier, og den anden kolon = grupper</span></span>
+<span id="cb80-7"><a href="index.html#cb80-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(group1,group2,group3)</span>
+<span id="cb80-8"><a href="index.html#cb80-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;G1&quot;</span>,<span class="dv">50</span>),<span class="fu">rep</span>(<span class="st">&quot;G2&quot;</span>,<span class="dv">55</span>),<span class="fu">rep</span>(<span class="st">&quot;G3&quot;</span>,<span class="dv">48</span>))</span>
+<span id="cb80-9"><a href="index.html#cb80-9" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;group&quot;</span><span class="ot">=</span>x,<span class="st">&quot;value&quot;</span><span class="ot">=</span>y)</span></code></pre></div>
 <p>For at udføre testen kan man bruge funktionen lm(), som står for “linear model” og kan bruges til at opbygge forskellige modeller. Her angiver vi en model, hvor hver gruppe (<code>G1</code>, <code>G2</code> og <code>G3</code> fra variablen <code>x</code>) har sin egen middelværdi (variablen value), hvilket er modellen under alternativhypotesen:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="index.html#cb79-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(value<span class="sc">~</span>group,<span class="at">data=</span>mydf) <span class="co">#H1 model</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="index.html#cb81-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(value<span class="sc">~</span>group,<span class="at">data=</span>mydf) <span class="co">#H1 model</span></span></code></pre></div>
 <p>Under nulhypotesen har alle grupper den samme middelværdi, og derfor behøver vi ikke at inkludere variablen <code>group</code> i modellen. Vi angiver situationen i modellen ved at skrive 1, som betyder, at forventede værdier for den afhængige variabel <code>value</code> blot er dens middelværdi:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="index.html#cb80-1" aria-hidden="true" tabindex="-1"></a>mylm_null <span class="ot">&lt;-</span> <span class="fu">lm</span>(value<span class="sc">~</span><span class="dv">1</span>,<span class="at">data=</span>mydf) <span class="co">#H0 model</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="index.html#cb82-1" aria-hidden="true" tabindex="-1"></a>mylm_null <span class="ot">&lt;-</span> <span class="fu">lm</span>(value<span class="sc">~</span><span class="dv">1</span>,<span class="at">data=</span>mydf) <span class="co">#H0 model</span></span></code></pre></div>
 <p>For at sammenligne de to modeller benytter vi funktionen <code>anova()</code> (efter analysis of variance):</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="index.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mylm_null,mylm)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="index.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mylm_null,mylm)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: value ~ 1
@@ -922,10 +937,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><em>OBS: se også video i forbindelse med Rmarkdown (næste emne), hvor jeg gennemgå lineær regression med R</em></p>
 <p>Formål: måler (en retningsbestemt) relation mellem to kontinuerte variabler. I simpel lineær regression svarer det til, at man gerne vil finde den rette linje gennem punkterne, der bedste beskriver relationen.</p>
 <p>Eksempel - datasættet <code>mtcars</code>, response (afgængig) variabel er <code>mpg</code> og predictor (uafhængig) variabel er <code>wt</code>.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="480" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="480" /></p>
 <p>Man skriver relationen i R som <code>mpg ~ wt</code> og benytter <code>lm()</code>(<code>lm(mpg~wt,data=mtcars)</code>):</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="index.html#cb83-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data=</span>mtcars)  <span class="co"># build linear regression model</span></span>
-<span id="cb83-2"><a href="index.html#cb83-2" aria-hidden="true" tabindex="-1"></a>mylm</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="index.html#cb85-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data=</span>mtcars)  <span class="co"># build linear regression model</span></span>
+<span id="cb85-2"><a href="index.html#cb85-2" aria-hidden="true" tabindex="-1"></a>mylm</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = mpg ~ wt, data = mtcars)
@@ -948,7 +963,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Hvis det er tæt på 0 - så er relationen svag - høj sandsynlighed for, at der er andre variabler der bedre kan forklare variansen i <code>mpg</code>.</li>
 </ul>
 <p>I ovenstående model, kan man se den <span class="math inline">\(R^2\)</span> værdi med <code>summary(mylm)</code>.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="index.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="index.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = mpg ~ wt, data = mtcars)
@@ -978,17 +993,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Fit er linæer</li>
 </ul>
 <p>Koden <code>plot(mylm,which=c(1))</code> angiver residualer vs predikterede (fitted) værdier - de skal være tilfældigt fordelt over plottet og prikkernes varians skal være nogenlunde konstant langt x-aksen (det giver, at den røde linje er flade).</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="index.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mylm,<span class="at">which=</span><span class="fu">c</span>(<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="480" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="index.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mylm,<span class="at">which=</span><span class="fu">c</span>(<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="480" /></p>
 <p>Med koden <code>plot(mylm,which=c(2))</code> kan man tjekke antagelsen på en normal fordeling. Punkterne skal være nogenlunde tæt på den diagonale linje.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="index.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mylm,<span class="at">which=</span><span class="fu">c</span>(<span class="dv">2</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="480" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="index.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mylm,<span class="at">which=</span><span class="fu">c</span>(<span class="dv">2</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="480" /></p>
 </div>
 <div id="multiple-lineær-regression" class="section level3 hasAnchor" number="1.11.11">
 <h3><span class="header-section-number">1.11.11</span> Multiple lineær regression<a href="index.html#multiple-lineær-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Her kan man tilføje flere variabler i vores model formel.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="index.html#cb89-1" aria-hidden="true" tabindex="-1"></a>mylm_disp <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> disp, <span class="at">data=</span>mtcars) <span class="co"># build linear regression model</span></span>
-<span id="cb89-2"><a href="index.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_disp)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="index.html#cb91-1" aria-hidden="true" tabindex="-1"></a>mylm_disp <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> disp, <span class="at">data=</span>mtcars) <span class="co"># build linear regression model</span></span>
+<span id="cb91-2"><a href="index.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_disp)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = mpg ~ wt + disp, data = mtcars)
@@ -1011,8 +1026,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Her kan man se, at med tilføjelsen af variablen <code>disp</code>, er <span class="math inline">\(R^2\)</span> steget til 0.7809. Bemærk, at jo flere variabler man tilføjer til modellen, jo større bliver <span class="math inline">\(R^2\)</span>-værdien. Den adjusted <span class="math inline">\(R^2\)</span> værdi er lavere fordi den prøver at tage højde for kompleksiteten af modellen (hvor mange parametre der er).</p>
 <p>Variablen <code>disp</code> er faktisk ikke selv signifikant når der er taget højde for variablen <code>wt</code> (p-værdien 0.0636 - tjek, at du selv kan finde værdien i resultatet).</p>
 <p>Hvis en af de uafhængige variabler er kategorisk bruger man funktionen <code>anova</code> til at teste den overordnet effekt af den variabel. For eksempel har variablen <code>cyl</code> 3 mulige værdier (niveauer) - 4, 6 og 8. Vi kan inddrage variablen i vores model: –&gt;</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="index.html#cb91-1" aria-hidden="true" tabindex="-1"></a>mylm_cyl <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> <span class="fu">factor</span>(cyl), <span class="at">data=</span>mtcars) <span class="co"># build linear regression model</span></span>
-<span id="cb91-2"><a href="index.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_cyl)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="index.html#cb93-1" aria-hidden="true" tabindex="-1"></a>mylm_cyl <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> <span class="fu">factor</span>(cyl), <span class="at">data=</span>mtcars) <span class="co"># build linear regression model</span></span>
+<span id="cb93-2"><a href="index.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_cyl)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = mpg ~ wt + factor(cyl), data = mtcars)
@@ -1038,7 +1053,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- * Hvis `cyl = 6`: mpg $= 33.99 - 3.21$wt $-4.26$ -->
 <!-- * Hvis `cyl = 8`: mpg $= 33.99 - 3.21$wt $-6.07$ -->
 <p>Man kan ikke se den overordnet effekt af <code>cyl</code> fra den ovenstående <code>summary</code> men man kan teste den med <code>anova</code>:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="index.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mylm,mylm_cyl)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="index.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mylm,mylm_cyl)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: mpg ~ wt
@@ -1067,53 +1082,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.12.2</span> Grundlæggende R<a href="index.html#grundlæggende-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>2)</strong> (<strong>helt baserende viden</strong>) Åbn en ny fil i RStudio ved at klikke på “File” &gt; “New File” &gt; “R Script”. Kør følgende kode en linje ad gangen og tjek, om du forstår outputtet.</p>
 <p>Husk, at den nemmeste måde at køre kode på er ved at trykke på CMD+ENTER (Mac) eller WIN-KEY+ENTER (Windows).</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="index.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span>
-<span id="cb95-2"><a href="index.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb95-3"><a href="index.html#cb95-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb95-4"><a href="index.html#cb95-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">2</span></span>
-<span id="cb95-5"><a href="index.html#cb95-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)</span>
-<span id="cb95-6"><a href="index.html#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb95-7"><a href="index.html#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb95-8"><a href="index.html#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">100</span>)</span>
-<span id="cb95-9"><a href="index.html#cb95-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">3</span>)</span>
-<span id="cb95-10"><a href="index.html#cb95-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span>
-<span id="cb95-11"><a href="index.html#cb95-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>))</span>
-<span id="cb95-12"><a href="index.html#cb95-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span>
-<span id="cb95-13"><a href="index.html#cb95-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span>
-<span id="cb95-14"><a href="index.html#cb95-14" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">13</span>,<span class="at">by=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="index.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span>
+<span id="cb97-2"><a href="index.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb97-3"><a href="index.html#cb97-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb97-4"><a href="index.html#cb97-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">2</span></span>
+<span id="cb97-5"><a href="index.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)</span>
+<span id="cb97-6"><a href="index.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb97-7"><a href="index.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb97-8"><a href="index.html#cb97-8" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">100</span>)</span>
+<span id="cb97-9"><a href="index.html#cb97-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb97-10"><a href="index.html#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span>
+<span id="cb97-11"><a href="index.html#cb97-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>))</span>
+<span id="cb97-12"><a href="index.html#cb97-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span>
+<span id="cb97-13"><a href="index.html#cb97-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span>
+<span id="cb97-14"><a href="index.html#cb97-14" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">13</span>,<span class="at">by=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><strong>3)</strong> (<strong>helt baserende viden</strong>) Kør følgende kode til at åbne nogle af de indbygget datasæt, som vi bruger i kurset.
 * Prøve <code>head()</code>, <code>nrow()</code>, <code>summary()</code> osv.
 * Prøve også fk. <code>?cars</code> for at se en beskrivelse.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="index.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb96-2"><a href="index.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cars)</span>
-<span id="cb96-3"><a href="index.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ToothGrowth)</span>
-<span id="cb96-4"><a href="index.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(sleep)</span>
-<span id="cb96-5"><a href="index.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chickwts)</span>
-<span id="cb96-6"><a href="index.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(trees)</span>
-<span id="cb96-7"><a href="index.html#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="co">#se her for andre:</span></span>
-<span id="cb96-8"><a href="index.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="at">help =</span> <span class="st">&quot;datasets&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="index.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb98-2"><a href="index.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cars)</span>
+<span id="cb98-3"><a href="index.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ToothGrowth)</span>
+<span id="cb98-4"><a href="index.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(sleep)</span>
+<span id="cb98-5"><a href="index.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chickwts)</span>
+<span id="cb98-6"><a href="index.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(trees)</span>
+<span id="cb98-7"><a href="index.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="co">#se her for andre:</span></span>
+<span id="cb98-8"><a href="index.html#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="at">help =</span> <span class="st">&quot;datasets&quot;</span>)</span></code></pre></div>
 <p><strong>4)</strong> (<strong>baserende plots</strong>) Jeg giver nogle muligheder for datasættet “iris”. Prøv også at bruge nogle af de andre indbyggede datasæt, som du har indlæst.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="index.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Length,iris<span class="sc">$</span>Sepal.Width)</span>
-<span id="cb97-2"><a href="index.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(iris<span class="sc">$</span>Sepal.Width)</span>
-<span id="cb97-3"><a href="index.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(iris<span class="sc">$</span>Sepal.Length<span class="sc">~</span>iris<span class="sc">$</span>Species)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="index.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Length,iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb99-2"><a href="index.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb99-3"><a href="index.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(iris<span class="sc">$</span>Sepal.Length<span class="sc">~</span>iris<span class="sc">$</span>Species)</span></code></pre></div>
 <p>Du kan også gøre plottene lidt pænere ved at give dem en titel og navne på akserne. Prøv at kigge på dokumentationen for plot() ved at skrive <code>?plot</code> i R-konsollen. Du kan tilføje <code>ylab</code>, <code>xlab</code> og <code>main</code> (titel) i én af plottene. Prøv også at eksperimentere med farver ved at bruge <code>col</code>. Bemærk dog, at vi vil ændre måden at lave plottene på, når vi begynder at bruge <code>ggplot2</code>.</p>
 <p><strong>5)</strong> (<strong>dataframes</strong>) Brug datasættet <code>cars</code> (<code>data(cars)</code>) til at:</p>
 <ul>
 <li>Lav et scatter plot med speed på x-aksen og dist på y-aksen</li>
 <li>Tilføj en ny kolon med følgende kode:</li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="index.html#cb98-1" aria-hidden="true" tabindex="-1"></a>cars<span class="sc">$</span>fast <span class="ot">&lt;-</span> cars<span class="sc">$</span>speed<span class="sc">&gt;</span><span class="dv">15</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="index.html#cb100-1" aria-hidden="true" tabindex="-1"></a>cars<span class="sc">$</span>fast <span class="ot">&lt;-</span> cars<span class="sc">$</span>speed<span class="sc">&gt;</span><span class="dv">15</span></span></code></pre></div>
 <ul>
 <li>Brug <code>mean</code> på den nye kolon <code>fast</code> for at finde ud af proportionen af biler, der er hurtige</li>
 <li>Beregn gennemsnitsværdien af variablen <code>dist</code> for hurtige biler og ikke-hurtige biler hver for sig (brug funktionen <code>tapply</code>). Gem resultatet med <code>&lt;-</code>.</li>
 <li>Brug <code>barplot</code> til at lave et plot af den gennemsnitlige <code>dist</code> for hurtige og ikke-hurtige biler.</li>
 </ul>
 <p><strong>6)</strong> (<strong>dataframes</strong>) En dataframe kan indeholde forskellige datatype (i modsætning til en matrix). Lav en ny dataframe (funktionen <code>data.frame()</code>) med tre kolonner, som hedder “navn”, “alder” og “yndlings_farve” (du kan finde på værdierne selv). Sørg for, at din dataframe har 4 rækker.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="index.html#cb99-1" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;navn&quot;</span><span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;alice&quot;</span>,<span class="st">&quot;freddy&quot;</span>, ... ), <span class="st">&quot;alder&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(...), ...) <span class="co">#not run, slette &quot;...&quot; og skrive videre</span></span>
-<span id="cb99-2"><a href="index.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mydf) <span class="co"># fire række og tre kolonner</span></span>
-<span id="cb99-3"><a href="index.html#cb99-3" aria-hidden="true" tabindex="-1"></a>mydf</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="index.html#cb101-1" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;navn&quot;</span><span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;alice&quot;</span>,<span class="st">&quot;freddy&quot;</span>, ... ), <span class="st">&quot;alder&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(...), ...) <span class="co">#not run, slette &quot;...&quot; og skrive videre</span></span>
+<span id="cb101-2"><a href="index.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mydf) <span class="co"># fire række og tre kolonner</span></span>
+<span id="cb101-3"><a href="index.html#cb101-3" aria-hidden="true" tabindex="-1"></a>mydf</span></code></pre></div>
 <p><strong>7)</strong> (<strong>dataframes</strong>) Tilføj en ny kolon <code>random</code> til din oprettede dataframe - hvor værdierne kommer fra en normalfordeling med et gennemsnit på 5 og standardafvigelse på 1 (bruge funktionen <code>rnorm()</code>).</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="index.html#cb100-1" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>random <span class="ot">&lt;-</span> <span class="co">#??</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="index.html#cb102-1" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>random <span class="ot">&lt;-</span> <span class="co">#??</span></span></code></pre></div>
 <!-- 5) (**dataframes**) Lav en `data.frame` (dataframe) med to kolonner og 12 observationer. Den ene varible skal være tilfældige data fra en normal fordeling (bruge funktionen `rnorm`) med et gennemsnit på 5 og varians på 1, den anden variable skal veksle mellem "blue" og "red" (bruge `rep(c("blue","red","yellow"),4)`). -->
 <!-- ```{r,eval=F} -->
 <!-- set.seed(83902) #some seed so everyone's result is the same -->
@@ -1122,12 +1137,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- mydf -->
 <!-- ``` -->
 <p><strong>8)</strong> (<strong>delmængder af dataframes</strong>) Åbn datasættet “ToothGrowth” med følgende kode:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="index.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;ToothGrowth&quot;</span>)</span>
-<span id="cb101-2"><a href="index.html#cb101-2" aria-hidden="true" tabindex="-1"></a>?ToothGrowth</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="index.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;ToothGrowth&quot;</span>)</span>
+<span id="cb103-2"><a href="index.html#cb103-2" aria-hidden="true" tabindex="-1"></a>?ToothGrowth</span></code></pre></div>
 <ul>
 <li>Find delmængden af datasættet således at diet (variablen <code>supp</code>) er “OJ” og længden (variablen <code>len</code>) er større end 15.</li>
 </ul>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="index.html#cb102-1" aria-hidden="true" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> ToothGrowth[<span class="co">#skrive her til at lave subset af observationerne,]</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="index.html#cb104-1" aria-hidden="true" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> ToothGrowth[<span class="co">#skrive her til at lave subset af observationerne,]</span></span></code></pre></div>
 <ul>
 <li>Hvor mange rækker er der i den nye data frame <code>newdf</code>?</li>
 <li>Hvor mange unikke værdier er der i variablen <code>dose</code> (brug funktionen <code>unique</code>) ?</li>
@@ -1138,12 +1153,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="kort-analyse-med-reaktionstider" class="section level3 hasAnchor" number="1.12.3">
 <h3><span class="header-section-number">1.12.3</span> Kort analyse med reaktionstider<a href="index.html#kort-analyse-med-reaktionstider" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>9)</strong> (<strong>indlæse data</strong>) Åbn en fil på Absalon ved navn “reactions.txt” ved at bruge funktionen <code>read.table()</code> og gem resultatet i variablen <code>data</code>. Husk at tjekke, om filen indeholder variabelnavne og brug <code>header=T</code> hvis nødvendigt.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="index.html#cb103-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> ... <span class="co">#replace ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="index.html#cb105-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> ... <span class="co">#replace ...</span></span></code></pre></div>
 <p><strong>10)</strong> (<strong>factor variabler</strong>) Variablerne <code>subject</code> og <code>time</code> blev indlæst som henholdsvis <strong>int</strong> (heltal) og <strong>chr</strong> (character) datatyper, men de skal i stedet være <strong>factor</strong> variabler. Brug funktionen <code>as.factor()</code> til at konvertere dem til factor variabler.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="index.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">#gør subject til en faktor</span></span>
-<span id="cb104-2"><a href="index.html#cb104-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>subject <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>subject) </span>
-<span id="cb104-3"><a href="index.html#cb104-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-4"><a href="index.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="do">## gør den samme her for time:</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="index.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co">#gør subject til en faktor</span></span>
+<span id="cb106-2"><a href="index.html#cb106-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>subject <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>subject) </span>
+<span id="cb106-3"><a href="index.html#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="index.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">## gør den samme her for time:</span></span></code></pre></div>
 <ul>
 <li>Hvor mange niveauer er der i hver af de to variabler efter konvertering til faktorvariabler? Prøv funktionerne <code>levels()</code> eller <code>nlevels()</code>.</li>
 </ul>
@@ -1153,20 +1168,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>oprette en delmængde til alle observationer fra tidspunktet “before” ved at vælge rækkerne i dataframen hvor data$time == “before”</li>
 <li>oprette en delmængde til alle observationer fra tidspunktet “after”.</li>
 </ul>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="index.html#cb105-1" aria-hidden="true" tabindex="-1"></a>RT_before <span class="ot">&lt;-</span> data[<span class="co">#skrive her , ]</span></span>
-<span id="cb105-2"><a href="index.html#cb105-2" aria-hidden="true" tabindex="-1"></a>RT_after <span class="ot">&lt;-</span> <span class="co">#skrive her</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="index.html#cb107-1" aria-hidden="true" tabindex="-1"></a>RT_before <span class="ot">&lt;-</span> data[<span class="co">#skrive her , ]</span></span>
+<span id="cb107-2"><a href="index.html#cb107-2" aria-hidden="true" tabindex="-1"></a>RT_after <span class="ot">&lt;-</span> <span class="co">#skrive her</span></span></code></pre></div>
 <ul>
 <li>Opret en yderligere delmængde, som viser alle observationer fra tidspunktet “before” med en reaktionstid på mindst 800.
 <ul>
 <li>Hvor mange personer er der i denne delmængde?</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="index.html#cb106-1" aria-hidden="true" tabindex="-1"></a>RT_before_mindst800 <span class="ot">&lt;-</span> <span class="co">#skrive her</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="index.html#cb108-1" aria-hidden="true" tabindex="-1"></a>RT_before_mindst800 <span class="ot">&lt;-</span> <span class="co">#skrive her</span></span></code></pre></div>
 <p><strong>12)</strong> (<strong>mean og tapply</strong>) Benyt funktionen <code>mean()</code> til at beregne den gennemsnitlige reaktionstid (variablen <code>RT</code>) for “before” og “after” delmængderne.</p>
 <ul>
 <li>Brug funktionen <code>tapply()</code> på det oprindelige datasæt data for at beregne den samme middelværdi med mindre kode.</li>
 </ul>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="index.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="co">#skrive her,#skrive her,#skrive her)</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="index.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="co">#skrive her,#skrive her,#skrive her)</span></span></code></pre></div>
 <ul>
 <li>Er reaktionstiderne blevet hurtigere eller langsommere i gennemsnit?</li>
 </ul>
@@ -1176,13 +1191,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Opret en vector <code>diff</code>, der indeholder forskellene i reaktionstiderne mellem “before” og “after” for hver person.</li>
 <li>Beregn den gennemsnitlige forskel i rekationstiderne.</li>
 </ul>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="index.html#cb108-1" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> <span class="co">#change in reaction time between before and after</span></span>
-<span id="cb108-2"><a href="index.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(diff)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="index.html#cb110-1" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> <span class="co">#change in reaction time between before and after</span></span>
+<span id="cb110-2"><a href="index.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(diff)</span></code></pre></div>
 <ul>
 <li>Tjek, om tegnet på middelværdien stemmer overens med din konklusion fra <strong>11)</strong> - hvis den er positiv, betyder det, at reaktionstiderne er blevet langsommere.</li>
 </ul>
 <p><strong>14)</strong> (<strong>lav t-test i R</strong>) Lav en t-test (funktionen <code>t.test()</code>) for at teste hypotesen om, at den gennemsnitslige forskel i reaktionstiderne mellem “before” og “after” er forskellig fra 0.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="index.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="co">#skrive her..)</span></span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="index.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="co">#skrive her..)</span></span></code></pre></div>
 <p>Find følgende i outputtet fra R:</p>
 <ul>
 <li>Hvor er test-statistik <code>t</code>?</li>
@@ -1205,10 +1220,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ekstra-øvelser-med-statistik-tests" class="section level3 hasAnchor" number="1.12.5">
 <h3><span class="header-section-number">1.12.5</span> Ekstra øvelser med statistik tests<a href="index.html#ekstra-øvelser-med-statistik-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>16)</strong> (<strong>Chi-sq</strong>) Kør følgende kode til at få en tabel (selve koden er ikke vigtigt):</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="index.html#cb110-1" aria-hidden="true" tabindex="-1"></a>mytable <span class="ot">&lt;-</span> <span class="fu">structure</span>(<span class="fu">c</span>(80L, 97L, 372L, 136L, 87L, 119L), <span class="at">.Dim =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">.Dimnames =</span> <span class="fu">structure</span>(<span class="fu">list</span>(</span>
-<span id="cb110-2"><a href="index.html#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;First&quot;</span>, <span class="st">&quot;Second&quot;</span>, <span class="st">&quot;Third&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;Died&quot;</span>, <span class="st">&quot;Survived&quot;</span>)), <span class="at">.Names =</span> <span class="fu">c</span>(<span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Survival&quot;</span>)), <span class="at">class =</span> <span class="st">&quot;table&quot;</span>)</span>
-<span id="cb110-3"><a href="index.html#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-4"><a href="index.html#cb110-4" aria-hidden="true" tabindex="-1"></a>mytable</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="index.html#cb112-1" aria-hidden="true" tabindex="-1"></a>mytable <span class="ot">&lt;-</span> <span class="fu">structure</span>(<span class="fu">c</span>(80L, 97L, 372L, 136L, 87L, 119L), <span class="at">.Dim =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">.Dimnames =</span> <span class="fu">structure</span>(<span class="fu">list</span>(</span>
+<span id="cb112-2"><a href="index.html#cb112-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;First&quot;</span>, <span class="st">&quot;Second&quot;</span>, <span class="st">&quot;Third&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;Died&quot;</span>, <span class="st">&quot;Survived&quot;</span>)), <span class="at">.Names =</span> <span class="fu">c</span>(<span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Survival&quot;</span>)), <span class="at">class =</span> <span class="st">&quot;table&quot;</span>)</span>
+<span id="cb112-3"><a href="index.html#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-4"><a href="index.html#cb112-4" aria-hidden="true" tabindex="-1"></a>mytable</span></code></pre></div>
 <pre><code>##         Survival
 ## Class    Died Survived
 ##   First    80      136
@@ -1224,28 +1239,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>OBS: Vi kommer til at arbejde meget mere med datasættet <code>Titanic</code> i emnet Tidyverse - dag 1!</p>
 <p><strong>17)</strong> (<strong>Korrelation analyse</strong>) Åbn datasættet <code>trees</code> og lav et scatter plot med variablen <code>Girth</code> på x-aksen og variablen <code>Volume</code> på y-aksen.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="index.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(trees)</span>
-<span id="cb112-2"><a href="index.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(trees)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="index.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(trees)</span>
+<span id="cb114-2"><a href="index.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(trees)</span></code></pre></div>
 <ul>
 <li>Anvend funktionen <code>cor.test</code> for at teste, om der er en signifikant korrelation mellem de to variabler. Brug <code>method = "pearson"</code> (det er dog faktisk default)</li>
 </ul>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="index.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(???, ???,<span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="index.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(???, ???,<span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Hvad er korrelationen mellem <code>Girth</code> og <code>Volume</code>?</li>
 <li>Hvad er p-værdien? Er den signifikant?</li>
 </ul>
 <p><strong>18)</strong> (<strong>ANOVA</strong>) OBS: hvis du føler dig utryg med funktionen <code>lm()</code> - der kommer en video om det i morgen (i forbindelse med emnet Rmarkdown).</p>
 <p>Kør følgende kode til at lave variansanalyse, der tester hulhypotesen hvor den gennemsnitlige værdi af variablen <code>Sepal.Width</code> er ens for hver af de tre arter (variablen <code>Species</code>) fra datasættet <code>iris</code>:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="index.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb114-2"><a href="index.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="index.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="co">#model under H0: no difference according to group variable Species (1 just means &quot;fit overall mean&quot;)</span></span>
-<span id="cb114-4"><a href="index.html#cb114-4" aria-hidden="true" tabindex="-1"></a>model_h0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>iris) </span>
-<span id="cb114-5"><a href="index.html#cb114-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-6"><a href="index.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co">#model under H1: each level of group variable Species has its own mean</span></span>
-<span id="cb114-7"><a href="index.html#cb114-7" aria-hidden="true" tabindex="-1"></a>model_h1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Species, <span class="at">data=</span>iris) </span>
-<span id="cb114-8"><a href="index.html#cb114-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-9"><a href="index.html#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="co">#compare two models - significant p-value equates to choosing H1 model</span></span>
-<span id="cb114-10"><a href="index.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_h0,model_h1)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="index.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb116-2"><a href="index.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="index.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co">#model under H0: no difference according to group variable Species (1 just means &quot;fit overall mean&quot;)</span></span>
+<span id="cb116-4"><a href="index.html#cb116-4" aria-hidden="true" tabindex="-1"></a>model_h0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>iris) </span>
+<span id="cb116-5"><a href="index.html#cb116-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-6"><a href="index.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="co">#model under H1: each level of group variable Species has its own mean</span></span>
+<span id="cb116-7"><a href="index.html#cb116-7" aria-hidden="true" tabindex="-1"></a>model_h1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Species, <span class="at">data=</span>iris) </span>
+<span id="cb116-8"><a href="index.html#cb116-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-9"><a href="index.html#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="co">#compare two models - significant p-value equates to choosing H1 model</span></span>
+<span id="cb116-10"><a href="index.html#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_h0,model_h1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: Sepal.Width ~ 1
@@ -1267,13 +1282,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Er der en forskel i den gennemsnitlige vægt (variablen <code>weight</code>) efter fodertypen (variablen <code>feed</code>)? Med andre ord er vægt afhængig af fodertypen?</li>
 </ul>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="index.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(chickwts)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="index.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(chickwts)</span></code></pre></div>
 <p><strong>OBS - hvis du er usikker med linær regression gennemgå gerne videoerne til emnet R Markdown og kom tilbage til følgende spørgsmål</strong></p>
 <p><strong>20)</strong> (<strong>Lineær regression</strong>)</p>
 <ul>
 <li>Brug <code>lm</code> til at lave en simpel lineær regression, således at respons variablen <code>Volume</code> er afhængig af variablen <code>Girth</code> (datasæstet <code>trees</code>).</li>
 </ul>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="index.html#cb117-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(???, <span class="at">data=</span>trees) </span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="index.html#cb119-1" aria-hidden="true" tabindex="-1"></a>mylm <span class="ot">&lt;-</span> <span class="fu">lm</span>(???, <span class="at">data=</span>trees) </span></code></pre></div>
 <p>Brug <code>summary</code> på din model for at finde følgende værdier:</p>
 <ul>
 <li>Hvad er r.squared? (multiple)</li>
@@ -1281,8 +1296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Hvad er ligningen på den bedste rette linje (husk formen y = ax + b)?</li>
 </ul>
 <p><strong>21)</strong> (<strong>Kort intro til multiple lineær regression</strong>) Tag ovenstående model og tilføj variablen <code>Height</code> som en ekstra prediktær (uafhængig) variabel i modellen med en “+” tegn:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="index.html#cb118-1" aria-hidden="true" tabindex="-1"></a>mylm_height <span class="ot">&lt;-</span> <span class="fu">lm</span>(??? <span class="sc">~</span> ??? <span class="sc">+</span> ???, <span class="at">data=</span>trees) </span>
-<span id="cb118-2"><a href="index.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_height)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="index.html#cb120-1" aria-hidden="true" tabindex="-1"></a>mylm_height <span class="ot">&lt;-</span> <span class="fu">lm</span>(??? <span class="sc">~</span> ??? <span class="sc">+</span> ???, <span class="at">data=</span>trees) </span>
+<span id="cb120-2"><a href="index.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylm_height)</span></code></pre></div>
 <p><em>Bemærk at det ikke betyder, at de to variabler skal lægges sammen, men at vi gerne vil have både variablerne i modellen som uafhængig variabler (med andre ord er <code>Volume</code> afhængig af både <code>Girth</code> og <code>Height</code>).</em></p>
 <p>Benyt <code>summary</code> på modellen og prøv at finde følgende:</p>
 <ul>
@@ -1291,7 +1306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Er <code>Volume</code> signifikant afhængig af <code>Height</code> (efter at man har taget højde for <code>Girth</code>)?</li>
 </ul>
 <p>Brug funktionen <code>anova</code> til at sammenligne modellen uden <code>Height</code> med modellen med <code>Height</code></p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="index.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="co">#model without height,#model with height)</span></span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="index.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="co">#model without height,#model with height)</span></span></code></pre></div>
 <p>Bemærk, at i dette tilfælde er p-værdien fra ANOVA samme p-værdi fra <code>summary(mylm_height)</code>.</p>
 
 </div>
