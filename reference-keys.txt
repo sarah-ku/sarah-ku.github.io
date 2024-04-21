@@ -1,4 +1,4 @@
-fig:unnamed-chunk-2
+fig:unnamed-chunk-3
 baser
 inledning-til-kapitel
 rstudio
@@ -45,6 +45,8 @@ inledning-til-kapital
 hvad-er-r-markdown
 installere-r-markdown
 videodemonstrationer
+video-1
+video-2
 oprette-et-nyt-dokument-i-r-markdown
 yaml
 globale-options
@@ -61,5 +63,3 @@ matematik
 problemstillinger-1
 færdig-for-i-dag-og-næste-gang
 ekstra-links
-video-1
-video-2
