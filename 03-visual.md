@@ -28,14 +28,12 @@ En alternativ løsning er pakken **ggplot2**, som står for "Grammar of Graphics
 Jeg har optaget videoer, hvor jeg viser nogle 'quick-start' type eksempler i min RStudio. Videoerne er ikke designet til at indeholde alle detaljer, men til at fungere som udgangspunkt for at komme i gang med øvelserne. Vær opmærksom på, at al kode, der vises i videoerne, også kan findes i kursusnotaterne, hvis du selv vil afprøve den. Jeg anbefaler, at du bruger kursusnotaterne som en reference gennem kurset, når man arbejder på opgaverne. Vær også opmærksom på, at jeg nogle gange introducerer nye ting i selve øvelserne.
 
 :::checklist
-
 Checklist til Kapitel 3: ggplot2
 
 * Se videoerne
 * Kig igennem kursusnotaterne
 * Lav quiz "ggplot2 - dag 1"
 * Lav problemstillingerne
-
 :::
 
 ### Video ressourcer
@@ -404,6 +402,19 @@ ggplot(data=iris, aes(x=Species, y=Sepal.Length,fill=Species)) +
 
 <img src="03-visual_files/figure-html/unnamed-chunk-25-1.svg" width="384" style="display: block; margin: auto;" />
 
+Man kan, som alternativ til ovenstående, fjerne legend ved at tilføje `show.legend = FALSE` som indstilling i den `geom`, der generere den. Være opmærksomme på, at i dette tilfælde skal man skrive `show.legend = FALSE` i både `geom_boxplot()` og `geom_jitter()` funktioner for at få legenden helet fjernet.
+
+
+```r
+ggplot(data=iris, aes(x=Species, y=Sepal.Length,fill=Species)) + 
+  geom_boxplot(show.legend = FALSE) + 
+  geom_jitter(show.legend = FALSE) +
+  ylab("Sepal Length") + 
+  ggtitle("Boxplot with jitter and no legend") 
+```
+
+<img src="03-visual_files/figure-html/unnamed-chunk-26-1.svg" width="384" style="display: block; margin: auto;" />
+
 ### Barplot (`geom_bar`)
 
 Med `ggplot()` kan man repræsentere data i et barplot ved at bruge `geom_bar()`. Her vil vi gerne tælle antallet af observationer for hver art (variablen `Species`) og visualisere dem som søjler. Indenfor `geom_bar()` specificerer vi derfor `stat="count"`.
@@ -418,7 +429,7 @@ ggplot(iris, aes(x=Species,fill=Species)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-26-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-27-1.svg" width="480" style="display: block; margin: auto;" />
 
 **Barplot: stack vs dodge**
 
@@ -442,7 +453,7 @@ ggplot(iris, aes(x=Species, fill=Sepal.Group)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-28-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-29-1.svg" width="480" style="display: block; margin: auto;" />
 
 Mange gange foretrækker man at få søjlerne stående ved siden af hinanden i stedet for at overlappe. Dette kan opnås ved blot at tilføje `position="dodge"` ind i `geom_bar()`.
 
@@ -454,7 +465,7 @@ ggplot(iris, aes(x=Species, fill=Sepal.Group)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-29-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-30-1.svg" width="480" style="display: block; margin: auto;" />
 
 Som et eksempel på fleksibiliteten i pakken `ggplot2`, kan jeg nævne, at det kan være irriterende, når bredden af søjlen for arten setosa i et barplot er dobbelt så bred som de andre søjler, fordi der ikke er nogen observationer i setosa-gruppen med en "Long" værdi i variablen `Sepal.Group`. En løsning på dette kan findes ved at tilføje `position=position_dodge2(preserve = "single")` i `geom_bar()`. Denne parameter gør bredden på alle søjler ens, uanset om der er data i alle kategorier eller ej.
 
@@ -466,7 +477,7 @@ ggplot(iris, aes(x=Species, fill=Sepal.Group)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-30-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-31-1.svg" width="672" style="display: block; margin: auto;" />
 
 ### Histogram (`geom_histogram`)
 
@@ -483,7 +494,7 @@ ggplot(data=iris, aes(x=Sepal.Length, fill=Species)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-31-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-32-1.svg" width="480" style="display: block; margin: auto;" />
 
 Man kan også gøre det nemmere at skelne mellem de tre arter ved at sætte `alpha=0.5` inden for `geom_histogram` og ved at angive en linje farve som mulighed ind i `geom_histogram()`.
 
@@ -496,7 +507,7 @@ ggplot(data=iris, aes(x=Sepal.Length, fill=Species)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-32-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-33-1.svg" width="480" style="display: block; margin: auto;" />
 
 ### Density (`geom_density`)
 
@@ -511,7 +522,7 @@ ggplot(data=iris, aes(x=Sepal.Length, color=Species)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-33-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-34-1.svg" width="480" style="display: block; margin: auto;" />
 
 **Density plot med fill og gennemsigtig farver**
 
@@ -526,7 +537,7 @@ ggplot(data=iris, aes(x=Sepal.Length, fill=Species)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-34-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-35-1.svg" width="480" style="display: block; margin: auto;" />
 
 **Tilføje middelværdi linjer**
 
@@ -544,7 +555,7 @@ ggplot(data=iris, aes(x=Sepal.Length, color=Species)) +
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-35-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-36-1.svg" width="480" style="display: block; margin: auto;" />
 
 ### Line plot (`geom_line()`)
 
@@ -587,7 +598,7 @@ ggplot(data = population_scand, aes(x = year, y = population, group = country, c
   theme_minimal()
 ```
 
-<img src="03-visual_files/figure-html/unnamed-chunk-38-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-39-1.svg" width="480" style="display: block; margin: auto;" />
 
 ## Troubleshooting
 
@@ -641,7 +652,7 @@ Se også `?diamonds` for en beskrivelse af variablerne.
 
 Så at du har noget at sammenligne med, skal dit plot se sådan ud:
 
-<img src="03-visual_files/figure-html/unnamed-chunk-41-1.svg" width="384" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-42-1.svg" width="384" style="display: block; margin: auto;" />
 
 **3)** Tilføj følgende komponenter til dit plot fra **2)**:
 
@@ -652,7 +663,7 @@ Så at du har noget at sammenligne med, skal dit plot se sådan ud:
 
 Det skal se sådan ud:
 
-<img src="03-visual_files/figure-html/unnamed-chunk-42-1.svg" width="384" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-43-1.svg" width="384" style="display: block; margin: auto;" />
 
 **4)** Ændr temaet på dit plot til `theme_classic()` eller `theme_minimal()` i stedet for `theme_bw()` og se på resultatet.
 
@@ -663,7 +674,7 @@ Det skal se sådan ud:
 
 Det skal se sådan ud:
 
-<img src="03-visual_files/figure-html/unnamed-chunk-43-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-44-1.svg" width="480" style="display: block; margin: auto;" />
 
 -   Nu fjern `color=color` fra funktionen `aes()` og i stedet tilføj `aes(color=color)` i funktionen `geom_point()`. Får du samme resultat?
 
@@ -680,7 +691,7 @@ Det skal se sådan ud:
 
 Det skal se sådan ud:
 
-<img src="03-visual_files/figure-html/unnamed-chunk-44-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-45-1.svg" width="480" style="display: block; margin: auto;" />
 
 -   Hvordan ser det ud, hvis man bruger `colour` i stedet for `fill`? Eller hvis man specificerer begge to?
 
@@ -692,7 +703,7 @@ Det skal se sådan ud:
 
 Det skal se sådan ud:
 
-<img src="03-visual_files/figure-html/unnamed-chunk-45-1.svg" width="384" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-46-1.svg" width="384" style="display: block; margin: auto;" />
 
 -   Man kan også prøve at forbedre plottet ved at give nogle indstillinger ind i `geom_jitter()`, for eksempel kan man prøve `geom_jitter(size=.2,color="grey",alpha=0.5)` for at gøre punkter mindre overbelastende i plottet (eller kan man overvejer at fjerne dem).
 
@@ -710,7 +721,7 @@ Leg med de tre indstillinger `size`, `color` og `alpha` og se på forskellen. He
 -   Brug også indstillingen `color="black"` og noter effekten
 -   Tilføj et tema.
 
-<img src="03-visual_files/figure-html/unnamed-chunk-46-1.svg" width="480" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-47-1.svg" width="480" style="display: block; margin: auto;" />
 
 **9)** Lav en histogram
 
@@ -722,7 +733,7 @@ Leg med de tre indstillinger `size`, `color` og `alpha` og se på forskellen. He
 
 Det ser sådan ud:
 
-<img src="03-visual_files/figure-html/unnamed-chunk-47-1.svg" width="576" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-48-1.svg" width="576" style="display: block; margin: auto;" />
 
 -   Nu får du en advarsel - gør hvad advarselen siger og ændre på parameteren `bins` ind i `geom_histogram()`-funktionen.
 
@@ -734,7 +745,7 @@ Det ser sådan ud:
 -   Tilføj lodrette linjer med beregnede medianværdier af variablen `depth` for hver af de `cut`-niveauer.
     -   Hint: Brug `tapply` til at beregne medianværdierne og `geom_vline` til at tilføje lodrette linjer.
 
-<img src="03-visual_files/figure-html/unnamed-chunk-48-1.svg" width="576" style="display: block; margin: auto;" />
+<img src="03-visual_files/figure-html/unnamed-chunk-49-1.svg" width="576" style="display: block; margin: auto;" />
 
 **11)** Lav et line plot.
 
