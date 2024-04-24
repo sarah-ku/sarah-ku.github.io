@@ -14,10 +14,12 @@ Dette kapitel giver en introduktion til, hvordan man visualiserer data med R-pak
 
 I skal være i stand til at:
 
+:::goals
 -   Forstå hvad "Grammar of Graphics" betyder og sammenhængen med den **ggplot2**-pakke
--   Lære at bruge funktionen `ggplot` og den relevante **geoms** (`geom_point()`, `geom_bar()`, `geom_histogram()`, `geom_boxplot()`, `geom_density()`)
+-   Lære at bruge funktionen `ggplot` og den relevante **geoms** (`geom_point()`, `geom_bar()`, `geom_histogram()`, `geom_boxplot()`, `geom_density()` `geom_line()`)
 -   Lave en 'færdig' figur med en titel og korrekte etiketter på akserne
 -   Begynde at arbejde med farver og temaer
+:::
 
 ### Hvad er **ggplot2**?
 
@@ -28,6 +30,16 @@ En alternativ løsning er pakken **ggplot2**, som står for "Grammar of Graphics
 ### Brugen af materialerne
 
 Jeg har optaget videoer, hvor jeg viser nogle 'quick-start' type eksempler i min RStudio. Videoerne er ikke designet til at indeholde alle detaljer, men til at fungere som udgangspunkt for at komme i gang med øvelserne. Vær opmærksom på, at al kode, der vises i videoerne, også kan findes i kursusnotaterne, hvis du selv vil afprøve den. Jeg anbefaler, at du bruger kursusnotaterne som en reference gennem kurset, når man arbejder på opgaverne. Vær også opmærksom på, at jeg nogle gange introducerer nye ting i selve øvelserne.
+
+:::checklist
+
+Checklist til Kapitel 3: ggplot2
+
+* Se videeoerne/kursusnotaterne
+* Lav quiz "ggplot2 - dag 1"
+* Lav problemstillinger
+
+:::
 
 ### Video ressourcer
 
