@@ -80,7 +80,7 @@ Checklist til Kapitel 3: ggplot2
 
 -   I video 3 demonstrerer jeg barplots.
 
-Link her hvis det ikke virker nedenunder: <https://player.vimeo.com/video/704025240>
+
 
 
 ```{=html}
