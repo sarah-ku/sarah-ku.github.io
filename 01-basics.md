@@ -1208,8 +1208,8 @@ __5)__ (**dataframes**) Brug datasættet `cars` (`data(cars)`) til at:
 ```r
 cars$fast <- cars$speed>15
 ```
-  * Brug `ifelse` så at du får `fast` eller `slow` i din nye kolon stedet for TRUE/FALSE
   * Brug `mean` på den nye kolon `fast` for at finde ud af proportionen af biler, der er hurtige
+    * Brug `ifelse` så at du får `fast` eller `slow` i din nye kolon stedet for TRUE/FALSE
   * Beregn gennemsnitsværdien af variablen `dist` for hurtige biler og ikke-hurtige biler hver for sig (brug funktionen `tapply`). Gem resultatet med `<-`. 
   * Brug `barplot` til at lave et plot af den gennemsnitlige `dist` for hurtige og ikke-hurtige biler.
 

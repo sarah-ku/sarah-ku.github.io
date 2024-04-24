@@ -295,9 +295,10 @@ Man kan også skrive matematik (LaTeX) i R Markdown - for eksempel vil `$\int_0^
 Jeg tilføjer også ting, der opstå under kurset:
 
 :::pin
-* Hvis du installerer en pakke, husk at slet `install.pakages(pakkenavn)` fra din .Rmd-fil
-* Hvis du bruger en pakke, husk at indlæse den i selve fil `library(pakkenavn)`
-* Når du udviker din kode er det er en god ide at tjekke af og til at din fil knitter til HTML form
+* Hvis du installerer en pakke, husk at slet `install.pakages(pakkenavn)` fra din .Rmd-fil.
+* Hvis du bruger en pakke, husk at indlæse den i selve fil `library(pakkenavn)`.
+* Når du udviker din kode er det er en god ide at tjekke af og til at din fil knitter til HTML form.
+* Hvis du får `execution error` kan det være, at du har en fejl i en beregning i din inline kode.
 :::
 
 ## Problemstillinger
