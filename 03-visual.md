@@ -802,13 +802,11 @@ Lav et line plot (`geom_line()`)
 data(CO2)
 ```
 
-Lav en delmængde til typen "Quebec" (variablen `Type`):
+Lav en delmængde til typen "Quebec" (variablen `Type`). Brug dernæst din delmængde til at lave et line plot med variablen `conc` på x-aksen, variablen `uptake`. Dit plot bør have seks linjer (en til hver plant i variablen `Plant`) og linjerne farves efter behandlingsmetode (variablen `Treatment`).
 
 
 
-Brug din delmængde til at lave et line plot med variablen `conc` på x-aksen, variablen `uptake`. Dit plot bør have seks linjer (en til hver plant i variablen `Plant`) og linjerne farves efter behandlingsmetode (variablen `Treatment`).
-
-Ser sådan ud:
+Min ser sådan ud:
 
 <img src="03-visual_files/figure-html/unnamed-chunk-56-1.svg" width="576" style="display: block; margin: auto;" />
 
