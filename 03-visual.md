@@ -753,6 +753,27 @@ Det ser sådan ud:
     -   Hint: Brug `tapply` til at beregne medianværdierne og `geom_vline` til at tilføje lodrette linjer.
 
 <img src="03-visual_files/figure-html/unnamed-chunk-49-1.svg" width="576" style="display: block; margin: auto;" />
+- Extra - hvis, ligesom mig, du ville have linjerne til at passe sammen med farverne til dine density plots, så her er hvordan man kan - prøve at forstå koden.
+
+
+
+```r
+#calculate means
+mymeans <- tapply(diamonds$depth,diamonds$cut,mean) 
+
+#make a data frame containing the means and cut (as an ordinal variable to match the dataset itself - so the colour match)
+mean_df <- data.frame("mean"=mymeans,"cut"=as.ordered(names(mymeans)))
+
+#use the data frame in geom_vline and use local aes() in plot
+
+####   TODO: ERSTAT geom_vline() med følgende:
+####   geom_vline(data = mean_df, aes(xintercept = mean, colour=cut),lty=2)
+```
+
+Ser sådan ud:
+
+<img src="03-visual_files/figure-html/unnamed-chunk-51-1.svg" width="672" style="display: block; margin: auto;" />
+
 
 **12)** Lav et line plot.
 
