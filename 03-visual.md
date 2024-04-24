@@ -812,11 +812,7 @@ Ser sådan ud:
 
 <img src="03-visual_files/figure-html/unnamed-chunk-56-1.svg" width="576" style="display: block; margin: auto;" />
 
-**14)** En ekstra øvelse: Leg frit med at lave andre plots fra `diamonds` med ggplot2. For eksempel:
-
--   Boxplots med `carat` opdelt efter `clarity`.
--   Barplots for de forskellige farver (variable `color`).
--   Et scatter plot af `depth` vs `price`.
+**14)** En ekstra øvelse: Arbejd frit med at lave andre plots fra nogle af de andre indbygget datasæt i R (indtast `datasets::` så kommer der en list af muligheder). 
 
 I alle tilfælde, tilføj akse-labels, en titel, et tema osv.
 
