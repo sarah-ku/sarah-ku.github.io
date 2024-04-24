@@ -762,16 +762,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Valgfri ekstra: her er nogle flere temaer, du kan prøve: <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="uri">https://ggplot2.tidyverse.org/reference/ggtheme.html</a></li>
 </ul>
 <p><strong>5)</strong> Lav det samme plot som i <strong>3)</strong>, og skriv <code>color=color</code> ind i <code>aes()</code>. Den første <code>color</code> refererer til punkt farver og den anden til variablen <code>color</code> i dataframen.</p>
-<p>Det skal se sådan ud:</p>
-<p><img src="03-visual_files/figure-html/unnamed-chunk-44-1.svg" width="480" style="display: block; margin: auto;" /></p>
 <ul>
-<li>Nu fjern <code>color=color</code> fra funktionen <code>aes()</code> og i stedet tilføj <code>aes(color=color)</code> i funktionen <code>geom_point()</code>. Får du samme resultat?</li>
+<li>Nu fjern <code>color=color</code> fra funktionen <code>aes()</code> og i stedet tilføj <code>aes(color=color)</code> i funktionen <code>geom_point()</code>. Får du så samme resultat?</li>
 </ul>
 <!-- * Tilføj også `x=depth` til din nye lokale `aes()` funktion indenfor `geom_point()` - hvad får du på x-aksen? Passer etiketten på x-aksen?   -->
 <ul>
 <li>Bemærk at det er lige meget om man bruger britisk eller amerikansk stavning i <code>ggplot2</code> - fk. <code>colour</code> eller <code>color</code> ind i <code>aes()</code> giver samme resultat.</li>
 </ul>
-<p><strong>6)</strong> Brug stadig <code>diamonds</code>, til at lave et boxplot:</p>
+<p><strong>6)</strong> Bemærk at <code>diamonds</code> er en ret stort datasæt. Tjek, hvor mange observationer datasættet har, og dernæst prøve følgende:</p>
+<ul>
+<li><p>Anvend <code>sample()</code>-funktionen til at udtrække kun 1000 række tilfædigvis fra datasættet og lav dit punkt-plot igen (OBS se Kapitel 1 hvis du er usikker om brugen af <code>sample()</code>).</p></li>
+<li><p>En mulig løsning, der bruger hele datasættet men uden at have mange punkter på plottet, er at lave en contour plot ved at erstatte <code>geom_point()</code> med <code>geom_density_2d()</code> i stedet for. Prøv det.</p></li>
+</ul>
+<p>Det ser sådan ud (OBS: jeg bruger indstilling <code>bins=50</code> ind i <code>geom_density_2d()</code> men prøv gerne at justere på antallet af bins).</p>
+<p><img src="03-visual_files/figure-html/unnamed-chunk-44-1.svg" width="384" style="display: block; margin: auto;" />
+Som ekstra kan du som alternativ prøve indstilling <code>geom = "polygon"</code> ind i <code>stat_density_2d</code>. <a href="https://r-charts.com/correlation/contour-plot-ggplot2/">Der er andre muligheder here</a></p>
+<p><strong>7)</strong> Brug stadig <code>diamonds</code>, til at lave et boxplot:</p>
 <ul>
 <li><code>cut</code> på x-aksen (giv x-aksen label <code>Cut</code>)</li>
 <li><code>price</code> på y-aksen (giv y-aksen label <code>Price of diamond</code>)</li>
@@ -783,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Hvordan ser det ud, hvis man bruger <code>colour</code> i stedet for <code>fill</code>? Eller hvis man specificerer begge to?</li>
 </ul>
-<p><strong>7)</strong> Lav følgende ekstra ændringer til din boxplot fra ovenstående:</p>
+<p><strong>8)</strong> Lav følgende ekstra ændringer til din boxplot fra ovenstående:</p>
 <ul>
 <li>Tilføj <code>geom_jitter()</code> til din boxplot</li>
 <li>fjern legend ved at tilføj <code>theme(legend.position="none")</code></li>
@@ -799,7 +805,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Prøv at skifte rækkefølgerne af <code>geom_jitter()</code> og <code>geom_boxplot()</code> i dit plot kommando og se - gøre det en forskel til, hvordan plottet ser ud?</li>
 </ul>
-<p><strong>8)</strong> Lav en barplot med indstillingen <code>stat="count"</code>:</p>
+<p><strong>9)</strong> Lav en barplot med indstillingen <code>stat="count"</code>:</p>
 <ul>
 <li>Variablen <code>clarity</code> på x-aksen</li>
 <li>Forskellige farver til gruppevariablen <code>cut</code></li>
@@ -808,7 +814,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Tilføj et tema.</li>
 </ul>
 <p><img src="03-visual_files/figure-html/unnamed-chunk-47-1.svg" width="480" style="display: block; margin: auto;" /></p>
-<p><strong>9)</strong> Lav en histogram</p>
+<p><strong>10)</strong> Lav en histogram</p>
 <ul>
 <li>Variablen <code>depth</code> på x-aksen</li>
 <li>Forskellige farver til gruppevariablen <code>cut</code></li>
@@ -821,7 +827,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Nu får du en advarsel - gør hvad advarselen siger og ændre på parameteren <code>bins</code> ind i <code>geom_histogram()</code>-funktionen.</li>
 </ul>
-<p><strong>10)</strong> Lav et density plot:</p>
+<p><strong>11)</strong> Lav et density plot:</p>
 <ul>
 <li>Det kan være svært at sammenligne fordelingerne i de tidligere oprettede histograms.</li>
 <li>Erstat <code>geom_histogram</code> med <code>geom_density</code> i din kode fra <strong>9)</strong>.</li>
@@ -832,7 +838,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p><img src="03-visual_files/figure-html/unnamed-chunk-49-1.svg" width="576" style="display: block; margin: auto;" /></p>
-<p><strong>11)</strong> Lav et line plot.</p>
+<p><strong>12)</strong> Lav et line plot.</p>
 <p>Åbn datsættet <code>BOD</code>:</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="visual1.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BOD)</span>
 <span id="cb173-2"><a href="visual1.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="co">#BOD: This dataset contains the biochemical oxygen demand (BOD) of water samples taken at different time points.</span></span></code></pre></div>
@@ -842,13 +848,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>variablen <code>demand</code> på y-aksen</li>
 <li>vælg selv ettiketter, title og tema</li>
 </ul>
-<p><strong>12</strong> Lav et line plot (<code>geom_line()</code>)</p>
+<p><strong>13</strong> Lav et line plot (<code>geom_line()</code>)</p>
 <p>Åbn datasættet <code>CO2</code>:</p>
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="visual1.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CO2)</span></code></pre></div>
 <p>Lav en delmængde til typen “Quebec” (variablen <code>Type</code>):</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="visual1.html#cb175-1" aria-hidden="true" tabindex="-1"></a>CO2_subset <span class="ot">&lt;-</span> CO2[CO2<span class="sc">$</span>Type<span class="sc">==</span><span class="st">&quot;Quebec&quot;</span>,]</span></code></pre></div>
 <p>Brug din delmængde til at lave et line plot med variablen <code>conc</code> på x-aksen, variablen <code>uptake</code>. Dit plot bør have seks linjer (en til hver <code>Plant</code>) og linjerne farves efter behandlingsmetode (variablen <code>Treatment</code>).</p>
-<p><strong>13)</strong> En ekstra øvelse: Leg frit med at lave andre plots fra <code>diamonds</code> med ggplot2. For eksempel:</p>
+<p><strong>14)</strong> En ekstra øvelse: Leg frit med at lave andre plots fra <code>diamonds</code> med ggplot2. For eksempel:</p>
 <ul>
 <li>Boxplots med <code>carat</code> opdelt efter <code>clarity</code>.</li>
 <li>Barplots for de forskellige farver (variable <code>color</code>).</li>

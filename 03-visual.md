@@ -672,17 +672,24 @@ Det skal se sådan ud:
 
 **5)** Lav det samme plot som i **3)**, og skriv `color=color` ind i `aes()`. Den første `color` refererer til punkt farver og den anden til variablen `color` i dataframen.
 
-Det skal se sådan ud:
-
-<img src="03-visual_files/figure-html/unnamed-chunk-44-1.svg" width="480" style="display: block; margin: auto;" />
-
--   Nu fjern `color=color` fra funktionen `aes()` og i stedet tilføj `aes(color=color)` i funktionen `geom_point()`. Får du samme resultat?
+-   Nu fjern `color=color` fra funktionen `aes()` og i stedet tilføj `aes(color=color)` i funktionen `geom_point()`. Får du så samme resultat?
 
 <!-- * Tilføj også `x=depth` til din nye lokale `aes()` funktion indenfor `geom_point()` - hvad får du på x-aksen? Passer etiketten på x-aksen?   -->
 
 -   Bemærk at det er lige meget om man bruger britisk eller amerikansk stavning i `ggplot2` - fk. `colour` eller `color` ind i `aes()` giver samme resultat.
 
-**6)** Brug stadig `diamonds`, til at lave et boxplot:
+**6)** Bemærk at `diamonds` er en ret stort datasæt. Tjek, hvor mange observationer datasættet har, og dernæst prøve følgende:
+
+- Anvend `sample()`-funktionen til at udtrække kun 1000 række tilfædigvis fra datasættet og lav dit punkt-plot igen (OBS se Kapitel 1 hvis du er usikker om brugen af `sample()`).
+
+- En mulig løsning, der bruger hele datasættet men uden at have mange punkter på plottet, er at lave en contour plot ved at erstatte `geom_point()` med  `geom_density_2d()` i stedet for. Prøv det.
+
+Det ser sådan ud (OBS: jeg bruger indstilling `bins=50` ind i `geom_density_2d()` men prøv gerne at justere på antallet af bins).
+
+<img src="03-visual_files/figure-html/unnamed-chunk-44-1.svg" width="384" style="display: block; margin: auto;" />
+Som ekstra kan du som alternativ prøve indstilling `geom = "polygon"` ind i `stat_density_2d`.  [Der er andre muligheder here](https://r-charts.com/correlation/contour-plot-ggplot2/)
+
+**7)** Brug stadig `diamonds`, til at lave et boxplot:
 
 -   `cut` på x-aksen (giv x-aksen label `Cut`)
 -   `price` på y-aksen (giv y-aksen label `Price of diamond`)
@@ -695,7 +702,7 @@ Det skal se sådan ud:
 
 -   Hvordan ser det ud, hvis man bruger `colour` i stedet for `fill`? Eller hvis man specificerer begge to?
 
-**7)** Lav følgende ekstra ændringer til din boxplot fra ovenstående:
+**8)** Lav følgende ekstra ændringer til din boxplot fra ovenstående:
 
 -   Tilføj `geom_jitter()` til din boxplot
 -   fjern legend ved at tilføj `theme(legend.position="none")`
@@ -713,7 +720,7 @@ Leg med de tre indstillinger `size`, `color` og `alpha` og se på forskellen. He
 
 -   Prøv at skifte rækkefølgerne af `geom_jitter()` og `geom_boxplot()` i dit plot kommando og se - gøre det en forskel til, hvordan plottet ser ud?
 
-**8)** Lav en barplot med indstillingen `stat="count"`:
+**9)** Lav en barplot med indstillingen `stat="count"`:
 
 -   Variablen `clarity` på x-aksen
 -   Forskellige farver til gruppevariablen `cut`
@@ -723,7 +730,7 @@ Leg med de tre indstillinger `size`, `color` og `alpha` og se på forskellen. He
 
 <img src="03-visual_files/figure-html/unnamed-chunk-47-1.svg" width="480" style="display: block; margin: auto;" />
 
-**9)** Lav en histogram
+**10)** Lav en histogram
 
 -   Variablen `depth` på x-aksen
 -   Forskellige farver til gruppevariablen `cut`
@@ -737,7 +744,7 @@ Det ser sådan ud:
 
 -   Nu får du en advarsel - gør hvad advarselen siger og ændre på parameteren `bins` ind i `geom_histogram()`-funktionen.
 
-**10)** Lav et density plot:
+**11)** Lav et density plot:
 
 -   Det kan være svært at sammenligne fordelingerne i de tidligere oprettede histograms.
 -   Erstat `geom_histogram` med `geom_density` i din kode fra **9)**.
@@ -747,7 +754,7 @@ Det ser sådan ud:
 
 <img src="03-visual_files/figure-html/unnamed-chunk-49-1.svg" width="576" style="display: block; margin: auto;" />
 
-**11)** Lav et line plot.
+**12)** Lav et line plot.
 
 Åbn datsættet `BOD`:
 
@@ -765,7 +772,7 @@ Lav et line plot (`geom_line()`)
 
 
 
-**12** Lav et line plot (`geom_line()`)
+**13** Lav et line plot (`geom_line()`)
 
 Åbn datasættet `CO2`:
 
@@ -785,7 +792,7 @@ Brug din delmængde til at lave et line plot med variablen `conc` på x-aksen, v
 
 
 
-**13)** En ekstra øvelse: Leg frit med at lave andre plots fra `diamonds` med ggplot2. For eksempel:
+**14)** En ekstra øvelse: Leg frit med at lave andre plots fra `diamonds` med ggplot2. For eksempel:
 
 -   Boxplots med `carat` opdelt efter `clarity`.
 -   Barplots for de forskellige farver (variable `color`).
