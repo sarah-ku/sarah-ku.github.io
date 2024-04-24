@@ -6,13 +6,9 @@
 
 <!-- Local vs global aes -->
 
-## Inledning og videoer
+## Læringsmålene og videoer
 
-Dette kapitel giver en introduktion til, hvordan man visualiserer data med R-pakken **ggplot2**.
-
-### Læringsmålene for dag 1
-
-I skal være i stand til at:
+Dette kapitel giver en introduktion til, hvordan man visualiserer data med R-pakken **ggplot2**. Du skal være i stand til at:
 
 :::goals
 -   Forstå hvad "Grammar of Graphics" betyder og sammenhængen med den **ggplot2**-pakke
@@ -35,9 +31,10 @@ Jeg har optaget videoer, hvor jeg viser nogle 'quick-start' type eksempler i min
 
 Checklist til Kapitel 3: ggplot2
 
-* Se videeoerne/kursusnotaterne
+* Se videoerne
+* Kig igennem kursusnotaterne
 * Lav quiz "ggplot2 - dag 1"
-* Lav problemstillinger
+* Lav problemstillingerne
 
 :::
 
@@ -95,8 +92,6 @@ Link her hvis det ikke virker nedenunder: <https://player.vimeo.com/video/704025
 ```
 
 -   Video 4: Histogram og density plots
-
-Link her hvis det ikke virker nedenunder: <https://player.vimeo.com/video/703699213>
 
 
 ```{=html}

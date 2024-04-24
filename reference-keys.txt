@@ -60,13 +60,12 @@ chunk-indstillinger
 r-beregninger-inden-for-teksten-i-dokumentet-inline-code
 working-directory-1
 matematik
+ofte-set-fejl
 problemstillinger-1
 færdig-for-i-dag-og-næste-gang
 ekstra-links
-ofte-set-fejl
 visual1
-inledning-og-videoer
-læringsmålene-for-dag-1
+læringsmålene-og-videoer
 hvad-er-ggplot2
 brugen-af-materialerne
 video-ressourcer
