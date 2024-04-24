@@ -758,11 +758,11 @@ Det ser sådan ud:
 
 
 ```r
-#calculate means
-mymeans <- tapply(diamonds$depth,diamonds$cut,mean) 
+#calculate medians
+mymedians <- ## din tapply funktion her
 
 #make a data frame containing the means and cut (as an ordinal variable to match the dataset itself - so the colour match)
-mean_df <- data.frame("mean"=mymeans,"cut"=as.ordered(names(mymeans)))
+median_df <- data.frame("mean"=mymedians,"cut"=as.ordered(names(mymedians)))
 
 #use the data frame in geom_vline and use local aes() in plot
 

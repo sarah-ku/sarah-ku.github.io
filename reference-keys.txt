@@ -1,4 +1,3 @@
-fig:unnamed-chunk-2
 baser
 inledning-til-kapitel
 rstudio
