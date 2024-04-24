@@ -775,9 +775,7 @@ Ser sådan ud:
 <img src="03-visual_files/figure-html/unnamed-chunk-51-1.svg" width="672" style="display: block; margin: auto;" />
 
 
-**12)** Lav et line plot.
-
-Åbn datsættet `BOD`:
+**12)** Lav et simple line plot. Åbn datsættet `BOD`:
 
 
 ```r
@@ -785,17 +783,14 @@ data(BOD)
 #BOD: This dataset contains the biochemical oxygen demand (BOD) of water samples taken at different time points.
 ```
 
-Lav et line plot (`geom_line()`)
-
 -   variablen `Time` på x-aksen
 -   variablen `demand` på y-aksen
+-   anvend geom `geom_line()`
 -   vælg selv ettiketter, title og tema
 
+<img src="03-visual_files/figure-html/unnamed-chunk-53-1.svg" width="384" style="display: block; margin: auto;" />
 
-
-**13** Lav et line plot (`geom_line()`)
-
-Åbn datasættet `CO2`:
+**13** Lav et line plot (`geom_line()`). Åbn datasættet `CO2`:
 
 
 ```r

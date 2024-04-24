@@ -851,18 +851,17 @@ Som ekstra kan du som alternativ prøve indstilling <code>geom = "polygon"</code
 <span id="cb173-10"><a href="visual1.html#cb173-10" aria-hidden="true" tabindex="-1"></a><span class="do">####   geom_vline(data = mean_df, aes(xintercept = mean, colour=cut),lty=2)</span></span></code></pre></div>
 <p>Ser sådan ud:</p>
 <p><img src="03-visual_files/figure-html/unnamed-chunk-51-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<p><strong>12)</strong> Lav et line plot.</p>
-<p>Åbn datsættet <code>BOD</code>:</p>
+<p><strong>12)</strong> Lav et simple line plot. Åbn datsættet <code>BOD</code>:</p>
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="visual1.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BOD)</span>
 <span id="cb174-2"><a href="visual1.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="co">#BOD: This dataset contains the biochemical oxygen demand (BOD) of water samples taken at different time points.</span></span></code></pre></div>
-<p>Lav et line plot (<code>geom_line()</code>)</p>
 <ul>
 <li>variablen <code>Time</code> på x-aksen</li>
 <li>variablen <code>demand</code> på y-aksen</li>
+<li>anvend geom <code>geom_line()</code></li>
 <li>vælg selv ettiketter, title og tema</li>
 </ul>
-<p><strong>13</strong> Lav et line plot (<code>geom_line()</code>)</p>
-<p>Åbn datasættet <code>CO2</code>:</p>
+<p><img src="03-visual_files/figure-html/unnamed-chunk-53-1.svg" width="384" style="display: block; margin: auto;" /></p>
+<p><strong>13</strong> Lav et line plot (<code>geom_line()</code>). Åbn datasættet <code>CO2</code>:</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="visual1.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CO2)</span></code></pre></div>
 <p>Lav en delmængde til typen “Quebec” (variablen <code>Type</code>). Brug dernæst din delmængde til at lave et line plot med variablen <code>conc</code> på x-aksen, variablen <code>uptake</code>. Dit plot bør have seks linjer (en til hver plant i variablen <code>Plant</code>) og linjerne farves efter behandlingsmetode (variablen <code>Treatment</code>).</p>
 <p>Min ser sådan ud:</p>
