@@ -753,7 +753,7 @@ Det ser sådan ud:
     -   Hint: Brug `tapply` til at beregne medianværdierne og `geom_vline` til at tilføje lodrette linjer.
 
 <img src="03-visual_files/figure-html/unnamed-chunk-49-1.svg" width="576" style="display: block; margin: auto;" />
-- Extra - hvis, ligesom mig, du ville have linjerne til at passe sammen med farverne til dine density plots, så her er hvordan man kan - prøve at forstå koden.
+* Extra - hvis, ligesom mig, du ville have linjerne til at passe sammen med farverne til dine density plots, så her er hvordan man kan - prøve at forstå koden.
 
 
 
@@ -805,13 +805,12 @@ data(CO2)
 Lav en delmængde til typen "Quebec" (variablen `Type`):
 
 
-```r
-CO2_subset <- CO2[CO2$Type=="Quebec",]
-```
 
-Brug din delmængde til at lave et line plot med variablen `conc` på x-aksen, variablen `uptake`. Dit plot bør have seks linjer (en til hver `Plant`) og linjerne farves efter behandlingsmetode (variablen `Treatment`).
+Brug din delmængde til at lave et line plot med variablen `conc` på x-aksen, variablen `uptake`. Dit plot bør have seks linjer (en til hver plant i variablen `Plant`) og linjerne farves efter behandlingsmetode (variablen `Treatment`).
 
+Ser sådan ud:
 
+<img src="03-visual_files/figure-html/unnamed-chunk-56-1.svg" width="576" style="display: block; margin: auto;" />
 
 **14)** En ekstra øvelse: Leg frit med at lave andre plots fra `diamonds` med ggplot2. For eksempel:
 
