@@ -662,13 +662,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.7</span> Problemstillinger<a href="visual2.html#problemstillinger-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Problem 1</strong>) Lav quiz - “Quiz - ggplot2 part 2”</p>
 <hr />
-<p><strong>Problem 2</strong>) (<em>Factorer og plots</em>)</p>
+<p><strong>Problem 2</strong>) (<em>Øvelse med factorer og plots</em>)</p>
 <p><strong>a</strong>) Åbn datasættet <code>mtcars</code> og lav en barplot:</p>
 <ul>
 <li><p>Brug variablen <code>cyl</code> på x-aksen og tildele forskellige farver til de forskellige niveauer af samme variablen.</p></li>
-<li><p>Fungerer din kode? Tjek x-aksen.</p></li>
-<li><p>Variablen er numerisk, men skal fortolkes som en faktor. Konverter variablen til en faktor (eller bare skriv <code>as.factor(cyl)</code> i selve plottet) og lav dit plot igen.</p>
-<p><strong>b</strong>) Opdel søjlerne ved at angive farver efter variablen <code>gear</code> i dit plot (søjlerne skal sidde ved siden af hinanden). Vær OBS på, hvordan R fortolker variablen.</p></li>
+<li><p>Fungerer din kode godt?</p></li>
+<li><p>Tjek x-aksen - variablen er numerisk, men bør fortolkes som en faktor. Lav variablen om til en faktor (eller bare skriv <code>as.factor(cyl)</code> i selve plottet) og lav dit plot igen.</p>
+<p><strong>b</strong>) Opdel søjlerne ved nu at angive farver efter variablen <code>gear</code> i dit plot (søjlerne skal sidde ved siden af hinanden). Vær igen OBS på, hvordan R fortolker variablen.</p></li>
 </ul>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="visual2.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">x =</span> cyl,<span class="at">fill =</span> (gear))) <span class="sc">+</span></span>
 <span id="cb206-2"><a href="visual2.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;count&quot;</span>,<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
@@ -720,9 +720,9 @@ Figure 4.1: Min løsning
 <hr />
 <p><strong>Problem 4</strong>) <em>Koordinatsystemer</em></p>
 <p>Tag udgangspunkt i overstående scatter plot fra <strong>3</strong>) og</p>
-<p><strong>a</strong>) brug <code>coord_cartesian()</code>, så kun pingviner med en bill længde (variablen <code>bill_length_mm</code>) mellem 40 og 50 og en bill depth (variablen <code>bill_depth_mm</code>) mellem 16 og 19 er medtaget på plottet.<br />
-<strong>b</strong>) brug pakken <code>ggrepel</code> (husk at installere/indlæse) og tilføj navnene på de forskellige øer som tekst direkte på plottet
-<strong>c</strong>) lav en delmængde af datasættet <code>penguins</code> efter samme betingelser som i <strong>a</strong>) og specificer din nye dataframe som parameteren <code>data</code> indenfor <code>geom_text_repel()</code>-funktionen. Dette undgår, at tekst bliver plottet for punkter udenfor området angivet med <code>coord_cartesian()</code>.</p>
+<p><strong>a</strong>) brug <code>coord_cartesian()</code>, så kun pingviner med en bill længde (variablen <code>bill_length_mm</code>) mellem 40 og 50 og en bill depth (variablen <code>bill_depth_mm</code>) mellem 16 og 19 er medtaget på plottet.
+<strong>b</strong>) brug pakken <code>ggrepel</code> (husk at installere/indlæse) og tilføj navnene på de forskellige øer som tekst labels direkte på plottet
+<strong>c</strong>) nu lav en delmængde af datasættet <code>penguins</code> efter samme betingelser som i <strong>a</strong>) og brug din nye dataframe som parameteren <code>data</code> indenfor <code>geom_text_repel()</code>-funktionen. Dette undgår, at tekst bliver plottet for punkter udenfor området angivet med <code>coord_cartesian()</code>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-49"></span>
 <img src="04-visual_files/figure-html/unnamed-chunk-49-1.svg" alt="Min løsning" width="480" />
 <p class="caption">

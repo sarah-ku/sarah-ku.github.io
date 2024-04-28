@@ -542,19 +542,19 @@ __Problem 1__) Lav quiz - "Quiz - ggplot2 part 2"
 
 - - -
 
-__Problem 2__) (*Factorer og plots*)
+__Problem 2__) (*Øvelse med factorer og plots*)
  
  __a__) Åbn datasættet `mtcars` og lav en barplot:
 
 * Brug variablen `cyl` på x-aksen og tildele forskellige farver til de forskellige niveauer af samme variablen.
-* Fungerer din kode? Tjek x-aksen.
-* Variablen er numerisk, men skal fortolkes som en faktor. Konverter variablen til en faktor (eller bare skriv `as.factor(cyl)` i selve plottet) og lav dit plot igen.
+* Fungerer din kode godt? 
+* Tjek x-aksen - variablen er numerisk, men bør fortolkes som en faktor. Lav variablen om til en faktor (eller bare skriv `as.factor(cyl)` i selve plottet) og lav dit plot igen.
 
 
 
 
 
-  __b__) Opdel søjlerne ved at angive farver efter variablen `gear` i dit plot (søjlerne skal sidde ved siden af hinanden). Vær OBS på, hvordan R fortolker variablen.
+  __b__) Opdel søjlerne ved nu at angive farver efter variablen `gear` i dit plot (søjlerne skal sidde ved siden af hinanden). Vær igen OBS på, hvordan R fortolker variablen.
 
 
 
@@ -640,9 +640,9 @@ __Problem 4__) *Koordinatsystemer*
 
 Tag udgangspunkt i overstående scatter plot fra __3__) og 
 
-__a__) brug `coord_cartesian()`, så kun pingviner med en bill længde (variablen `bill_length_mm`) mellem 40 og 50 og en bill depth (variablen `bill_depth_mm`) mellem 16 og 19 er medtaget på plottet.  
-__b__) brug pakken `ggrepel` (husk at installere/indlæse) og tilføj navnene på de forskellige øer som tekst direkte på plottet 
-__c__) lav en delmængde af datasættet `penguins` efter samme betingelser som i __a__) og specificer din nye dataframe som parameteren `data` indenfor  `geom_text_repel()`-funktionen. Dette undgår, at tekst bliver plottet for punkter udenfor området angivet med `coord_cartesian()`.
+__a__) brug `coord_cartesian()`, så kun pingviner med en bill længde (variablen `bill_length_mm`) mellem 40 og 50 og en bill depth (variablen `bill_depth_mm`) mellem 16 og 19 er medtaget på plottet.
+__b__) brug pakken `ggrepel` (husk at installere/indlæse) og tilføj navnene på de forskellige øer som tekst labels direkte på plottet 
+__c__) nu lav en delmængde af datasættet `penguins` efter samme betingelser som i __a__) og brug din nye dataframe som parameteren `data` indenfor  `geom_text_repel()`-funktionen. Dette undgår, at tekst bliver plottet for punkter udenfor området angivet med `coord_cartesian()`.
 
 <div class="figure" style="text-align: center">
 <img src="04-visual_files/figure-html/unnamed-chunk-49-1.svg" alt="Min løsning" width="480" />
