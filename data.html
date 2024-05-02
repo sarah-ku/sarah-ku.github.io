@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 5 Bearbejdning dag 1 | Analyse og visualisering af biologiske datasæt - 2024</title>
+  <meta name="description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 5 Bearbejdning dag 1 | Analyse og visualisering af biologiske datasæt - 2024" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
+  <meta property="og:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 5 Bearbejdning dag 1 | Analyse og visualisering af biologiske datasæt - 2024" />
+  
+  <meta name="twitter:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  <meta name="twitter:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
+
+<meta name="author" content="Sarah Rennie" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visual2.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Visualisering_2024</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lidt om kurset</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#outline"><i class="fa fa-check"></i>Outline</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#bedømmelse"><i class="fa fa-check"></i>Bedømmelse</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#bare-lidt-om-mig"><i class="fa fa-check"></i>Bare lidt om mig</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="baser.html"><a href="baser.html"><i class="fa fa-check"></i><b>1</b> Grundlæggende R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="baser.html"><a href="baser.html#inledning-til-kapitel"><i class="fa fa-check"></i><b>1.1</b> Inledning til kapitel</a></li>
+<li class="chapter" data-level="1.2" data-path="baser.html"><a href="baser.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="baser.html"><a href="baser.html#de-forskellige-vinduer-i-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> De forskellige vinduer i RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="baser.html"><a href="baser.html#working-directory"><i class="fa fa-check"></i><b>1.3</b> Working directory</a></li>
+<li class="chapter" data-level="1.4" data-path="baser.html"><a href="baser.html#r-pakker"><i class="fa fa-check"></i><b>1.4</b> R pakker</a></li>
+<li class="chapter" data-level="1.5" data-path="baser.html"><a href="baser.html#hvor-kommer-vores-data-fra"><i class="fa fa-check"></i><b>1.5</b> Hvor kommer vores data fra?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="baser.html"><a href="baser.html#indbyggede-datasæt"><i class="fa fa-check"></i><b>1.5.1</b> Indbyggede datasæt</a></li>
+<li class="chapter" data-level="1.5.2" data-path="baser.html"><a href="baser.html#importering-af-data-fra-.txt-fil"><i class="fa fa-check"></i><b>1.5.2</b> Importering af data fra .txt fil</a></li>
+<li class="chapter" data-level="1.5.3" data-path="baser.html"><a href="baser.html#importering-af-data-fra-excel"><i class="fa fa-check"></i><b>1.5.3</b> Importering af data fra Excel</a></li>
+<li class="chapter" data-level="1.5.4" data-path="baser.html"><a href="baser.html#kaggle"><i class="fa fa-check"></i><b>1.5.4</b> Kaggle</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="baser.html"><a href="baser.html#beregninger-i-r"><i class="fa fa-check"></i><b>1.6</b> Beregninger i R</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="baser.html"><a href="baser.html#objektor"><i class="fa fa-check"></i><b>1.6.1</b> Objektor</a></li>
+<li class="chapter" data-level="1.6.2" data-path="baser.html"><a href="baser.html#vectorer"><i class="fa fa-check"></i><b>1.6.2</b> Vectorer</a></li>
+<li class="chapter" data-level="1.6.3" data-path="baser.html"><a href="baser.html#datatyper"><i class="fa fa-check"></i><b>1.6.3</b> datatyper</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="baser.html"><a href="baser.html#dataframes"><i class="fa fa-check"></i><b>1.7</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="baser.html"><a href="baser.html#delmængder-af-dataframes"><i class="fa fa-check"></i><b>1.7.1</b> Delmængder af dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="baser.html"><a href="baser.html#ifelse"><i class="fa fa-check"></i><b>1.8</b> If/else</a></li>
+<li class="chapter" data-level="1.9" data-path="baser.html"><a href="baser.html#loops"><i class="fa fa-check"></i><b>1.9</b> Loops</a></li>
+<li class="chapter" data-level="1.10" data-path="baser.html"><a href="baser.html#descriptive-statistics"><i class="fa fa-check"></i><b>1.10</b> Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="baser.html"><a href="baser.html#simulere-data-fra-den-normale-fordeling"><i class="fa fa-check"></i><b>1.10.1</b> Simulere data fra den normale fordeling</a></li>
+<li class="chapter" data-level="1.10.2" data-path="baser.html"><a href="baser.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>1.10.2</b> Measures of central tendency</a></li>
+<li class="chapter" data-level="1.10.3" data-path="baser.html"><a href="baser.html#tapply"><i class="fa fa-check"></i><b>1.10.3</b> <code>tapply()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="baser.html"><a href="baser.html#statistike-tester"><i class="fa fa-check"></i><b>1.11</b> Statistike tester</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="baser.html"><a href="baser.html#p-værdien"><i class="fa fa-check"></i><b>1.11.1</b> P-værdien</a></li>
+<li class="chapter" data-level="1.11.2" data-path="baser.html"><a href="baser.html#korrelation"><i class="fa fa-check"></i><b>1.11.2</b> Korrelation</a></li>
+<li class="chapter" data-level="1.11.3" data-path="baser.html"><a href="baser.html#test-for-uafhængighed-chi-sq-test"><i class="fa fa-check"></i><b>1.11.3</b> Test for uafhængighed (chi-sq test)</a></li>
+<li class="chapter" data-level="1.11.4" data-path="baser.html"><a href="baser.html#sample-t-test"><i class="fa fa-check"></i><b>1.11.4</b> 1 sample t-test</a></li>
+<li class="chapter" data-level="1.11.5" data-path="baser.html"><a href="baser.html#sample-t-test-1"><i class="fa fa-check"></i><b>1.11.5</b> 2-sample t-test</a></li>
+<li class="chapter" data-level="1.11.6" data-path="baser.html"><a href="baser.html#paired-t-test"><i class="fa fa-check"></i><b>1.11.6</b> Paired t-test</a></li>
+<li class="chapter" data-level="1.11.7" data-path="baser.html"><a href="baser.html#anova-variansanalyse"><i class="fa fa-check"></i><b>1.11.7</b> ANOVA (variansanalyse)</a></li>
+<li class="chapter" data-level="1.11.8" data-path="baser.html"><a href="baser.html#lineær-regression"><i class="fa fa-check"></i><b>1.11.8</b> Lineær regression</a></li>
+<li class="chapter" data-level="1.11.9" data-path="baser.html"><a href="baser.html#r-squared-coefficient-of-determination"><i class="fa fa-check"></i><b>1.11.9</b> R-squared coefficient of determination</a></li>
+<li class="chapter" data-level="1.11.10" data-path="baser.html"><a href="baser.html#antagelser---lineær-regression"><i class="fa fa-check"></i><b>1.11.10</b> Antagelser - lineær regression</a></li>
+<li class="chapter" data-level="1.11.11" data-path="baser.html"><a href="baser.html#multiple-lineær-regression"><i class="fa fa-check"></i><b>1.11.11</b> Multiple lineær regression</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="baser.html"><a href="baser.html#problemstillinger"><i class="fa fa-check"></i><b>1.12</b> Problemstillinger</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="baser.html"><a href="baser.html#quiz---basics"><i class="fa fa-check"></i><b>1.12.1</b> Quiz - Basics</a></li>
+<li class="chapter" data-level="1.12.2" data-path="baser.html"><a href="baser.html#grundlæggende-r"><i class="fa fa-check"></i><b>1.12.2</b> Grundlæggende R</a></li>
+<li class="chapter" data-level="1.12.3" data-path="baser.html"><a href="baser.html#kort-analyse-med-reaktionstider"><i class="fa fa-check"></i><b>1.12.3</b> Kort analyse med reaktionstider</a></li>
+<li class="chapter" data-level="1.12.4" data-path="baser.html"><a href="baser.html#øvelse-med-co2"><i class="fa fa-check"></i><b>1.12.4</b> Øvelse med CO2</a></li>
+<li class="chapter" data-level="1.12.5" data-path="baser.html"><a href="baser.html#ekstra-øvelser-med-statistik-tests"><i class="fa fa-check"></i><b>1.12.5</b> Ekstra øvelser med statistik tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> Introduktion til R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#inledning-til-kapital"><i class="fa fa-check"></i><b>2.1</b> Inledning til kapital</a></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#hvad-er-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Hvad er R Markdown?</a></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installere-r-markdown"><i class="fa fa-check"></i><b>2.3</b> Installere R Markdown</a></li>
+<li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#videodemonstrationer"><i class="fa fa-check"></i><b>2.4</b> Videodemonstrationer</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#video-1"><i class="fa fa-check"></i><b>2.4.1</b> Video 1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#video-2"><i class="fa fa-check"></i><b>2.4.2</b> Video 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#oprette-et-nyt-dokument-i-r-markdown"><i class="fa fa-check"></i><b>2.5</b> Oprette et nyt dokument i R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml"><i class="fa fa-check"></i><b>2.5.1</b> YAML</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#globale-options"><i class="fa fa-check"></i><b>2.5.2</b> Globale options</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rmarkdown.html"><a href="rmarkdown.html#skrive-baseret-tekst"><i class="fa fa-check"></i><b>2.6</b> Skrive baseret tekst</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#headers"><i class="fa fa-check"></i><b>2.6.1</b> Headers</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#liste"><i class="fa fa-check"></i><b>2.6.2</b> liste</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html#knitte-kode"><i class="fa fa-check"></i><b>2.7</b> Knitte kode</a></li>
+<li class="chapter" data-level="2.8" data-path="rmarkdown.html"><a href="rmarkdown.html#kode-chunks"><i class="fa fa-check"></i><b>2.8</b> Kode chunks</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#et-godt-råd-når-man-arbejder-med-chunks"><i class="fa fa-check"></i><b>2.8.1</b> Et godt råd når man arbejder med chunks</a></li>
+<li class="chapter" data-level="2.8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#chunk-indstillinger"><i class="fa fa-check"></i><b>2.8.2</b> Chunk indstillinger</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="rmarkdown.html"><a href="rmarkdown.html#r-beregninger-inden-for-teksten-i-dokumentet-inline-code"><i class="fa fa-check"></i><b>2.9</b> R beregninger inden for teksten i dokumentet (‘inline code’)</a></li>
+<li class="chapter" data-level="2.10" data-path="rmarkdown.html"><a href="rmarkdown.html#working-directory-1"><i class="fa fa-check"></i><b>2.10</b> Working directory</a></li>
+<li class="chapter" data-level="2.11" data-path="rmarkdown.html"><a href="rmarkdown.html#matematik"><i class="fa fa-check"></i><b>2.11</b> Matematik</a></li>
+<li class="chapter" data-level="2.12" data-path="rmarkdown.html"><a href="rmarkdown.html#ofte-set-fejl"><i class="fa fa-check"></i><b>2.12</b> Ofte set fejl</a></li>
+<li class="chapter" data-level="2.13" data-path="rmarkdown.html"><a href="rmarkdown.html#problemstillinger-1"><i class="fa fa-check"></i><b>2.13</b> Problemstillinger</a></li>
+<li class="chapter" data-level="2.14" data-path="rmarkdown.html"><a href="rmarkdown.html#færdig-for-i-dag-og-næste-gang"><i class="fa fa-check"></i><b>2.14</b> Færdig for i dag og næste gang</a></li>
+<li class="chapter" data-level="2.15" data-path="rmarkdown.html"><a href="rmarkdown.html#ekstra-links"><i class="fa fa-check"></i><b>2.15</b> Ekstra links</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visual1.html"><a href="visual1.html"><i class="fa fa-check"></i><b>3</b> Visualisering - ggplot2 dag 1</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visual1.html"><a href="visual1.html#læringsmålene-og-videoer"><i class="fa fa-check"></i><b>3.1</b> Læringsmålene og videoer</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="visual1.html"><a href="visual1.html#hvad-er-ggplot2"><i class="fa fa-check"></i><b>3.1.1</b> Hvad er <strong>ggplot2</strong>?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="visual1.html"><a href="visual1.html#brugen-af-materialerne"><i class="fa fa-check"></i><b>3.1.2</b> Brugen af materialerne</a></li>
+<li class="chapter" data-level="3.1.3" data-path="visual1.html"><a href="visual1.html#video-ressourcer"><i class="fa fa-check"></i><b>3.1.3</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="visual1.html"><a href="visual1.html#transition-fra-base-r-til-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Transition fra base R til ggplot2</a></li>
+<li class="chapter" data-level="3.3" data-path="visual1.html"><a href="visual1.html#vores-første-ggplot"><i class="fa fa-check"></i><b>3.3</b> Vores første ggplot</a></li>
+<li class="chapter" data-level="3.4" data-path="visual1.html"><a href="visual1.html#lidt-om-ggplot2"><i class="fa fa-check"></i><b>3.4</b> Lidt om ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="visual1.html"><a href="visual1.html#syntax"><i class="fa fa-check"></i><b>3.4.1</b> Syntax</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visual1.html"><a href="visual1.html#hvad-betyder-egentlig-grammar-of-graphics"><i class="fa fa-check"></i><b>3.4.2</b> Hvad betyder egentlig grammar of graphics?</a></li>
+<li class="chapter" data-level="3.4.3" data-path="visual1.html"><a href="visual1.html#globale-versus-lokale-æstetik"><i class="fa fa-check"></i><b>3.4.3</b> Globale versus lokale æstetik</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visual1.html"><a href="visual1.html#specificere-etiketter-og-titel"><i class="fa fa-check"></i><b>3.5</b> Specificere etiketter og titel</a></li>
+<li class="chapter" data-level="3.6" data-path="visual1.html"><a href="visual1.html#ændre-farver"><i class="fa fa-check"></i><b>3.6</b> Ændre farver</a></li>
+<li class="chapter" data-level="3.7" data-path="visual1.html"><a href="visual1.html#ændre-tema"><i class="fa fa-check"></i><b>3.7</b> Ændre tema</a></li>
+<li class="chapter" data-level="3.8" data-path="visual1.html"><a href="visual1.html#forskellige-geoms"><i class="fa fa-check"></i><b>3.8</b> Forskellige geoms</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="visual1.html"><a href="visual1.html#boxplot-geom_box"><i class="fa fa-check"></i><b>3.8.1</b> Boxplot (<code>geom_box</code>)</a></li>
+<li class="chapter" data-level="3.8.2" data-path="visual1.html"><a href="visual1.html#barplot-geom_bar"><i class="fa fa-check"></i><b>3.8.2</b> Barplot (<code>geom_bar</code>)</a></li>
+<li class="chapter" data-level="3.8.3" data-path="visual1.html"><a href="visual1.html#histogram-geom_histogram"><i class="fa fa-check"></i><b>3.8.3</b> Histogram (<code>geom_histogram</code>)</a></li>
+<li class="chapter" data-level="3.8.4" data-path="visual1.html"><a href="visual1.html#density-geom_density"><i class="fa fa-check"></i><b>3.8.4</b> Density (<code>geom_density</code>)</a></li>
+<li class="chapter" data-level="3.8.5" data-path="visual1.html"><a href="visual1.html#line-plot-geom_line"><i class="fa fa-check"></i><b>3.8.5</b> Line plot (<code>geom_line()</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="visual1.html"><a href="visual1.html#troubleshooting"><i class="fa fa-check"></i><b>3.9</b> Troubleshooting</a></li>
+<li class="chapter" data-level="3.10" data-path="visual1.html"><a href="visual1.html#problemstillinger-2"><i class="fa fa-check"></i><b>3.10</b> Problemstillinger</a></li>
+<li class="chapter" data-level="3.11" data-path="visual1.html"><a href="visual1.html#næste-gang"><i class="fa fa-check"></i><b>3.11</b> Næste gang</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visual2.html"><a href="visual2.html"><i class="fa fa-check"></i><b>4</b> Visualisering - ggplot2 dag 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="visual2.html"><a href="visual2.html#læringsmål-og-videoer"><i class="fa fa-check"></i><b>4.1</b> Læringsmål og videoer</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="visual2.html"><a href="visual2.html#video-ressourcer-1"><i class="fa fa-check"></i><b>4.1.1</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="visual2.html"><a href="visual2.html#koordinat-systemer"><i class="fa fa-check"></i><b>4.2</b> Koordinat systemer</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="visual2.html"><a href="visual2.html#zoom-coord_cartesian-expand_limits"><i class="fa fa-check"></i><b>4.2.1</b> Zoom (<code>coord_cartesian()</code>, <code>expand_limits()</code>)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visual2.html"><a href="visual2.html#transformering-af-akserne---log-sqrt-osv-scale_x_continuous."><i class="fa fa-check"></i><b>4.2.2</b> Transformering af akserne - log, sqrt osv (<code>scale_x_continuous</code>).</a></li>
+<li class="chapter" data-level="4.2.3" data-path="visual2.html"><a href="visual2.html#flip-coordinates-coord_flip"><i class="fa fa-check"></i><b>4.2.3</b> Flip coordinates (<code>coord_flip</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visual2.html"><a href="visual2.html#mere-om-farver-og-punkt-former"><i class="fa fa-check"></i><b>4.3</b> Mere om farver og punkt former</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="visual2.html"><a href="visual2.html#automatisk-farver"><i class="fa fa-check"></i><b>4.3.1</b> Automatisk farver</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visual2.html"><a href="visual2.html#manuelle-farver"><i class="fa fa-check"></i><b>4.3.2</b> Manuelle farver</a></li>
+<li class="chapter" data-level="4.3.3" data-path="visual2.html"><a href="visual2.html#punkt-former"><i class="fa fa-check"></i><b>4.3.3</b> Punkt former</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="visual2.html"><a href="visual2.html#annotations-geom_text"><i class="fa fa-check"></i><b>4.4</b> Annotations (<code>geom_text</code>)</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="visual2.html"><a href="visual2.html#tilføjelse-af-labels-direkte-på-plottet."><i class="fa fa-check"></i><b>4.4.1</b> Tilføjelse af labels direkte på plottet.</a></li>
+<li class="chapter" data-level="4.4.2" data-path="visual2.html"><a href="visual2.html#pakken-ggrepel-for-at-tilføje-tekst-labeller"><i class="fa fa-check"></i><b>4.4.2</b> Pakken <code>ggrepel</code> for at tilføje tekst labeller</a></li>
+<li class="chapter" data-level="4.4.3" data-path="visual2.html"><a href="visual2.html#tilføjelse-af-rektangler-i-regioner-af-interesse-annotate"><i class="fa fa-check"></i><b>4.4.3</b> Tilføjelse af rektangler i regioner af interesse (<code>annotate</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="visual2.html"><a href="visual2.html#adskille-plots-med-facets-facet_gridfacet_wrap"><i class="fa fa-check"></i><b>4.5</b> Adskille plots med facets (<code>facet_grid</code>/<code>facet_wrap</code>)</a></li>
+<li class="chapter" data-level="4.6" data-path="visual2.html"><a href="visual2.html#gemme-dit-plot"><i class="fa fa-check"></i><b>4.6</b> Gemme dit plot</a></li>
+<li class="chapter" data-level="4.7" data-path="visual2.html"><a href="visual2.html#problemstillinger-3"><i class="fa fa-check"></i><b>4.7</b> Problemstillinger</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>5</b> Bearbejdning dag 1</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data.html"><a href="data.html#hvad-er-tidyverse"><i class="fa fa-check"></i><b>5.1</b> Hvad er Tidyverse?</a></li>
+<li class="chapter" data-level="5.2" data-path="data.html"><a href="data.html#video-ressourcer-2"><i class="fa fa-check"></i><b>5.2</b> Video ressourcer</a></li>
+<li class="chapter" data-level="5.3" data-path="data.html"><a href="data.html#oversigt-over-pakker"><i class="fa fa-check"></i><b>5.3</b> Oversigt over pakker</a></li>
+<li class="chapter" data-level="5.4" data-path="data.html"><a href="data.html#principper-for-tidy-data"><i class="fa fa-check"></i><b>5.4</b> Principper for ‘tidy data’</a></li>
+<li class="chapter" data-level="5.5" data-path="data.html"><a href="data.html#lidt-om-tibbles"><i class="fa fa-check"></i><b>5.5</b> Lidt om <code>tibbles</code></a></li>
+<li class="chapter" data-level="5.6" data-path="data.html"><a href="data.html#transition-fra-base-r-til-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Transition fra base-R til tidyverse</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="data.html"><a href="data.html#om-titanic-datasættet"><i class="fa fa-check"></i><b>5.6.1</b> Om <strong>Titanic</strong> datasættet</a></li>
+<li class="chapter" data-level="5.6.2" data-path="data.html"><a href="data.html#titanic-rengøring"><i class="fa fa-check"></i><b>5.6.2</b> Titanic: Rengøring</a></li>
+<li class="chapter" data-level="5.6.3" data-path="data.html"><a href="data.html#pipe"><i class="fa fa-check"></i><b>5.6.3</b> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="data.html"><a href="data.html#bearbejdning-af-data-dplyr"><i class="fa fa-check"></i><b>5.7</b> Bearbejdning af data: <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="data.html"><a href="data.html#dplyr-verbs-select"><i class="fa fa-check"></i><b>5.7.1</b> dplyr verbs: <code>select()</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="data.html"><a href="data.html#dplyr-verbs-filter"><i class="fa fa-check"></i><b>5.7.2</b> dplyr verbs: <code>filter()</code></a></li>
+<li class="chapter" data-level="5.7.3" data-path="data.html"><a href="data.html#sammenligningsoperatorer"><i class="fa fa-check"></i><b>5.7.3</b> Sammenligningsoperatorer</a></li>
+<li class="chapter" data-level="5.7.4" data-path="data.html"><a href="data.html#kombinere-filter-og-select"><i class="fa fa-check"></i><b>5.7.4</b> Kombinere <code>filter()</code> og <code>select()</code></a></li>
+<li class="chapter" data-level="5.7.5" data-path="data.html"><a href="data.html#dplyr-verbs-mutate"><i class="fa fa-check"></i><b>5.7.5</b> dplyr verbs: <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.7.6" data-path="data.html"><a href="data.html#rename"><i class="fa fa-check"></i><b>5.7.6</b> <code>rename()</code></a></li>
+<li class="chapter" data-level="5.7.7" data-path="data.html"><a href="data.html#dplyr-verbs-recode"><i class="fa fa-check"></i><b>5.7.7</b> dplyr verbs: <code>recode()</code></a></li>
+<li class="chapter" data-level="5.7.8" data-path="data.html"><a href="data.html#dplyr-verbs-arrange"><i class="fa fa-check"></i><b>5.7.8</b> dplyr verbs: <code>arrange()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="data.html"><a href="data.html#visualisering-bruge-som-input-i-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Visualisering: bruge som input i ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="data.html"><a href="data.html#misc-funktioner-som-er-nyttige-at-vide"><i class="fa fa-check"></i><b>5.9</b> Misc funktioner som er nyttige at vide</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="data.html"><a href="data.html#pull"><i class="fa fa-check"></i><b>5.9.1</b> Pull</a></li>
+<li class="chapter" data-level="5.9.2" data-path="data.html"><a href="data.html#slice"><i class="fa fa-check"></i><b>5.9.2</b> Slice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="data.html"><a href="data.html#problemstillinger-4"><i class="fa fa-check"></i><b>5.10</b> Problemstillinger</a></li>
+<li class="chapter" data-level="5.11" data-path="data.html"><a href="data.html#kommentarer"><i class="fa fa-check"></i><b>5.11</b> Kommentarer</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse og visualisering af biologiske datasæt - 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Kapitel 5</span> Bearbejdning dag 1<a href="data.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="plots/hex-tidyverse.png" width="15%" style="display: block; margin: auto;" /></p>
+<div id="hvad-er-tidyverse" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Hvad er Tidyverse?<a href="data.html#hvad-er-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Tidyverse</strong> er en samling af pakker i R, som man bruger til at bearbejde datasæt. Formålet er ikke nødvendigvis at erstatte funktionaliteten af base-pakken, men til at bygge videre på den. Som vi vil se i detaljer, deler <strong>tidyverse</strong> faktisk mange af de samme principper som <strong>ggplot2</strong> - men i stedet for at bruge <code>+</code> til at opbygge komponenter i et plot, bruger man <code>%&gt;%</code> (udtales ‘pipe’) til at kæde forskellige funktioner sammen.</p>
+<div class="figure">
+<img src="plots/tidyverse2_packages.png" style="width:45.0%" alt="" />
+<p class="caption">Most common tidyverse packages</p>
+</div>
+<p><strong>Læringsmål og checklist</strong></p>
+<div class="goals">
+<p>I skal være i stand til at:</p>
+<ul>
+<li>Beskrive generelt, hvad R-pakken <code>Tidyverse</code> kan bruges til.</li>
+<li>Beskrive en <strong>tibble</strong> og genkende når et datasæt er betragtet som “tidy”.</li>
+<li>Benytte nogle vigtige <code>Tidyverse</code>-verbs til at bearbejde data (<code>filter()</code>,<code>select()</code>, <code>mutate()</code>, <code>rename()</code>, <code>arrange()</code>, <code>recode()</code>).</li>
+<li>Bruge <code>%&gt;%</code> til at forbinde <code>Tidyverse</code>-verber sammen og at overføre data til et plot.</li>
+</ul>
+</div>
+<div class="checklist">
+<p>Checklist til Kapitel 5: bearbejdning med tidyverse (dag 1)</p>
+<ul>
+<li>Læs “Principper for tidy data” og “Lidt om tibbles”</li>
+<li>Se videoerne</li>
+<li>Kig igennem kursusnotaterne</li>
+<li>Lav quiz “ggplot2 - dag 2”</li>
+<li>Lav problemstillingerne</li>
+</ul>
+</div>
+</div>
+<div id="video-ressourcer-2" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Video ressourcer<a href="data.html#video-ressourcer-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!-- * Video 1 - introduktion til uge, hvad er den `tidyverse`-pakke? Hvad er en tibble? -->
+<!-- Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/547107062 -->
+<!-- ```{r,echo=FALSE} -->
+<!-- library("vembedr") -->
+<!-- embed_url("https://vimeo.com/547107062") -->
+<!-- ``` -->
+<ul>
+<li><p>__Begynd med at læse “Principper for ‘tidy data’” og “Lidt om tibbles” nedenfor og derefter se følgende videoer.</p></li>
+<li><p><strong>Video 1</strong> - rydde op i datasættet <code>titanic</code> med <code>select()</code> og <code>drop_na()</code></p></li>
+</ul>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/706266697" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+<!-- * Video 3 - introduktion til `%>%`  -->
+<!-- Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/546910781 -->
+<!-- ```{r,echo=FALSE} -->
+<!-- library("vembedr") -->
+<!-- embed_url("https://vimeo.com/546910781") -->
+<!-- ``` -->
+<ul>
+<li><strong>Video 2</strong> - <code>tidyverse</code> verber: <code>select</code> og <code>filter</code></li>
+</ul>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/705136725" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+<ul>
+<li><strong>Video 3</strong> - flere <code>tidyverse</code> verber
+<ul>
+<li>Lave en ny kolon med <code>mutate()</code></li>
+<li>Ændre variabelnavne med <code>rename()</code></li>
+<li>Ændre på værdierne med <code>recode()</code></li>
+<li>Ændre rækkefølgen af observationerne med <code>arrange()</code></li>
+<li>Bruge tidyverse kommandoer som input i <code>ggplot2()</code></li>
+</ul></li>
+</ul>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/706266885" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+<div id="oversigt-over-pakker" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Oversigt over pakker<a href="data.html#oversigt-over-pakker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lad os starte med at indlæse pakken <strong>tidyverse</strong>. Vær opmærksom på, at hvis du ikke allerede har pakken på din computer, kan det tage lidt tid at installere den da <strong>tidyverse</strong> er afhængig af mange andre pakker, som også skal installeres eller opdateres. <strong>Hvis du allerede har pakken installeret, men oplever problemer, skal du tjekke, om du har det seneste version af pakkerne og R på dit system.</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse)</span></span>
+<span id="cb1-2"><a href="data.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Du kan se, at der faktisk ikke kun er én, men otte pakker, der er blevet indlæst. Det er muligt at indlæse hver pakke individuelt ved at bruge fx <code>library(dplyr)</code>, men det er meget bekvemt at indlæse dem alle på én gang ved at bruge <code>library(tidyverse)</code>. Her er en kort beskrivelse af hver pakke:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pakke</th>
+<th>Kort beskrivelse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>readr</code></td>
+<td>Indlæsning af data</td>
+</tr>
+<tr class="even">
+<td><code>ggplot2</code></td>
+<td>Plotning af data</td>
+</tr>
+<tr class="odd">
+<td><code>tibble</code></td>
+<td>Oprettelse af “tibbles” - <strong><em>tidyverse</em></strong>’s svar på datarammer (data.frame).</td>
+</tr>
+<tr class="even">
+<td><code>tidyr</code></td>
+<td>Transformation af data til forskellige formater (fx fra ‘long’ til ‘wide’ format eller omvendt)</td>
+</tr>
+<tr class="odd">
+<td><code>purrr</code></td>
+<td>Functional programming, gentagelse</td>
+</tr>
+<tr class="even">
+<td><code>dplyr</code></td>
+<td>Manipulation af tibbles - udvælgelse af undergrupper, oprettelse af nye variabler, beregning af oversigtsstatistikker osv.</td>
+</tr>
+<tr class="odd">
+<td><code>stringr</code></td>
+<td>Manipulation af strenge (ikke brugt i dette kursus)</td>
+</tr>
+<tr class="even">
+<td><code>forcats</code></td>
+<td>Håndtering af faktorvariabler (også kaldet “categories”)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="principper-for-tidy-data" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Principper for ‘tidy data’<a href="data.html#principper-for-tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Idéen bag <strong>tidyverse</strong> er, at hvis alle datasæt følger præcis den samme struktur, så er det enkelt at bearbejde dem præcis som vi ønsker det. Datasæt med denne struktur kaldes “tidy data”. For at betragte et datasæt som “tidy” skal det opfylde tre kriterier:</p>
+<ul>
+<li>Hver variabel i datasættet har sin egen kolonne</li>
+<li>Hver observation i datasættet har sin egen række</li>
+<li>Hver værdi i datasættet har sin egen celle</li>
+</ul>
+<p>Et godt eksempel på et datasæt i <strong>tidy format</strong> er Iris-datasættet:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb2-2"><a href="data.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt; 1          5.1         3.5          1.4         0.2  setosa
+#&gt; 2          4.9         3.0          1.4         0.2  setosa
+#&gt; 3          4.7         3.2          1.3         0.2  setosa
+#&gt; 4          4.6         3.1          1.5         0.2  setosa
+#&gt; 5          5.0         3.6          1.4         0.2  setosa
+#&gt; 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>I datasættet har hver variabel (<code>Sepal.Length</code>, <code>Sepal.Width</code>, <code>Petal.Length</code>, <code>Petal.Width</code> og <code>Species</code>) sin egen kolonne, og hver observation (fx observation 1, 2, 3, osv.) har sin egen række. Derudover har hver celle sin egen værdi, hvilket gør datasættet meget læsbart og let at forstå ved blot at kigge på det.</p>
+<div class="figure">
+<img src="plots/tidy-1.png" style="width:100.0%" alt="" />
+<p class="caption">Principper af tidy data</p>
+</div>
+<p>Det er tilfældet, at de fleste datasæt i dette kursus hører til kategorien “tidy data”, især i disse notater, hvor vi bruger en del af de indbyggede datasæt. Nogle gange er det dog nødvendigt at transformere et datasæt til “tidy data”. R-pakkerne <strong>dplyr</strong> og <strong>tidyr</strong> er velegnede til at hjælpe med at transformere et datasæt til “tidy data”, og derefter kan man analysere datasættet på sædvanlig vis. Bemærk dog, at bare fordi et datasæt er “tidy”, betyder det ikke nødvendigvis, at det er klar til analyse, da der stadig kan være behov for yderligere bearbejdning med pakkerne <strong>dplyr</strong> og <strong>tidyr</strong>.</p>
+</div>
+<div id="lidt-om-tibbles" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Lidt om <code>tibbles</code><a href="data.html#lidt-om-tibbles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <code>tibble</code> er <strong><em>tidyverse</em></strong>’s svar på en <code>data.frame</code> fra base-R. De ligner meget hinanden, og derfor behøver man ikke tænke så meget over forskellen. Men der er nogle opdaterede aspekter i en <code>tibble</code>. For eksempel bruger en <code>tibble</code> ikke <code>row.names</code>, og når man visualiserer en <code>tibble</code> i R Markdown, får man lidt ekstra oplysninger såsom dimensioner og datatyper. Det er vigtigt at bemærke, at de fleste <code>tidyverse</code>-funktioner fungerer lige så godt, uanset om man bruger en <code>tibble</code> eller en <code>data.frame</code>. Det er dog vigtigt at bemærke, at jeg vil bruge ordet “data frame” inden for almindelig tekst.</p>
+<p>Man kan oprette sin egen <code>tibble</code> på samme måde som en <code>data.frame</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 3 × 2
+#&gt;       x y    
+#&gt;   &lt;int&gt; &lt;chr&gt;
+#&gt; 1     1 a    
+#&gt; 2     2 b    
+#&gt; 3     3 c</code></pre>
+<p>Man kan også oprette en <code>tribble</code>, som er den samme som en <code>tibble</code>, men har en lidt anderledes måde at indsætte data på. For eksempel svarer følgende til den tidligere <code>tibble</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(<span class="sc">~</span>x, <span class="sc">~</span>y,</span>
+<span id="cb6-2"><a href="data.html#cb6-2" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span>, <span class="st">&quot;a&quot;</span>,</span>
+<span id="cb6-3"><a href="data.html#cb6-3" aria-hidden="true" tabindex="-1"></a>       <span class="dv">2</span>, <span class="st">&quot;b&quot;</span>,</span>
+<span id="cb6-4"><a href="data.html#cb6-4" aria-hidden="true" tabindex="-1"></a>       <span class="dv">3</span>, <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 3 × 2
+#&gt;       x y    
+#&gt;   &lt;dbl&gt; &lt;chr&gt;
+#&gt; 1     1 a    
+#&gt; 2     2 b    
+#&gt; 3     3 c</code></pre>
+<p>Man kan omdanne en <code>data.frame</code> til en <code>tibble</code> ved at bruge funktionen <code>as_tibble()</code>, som vist nedenfor:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(iris)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 150 × 5
+#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt;           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+#&gt;  1          5.1         3.5          1.4         0.2 setosa 
+#&gt;  2          4.9         3            1.4         0.2 setosa 
+#&gt;  3          4.7         3.2          1.3         0.2 setosa 
+#&gt;  4          4.6         3.1          1.5         0.2 setosa 
+#&gt;  5          5           3.6          1.4         0.2 setosa 
+#&gt;  6          5.4         3.9          1.7         0.4 setosa 
+#&gt;  7          4.6         3.4          1.4         0.3 setosa 
+#&gt;  8          5           3.4          1.5         0.2 setosa 
+#&gt;  9          4.4         2.9          1.4         0.2 setosa 
+#&gt; 10          4.9         3.1          1.5         0.1 setosa 
+#&gt; # ℹ 140 more rows</code></pre>
+</div>
+<div id="transition-fra-base-r-til-tidyverse" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Transition fra base-R til tidyverse<a href="data.html#transition-fra-base-r-til-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Jeg introducerer <strong>tidyverse</strong> med et meget berømt datasæt kaldet <strong>Titanic</strong>. Det er ikke biologisk data, men det er stadig ret interessant og sjovt at arbejde med.</p>
+<p><strong>Titanic</strong>-datasættet er blevet brugt som en del af en åben konkurrence på Kaggle, hvor mindst 31.000 personer hidtil har arbejdet på at lave den bedste model til at forudsige, hvem der overlever katastrofen. Du kan læse mere om baggrunden for datasættet og konkurrencen på dette link: <a href="https://www.kaggle.com/c/titanic" class="uri">https://www.kaggle.com/c/titanic</a>.</p>
+<div id="om-titanic-datasættet" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Om <strong>Titanic</strong> datasættet<a href="data.html#om-titanic-datasættet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man kan downloade datasættet, der hedder <code>titanic_train</code>, direkte fra Kaggle. Men der er faktisk en R-pakke kaldet <code>titanic</code>, som gør det mere bekvemt:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;titanic&quot;) #hvis ikke allerede installerede</span></span>
+<span id="cb10-2"><a href="data.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(titanic)</span></code></pre></div>
+<p>Her er beskrivelsen for pakken:</p>
+<p><em><strong>titanic</strong> is an R package containing data sets providing information on the fate of passengers on the fatal maiden voyage of the ocean liner “Titanic”, summarized according to economic status (class), sex, age and survival. These data sets are often used as an introduction to machine learning on Kaggle.</em></p>
+<p>Vi vil gerne bruge <code>titanic_train</code>-datasættet, fordi det er det datasæt, der bliver brugt på Kaggle til at træne maskinlæringsmodeller (som derefter bliver testet på <code>titanic_test</code>-datasættet for at evaluere, hvor god modellen er). For at gøre tingene nemmere, vil vi blot omdøbe <code>titanic_train</code> til <code>titanic</code> og bruge funktionen <code>glimpse()</code> fra <code>dplyr</code>-pakken til at se på datasættet.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data.html#cb11-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(titanic_train)</span>
+<span id="cb11-2"><a href="data.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(titanic)</span></code></pre></div>
+<pre><code>#&gt; Rows: 891
+#&gt; Columns: 12
+#&gt; $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
+#&gt; $ Survived    &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1…
+#&gt; $ Pclass      &lt;int&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3, 3…
+#&gt; $ Name        &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Fl…
+#&gt; $ Sex         &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;mal…
+#&gt; $ Age         &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 14, …
+#&gt; $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1, 0…
+#&gt; $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0…
+#&gt; $ Ticket      &lt;chr&gt; &quot;A/5 21171&quot;, &quot;PC 17599&quot;, &quot;STON/O2. 3101282&quot;, &quot;113803&quot;, &quot;37…
+#&gt; $ Fare        &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.8625,…
+#&gt; $ Cabin       &lt;chr&gt; &quot;&quot;, &quot;C85&quot;, &quot;&quot;, &quot;C123&quot;, &quot;&quot;, &quot;&quot;, &quot;E46&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;G6&quot;, &quot;C…
+#&gt; $ Embarked    &lt;chr&gt; &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;Q&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;…</code></pre>
+<p>Jeg har også kopieret de variable beskrivelser her:</p>
+<ul>
+<li>PassengerId: unique index for each passenger</li>
+<li>Survived: Whether or not the passenger survived. 0 = No, 1 = Yes.</li>
+<li>Pclass: Ticket class: 1 = 1st Class, 2 = 2nd Class, 3 = 3rd Class.</li>
+<li>Name: A character string containing the name of each passenger.</li>
+<li>Sex: Character strings for passenger sex (“male”/ “female”).</li>
+<li>Age: Age in years.</li>
+<li>SibSp: The number of siblings/spouses aboard the titanic with the passenger</li>
+<li>Parch: The number of parents/children aboard the titanic with the passenger</li>
+<li>Ticket: Another character string containing the ticket ID of the passenger.</li>
+<li>Fare: The price paid for tickets in pounds Sterling (Keep in mind that unskilled workers made around 1 pound a week - these were expensive tickets!)</li>
+<li>Cabin: The cabin number of the passengers (character).</li>
+<li>Embarked: Where passengers boarded the titanic. C = Cherbourg, Q = Queenstown, S = Southampton).</li>
+</ul>
+</div>
+<div id="titanic-rengøring" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Titanic: Rengøring<a href="data.html#titanic-rengøring" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Før vi kan fortsætte med analysen, er der nogle oprydninger, der skal foretages i datasættet. Vi kan se fra <code>glimpse(titanic)</code>-kommandoen, at der er 891 observationer. De fleste passagerer (687) har faktisk intet oplyst i variablen <code>Cabin</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(titanic<span class="sc">$</span>Cabin <span class="sc">==</span> <span class="st">&quot;&quot;</span>) <span class="co"># antal observationer med ingenting for variablen &#39;Cabin&#39;</span></span></code></pre></div>
+<pre><code>#&gt; [1] 687</code></pre>
+<p>Andre passagerer har mere end én cabin. Det ser ikke særlig <strong>tidy</strong> ud, og det er heller ikke særlig relevant for analysen, så vi vælger at fjerne hele kolonnen med funktionen <code>select()</code>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data.html#cb15-1" aria-hidden="true" tabindex="-1"></a>titanic_no_cabin <span class="ot">&lt;-</span> <span class="fu">select</span>(titanic, <span class="sc">-</span>Cabin) </span></code></pre></div>
+<p><code>select()</code> er en af de grundlæggende funktioner i <strong>tidyverse</strong>. Her angiver vi, hvilke kolonner vi ønsker at beholde eller fjerne fra datasættet. I dette tilfælde har vi specificeret <code>-Cabin</code>, hvilket betyder, at vi ikke ønsker at medtage variablen <code>Cabin</code>, men vi ønsker at beholde resten af kolonnerne. Prøv selv at køre <code>select(titanic, Cabin)</code> i stedet - så vil vi kun have variablen <code>Cabin</code> og fjerne resten af vores variabler.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(titanic_no_cabin)</span></code></pre></div>
+<pre><code>#&gt; Rows: 891
+#&gt; Columns: 11
+#&gt; $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
+#&gt; $ Survived    &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1…
+#&gt; $ Pclass      &lt;int&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3, 3…
+#&gt; $ Name        &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Fl…
+#&gt; $ Sex         &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;mal…
+#&gt; $ Age         &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 14, …
+#&gt; $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1, 0…
+#&gt; $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0…
+#&gt; $ Ticket      &lt;chr&gt; &quot;A/5 21171&quot;, &quot;PC 17599&quot;, &quot;STON/O2. 3101282&quot;, &quot;113803&quot;, &quot;37…
+#&gt; $ Fare        &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.8625,…
+#&gt; $ Embarked    &lt;chr&gt; &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;Q&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;…</code></pre>
+<p>Næste skridt er at undersøge, om der er manglende værdier (<code>NA</code>) i datasættet. <code>NA</code> er, hvordan R betegner manglende værdier. Som det fremgår af følgende kode, har de fleste variabler ikke <code>NA</code>-værdier, men variablen <code>Age</code> har 177 <code>NA</code>-værdier.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(titanic_no_cabin))</span></code></pre></div>
+<pre><code>#&gt; PassengerId    Survived      Pclass        Name         Sex         Age 
+#&gt;           0           0           0           0           0         177 
+#&gt;       SibSp       Parch      Ticket        Fare    Embarked 
+#&gt;           0           0           0           0           0</code></pre>
+<p>I dette tilfælde vælger jeg at fjerne alle passagerer, der mangler aldersoplysninger (<code>NA</code>) i stedet for at estimere eller imputere deres alder. Til dette formål bruger jeg funktionen <code>drop_na</code>, som fjerner alle observationer, der har <code>NA</code> i mindst én variabel.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(titanic_no_cabin)</span>
+<span id="cb20-2"><a href="data.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(titanic_clean))</span></code></pre></div>
+<pre><code>#&gt; PassengerId    Survived      Pclass        Name         Sex         Age 
+#&gt;           0           0           0           0           0           0 
+#&gt;       SibSp       Parch      Ticket        Fare    Embarked 
+#&gt;           0           0           0           0           0</code></pre>
+<p>Nu kan vi tjekke, hvor mange observationer og variabler, der er tilbage.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(titanic_clean)</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 11
+#&gt; $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19…
+#&gt; $ Survived    &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1…
+#&gt; $ Pclass      &lt;int&gt; 3, 1, 3, 1, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 3, 2, 2, 3…
+#&gt; $ Name        &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Fl…
+#&gt; $ Sex         &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;mal…
+#&gt; $ Age         &lt;dbl&gt; 22, 38, 26, 35, 35, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, …
+#&gt; $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 1, 0, 0, 0…
+#&gt; $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0…
+#&gt; $ Ticket      &lt;chr&gt; &quot;A/5 21171&quot;, &quot;PC 17599&quot;, &quot;STON/O2. 3101282&quot;, &quot;113803&quot;, &quot;37…
+#&gt; $ Fare        &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 51.8625, 21.0750…
+#&gt; $ Embarked    &lt;chr&gt; &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;…</code></pre>
+<p>Vi har beholdt 714 observationer og 11 variabler, og datasættet opfylder kravene for at være <strong>tidy</strong>.</p>
+</div>
+<div id="pipe" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> Pipe<a href="data.html#pipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man kan faktisk opnå det samme som i ovenstående eksempel ved at bruge pipe <code>%&gt;%</code>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data.html#cb24-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="ot">&lt;-</span> titanic <span class="sc">%&gt;%</span> <span class="co"># vi tager titanic-datasættet</span></span>
+<span id="cb24-2"><a href="data.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>Cabin) <span class="sc">%&gt;%</span> <span class="co"># udvælger de ønskede kolonner</span></span>
+<span id="cb24-3"><a href="data.html#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="co"># fjerner alle observationer med manglende værdier</span></span></code></pre></div>
+<p>Man bruger pipe <code>%&gt;%</code> til at kombinere adskillige Tidyverse-funktioner i samme kommando. Linjen slutter med <code>%&gt;%</code>, som fortæller, at vi skal bruge resultatet fra den foregående linje som input i den næste linje. Logikken er således, at vi starter med en dataframe, gør én ting ad gangen og slutter med en ny dataframe (som vi kan gemme med <code>&lt;-</code>).</p>
+<p>Bemærk, at denne proces ligner den, man bruger i <strong>ggplot2</strong>, men forskellen er, at man bruger <code>%&gt;%</code> i stedet for <code>+</code> i denne sammenhæng. Bemærk også, at jeg som i <strong>ggplot2</strong> skriver koden over flere linjer. Det er ikke et krav, men det gør det nemmere at læse og forstå koden.</p>
+<p>For at illustrere logikken kan man se, at følgende to linjer er tilsvarende:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tag x og anvend en funktion f</span></span>
+<span id="cb25-2"><a href="data.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)    <span class="co">#traditionelt tilgang</span></span>
+<span id="cb25-3"><a href="data.html#cb25-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> f <span class="co">#tidyverse tilgang</span></span></code></pre></div>
+<p>I begge tilfælde starter vi med <code>x</code> og anvender derefter funktionen <code>f</code> på <code>x</code>. En stor fordel ved den <strong>tidyverse</strong>-tilgangen er, at når man har flere funktioner, undgår man at skulle bruge mange parenteser, og rækkefølgen, som funktionerne anvendes i, læses fra venstre mod højre i stedet for omvendt, som i følgende eksempel:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tag x, anvend f, så g og til sidst h</span></span>
+<span id="cb26-2"><a href="data.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(<span class="fu">g</span>(<span class="fu">f</span>(x)))          <span class="co">#traditionelt tilgang</span></span>
+<span id="cb26-3"><a href="data.html#cb26-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> f <span class="sc">%&gt;%</span> g <span class="sc">%&gt;%</span> h <span class="co">#tidyverse tilgang</span></span></code></pre></div>
+<p>På samme måde som i vores oprydning af <code>titanic</code> kan man både inkludere funktionen <code>select()</code> i <code>drop_na()</code> eller bruge <strong>tidyverse</strong>-tilgangen, som i følgende eksempel - de to giver samme resultat: Først fjerner vi kolonnen <code>Cabin</code> ved hjælp af <code>select()</code>, og derefter fjerner vi alle rækker, som har mindst én <code>NA</code> ved hjælp af <code>drop_na()</code>.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data.html#cb27-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(<span class="fu">select</span>(titanic,<span class="sc">-</span>Cabin))</span>
+<span id="cb27-2"><a href="data.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="data.html#cb27-3" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="ot">&lt;-</span> titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="data.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>Cabin) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="data.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() </span></code></pre></div>
+</div>
+</div>
+<div id="bearbejdning-af-data-dplyr" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Bearbejdning af data: <code>dplyr</code><a href="data.html#bearbejdning-af-data-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pakken <code>dplyr</code> er nok den mest brugbare pakke til at bearbejde dataframes. Jeg gennemgår nogle af de mest almindelige muligheder med pakken, og der er også en “cheatsheet” som du kan downloade som reference: <a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf</a>. Jeg tager afsæt i følgende funktioner, og dækker flere gennem de forskellige øvelser og øvrige emner.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>dplyr verbs</th>
+<th>beskrivelse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>select()</code></td>
+<td>udvælge kolonner (<em>variabler</em>)</td>
+</tr>
+<tr class="even">
+<td><code>filter()</code></td>
+<td>udvælge rækker (<em>observationer</em>)</td>
+</tr>
+<tr class="odd">
+<td><code>arrange()</code></td>
+<td>sortere rækker</td>
+</tr>
+<tr class="even">
+<td><code>mutate()</code></td>
+<td>tilføje eller ændre eksisterende kolonner</td>
+</tr>
+<tr class="odd">
+<td><code>rename()</code></td>
+<td>ændre variablers navne</td>
+</tr>
+<tr class="even">
+<td><code>recode()</code></td>
+<td>ændre selve data</td>
+</tr>
+<tr class="odd">
+<td><code>group_by()</code></td>
+<td>dele datasættet op efter en variabel</td>
+</tr>
+<tr class="even">
+<td><code>summarise()</code></td>
+<td>aggregere rækker, findes ofte tilknyttet til <code>group_by()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Bemærk, at alle disse funktioner tager udgangspunkt i en dataframe, og man får altid en ny dataframe som output. Ved at kunne bruge disse funktioner og kombinere dem (ved hjælp af <code>%&gt;%</code>), har man godt styr på bearbejdningen af datarammer.</p>
+<div id="dplyr-verbs-select" class="section level3 hasAnchor" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> dplyr verbs: <code>select()</code><a href="data.html#dplyr-verbs-select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Som vi lige har set ovenfor, kan man med <code>select()</code> udvælge bestemte <strong>variabler</strong> i en dataframe. Vi kan vælge at beholde, fjerne eller ændre rækkefølgen af variablerne. Som et eksempel kan vi beholde kun variablerne <code>Name</code> og <code>Age</code> i <code>titanic_clean</code>-dataframen ved at bruge følgende kode:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data.html#cb28-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="data.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, Age) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="data.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 2
+#&gt; $ Name &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Florence …
+#&gt; $ Age  &lt;dbl&gt; 22, 38, 26, 35, 35, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, 2, 31, …</code></pre>
+<p>Hvis vi ønsker at fjerne en variabel fra en dataframe, kan vi bruge et minustegn. I nedenstående eksempel fjerner vi <code>Name</code> og <code>Age</code> fra <code>titanic_clean</code>-dataframen:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data.html#cb30-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="data.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Name, <span class="sc">-</span>Age) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="data.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 9
+#&gt; $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19…
+#&gt; $ Survived    &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1…
+#&gt; $ Pclass      &lt;int&gt; 3, 1, 3, 1, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 3, 2, 2, 3…
+#&gt; $ Sex         &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;mal…
+#&gt; $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 1, 0, 0, 0…
+#&gt; $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0…
+#&gt; $ Ticket      &lt;chr&gt; &quot;A/5 21171&quot;, &quot;PC 17599&quot;, &quot;STON/O2. 3101282&quot;, &quot;113803&quot;, &quot;37…
+#&gt; $ Fare        &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 51.8625, 21.0750…
+#&gt; $ Embarked    &lt;chr&gt; &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;…</code></pre>
+<div id="hjælper-funktioner-til-select" class="section level4 hasAnchor" number="5.7.1.1">
+<h4><span class="header-section-number">5.7.1.1</span> Hjælper funktioner til <code>select()</code><a href="data.html#hjælper-funktioner-til-select" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Hjælpefunktioner til funktionen <code>select()</code> kan være nyttige, hvis man vil udvælge bestemte variabler efter visse kriterier. Nedenfor har jeg samlet nogle (men ikke alle mulige!) hjælpefunktioner og inddrager eksempler i problemstillingerne.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>select hjælpefunktion</th>
+<th>beskrivelse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>starts_with()</code></td>
+<td>starter med et præfiks</td>
+</tr>
+<tr class="even">
+<td><code>ends_with()</code></td>
+<td>slutter med et præfiks</td>
+</tr>
+<tr class="odd">
+<td><code>contains()</code></td>
+<td>indeholder en tekststreng</td>
+</tr>
+<tr class="even">
+<td><code>matches()</code></td>
+<td>matcher et regulært udtryk</td>
+</tr>
+<tr class="odd">
+<td><code>num_range()</code></td>
+<td>et numerisk interval såsom x01, x02, x03</td>
+</tr>
+<tr class="even">
+<td><code>one_of()</code></td>
+<td>variabler i en karaktervektor</td>
+</tr>
+<tr class="odd">
+<td><code>everything()</code></td>
+<td>alle variabler</td>
+</tr>
+<tr class="even">
+<td><code>where()</code></td>
+<td>tager en funktion og returnerer alle variabler, hvor funktionen returnerer TRUE</td>
+</tr>
+</tbody>
+</table>
+<p>For eksempel:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data.html#cb32-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;P&quot;</span>))</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 714 × 3
+#&gt;    PassengerId Pclass Parch
+#&gt;          &lt;int&gt;  &lt;int&gt; &lt;int&gt;
+#&gt;  1           1      3     0
+#&gt;  2           2      1     0
+#&gt;  3           3      3     0
+#&gt;  4           4      1     0
+#&gt;  5           5      3     0
+#&gt;  6           7      1     0
+#&gt;  7           8      3     1
+#&gt;  8           9      3     2
+#&gt;  9          10      2     0
+#&gt; 10          11      3     1
+#&gt; # ℹ 704 more rows</code></pre>
+<p>Specielt brugbar i statistiske metoder, der kræver kun numeriske variabler, er <code>where()</code>, når den kombineres med <code>is.numeric</code>. For eksempel, i følgende kode udvælger man kun numeriske variabler fra datasættet <code>titanic_clean</code>:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data.html#cb34-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 714 × 7
+#&gt;    PassengerId Survived Pclass   Age SibSp Parch  Fare
+#&gt;          &lt;int&gt;    &lt;int&gt;  &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+#&gt;  1           1        0      3    22     1     0  7.25
+#&gt;  2           2        1      1    38     1     0 71.3 
+#&gt;  3           3        1      3    26     0     0  7.92
+#&gt;  4           4        1      1    35     1     0 53.1 
+#&gt;  5           5        0      3    35     0     0  8.05
+#&gt;  6           7        0      1    54     0     0 51.9 
+#&gt;  7           8        0      3     2     3     1 21.1 
+#&gt;  8           9        1      3    27     0     2 11.1 
+#&gt;  9          10        1      2    14     1     0 30.1 
+#&gt; 10          11        1      3     4     1     1 16.7 
+#&gt; # ℹ 704 more rows</code></pre>
+</div>
+</div>
+<div id="dplyr-verbs-filter" class="section level3 hasAnchor" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> dplyr verbs: <code>filter()</code><a href="data.html#dplyr-verbs-filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Med funktionen <code>select()</code> udvælger man bestemte <strong>variabler</strong>. Til gengæld anvender man funktionen <code>filter()</code> til at udvælge bestemte <strong>observationer</strong> (rækker) fra en dataframe. I nedenstående eksempel beholder vi kun rækkerne, hvor variablen <code>Age</code> er lig med 50. Bemærk, at vi bevarer alle variabler i dataframe.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data.html#cb36-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="data.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Age <span class="sc">==</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="data.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 10
+#&gt; Columns: 11
+#&gt; $ PassengerId &lt;int&gt; 178, 260, 300, 435, 459, 483, 527, 545, 661, 724
+#&gt; $ Survived    &lt;int&gt; 0, 1, 1, 0, 1, 0, 1, 0, 1, 0
+#&gt; $ Pclass      &lt;int&gt; 1, 2, 1, 1, 2, 3, 2, 1, 1, 2
+#&gt; $ Name        &lt;chr&gt; &quot;Isham, Miss. Ann Elizabeth&quot;, &quot;Parrish, Mrs. (Lutie Davis)…
+#&gt; $ Sex         &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;f…
+#&gt; $ Age         &lt;dbl&gt; 50, 50, 50, 50, 50, 50, 50, 50, 50, 50
+#&gt; $ SibSp       &lt;int&gt; 0, 0, 0, 1, 0, 0, 0, 1, 2, 0
+#&gt; $ Parch       &lt;int&gt; 0, 1, 1, 0, 0, 0, 0, 0, 0, 0
+#&gt; $ Ticket      &lt;chr&gt; &quot;PC 17595&quot;, &quot;230433&quot;, &quot;PC 17558&quot;, &quot;13507&quot;, &quot;F.C.C. 13531&quot;,…
+#&gt; $ Fare        &lt;dbl&gt; 28.7125, 26.0000, 247.5208, 55.9000, 10.5000, 8.0500, 10.5…
+#&gt; $ Embarked    &lt;chr&gt; &quot;C&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;</code></pre>
+<p>Man kan også vælge intervallet af en variabel - for eksempel hvis man vil vælge alle, der er i halvtredserne.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data.html#cb38-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="data.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Age <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;</span> Age <span class="sc">&lt;</span> <span class="dv">60</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="data.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 6 × 11
+#&gt;   PassengerId Survived Pclass Name          Sex     Age SibSp Parch Ticket  Fare
+#&gt;         &lt;int&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+#&gt; 1           7        0      1 &quot;McCarthy, M… male     54     0     0 17463  51.9 
+#&gt; 2          12        1      1 &quot;Bonnell, Mi… fema…    58     0     0 113783 26.6 
+#&gt; 3          16        1      2 &quot;Hewlett, Mr… fema…    55     0     0 248706 16   
+#&gt; 4          95        0      3 &quot;Coxon, Mr. … male     59     0     0 364500  7.25
+#&gt; 5         125        0      1 &quot;White, Mr. … male     54     0     1 35281  77.3 
+#&gt; 6         151        0      2 &quot;Bateman, Re… male     51     0     0 S.O.P… 12.5 
+#&gt; # ℹ 1 more variable: Embarked &lt;chr&gt;</code></pre>
+<p>Man kan også kombinere betingelser fra forskellige kolonner, for eksempel i nedenstående eksempel vælger vi alle personer, som er kvinder <strong>og</strong> som rejste i første klasse.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data.html#cb40-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="data.html#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">&#39;female&#39;</span> <span class="sc">&amp;</span> Pclass <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="data.html#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 6 × 11
+#&gt;   PassengerId Survived Pclass Name          Sex     Age SibSp Parch Ticket  Fare
+#&gt;         &lt;int&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+#&gt; 1           2        1      1 Cumings, Mrs… fema…    38     1     0 PC 17…  71.3
+#&gt; 2           4        1      1 Futrelle, Mr… fema…    35     1     0 113803  53.1
+#&gt; 3          12        1      1 Bonnell, Mis… fema…    58     0     0 113783  26.6
+#&gt; 4          53        1      1 Harper, Mrs.… fema…    49     1     0 PC 17…  76.7
+#&gt; 5          62        1      1 Icard, Miss.… fema…    38     0     0 113572  80  
+#&gt; 6          89        1      1 Fortune, Mis… fema…    23     3     2 19950  263  
+#&gt; # ℹ 1 more variable: Embarked &lt;chr&gt;</code></pre>
+<p>Vi kan også kombinere flere betingelser med forskellige symboler. For eksempel i nedenstående eksempel vælger vi personer, som er kvinder <strong>og</strong> som rejste i <strong>enten</strong> første eller anden klasse <strong>og</strong> som er <strong>i</strong> trediverne. Husk at tilføje runde parenteser omkring de to <code>Pclass</code> - prøv selv at fjerne dem og se, hvad der sker.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data.html#cb42-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="data.html#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">&#39;female&#39;</span> <span class="sc">&amp;</span> (Pclass <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> Pclass <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">&amp;</span> Age <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">39</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="data.html#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 43
+#&gt; Columns: 11
+#&gt; $ PassengerId &lt;int&gt; 2, 4, 62, 99, 191, 212, 216, 219, 231, 258, 259, 270, 310,…
+#&gt; $ Survived    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1…
+#&gt; $ Pclass      &lt;int&gt; 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 2, 1, 2…
+#&gt; $ Name        &lt;chr&gt; &quot;Cumings, Mrs. John Bradley (Florence Briggs Thayer)&quot;, &quot;Fu…
+#&gt; $ Sex         &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;…
+#&gt; $ Age         &lt;dbl&gt; 38, 35, 38, 34, 32, 35, 31, 32, 35, 30, 35, 35, 30, 31, 30…
+#&gt; $ SibSp       &lt;int&gt; 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0…
+#&gt; $ Parch       &lt;int&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0…
+#&gt; $ Ticket      &lt;chr&gt; &quot;PC 17599&quot;, &quot;113803&quot;, &quot;113572&quot;, &quot;231919&quot;, &quot;234604&quot;, &quot;F.C.C…
+#&gt; $ Fare        &lt;dbl&gt; 71.2833, 53.1000, 80.0000, 23.0000, 13.0000, 21.0000, 113.…
+#&gt; $ Embarked    &lt;chr&gt; &quot;C&quot;, &quot;S&quot;, &quot;&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;,…</code></pre>
+</div>
+<div id="sammenligningsoperatorer" class="section level3 hasAnchor" number="5.7.3">
+<h3><span class="header-section-number">5.7.3</span> Sammenligningsoperatorer<a href="data.html#sammenligningsoperatorer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Her er en tabel over sammenligningsoperatorer, som kan bruges i både <code>filter()</code> og i baseR (fordi konceptet bag er det samme, bare tilgangen er anderledes).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Sammenligningsoperator</th>
+<th>Beskrivelse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>mindre end</td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>større end</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>mindre end eller lig med</td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>større end eller lig med</td>
+</tr>
+<tr class="odd">
+<td><code>==</code></td>
+<td>lig med</td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>forskellig fra</td>
+</tr>
+<tr class="odd">
+<td><code>&amp;</code></td>
+<td>og</td>
+</tr>
+<tr class="even">
+<td><code>%in%</code></td>
+<td>inkluderet i</td>
+</tr>
+<tr class="odd">
+<td><code>|</code></td>
+<td>eller</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="kombinere-filter-og-select" class="section level3 hasAnchor" number="5.7.4">
+<h3><span class="header-section-number">5.7.4</span> Kombinere <code>filter()</code> og <code>select()</code><a href="data.html#kombinere-filter-og-select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man kan også kombinere både <code>filter()</code> og <code>select()</code> i samme kommando, som i følgende eksempel:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="data.html#cb44-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="data.html#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">&#39;female&#39;</span> <span class="sc">&amp;</span> (Pclass <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> Pclass <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">&amp;</span> Age <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">39</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="data.html#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Name, Fare)  <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="data.html#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 43
+#&gt; Columns: 2
+#&gt; $ Name &lt;chr&gt; &quot;Cumings, Mrs. John Bradley (Florence Briggs Thayer)&quot;, &quot;Futrelle,…
+#&gt; $ Fare &lt;dbl&gt; 71.2833, 53.1000, 80.0000, 23.0000, 13.0000, 21.0000, 113.2750, 7…</code></pre>
+<p>Bemærk at man skal være opmærksom på rækkefølgen, som man anvender de forskellige funktioner. Hvis man bytter rundt på <code>filter()</code> og <code>select()</code> i ovenstående eksempel, vil der opstå en advarsel. Prøv selv at køre følgende kode:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="do">##virker ikke!!!!!#####</span></span>
+<span id="cb46-2"><a href="data.html#cb46-2" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="data.html#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Name, Fare)  <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="data.html#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">&#39;female&#39;</span> <span class="sc">&amp;</span> (Pclass <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> Pclass <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">&amp;</span> Age <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">39</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-5"><a href="data.html#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glimpse</span>()</span></code></pre></div>
+<p>Det skyldes, at hvis man først vælger at beholde variablerne <code>Name</code> og <code>Age</code>, så er de andre variabler ikke længere tilgængelige i den resulterende dataframe, som dernæst bruges i funktionen <code>filter()</code>. Derfor kan man ikke bruge funktionen <code>filter()</code> på variablerne <code>Pclass</code>,<code>Sex</code> og <code>Age</code>.</p>
+</div>
+<div id="dplyr-verbs-mutate" class="section level3 hasAnchor" number="5.7.5">
+<h3><span class="header-section-number">5.7.5</span> dplyr verbs: <code>mutate()</code><a href="data.html#dplyr-verbs-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man kan bruge funktionen <code>mutate()</code> til at tilføje en ny variabel til en dataframe. I nedenstående eksempel tilføjer jeg en ny variabel med navnet <code>Adult</code>, der angiver om personen kan betragtes som voksen (hvis vedkommende er mindst 18 år gammel).</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data.html#cb47-1" aria-hidden="true" tabindex="-1"></a>titanic_with_Adult <span class="ot">&lt;-</span> titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a href="data.html#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Adult =</span> Age<span class="sc">&gt;=</span><span class="dv">18</span>)</span>
+<span id="cb47-3"><a href="data.html#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="data.html#cb47-4" aria-hidden="true" tabindex="-1"></a>titanic_with_Adult <span class="sc">%&gt;%</span> <span class="fu">select</span>(Adult) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 1
+#&gt; $ Adult &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, T…</code></pre>
+<p>Så kan man se, at der er 601 voksne og 113 børn som passagerere på skibet.</p>
+<p>Bemærk, at jeg gemmer resultatet som en ny dataframe, der hedder <code>titanic_with_Adult</code>, og derefter bruger jeg <code>glimpse()</code> på det nye objekt <code>titanic_with_Adult</code> for at se, hvordan min nye dataframe ser ud. I forudgående eksempler havde jeg ikke gemt resultatet - jeg havde bare brugt <code>glimpse()</code> for at se resultatet på skærmen. Hvis du gerne vil bruge din resulterende dataframe videre, så skal du huske at gemme den (ved brug af <code>&lt;-</code>-tegnet).</p>
+<p><strong>funktionen <code>ifelse()</code> indenfor <code>mutate()</code></strong></p>
+<p>Jeg kan oprette variablen <code>Adult</code> på en mere informativ måde end bare med <code>TRUE</code> eller <code>FALSE</code>. Jeg bruger funktionen <code>ifelse()</code>, som giver mulighed for at angive, at jeg gerne vil have teksten “adult”, hvis udsagnet <code>Age&gt;=18</code> er sandt, og hvis det er falsk, vil jeg have teksten “child”:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(Age<span class="sc">&gt;=</span><span class="dv">18</span>,<span class="st">&quot;adult&quot;</span>,<span class="st">&quot;child&quot;</span>)</span></code></pre></div>
+<p>Funktionen <code>ifelse()</code> bruges inden for <code>mutate()</code>-funktionen, fordi vi er i gang med at oprette en ny variabel, <code>Adult</code> - <code>ifelse()</code> giver os mulighed for at fortælle, hvordan den nye variabel skal se ud.</p>
+<!-- mere informativ Adult kolonne -->
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data.html#cb50-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="data.html#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Adult =</span> <span class="fu">ifelse</span>(Age<span class="sc">&gt;=</span><span class="dv">18</span>,<span class="st">&quot;adult&quot;</span>,<span class="st">&quot;child&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="data.html#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Age,Adult) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="data.html#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 2
+#&gt; $ Age   &lt;dbl&gt; 22, 38, 26, 35, 35, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, 2, 31,…
+#&gt; $ Adult &lt;chr&gt; &quot;adult&quot;, &quot;adult&quot;, &quot;adult&quot;, &quot;adult&quot;, &quot;adult&quot;, &quot;adult&quot;, &quot;child&quot;, &quot;…</code></pre>
+<p>Så er variablen lidt mere informativ end før.</p>
+<p><strong><em>Opret nye variabler ud fra andre variabler</em></strong></p>
+<p>Man kan også oprette nye kolonner baseret på kombinationer af nogle af de eksisterende kolonner. For eksempel, lad os forestille os, at vi gerne vil have en ny kolonne, der viser summen af variablene <code>Fare</code> og <code>Age</code>, en der viser gennemsnittet af de to variabler, og en der hedder “Fare_per_year”. Det vises i følgende eksempel:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data.html#cb52-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="data.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;Fare_Age_sum&quot;</span> <span class="ot">=</span> Fare <span class="sc">+</span> Age,</span>
+<span id="cb52-3"><a href="data.html#cb52-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Fare_Age_mean&quot;</span> <span class="ot">=</span> Fare_Age_sum <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb52-4"><a href="data.html#cb52-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Fare_per_year&quot;</span> <span class="ot">=</span> Fare <span class="sc">/</span> Age) <span class="sc">%&gt;%</span></span>
+<span id="cb52-5"><a href="data.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Age, Fare, Fare_Age_sum, Fare_Age_mean, Fare_per_year) <span class="sc">%&gt;%</span></span>
+<span id="cb52-6"><a href="data.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 5
+#&gt; $ Age           &lt;dbl&gt; 22, 38, 26, 35, 35, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55…
+#&gt; $ Fare          &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 51.8625, 21.07…
+#&gt; $ Fare_Age_sum  &lt;dbl&gt; 29.2500, 109.2833, 33.9250, 88.1000, 43.0500, 105.8625, …
+#&gt; $ Fare_Age_mean &lt;dbl&gt; 14.62500, 54.64165, 16.96250, 44.05000, 21.52500, 52.931…
+#&gt; $ Fare_per_year &lt;dbl&gt; 0.3295455, 1.8758763, 0.3048077, 1.5171429, 0.2300000, 0…</code></pre>
+<p>Det er klart, at fortolkningen af <code>Fare_Age_mean</code> måske ikke er særlig interessant, men der ville være mange situationer, hvor man gerne vil kombinere kolonner for at lave en bestemt beregning.</p>
+</div>
+<div id="rename" class="section level3 hasAnchor" number="5.7.6">
+<h3><span class="header-section-number">5.7.6</span> <code>rename()</code><a href="data.html#rename" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man kan bruge <code>rename()</code> til at ændre navnet på en eller flere variable i datasættet. Som et eksempel bruger jeg <code>rename()</code> til at give en variabel navnet <code>Years</code> i stedet for <code>Age</code> (bemærk, at variablen <code>Age</code> ikke findes længere).</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data.html#cb54-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="data.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Years =</span> Age) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="data.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 11
+#&gt; $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19…
+#&gt; $ Survived    &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1…
+#&gt; $ Pclass      &lt;int&gt; 3, 1, 3, 1, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 3, 2, 2, 3…
+#&gt; $ Name        &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Fl…
+#&gt; $ Sex         &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;mal…
+#&gt; $ Years       &lt;dbl&gt; 22, 38, 26, 35, 35, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, …
+#&gt; $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 1, 0, 0, 0…
+#&gt; $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0…
+#&gt; $ Ticket      &lt;chr&gt; &quot;A/5 21171&quot;, &quot;PC 17599&quot;, &quot;STON/O2. 3101282&quot;, &quot;113803&quot;, &quot;37…
+#&gt; $ Fare        &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 51.8625, 21.0750…
+#&gt; $ Embarked    &lt;chr&gt; &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;…</code></pre>
+<p>Man kan også ændre navnene på flere kolonner på én gang. For eksempel i følgende kode laver jeg nogle oversættelsesarbejde:</p>
+<!-- Ændre navne på flere kolonner på én gang -->
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data.html#cb56-1" aria-hidden="true" tabindex="-1"></a>titanic_clean_dansk <span class="ot">&lt;-</span> titanic_clean <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="data.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Overlevede =</span> Survived,</span>
+<span id="cb56-3"><a href="data.html#cb56-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">Navn =</span> Name,</span>
+<span id="cb56-4"><a href="data.html#cb56-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">Klasse =</span> Pclass)</span></code></pre></div>
+<p>Så du kan se, at jeg har ændret variablenes navne. Jeg kalder den nye dataframe for <code>titanic_clean_dansk</code>, så min danske version er blevet gemt et sted.</p>
+<p>Man kan også gøre sådan, at alle bogstaver i variablernes navne er små bogstaver. Jeg benytter den danske version, og jeg anvender <code>rename_with()</code> og specificerer <code>tolower</code>.</p>
+<!-- Ændre navne til små bogstaver -->
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data.html#cb57-1" aria-hidden="true" tabindex="-1"></a>titanic_clean_dansk <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="data.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">%&gt;%</span> <span class="co"># alle variablernes navne er kun små bogstaver</span></span>
+<span id="cb57-3"><a href="data.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 11
+#&gt; $ passengerid &lt;int&gt; 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19…
+#&gt; $ overlevede  &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1…
+#&gt; $ klasse      &lt;int&gt; 3, 1, 3, 1, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 3, 2, 2, 3…
+#&gt; $ navn        &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Fl…
+#&gt; $ sex         &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;mal…
+#&gt; $ age         &lt;dbl&gt; 22, 38, 26, 35, 35, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, …
+#&gt; $ sibsp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 1, 0, 0, 0…
+#&gt; $ parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0…
+#&gt; $ ticket      &lt;chr&gt; &quot;A/5 21171&quot;, &quot;PC 17599&quot;, &quot;STON/O2. 3101282&quot;, &quot;113803&quot;, &quot;37…
+#&gt; $ fare        &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 51.8625, 21.0750…
+#&gt; $ embarked    &lt;chr&gt; &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;…</code></pre>
+<p>Prøv også at erstatte <code>tolower</code> med <code>toupper</code>.</p>
+</div>
+<div id="dplyr-verbs-recode" class="section level3 hasAnchor" number="5.7.7">
+<h3><span class="header-section-number">5.7.7</span> dplyr verbs: <code>recode()</code><a href="data.html#dplyr-verbs-recode" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Med <code>recode()</code> kan man ændre hvordan en variable ser ud. For eksempel kan man ændre “male”/“female” til 0/1, som vist i følgende eksempel:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data.html#cb59-1" aria-hidden="true" tabindex="-1"></a> titanic_clean <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="data.html#cb59-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="fu">recode</span>(Sex,  <span class="st">&quot;male&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">&quot;female&quot;</span> <span class="ot">=</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="data.html#cb59-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(PassengerId,Name,Sex) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 3
+#&gt; $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19…
+#&gt; $ Name        &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Fl…
+#&gt; $ Sex         &lt;dbl&gt; 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1…</code></pre>
+<p>Bemærk, at funktionen <code>recode()</code> er blevet brugt indenfor funktionen <code>mutate()</code>. Jeg lavede en ny variable af samme navn, men med ændret værdier indenfor variablen.</p>
+<p>Hvis man ønsker at ændre tilbage fra 0/1 til “male”/“female”, skal man skrive <code>1</code> / <code>0</code> for at specificere, at man har talværdier, og man ønsker at kalde dem for noget andet (“male”/“female” i dette tilfælde):</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">#recodes variable Sex and then recodes it back to original form again</span></span>
+<span id="cb61-2"><a href="data.html#cb61-2" aria-hidden="true" tabindex="-1"></a> titanic_clean <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="data.html#cb61-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="fu">recode</span>(Sex,  <span class="at">male =</span> <span class="dv">1</span>, <span class="at">female =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="data.html#cb61-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="fu">recode</span>(Sex,  <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;male&quot;</span>, <span class="st">`</span><span class="at">0</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;female&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#note use of `` in the numbers </span></span>
+<span id="cb61-5"><a href="data.html#cb61-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(PassengerId,Name,Sex) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 3
+#&gt; $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19…
+#&gt; $ Name        &lt;chr&gt; &quot;Braund, Mr. Owen Harris&quot;, &quot;Cumings, Mrs. John Bradley (Fl…
+#&gt; $ Sex         &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;mal…</code></pre>
+<p>Bemærk brugen af `` i tallene.</p>
+</div>
+<div id="dplyr-verbs-arrange" class="section level3 hasAnchor" number="5.7.8">
+<h3><span class="header-section-number">5.7.8</span> dplyr verbs: <code>arrange()</code><a href="data.html#dplyr-verbs-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man anvender <code>arrange()</code> for at vælge rækkefølgen på observationerne. I nedenstående eksempel tager vi datarammen <code>titanic_clean</code> og arrangerer observationer efter variablen <code>Fare</code>. Det betyder, at personer, der har betalt mindst, vil være øverst i den resulterende dataramme, mens personer, der har betalt mest, vil være nederst.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange by increasing Fare</span></span>
+<span id="cb63-2"><a href="data.html#cb63-2" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="data.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Fare) <span class="sc">%&gt;%</span></span>
+<span id="cb63-4"><a href="data.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 11
+#&gt; $ PassengerId &lt;int&gt; 180, 264, 272, 303, 598, 807, 823, 379, 873, 327, 844, 819…
+#&gt; $ Survived    &lt;int&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0…
+#&gt; $ Pclass      &lt;int&gt; 3, 1, 3, 3, 3, 1, 1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3…
+#&gt; $ Name        &lt;chr&gt; &quot;Leonard, Mr. Lionel&quot;, &quot;Harrison, Mr. William&quot;, &quot;Tornquist…
+#&gt; $ Sex         &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;m…
+#&gt; $ Age         &lt;dbl&gt; 36.0, 40.0, 25.0, 19.0, 49.0, 39.0, 38.0, 20.0, 33.0, 61.0…
+#&gt; $ SibSp       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0…
+#&gt; $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#&gt; $ Ticket      &lt;chr&gt; &quot;LINE&quot;, &quot;112059&quot;, &quot;LINE&quot;, &quot;LINE&quot;, &quot;LINE&quot;, &quot;112050&quot;, &quot;19972…
+#&gt; $ Fare        &lt;dbl&gt; 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 4.…
+#&gt; $ Embarked    &lt;chr&gt; &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;S&quot;…</code></pre>
+<p>Hvis man gerne vil have det omvendt - at personer som har betalt mest, skal være øverst i datarammen, kan man bruge <code>desc()</code> omkring <code>Fare</code>, som i nedenstående:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange by decreasing Fare</span></span>
+<span id="cb65-2"><a href="data.html#cb65-2" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="data.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Fare)) <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="data.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 714
+#&gt; Columns: 11
+#&gt; $ PassengerId &lt;int&gt; 259, 680, 738, 28, 89, 342, 439, 312, 743, 119, 300, 381, …
+#&gt; $ Survived    &lt;int&gt; 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1…
+#&gt; $ Pclass      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+#&gt; $ Name        &lt;chr&gt; &quot;Ward, Miss. Anna&quot;, &quot;Cardeza, Mr. Thomas Drake Martinez&quot;, …
+#&gt; $ Sex         &lt;chr&gt; &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;mal…
+#&gt; $ Age         &lt;dbl&gt; 35.00, 36.00, 35.00, 19.00, 23.00, 24.00, 64.00, 18.00, 21…
+#&gt; $ SibSp       &lt;int&gt; 0, 0, 0, 3, 3, 3, 1, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1…
+#&gt; $ Parch       &lt;int&gt; 0, 1, 0, 2, 2, 2, 4, 2, 2, 1, 1, 0, 0, 0, 2, 1, 0, 1, 2, 1…
+#&gt; $ Ticket      &lt;chr&gt; &quot;PC 17755&quot;, &quot;PC 17755&quot;, &quot;PC 17755&quot;, &quot;19950&quot;, &quot;19950&quot;, &quot;199…
+#&gt; $ Fare        &lt;dbl&gt; 512.3292, 512.3292, 512.3292, 263.0000, 263.0000, 263.0000…
+#&gt; $ Embarked    &lt;chr&gt; &quot;C&quot;, &quot;C&quot;, &quot;C&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;C&quot;, &quot;C&quot;, &quot;C&quot;, &quot;C&quot;, &quot;C&quot;…</code></pre>
+</div>
+</div>
+<div id="visualisering-bruge-som-input-i-ggplot2" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Visualisering: bruge som input i ggplot2<a href="data.html#visualisering-bruge-som-input-i-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Efter man har udført bearbejdning med <code>tidyverse</code>-kommandoer, kan man specificere den resulterende dataramme som data i funktionen <code>ggplot()</code>. Man benytter <code>%&gt;%</code>-operatoren til at forbinde <code>dplyr</code>-kommandoerne med <code>ggplot</code>-funktionen, og i dette tilfælde behøver man ikke at angive navnet på datarammen inde i <code>ggplot</code>-funktionen. I nedenstående eksempel tager jeg udgangspunkt i <code>titanic_clean</code> og laver et søjlediagram, som viser antallet af passagerer, der rejste i hver af de tre klasser.</p>
+<!-- Tag titanic_clean og lave et barplot -->
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data.html#cb67-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="data.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Pclass,<span class="at">fill=</span><span class="fu">as.factor</span>(Pclass))) <span class="sc">+</span> </span>
+<span id="cb67-3"><a href="data.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb67-4"><a href="data.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="05-tidyverse1_files/figure-html/unnamed-chunk-43-1.svg" width="288" style="display: block; margin: auto;" /></p>
+<p>Jeg gør det lidt mere kompliceret i følgende eksempel, hvor jeg tager udgangspunkt i <code>titanic_clean</code>, laver en ny kolonne kaldet <code>Adult</code> ved at bruge <code>mutate()</code>, og derefter bruger jeg den resulterende dataframe i <code>ggplot()</code> funktionen til at lave et plot, hvor jeg tæller antallet af voksne og børn:</p>
+<!-- Lave Adult kolon og lave et barplot -->
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data.html#cb68-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a href="data.html#cb68-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Adult =</span> <span class="fu">ifelse</span>(Age<span class="sc">&gt;=</span><span class="dv">18</span>,<span class="st">&quot;Adult&quot;</span>,<span class="st">&quot;Child&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-3"><a href="data.html#cb68-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Adult,<span class="at">fill=</span>Adult)) <span class="sc">+</span> </span>
+<span id="cb68-4"><a href="data.html#cb68-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;count&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb68-5"><a href="data.html#cb68-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="05-tidyverse1_files/figure-html/unnamed-chunk-44-1.svg" width="288" style="display: block; margin: auto;" /></p>
+<p>Så kan man se, at der var 600 voksne og lidt over 100 børn ombord på skibet.</p>
+</div>
+<div id="misc-funktioner-som-er-nyttige-at-vide" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Misc funktioner som er nyttige at vide<a href="data.html#misc-funktioner-som-er-nyttige-at-vide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pull" class="section level3 hasAnchor" number="5.9.1">
+<h3><span class="header-section-number">5.9.1</span> Pull<a href="data.html#pull" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I tidyverse arbejder vi meget med dataframes. Tilgangen er, at man tager udgangspunkt i en dataframe, får en dataframe som resultat, og så arbejder videre på den dataframe. Nogle gange kan det dog være, at man gerne vil udtrække en variabel som en vektor fra en dataframe, fx hvis man gerne vil bruge den i en bestemt statistisk metode.</p>
+<p>Her er et eksempel, hvor man udtrækker variablen <code>Age</code> for “male” og “female” (variablen <code>Sex</code>) og bruger de resulterende vektorer i en t-test:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data.html#cb69-1" aria-hidden="true" tabindex="-1"></a>ages_male <span class="ot">&lt;-</span> titanic_clean <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Age)</span>
+<span id="cb69-2"><a href="data.html#cb69-2" aria-hidden="true" tabindex="-1"></a>ages_female <span class="ot">&lt;-</span> titanic_clean <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">&quot;female&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Age)</span>
+<span id="cb69-3"><a href="data.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ages_male,ages_female)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt;  Welch Two Sample t-test
+#&gt; 
+#&gt; data:  ages_male and ages_female
+#&gt; t = 2.5259, df = 560.05, p-value = 0.01181
+#&gt; alternative hypothesis: true difference in means is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.6250732 4.9967983
+#&gt; sample estimates:
+#&gt; mean of x mean of y 
+#&gt;  30.72664  27.91571</code></pre>
+<p>Så kan man se, at mænd og kvinder i gennemsnit har signifikant forskellige aldre (hvor mændene er ældre end kvinderne).</p>
+</div>
+<div id="slice" class="section level3 hasAnchor" number="5.9.2">
+<h3><span class="header-section-number">5.9.2</span> Slice<a href="data.html#slice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Med funktionen <code>slice</code> kan man vælge specifikke observationer i en dataframe. Følgende eksempel viser de to passagerer, der har betalt mest for deres billet (variabeln <code>Fare</code>).</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data.html#cb71-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb71-2"><a href="data.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Fare)) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="data.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name,Age) <span class="sc">%&gt;%</span> </span>
+<span id="cb71-4"><a href="data.html#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 2 × 2
+#&gt;   Name                                 Age
+#&gt;   &lt;chr&gt;                              &lt;dbl&gt;
+#&gt; 1 Ward, Miss. Anna                      35
+#&gt; 2 Cardeza, Mr. Thomas Drake Martinez    36</code></pre>
+<p>Se udvidet muligheder her: <a href="https://dplyr.tidyverse.org/reference/slice.html" class="uri">https://dplyr.tidyverse.org/reference/slice.html</a></p>
+</div>
+</div>
+<div id="problemstillinger-4" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Problemstillinger<a href="data.html#problemstillinger-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Problem 1</strong>) Lav quizzen på Absalon - “Quiz - tidyverse - part 1”</p>
+<hr />
+<p><em>Vi øver os med datasættet Titanic. Indlæs datasættet og udfør den overstående oprydning med følgende kode:</em></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb73-2"><a href="data.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(titanic)</span>
+<span id="cb73-3"><a href="data.html#cb73-3" aria-hidden="true" tabindex="-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(titanic_train)</span>
+<span id="cb73-4"><a href="data.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="data.html#cb73-5" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="ot">&lt;-</span> titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb73-6"><a href="data.html#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>Cabin) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-7"><a href="data.html#cb73-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb73-8"><a href="data.html#cb73-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Adult =</span> <span class="fu">ifelse</span>(Age<span class="sc">&gt;=</span><span class="dv">18</span>,<span class="st">&quot;adult&quot;</span>,<span class="st">&quot;child&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb73-9"><a href="data.html#cb73-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Survived =</span> <span class="fu">recode</span>(Survived,  <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;yes&quot;</span>, <span class="st">`</span><span class="at">0</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;no&quot;</span>)) </span>
+<span id="cb73-10"><a href="data.html#cb73-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb73-11"><a href="data.html#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(titanic_clean) <span class="co">#take a look!</span></span></code></pre></div>
+<!-- `count()` Tæller op observationer. -->
+<!-- ```{r} -->
+<!-- titanic %>% -->
+<!--   filter(Sex %in% c("female","male")) %>% -->
+<!--   count(Sex) %>% -->
+<!--   head() -->
+<!-- ``` -->
+<hr />
+<p><strong>Problem 2</strong>) <code>select()</code>. Tag udgangspunkt i <code>titanic_clean</code> og fjern variablen <code>Name</code> (du behøver ikke at gemme din nye dataframe).</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="data.html#cb74-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb74-2"><a href="data.html#cb74-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(...) <span class="co">#redigere her</span></span></code></pre></div>
+<ul>
+<li>Tilføj også <code>glimpse()</code> for at se et overblik (man kan også bruge <code>head()</code>)</li>
+</ul>
+<hr />
+<p><strong>Problem 3</strong>) <code>select()</code>. Lav en ny dataframe ud fra <code>titanic_clean</code> med kun variabler <code>Name</code>, <code>Pclass</code> og <code>Fare</code> (du behøver ikke at gemme den).</p>
+<ul>
+<li>Gør det nogen forskel, i hvilken rækkefølge man skriver <code>Name</code>, <code>Pclass</code> og <code>Fare</code>?</li>
+</ul>
+<hr />
+<p><strong>Problem 4</strong>) <em><code>select()</code> og hjælper funktioner</em>. Tag udgangspunkt i <code>titanic_clean</code>. Hvad sker der, når man skriver <code>starts_with("S")</code> i stedet for at specificere bestemte kolonnenavne inden for <code>select()</code>?</p>
+<ul>
+<li><p>Prøv også <code>contains("ar")</code></p></li>
+<li><p>Prøv også <code>-any_of(c("Survived","Pclass","FavouriteColour"))</code> og <code>-all_of(c("Survived","Pclass","FavouriteColour"))</code></p>
+<ul>
+<li>Hvis man bruger <code>all_of()</code>, så skal alle variable i vektoren <code>c("Survived","Pclass","FavouriteColour")</code> findes i datasættet, ellers vil man få en advarsel.</li>
+<li>Hvis man bruger <code>any_of()</code>, så vil alle variable fra vektoren <code>c("Survived","Pclass","FavouriteColour")</code>, som findes i datasættet, blive inkluderet, mens de andre variable vil blive ignoreret.</li>
+</ul></li>
+<li><p>Prøv også <code>matches("^S[i|u]")</code> - kan du gætte hvad det betyder (se nedenunder)?</p></li>
+</ul>
+<hr />
+<!-- __Problem 5__) `filter()`. Lave en ny dataframe fra `titanic_clean` med alle personer som er `male` __og__ over 30 år gammel. -->
+<!-- ```{r,echo=FALSE,eval=FALSE} -->
+<!-- titanic_clean %>%  -->
+<!--   filter(Sex=="male" & Age>30) %>% -->
+<!--   glimpse() -->
+<!-- ``` -->
+<!-- --- -->
+<p><strong>Problem 5</strong>) <code>filter()</code>. Opret en ny dataframe ud fra <code>titanic_clean</code> med alle passagerer, der er mellem 10 og 15 år gammel og har rejst i enten første eller anden klasse (du behøver ikke at gemme den).</p>
+<ul>
+<li>Prøv at tilføje <code>%&gt;% count()</code> til kommandoen - Hvor mange observationer er der i din nye dataframe?</li>
+</ul>
+<hr />
+<p><strong>Problem 6</strong>) <em><code>filter()</code> og <code>select()</code> : kombinering med <code>%&gt;%</code></em></p>
+<p>Opret en ny dataframe ud fra <code>titanic_clean</code> med alle passagerer, der er “male” og har overlevet (variablen <code>Survived</code> er “yes”), og vælg kun kolonnerne <code>Name</code>, <code>Age</code> og <code>Fare</code>.</p>
+<hr />
+<p><strong>Problem 7</strong>) <em><code>filter()</code> og <code>select()</code> kombinering med <code>%&gt;%</code></em></p>
+<p>Opret en ny dataframe ud fra <code>titanic_clean</code> med kun variabler <code>Name</code> og <code>Age</code> og dernæst specificere kun de passagerer som er over 60.</p>
+<ul>
+<li>Få du så den samme sæt observationer hvis du skriver dine <code>select()</code> og <code>filter()</code> funktionerne omvendt? Hvorfor?</li>
+</ul>
+<hr />
+<p><strong>Problem 8</strong>) <em><code>Mutate()</code></em>. Ud fra <code>titanic_clean</code> opret en ny kolonne, som hedder <code>FareRounded</code> og viser <code>Fare</code> rundet til det nærmest integar (hint: benyt funktionen <code>round()</code>).</p>
+<hr />
+<p><strong>Problem 9</strong>) <em><code>Mutate()</code></em>. Ud fra <code>titanic_clean</code> opret en ny kolonne, som hedder <code>Mean_ID_Age</code> og viser gennemsnittet af variablen <code>PassengerId</code> og variablen <code>Age</code> (se sektion <strong><em>Opret nye variabler ud fra andre variabler</em></strong> i kursusnotaterne hvis du er i tvivl).</p>
+<hr />
+<p><strong>Problem 10</strong>) <em><code>mutate()</code></em> og <em><code>ifelse()</code></em>. Opret en ny dataramme ud fra <code>titanic_clean</code> med en ny kolon som hedder <code>Family</code> som angiver <code>TRUE</code> hvis <code>Parch</code> er ikke nul, ellers <code>FALSE</code>.</p>
+<ul>
+<li>Anvend funktionen-<code>ifelse()</code> til at gøre variablen mere intuitiv - “Family” og “Not family”.</li>
+</ul>
+<hr />
+<p><strong>Problem 11</strong>) <em><code>Mutate()</code></em> og <em><code>ifelse()</code></em></p>
+<p>Kig en gang til på beskrivelsen af følgende to variabler i datasættet:</p>
+<p><em><code>SibSp</code>: The number of siblings/spouses aboard the titanic with the passenger</em></p>
+<p><em><code>Parch</code>: The number of parents/children aboard the titanic with the passenger</em></p>
+<ul>
+<li>Tag udgangspunkt i <code>titanic_clean</code> og lav en ny variabel <code>Solo</code>, som viser “Ja”, hvis passageren rejste alene, og “Nej”, hvis passageren rejste med andre.</li>
+<li>Brug <code>mutate()</code> igen til at omdanne den nye variabel til en faktor.</li>
+<li>Gem også din nye dataframe, så du kan bruge din nye variabel videre i næste spørgsmål.</li>
+</ul>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data.html#cb75-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="ot">&lt;-</span> titanic_clean <span class="sc">%&gt;%</span>  ... </span></code></pre></div>
+<hr />
+<p><strong>Problem 12)</strong> <em>pull() og t.test()</em> Betalt passagererne, der rejste alene (variablen <code>Solo</code> fra sidste opgave), i gennemsnit det samme for deres billet (variablen <code>Fare</code>) som passagererne, der ikke rejste alene? Lav en t-test (anvend <code>filter()</code> og så <code>pull()</code> to gange til at udtrække passende vektorer og bruger dem i <code>t.test()</code>-funktionen - se også eksempel i kursusnoterne hvis du er usikker).</p>
+<p><strong>Problem 13</strong>) <em><code>Recode()</code></em> I variablen <code>Embarked</code>:</p>
+<ul>
+<li>C står for Cherbourg</li>
+<li>Q står for Queenstown</li>
+<li>S står for Southampton</li>
+</ul>
+<p><strong>a</strong>) Anvend <code>recode</code> (indenfor <code>mutate</code>) til at ændre værdierne i variablen <code>Embarked</code> således at man får de fulde navne af de steder folk gik ombord skibet, i stedet for kun den første bogstav. Gem også dit output (som <code>titanic_clean</code> igen) så du kan bruge din nye variable videre.</p>
+<p><strong>b</strong>) Erstat <code>recode</code>-funktionen med <code>recode_factor</code>-funktionen og sammenlign datatypen af variablen <code>Embarked</code> i din nye dataframe.</p>
+<p><strong>c</strong>) Prøv at tilføje funktionen <code>count()</code> for at optælle hvor mange gik om bord i de forskellige steder.</p>
+<ul>
+<li>Prøv også med to variabler indenfor <code>count()</code> - <code>Solo</code> og <code>Embarked</code></li>
+</ul>
+<p>Resultatet ser sådan ud:</p>
+<pre><code>#&gt; # A tibble: 7 × 3
+#&gt;   Solo  Embarked          n
+#&gt;   &lt;fct&gt; &lt;fct&gt;         &lt;int&gt;
+#&gt; 1 No    &quot;Southampton&quot;   229
+#&gt; 2 No    &quot;Queenstown&quot;      9
+#&gt; 3 No    &quot;Cherbourg&quot;      72
+#&gt; 4 Yes   &quot;Southampton&quot;   325
+#&gt; 5 Yes   &quot;Queenstown&quot;     19
+#&gt; 6 Yes   &quot;Cherbourg&quot;      58
+#&gt; 7 Yes   &quot;&quot;                2</code></pre>
+<p><strong>d</strong>) Man kan se, at der er to passagerer hvor der ikke er noget skrevet i <code>Embarked</code>.</p>
+<ul>
+<li>Rejste de alene?</li>
+<li>Gem din dataframe med de to passagerer fjernet.</li>
+</ul>
+<hr />
+<p><strong>Problem 14</strong>) <em><code>Arrange()</code></em>. Lav en ny dataramme ud fra <code>titanic_clean</code> med observationerne arrangerede således at de yngst er på toppen og ældste er på bunden. Kig på resultatet - hvad kan du fortælle om den yngste passager ombord skibet Titanic?</p>
+<ul>
+<li>Hvad kan du fortælle om den ældste passager ombord skibet? Overlevede de? Hvad med de andre ældste passagerer?</li>
+</ul>
+<hr />
+<p><strong>Problem 15</strong>) <em><code>Arrange()</code> og kombinering med andre verber</em>. Lav en ny dataramme fra <code>titanic_clean</code> med kun personer med <code>SibSp&gt;0</code> og som gik ombord skibet i Southampton, arrangere de resulterende observationer efter <code>Fare</code> (højeste på toppen) og udvælg kun kolonnerne <code>Name</code>, <code>Age</code> og <code>Fare</code>.</p>
+<hr />
+<p><strong>Problem 16</strong>) <em>Rename()</em>. Fra <code>titanic_clean</code> udvælg kun variabler <code>Survived</code>,<code>Ticket</code>, og <code>Name</code> og ændre deres navne til <code>Overlevede</code>, <code>Billet</code> og <code>Navn</code>.</p>
+<ul>
+<li>Gør variabler navne til store bogstaver ved at anvende <code>rename_with()</code>.</li>
+</ul>
+<hr />
+<p><strong>Problem 17</strong>) <em>Lave et plot</em>. Fra <code>titanic_clean</code> bruge <code>filter()</code> til at lave en ny dataramme kun med personer under 30 og bruge den til at lave et barplot som viser antallet af personer opdelt efter Pclass. Bruge følgende struktur for koden:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data.html#cb77-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="data.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(...) <span class="sc">%&gt;%</span> <span class="co">#rediger linjen</span></span>
+<span id="cb77-3"><a href="data.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(...)) <span class="sc">+</span> .... <span class="co">#tilføj plot</span></span></code></pre></div>
+<hr />
+<p><strong>Problem 18</strong>) <em>Lave et plot</em>. Fra <code>titanic_clean</code>, bruge <code>mutate()</code> til at lave et nyt kolon der hedder <code>with_siblings_spouses</code> der er <code>TRUE</code> hvis <code>SibSp</code> ikke er nul. Brug den til at lave boxplots som viser <code>Fare</code> på y-aksen og <code>with_siblings_spouses</code> på x-aksen.</p>
+<ul>
+<li>Ekstra: Ændre skalen på y-aksen for at gøre plottet klarer at fortolke.</li>
+</ul>
+</div>
+<div id="kommentarer" class="section level2 hasAnchor" number="5.11">
+<h2><span class="header-section-number">5.11</span> Kommentarer<a href="data.html#kommentarer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>matches("^S[i|u]")</code> betyder
+<ul>
+<li><code>^S</code> variabel navn skal starter med en S</li>
+<li><code>[i|u]</code> den næste bogstav i variabel navnet skal være enten i eller u</li>
+</ul></li>
+<li>OBS det er ikke vigtigt at lære pattern matching i kurset men det er meget brugbart i andre sammenhænge!</li>
+</ul>
+<p>Næste gange arbejder vi videre med tidyverse.</p>
+<ul>
+<li>Group_by kombinerede med Summarise</li>
+<li>Pivot_Longer/Pivot_Wider</li>
+<li>Join funktionerne</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visual2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-tidyverse1.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
