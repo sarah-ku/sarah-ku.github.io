@@ -1148,8 +1148,9 @@ __Problem 8__) *`Mutate()`*. Ud fra `titanic_clean` opret en ny kolonne, som hed
 ---
 
 
-__Problem 9__) *`Mutate()`*. Ud fra `titanic_clean` opret en ny kolonne, som hedder `Mean_ID_Age` og viser gennemsnittet af variablen `PassengerId` og variablen `Age` (se sektion ***Opret nye variabler ud fra andre variabler*** i kursusnotaterne hvis du er i tvivl).
-
+__Problem 9__) *`Mutate()`*. 
+* Ud fra `titanic_clean` opret en ny kolonne, som hedder `Mean_ID_Age` og viser gennemsnittet af variablen `PassengerId` og variablen `Age` (se sektion ***Opret nye variabler ud fra andre variabler*** i kursusnotaterne hvis du er i tvivl).
+* Opret også en ny kolonne, som viser summen af variablerne `SibSp`, `Parch`.
 
 
 
