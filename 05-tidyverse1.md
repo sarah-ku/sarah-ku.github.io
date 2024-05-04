@@ -3,6 +3,7 @@
 
 <img src="plots/hex-tidyverse.png" width="15%" style="display: block; margin: auto;" />
 
+"Du kan have data uden information, men du kan ikke have information uden data." --  Daniel Keys Moran
 
 ## Hvad er Tidyverse?
 
