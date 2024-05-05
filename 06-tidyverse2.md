@@ -805,7 +805,7 @@ gg1
 
 ## Problemstillinger
 
-__Problem 1__) Lav quizzen - "Quiz - tidyverse - part 2".
+__Problem 1__ Lav quizzen - "Quiz - tidyverse - part 2".
 
 ---
 
@@ -824,7 +824,7 @@ titanic_clean <- titanic %>%
 
 ---
 
-__Problem 2)__ Fra `titanic_clean` datasættet, beregn den gennemsnitlige alder af alle passagerer ombord på skibet.
+__Problem 2__ Fra `titanic_clean` datasættet, beregn den gennemsnitlige alder af alle passagerer ombord på skibet.
 
 
 ```r
@@ -844,7 +844,7 @@ titanic_clean %>%
 
 ---
 
-__Problem 3)__ 
+__Problem 3__ 
 
 __a)__ Beregn samme opsummeringsstatistikker som i sidste problem, men brug `group_by()` til først at opdele efter variablen `Pclass`.
 
@@ -863,7 +863,7 @@ __d)__ Brug din long-form dataframe af dine opsummeringsstatistikker til at lave
 
 ---
 
-__Problem 4)__ 
+__Problem 4__ 
 
 __a)__ Beregn de samme opsummeringsstatistikker som i __2__), men anvend `group_by()` for først at opdele efter **både** variablerne `Pclass` og `Sex`.
 
@@ -884,7 +884,7 @@ __c)__ Lav et plot af alle opsummeringsstatistikker, som er i long-format og lig
 ---
 
 
-__Problem 5)__ *`group_by()` med tre variabler og `summarise()`*. Prøv en kombination med tre forskellige variabler (vælg selv) indenfor `group_by()` og brug `summarise()` til at beregne middelværdien for variablen `Fare`.
+__Problem 5__ *`group_by()` med tre variabler og `summarise()`*. Prøv en kombination med tre forskellige variabler (vælg selv) indenfor `group_by()` og brug `summarise()` til at beregne middelværdien for variablen `Fare`.
 
 * Anvend `ungroup()` når du er færdig med at opsummere
 * Lav et plot for at visualisere `meanFare`. Idé: som en mulighed, kan man tilføje variabler til `facet_grid()` - for eksempel `facet_grid(~Var1 + Var2)`.
@@ -894,7 +894,7 @@ __Problem 5)__ *`group_by()` med tre variabler og `summarise()`*. Prøv en kombi
 ---
 
 
-__Problem 6)__ *`pivot_longer()`* Først skal du lave to nye variabler ud fra `SibSp` og `Parch`, hvor der står "yes", hvis værdien er større end 0. Anvend derefter `select()` på `Fare`, `Age` og dine to nye variabler. Lav derefter følgende plot:
+__Problem 6__ *`pivot_longer()`* Først skal du lave to nye variabler ud fra `SibSp` og `Parch`, hvor der står "yes", hvis værdien er større end 0. Anvend derefter `select()` på `Fare`, `Age` og dine to nye variabler. Lav derefter følgende plot:
 
 
 <img src="06-tidyverse2_files/figure-html/unnamed-chunk-54-1.svg" width="672" style="display: block; margin: auto;" />
@@ -902,7 +902,7 @@ __Problem 6)__ *`pivot_longer()`* Først skal du lave to nye variabler ud fra `S
 
 ---
 
-__Problem 7)__ *`Pivot_wider()`* Vi har en `tribble`, som jeg har kopieret fra https://r4ds.had.co.nz/index.html.
+__Problem 7__ *`Pivot_wider()`* Vi har en `tribble`, som jeg har kopieret fra https://r4ds.had.co.nz/index.html.
 
 
 ```r
@@ -924,7 +924,7 @@ Brug `pivot_wider()` på `people` for at får datasættet i wide-form således a
 
 ---
 
-__Problem 8)__ *`left_join()` øvelse*. Kør følgende kode med to tribbles:
+__Problem 8__ *`left_join()` øvelse*. Kør følgende kode med to tribbles:
 
 
 ```r
@@ -961,7 +961,7 @@ Vi har to dataframes - `superheroes` og `publishers`. Hvilken kolon kan man brug
 
 ---
 
-__Problem 9)__ *`left_join()` øvelse*. Kør nedenstående kode, hvor der er to dataframes - `iris2` og `sample_table`. Dataframen `iris2` er ikke særlig informativ med hensyn til, hvad de forskellige prøver egentlig er, men oplysningerne om dem findes i `sample_table`. Brug `left_join()` til at tilføje `sample_table` til `iris2` for at få en dataramme, som indeholder både data og oplysninger om prøverne.
+__Problem 9__ *`left_join()` øvelse*. Kør nedenstående kode, hvor der er to dataframes - `iris2` og `sample_table`. Dataframen `iris2` er ikke særlig informativ med hensyn til, hvad de forskellige prøver egentlig er, men oplysningerne om dem findes i `sample_table`. Brug `left_join()` til at tilføje `sample_table` til `iris2` for at få en dataramme, som indeholder både data og oplysninger om prøverne.
 
 
 ```r
@@ -1009,7 +1009,7 @@ samp_table %>% glimpse()
 
 ---
 
-__Problem 10)__ *`Separate()` øvelse* 
+__Problem 10__ *`Separate()` øvelse* 
 
 * Tag udgangspunkt i datasættet `titanic_clean` og benyt funktionen `separate()` til at opdele variablen `Name` i to variabler, "Surname" og "Rest" (Godt råd: brug `sep=", "` for at undgå, at man får et unødvendigt mellemrum lige før "Rest").
 * Anvend `separate()` en gang til, men for at opdele variablen `Rest` i to variabler, "Titel" og "Names". Hvad bruger man som `sep`? (Hint: brug "\\\\" foran en punktum).
@@ -1031,11 +1031,53 @@ __Problem 11__ *Ekstra pivot_longer() øvelse* Åbn datasættet `airquality` (`d
 
 <img src="06-tidyverse2_files/figure-html/unnamed-chunk-66-1.svg" width="672" style="display: block; margin: auto;" />
 
+--------
+
+__Problem 12__ Åbn `table2` (data(table2)) og gør den til at ser sådan ud:
+
+
+
+```
+#> # A tibble: 6 × 4
+#>   country      year  cases population
+#>   <chr>       <dbl>  <dbl>      <dbl>
+#> 1 Afghanistan  1999    745   19987071
+#> 2 Afghanistan  2000   2666   20595360
+#> 3 Brazil       1999  37737  172006362
+#> 4 Brazil       2000  80488  174504898
+#> 5 China        1999 212258 1272915272
+#> 6 China        2000 213766 1280428583
+```
+
 
 --------
 
+__Problem 13__ Tag udgangspunkt i `my_tibble`
 
-__Problem 12)__ Valgfri ekstra: lav en ny dataramme med alle passagerer, der hedder "Alice" eller "Elizabeth" (brug Google her).
+
+```r
+cause <- rep(c("Communicable diseases","Injuries","Non-communicable diseases"),each=4)
+year <- rep(c(1990,2017),times=6)
+sex <- rep(c("Female","Female","Male","Male"),times=3)
+deaths_millions <- c(7.30,4.91,8.06,5.47,1.41,1.42,2.84,3.05,12.80,19.15,13.91,21.74)
+
+my_tibble <- tibble(cause,year,sex,deaths_millions)
+```
+
+Og gør den til at ser sådan ud (tip: Google efter `unite()` for at se, hvordan man bruger den)
+
+
+```
+#> # A tibble: 3 × 5
+#>   cause                     Female_1990 Female_2017 Male_1990 Male_2017
+#>   <chr>                           <dbl>       <dbl>     <dbl>     <dbl>
+#> 1 Communicable diseases            7.3         4.91      8.06      5.47
+#> 2 Injuries                         1.41        1.42      2.84      3.05
+#> 3 Non-communicable diseases       12.8        19.2      13.9      21.7
+```
+
+
+__Problem 14__ Valgfri ekstra: lav en ny dataramme med alle passagerer, der hedder "Alice" eller "Elizabeth" (brug Google her).
 
 
 

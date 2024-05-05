@@ -987,7 +987,7 @@ Figure 6.2: wide til long med Iris
 </div>
 <div id="problemstillinger-5" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> Problemstillinger<a href="bearbejdning-dag-2.html#problemstillinger-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Problem 1</strong>) Lav quizzen - “Quiz - tidyverse - part 2”.</p>
+<p><strong>Problem 1</strong> Lav quizzen - “Quiz - tidyverse - part 2”.</p>
 <hr />
 <p><em>Vi øver os videre med datasættet Titanic. Indlæs datasættet og udfør oprydning med følgende kode:</em></p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="bearbejdning-dag-2.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -998,7 +998,7 @@ Figure 6.2: wide til long med Iris
 <span id="cb342-6"><a href="bearbejdning-dag-2.html#cb342-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>Cabin) <span class="sc">%&gt;%</span> </span>
 <span id="cb342-7"><a href="bearbejdning-dag-2.html#cb342-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>()</span></code></pre></div>
 <hr />
-<p><strong>Problem 2)</strong> Fra <code>titanic_clean</code> datasættet, beregn den gennemsnitlige alder af alle passagerer ombord på skibet.</p>
+<p><strong>Problem 2</strong> Fra <code>titanic_clean</code> datasættet, beregn den gennemsnitlige alder af alle passagerer ombord på skibet.</p>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="bearbejdning-dag-2.html#cb343-1" aria-hidden="true" tabindex="-1"></a>titanic_clean <span class="sc">%&gt;%</span></span>
 <span id="cb343-2"><a href="bearbejdning-dag-2.html#cb343-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(....) <span class="co">#rediger her</span></span></code></pre></div>
 <ul>
@@ -1009,14 +1009,14 @@ Figure 6.2: wide til long med Iris
 #&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
 #&gt; 1       29.7        80      0.42     0.158</code></pre>
 <hr />
-<p><strong>Problem 3)</strong></p>
+<p><strong>Problem 3</strong></p>
 <p><strong>a)</strong> Beregn samme opsummeringsstatistikker som i sidste problem, men brug <code>group_by()</code> til først at opdele efter variablen <code>Pclass</code>.</p>
 <p><strong>b)</strong> Brug din nye dataframe med dine opsummeringsstatistikker til at lave et søjlediagram med <code>stat="identity"</code> (i stedet for <code>stat="count"</code> som er standarden), der viser den gennemsnitlige alder på y-aksen og er opdelt efter <code>Pclass</code> på x-aksen (vær opmærksom på datatypen for <code>Pclass</code> med hensyn til farverne/x-aksen).</p>
 <p><strong>c)</strong> Anvend <code>pivot_longer()</code> på din dataframe med dine opsummeringsstatistikker (brug indstillingen <code>cols = -Pclass</code> i funktionen).</p>
 <p><strong>d)</strong> Brug din long-form dataframe af dine opsummeringsstatistikker til at lave plots af alle opsummeringsstatistikker med én <code>ggplot</code> kommando (adskil dem ved at benytte <code>facet_wrap</code> og opdele efter <code>Pclass</code> indenfor hvert plot, ligesom i følgende).</p>
 <p><img src="06-tidyverse2_files/figure-html/unnamed-chunk-49-1.svg" width="480" style="display: block; margin: auto;" /></p>
 <hr />
-<p><strong>Problem 4)</strong></p>
+<p><strong>Problem 4</strong></p>
 <p><strong>a)</strong> Beregn de samme opsummeringsstatistikker som i <strong>2</strong>), men anvend <code>group_by()</code> for først at opdele efter <strong>både</strong> variablerne <code>Pclass</code> og <code>Sex</code>.</p>
 <ul>
 <li>OBS: Du får en advarsel “<code>summarise()</code> has grouped output by ‘Pclass’ …”, fordi din dataframe stadig betragtes som opdelt efter <code>Pclass</code>. Dette skal tages i betragtning, hvis du foretager yderligere beregninger på den.</li>
@@ -1026,16 +1026,16 @@ Figure 6.2: wide til long med Iris
 <p><strong>c)</strong> Lav et plot af alle opsummeringsstatistikker, som er i long-format og ligner følgende plot.</p>
 <p><img src="06-tidyverse2_files/figure-html/unnamed-chunk-52-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <hr />
-<p><strong>Problem 5)</strong> <em><code>group_by()</code> med tre variabler og <code>summarise()</code></em>. Prøv en kombination med tre forskellige variabler (vælg selv) indenfor <code>group_by()</code> og brug <code>summarise()</code> til at beregne middelværdien for variablen <code>Fare</code>.</p>
+<p><strong>Problem 5</strong> <em><code>group_by()</code> med tre variabler og <code>summarise()</code></em>. Prøv en kombination med tre forskellige variabler (vælg selv) indenfor <code>group_by()</code> og brug <code>summarise()</code> til at beregne middelværdien for variablen <code>Fare</code>.</p>
 <ul>
 <li>Anvend <code>ungroup()</code> når du er færdig med at opsummere</li>
 <li>Lav et plot for at visualisere <code>meanFare</code>. Idé: som en mulighed, kan man tilføje variabler til <code>facet_grid()</code> - for eksempel <code>facet_grid(~Var1 + Var2)</code>.</li>
 </ul>
 <hr />
-<p><strong>Problem 6)</strong> <em><code>pivot_longer()</code></em> Først skal du lave to nye variabler ud fra <code>SibSp</code> og <code>Parch</code>, hvor der står “yes”, hvis værdien er større end 0. Anvend derefter <code>select()</code> på <code>Fare</code>, <code>Age</code> og dine to nye variabler. Lav derefter følgende plot:</p>
+<p><strong>Problem 6</strong> <em><code>pivot_longer()</code></em> Først skal du lave to nye variabler ud fra <code>SibSp</code> og <code>Parch</code>, hvor der står “yes”, hvis værdien er større end 0. Anvend derefter <code>select()</code> på <code>Fare</code>, <code>Age</code> og dine to nye variabler. Lav derefter følgende plot:</p>
 <p><img src="06-tidyverse2_files/figure-html/unnamed-chunk-54-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <hr />
-<p><strong>Problem 7)</strong> <em><code>Pivot_wider()</code></em> Vi har en <code>tribble</code>, som jeg har kopieret fra <a href="https://r4ds.had.co.nz/index.html" class="uri">https://r4ds.had.co.nz/index.html</a>.</p>
+<p><strong>Problem 7</strong> <em><code>Pivot_wider()</code></em> Vi har en <code>tribble</code>, som jeg har kopieret fra <a href="https://r4ds.had.co.nz/index.html" class="uri">https://r4ds.had.co.nz/index.html</a>.</p>
 <div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="bearbejdning-dag-2.html#cb345-1" aria-hidden="true" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb345-2"><a href="bearbejdning-dag-2.html#cb345-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>name,             <span class="sc">~</span>names,  <span class="sc">~</span>values,</span>
 <span id="cb345-3"><a href="bearbejdning-dag-2.html#cb345-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#-----------------|--------|------</span></span>
@@ -1048,7 +1048,7 @@ Figure 6.2: wide til long med Iris
 <span id="cb345-10"><a href="bearbejdning-dag-2.html#cb345-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Brug <code>pivot_wider()</code> på <code>people</code> for at får datasættet i wide-form således at <code>age</code> og <code>height</code> hver har deres egne kolonner.</p>
 <hr />
-<p><strong>Problem 8)</strong> <em><code>left_join()</code> øvelse</em>. Kør følgende kode med to tribbles:</p>
+<p><strong>Problem 8</strong> <em><code>left_join()</code> øvelse</em>. Kør følgende kode med to tribbles:</p>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="bearbejdning-dag-2.html#cb346-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb346-2"><a href="bearbejdning-dag-2.html#cb346-2" aria-hidden="true" tabindex="-1"></a>       <span class="sc">~</span>name, <span class="sc">~</span>alignment,  <span class="sc">~</span>gender,          <span class="sc">~</span>publisher,</span>
 <span id="cb346-3"><a href="bearbejdning-dag-2.html#cb346-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Magneto&quot;</span>,      <span class="st">&quot;bad&quot;</span>,   <span class="st">&quot;male&quot;</span>,            <span class="st">&quot;Marvel&quot;</span>,</span>
@@ -1073,7 +1073,7 @@ Figure 6.2: wide til long med Iris
 <li>Benyt <code>full_join()</code> til at forbinde <code>publishers</code> til <code>superheroes</code> - hvor mange observationer få man med nu? Hvorfor?</li>
 </ul>
 <hr />
-<p><strong>Problem 9)</strong> <em><code>left_join()</code> øvelse</em>. Kør nedenstående kode, hvor der er to dataframes - <code>iris2</code> og <code>sample_table</code>. Dataframen <code>iris2</code> er ikke særlig informativ med hensyn til, hvad de forskellige prøver egentlig er, men oplysningerne om dem findes i <code>sample_table</code>. Brug <code>left_join()</code> til at tilføje <code>sample_table</code> til <code>iris2</code> for at få en dataramme, som indeholder både data og oplysninger om prøverne.</p>
+<p><strong>Problem 9</strong> <em><code>left_join()</code> øvelse</em>. Kør nedenstående kode, hvor der er to dataframes - <code>iris2</code> og <code>sample_table</code>. Dataframen <code>iris2</code> er ikke særlig informativ med hensyn til, hvad de forskellige prøver egentlig er, men oplysningerne om dem findes i <code>sample_table</code>. Brug <code>left_join()</code> til at tilføje <code>sample_table</code> til <code>iris2</code> for at få en dataramme, som indeholder både data og oplysninger om prøverne.</p>
 <div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="bearbejdning-dag-2.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
 <span id="cb347-2"><a href="bearbejdning-dag-2.html#cb347-2" aria-hidden="true" tabindex="-1"></a>iris2 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(iris)</span>
 <span id="cb347-3"><a href="bearbejdning-dag-2.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sample1&quot;</span>,<span class="st">&quot;sample2&quot;</span>,<span class="st">&quot;sample3&quot;</span>,<span class="st">&quot;sample4&quot;</span>,<span class="st">&quot;Species&quot;</span>)</span>
@@ -1103,7 +1103,7 @@ Figure 6.2: wide til long med Iris
 #&gt; $ part    &lt;chr&gt; &quot;Sepal&quot;, &quot;Sepal&quot;, &quot;Petal&quot;, &quot;Sepal&quot;
 #&gt; $ measure &lt;chr&gt; &quot;Length&quot;, &quot;Width&quot;, &quot;Length&quot;, &quot;Width&quot;</code></pre>
 <hr />
-<p><strong>Problem 10)</strong> <em><code>Separate()</code> øvelse</em></p>
+<p><strong>Problem 10</strong> <em><code>Separate()</code> øvelse</em></p>
 <ul>
 <li>Tag udgangspunkt i datasættet <code>titanic_clean</code> og benyt funktionen <code>separate()</code> til at opdele variablen <code>Name</code> i to variabler, “Surname” og “Rest” (Godt råd: brug <code>sep=", "</code> for at undgå, at man får et unødvendigt mellemrum lige før “Rest”).</li>
 <li>Anvend <code>separate()</code> en gang til, men for at opdele variablen <code>Rest</code> i to variabler, “Titel” og “Names”. Hvad bruger man som <code>sep</code>? (Hint: brug “\\” foran en punktum).</li>
@@ -1114,7 +1114,32 @@ Figure 6.2: wide til long med Iris
 <p><strong>Problem 11</strong> <em>Ekstra pivot_longer() øvelse</em> Åbn datasættet <code>airquality</code> (<code>data(airquality)</code>) og lav følgende plot:</p>
 <p><img src="06-tidyverse2_files/figure-html/unnamed-chunk-66-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <hr />
-<p><strong>Problem 12)</strong> Valgfri ekstra: lav en ny dataramme med alle passagerer, der hedder “Alice” eller “Elizabeth” (brug Google her).</p>
+<p><strong>Problem 12</strong> Åbn <code>table2</code> (data(table2)) og gør den til at ser sådan ud:</p>
+<pre><code>#&gt; # A tibble: 6 × 4
+#&gt;   country      year  cases population
+#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+#&gt; 1 Afghanistan  1999    745   19987071
+#&gt; 2 Afghanistan  2000   2666   20595360
+#&gt; 3 Brazil       1999  37737  172006362
+#&gt; 4 Brazil       2000  80488  174504898
+#&gt; 5 China        1999 212258 1272915272
+#&gt; 6 China        2000 213766 1280428583</code></pre>
+<hr />
+<p><strong>Problem 13</strong> Tag udgangspunkt i <code>my_tibble</code></p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="bearbejdning-dag-2.html#cb352-1" aria-hidden="true" tabindex="-1"></a>cause <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Communicable diseases&quot;</span>,<span class="st">&quot;Injuries&quot;</span>,<span class="st">&quot;Non-communicable diseases&quot;</span>),<span class="at">each=</span><span class="dv">4</span>)</span>
+<span id="cb352-2"><a href="bearbejdning-dag-2.html#cb352-2" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1990</span>,<span class="dv">2017</span>),<span class="at">times=</span><span class="dv">6</span>)</span>
+<span id="cb352-3"><a href="bearbejdning-dag-2.html#cb352-3" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>,<span class="st">&quot;Female&quot;</span>,<span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Male&quot;</span>),<span class="at">times=</span><span class="dv">3</span>)</span>
+<span id="cb352-4"><a href="bearbejdning-dag-2.html#cb352-4" aria-hidden="true" tabindex="-1"></a>deaths_millions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.30</span>,<span class="fl">4.91</span>,<span class="fl">8.06</span>,<span class="fl">5.47</span>,<span class="fl">1.41</span>,<span class="fl">1.42</span>,<span class="fl">2.84</span>,<span class="fl">3.05</span>,<span class="fl">12.80</span>,<span class="fl">19.15</span>,<span class="fl">13.91</span>,<span class="fl">21.74</span>)</span>
+<span id="cb352-5"><a href="bearbejdning-dag-2.html#cb352-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-6"><a href="bearbejdning-dag-2.html#cb352-6" aria-hidden="true" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(cause,year,sex,deaths_millions)</span></code></pre></div>
+<p>Og gør den til at ser sådan ud (tip: Google efter <code>unite()</code> for at se, hvordan man bruger den)</p>
+<pre><code>#&gt; # A tibble: 3 × 5
+#&gt;   cause                     Female_1990 Female_2017 Male_1990 Male_2017
+#&gt;   &lt;chr&gt;                           &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+#&gt; 1 Communicable diseases            7.3         4.91      8.06      5.47
+#&gt; 2 Injuries                         1.41        1.42      2.84      3.05
+#&gt; 3 Non-communicable diseases       12.8        19.2      13.9      21.7</code></pre>
+<p><strong>Problem 14</strong> Valgfri ekstra: lav en ny dataramme med alle passagerer, der hedder “Alice” eller “Elizabeth” (brug Google her).</p>
 <hr />
 </div>
 <div id="ekstra-links-1" class="section level2 hasAnchor" number="6.7">
