@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 7 Functional programming med purrr-pakken | Analyse og visualisering af biologiske datasæt - 2024</title>
+  <meta name="description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 7 Functional programming med purrr-pakken | Analyse og visualisering af biologiske datasæt - 2024" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
+  <meta property="og:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 7 Functional programming med purrr-pakken | Analyse og visualisering af biologiske datasæt - 2024" />
+  
+  <meta name="twitter:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  <meta name="twitter:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
+
+<meta name="author" content="Sarah Rennie" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bearbejdning-dag-2.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Visualisering_2024</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lidt om kurset</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#outline"><i class="fa fa-check"></i>Outline</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#bedømmelse"><i class="fa fa-check"></i>Bedømmelse</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#bare-lidt-om-mig"><i class="fa fa-check"></i>Bare lidt om mig</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="baser.html"><a href="baser.html"><i class="fa fa-check"></i><b>1</b> Grundlæggende R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="baser.html"><a href="baser.html#inledning-til-kapitel"><i class="fa fa-check"></i><b>1.1</b> Inledning til kapitel</a></li>
+<li class="chapter" data-level="1.2" data-path="baser.html"><a href="baser.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="baser.html"><a href="baser.html#de-forskellige-vinduer-i-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> De forskellige vinduer i RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="baser.html"><a href="baser.html#working-directory"><i class="fa fa-check"></i><b>1.3</b> Working directory</a></li>
+<li class="chapter" data-level="1.4" data-path="baser.html"><a href="baser.html#r-pakker"><i class="fa fa-check"></i><b>1.4</b> R pakker</a></li>
+<li class="chapter" data-level="1.5" data-path="baser.html"><a href="baser.html#hvor-kommer-vores-data-fra"><i class="fa fa-check"></i><b>1.5</b> Hvor kommer vores data fra?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="baser.html"><a href="baser.html#indbyggede-datasæt"><i class="fa fa-check"></i><b>1.5.1</b> Indbyggede datasæt</a></li>
+<li class="chapter" data-level="1.5.2" data-path="baser.html"><a href="baser.html#importering-af-data-fra-.txt-fil"><i class="fa fa-check"></i><b>1.5.2</b> Importering af data fra .txt fil</a></li>
+<li class="chapter" data-level="1.5.3" data-path="baser.html"><a href="baser.html#importering-af-data-fra-excel"><i class="fa fa-check"></i><b>1.5.3</b> Importering af data fra Excel</a></li>
+<li class="chapter" data-level="1.5.4" data-path="baser.html"><a href="baser.html#kaggle"><i class="fa fa-check"></i><b>1.5.4</b> Kaggle</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="baser.html"><a href="baser.html#beregninger-i-r"><i class="fa fa-check"></i><b>1.6</b> Beregninger i R</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="baser.html"><a href="baser.html#objektor"><i class="fa fa-check"></i><b>1.6.1</b> Objektor</a></li>
+<li class="chapter" data-level="1.6.2" data-path="baser.html"><a href="baser.html#vectorer"><i class="fa fa-check"></i><b>1.6.2</b> Vectorer</a></li>
+<li class="chapter" data-level="1.6.3" data-path="baser.html"><a href="baser.html#datatyper"><i class="fa fa-check"></i><b>1.6.3</b> datatyper</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="baser.html"><a href="baser.html#dataframes"><i class="fa fa-check"></i><b>1.7</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="baser.html"><a href="baser.html#delmængder-af-dataframes"><i class="fa fa-check"></i><b>1.7.1</b> Delmængder af dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="baser.html"><a href="baser.html#ifelse"><i class="fa fa-check"></i><b>1.8</b> If/else</a></li>
+<li class="chapter" data-level="1.9" data-path="baser.html"><a href="baser.html#loops"><i class="fa fa-check"></i><b>1.9</b> Loops</a></li>
+<li class="chapter" data-level="1.10" data-path="baser.html"><a href="baser.html#descriptive-statistics"><i class="fa fa-check"></i><b>1.10</b> Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="baser.html"><a href="baser.html#simulere-data-fra-den-normale-fordeling"><i class="fa fa-check"></i><b>1.10.1</b> Simulere data fra den normale fordeling</a></li>
+<li class="chapter" data-level="1.10.2" data-path="baser.html"><a href="baser.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>1.10.2</b> Measures of central tendency</a></li>
+<li class="chapter" data-level="1.10.3" data-path="baser.html"><a href="baser.html#tapply"><i class="fa fa-check"></i><b>1.10.3</b> <code>tapply()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="baser.html"><a href="baser.html#statistike-tester"><i class="fa fa-check"></i><b>1.11</b> Statistike tester</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="baser.html"><a href="baser.html#p-værdien"><i class="fa fa-check"></i><b>1.11.1</b> P-værdien</a></li>
+<li class="chapter" data-level="1.11.2" data-path="baser.html"><a href="baser.html#korrelation"><i class="fa fa-check"></i><b>1.11.2</b> Korrelation</a></li>
+<li class="chapter" data-level="1.11.3" data-path="baser.html"><a href="baser.html#test-for-uafhængighed-chi-sq-test"><i class="fa fa-check"></i><b>1.11.3</b> Test for uafhængighed (chi-sq test)</a></li>
+<li class="chapter" data-level="1.11.4" data-path="baser.html"><a href="baser.html#sample-t-test"><i class="fa fa-check"></i><b>1.11.4</b> 1 sample t-test</a></li>
+<li class="chapter" data-level="1.11.5" data-path="baser.html"><a href="baser.html#sample-t-test-1"><i class="fa fa-check"></i><b>1.11.5</b> 2-sample t-test</a></li>
+<li class="chapter" data-level="1.11.6" data-path="baser.html"><a href="baser.html#paired-t-test"><i class="fa fa-check"></i><b>1.11.6</b> Paired t-test</a></li>
+<li class="chapter" data-level="1.11.7" data-path="baser.html"><a href="baser.html#anova-variansanalyse"><i class="fa fa-check"></i><b>1.11.7</b> ANOVA (variansanalyse)</a></li>
+<li class="chapter" data-level="1.11.8" data-path="baser.html"><a href="baser.html#lineær-regression"><i class="fa fa-check"></i><b>1.11.8</b> Lineær regression</a></li>
+<li class="chapter" data-level="1.11.9" data-path="baser.html"><a href="baser.html#r-squared-coefficient-of-determination"><i class="fa fa-check"></i><b>1.11.9</b> R-squared coefficient of determination</a></li>
+<li class="chapter" data-level="1.11.10" data-path="baser.html"><a href="baser.html#antagelser---lineær-regression"><i class="fa fa-check"></i><b>1.11.10</b> Antagelser - lineær regression</a></li>
+<li class="chapter" data-level="1.11.11" data-path="baser.html"><a href="baser.html#multiple-lineær-regression"><i class="fa fa-check"></i><b>1.11.11</b> Multiple lineær regression</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="baser.html"><a href="baser.html#problemstillinger"><i class="fa fa-check"></i><b>1.12</b> Problemstillinger</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="baser.html"><a href="baser.html#quiz---basics"><i class="fa fa-check"></i><b>1.12.1</b> Quiz - Basics</a></li>
+<li class="chapter" data-level="1.12.2" data-path="baser.html"><a href="baser.html#grundlæggende-r"><i class="fa fa-check"></i><b>1.12.2</b> Grundlæggende R</a></li>
+<li class="chapter" data-level="1.12.3" data-path="baser.html"><a href="baser.html#kort-analyse-med-reaktionstider"><i class="fa fa-check"></i><b>1.12.3</b> Kort analyse med reaktionstider</a></li>
+<li class="chapter" data-level="1.12.4" data-path="baser.html"><a href="baser.html#øvelse-med-co2"><i class="fa fa-check"></i><b>1.12.4</b> Øvelse med CO2</a></li>
+<li class="chapter" data-level="1.12.5" data-path="baser.html"><a href="baser.html#ekstra-øvelser-med-statistik-tests"><i class="fa fa-check"></i><b>1.12.5</b> Ekstra øvelser med statistik tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> Introduktion til R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#inledning-til-kapital"><i class="fa fa-check"></i><b>2.1</b> Inledning til kapital</a></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#hvad-er-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Hvad er R Markdown?</a></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installere-r-markdown"><i class="fa fa-check"></i><b>2.3</b> Installere R Markdown</a></li>
+<li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#videodemonstrationer"><i class="fa fa-check"></i><b>2.4</b> Videodemonstrationer</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#video-1"><i class="fa fa-check"></i><b>2.4.1</b> Video 1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#video-2"><i class="fa fa-check"></i><b>2.4.2</b> Video 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#oprette-et-nyt-dokument-i-r-markdown"><i class="fa fa-check"></i><b>2.5</b> Oprette et nyt dokument i R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml"><i class="fa fa-check"></i><b>2.5.1</b> YAML</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#globale-options"><i class="fa fa-check"></i><b>2.5.2</b> Globale options</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rmarkdown.html"><a href="rmarkdown.html#skrive-baseret-tekst"><i class="fa fa-check"></i><b>2.6</b> Skrive baseret tekst</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#headers"><i class="fa fa-check"></i><b>2.6.1</b> Headers</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#liste"><i class="fa fa-check"></i><b>2.6.2</b> liste</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html#knitte-kode"><i class="fa fa-check"></i><b>2.7</b> Knitte kode</a></li>
+<li class="chapter" data-level="2.8" data-path="rmarkdown.html"><a href="rmarkdown.html#kode-chunks"><i class="fa fa-check"></i><b>2.8</b> Kode chunks</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#et-godt-råd-når-man-arbejder-med-chunks"><i class="fa fa-check"></i><b>2.8.1</b> Et godt råd når man arbejder med chunks</a></li>
+<li class="chapter" data-level="2.8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#chunk-indstillinger"><i class="fa fa-check"></i><b>2.8.2</b> Chunk indstillinger</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="rmarkdown.html"><a href="rmarkdown.html#r-beregninger-inden-for-teksten-i-dokumentet-inline-code"><i class="fa fa-check"></i><b>2.9</b> R beregninger inden for teksten i dokumentet (‘inline code’)</a></li>
+<li class="chapter" data-level="2.10" data-path="rmarkdown.html"><a href="rmarkdown.html#working-directory-1"><i class="fa fa-check"></i><b>2.10</b> Working directory</a></li>
+<li class="chapter" data-level="2.11" data-path="rmarkdown.html"><a href="rmarkdown.html#matematik"><i class="fa fa-check"></i><b>2.11</b> Matematik</a></li>
+<li class="chapter" data-level="2.12" data-path="rmarkdown.html"><a href="rmarkdown.html#ofte-set-fejl"><i class="fa fa-check"></i><b>2.12</b> Ofte set fejl</a></li>
+<li class="chapter" data-level="2.13" data-path="rmarkdown.html"><a href="rmarkdown.html#problemstillinger-1"><i class="fa fa-check"></i><b>2.13</b> Problemstillinger</a></li>
+<li class="chapter" data-level="2.14" data-path="rmarkdown.html"><a href="rmarkdown.html#færdig-for-i-dag-og-næste-gang"><i class="fa fa-check"></i><b>2.14</b> Færdig for i dag og næste gang</a></li>
+<li class="chapter" data-level="2.15" data-path="rmarkdown.html"><a href="rmarkdown.html#ekstra-links"><i class="fa fa-check"></i><b>2.15</b> Ekstra links</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visual1.html"><a href="visual1.html"><i class="fa fa-check"></i><b>3</b> Visualisering - ggplot2 dag 1</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visual1.html"><a href="visual1.html#læringsmålene-og-videoer"><i class="fa fa-check"></i><b>3.1</b> Læringsmålene og videoer</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="visual1.html"><a href="visual1.html#hvad-er-ggplot2"><i class="fa fa-check"></i><b>3.1.1</b> Hvad er <strong>ggplot2</strong>?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="visual1.html"><a href="visual1.html#brugen-af-materialerne"><i class="fa fa-check"></i><b>3.1.2</b> Brugen af materialerne</a></li>
+<li class="chapter" data-level="3.1.3" data-path="visual1.html"><a href="visual1.html#video-ressourcer"><i class="fa fa-check"></i><b>3.1.3</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="visual1.html"><a href="visual1.html#transition-fra-base-r-til-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Transition fra base R til ggplot2</a></li>
+<li class="chapter" data-level="3.3" data-path="visual1.html"><a href="visual1.html#vores-første-ggplot"><i class="fa fa-check"></i><b>3.3</b> Vores første ggplot</a></li>
+<li class="chapter" data-level="3.4" data-path="visual1.html"><a href="visual1.html#lidt-om-ggplot2"><i class="fa fa-check"></i><b>3.4</b> Lidt om ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="visual1.html"><a href="visual1.html#syntax"><i class="fa fa-check"></i><b>3.4.1</b> Syntax</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visual1.html"><a href="visual1.html#hvad-betyder-egentlig-grammar-of-graphics"><i class="fa fa-check"></i><b>3.4.2</b> Hvad betyder egentlig grammar of graphics?</a></li>
+<li class="chapter" data-level="3.4.3" data-path="visual1.html"><a href="visual1.html#globale-versus-lokale-æstetik"><i class="fa fa-check"></i><b>3.4.3</b> Globale versus lokale æstetik</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visual1.html"><a href="visual1.html#specificere-etiketter-og-titel"><i class="fa fa-check"></i><b>3.5</b> Specificere etiketter og titel</a></li>
+<li class="chapter" data-level="3.6" data-path="visual1.html"><a href="visual1.html#ændre-farver"><i class="fa fa-check"></i><b>3.6</b> Ændre farver</a></li>
+<li class="chapter" data-level="3.7" data-path="visual1.html"><a href="visual1.html#ændre-tema"><i class="fa fa-check"></i><b>3.7</b> Ændre tema</a></li>
+<li class="chapter" data-level="3.8" data-path="visual1.html"><a href="visual1.html#forskellige-geoms"><i class="fa fa-check"></i><b>3.8</b> Forskellige geoms</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="visual1.html"><a href="visual1.html#boxplot-geom_box"><i class="fa fa-check"></i><b>3.8.1</b> Boxplot (<code>geom_box</code>)</a></li>
+<li class="chapter" data-level="3.8.2" data-path="visual1.html"><a href="visual1.html#barplot-geom_bar"><i class="fa fa-check"></i><b>3.8.2</b> Barplot (<code>geom_bar</code>)</a></li>
+<li class="chapter" data-level="3.8.3" data-path="visual1.html"><a href="visual1.html#histogram-geom_histogram"><i class="fa fa-check"></i><b>3.8.3</b> Histogram (<code>geom_histogram</code>)</a></li>
+<li class="chapter" data-level="3.8.4" data-path="visual1.html"><a href="visual1.html#density-geom_density"><i class="fa fa-check"></i><b>3.8.4</b> Density (<code>geom_density</code>)</a></li>
+<li class="chapter" data-level="3.8.5" data-path="visual1.html"><a href="visual1.html#line-plot-geom_line"><i class="fa fa-check"></i><b>3.8.5</b> Line plot (<code>geom_line()</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="visual1.html"><a href="visual1.html#troubleshooting"><i class="fa fa-check"></i><b>3.9</b> Troubleshooting</a></li>
+<li class="chapter" data-level="3.10" data-path="visual1.html"><a href="visual1.html#problemstillinger-2"><i class="fa fa-check"></i><b>3.10</b> Problemstillinger</a></li>
+<li class="chapter" data-level="3.11" data-path="visual1.html"><a href="visual1.html#næste-gang"><i class="fa fa-check"></i><b>3.11</b> Næste gang</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visual2.html"><a href="visual2.html"><i class="fa fa-check"></i><b>4</b> Visualisering - ggplot2 dag 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="visual2.html"><a href="visual2.html#læringsmål-og-videoer"><i class="fa fa-check"></i><b>4.1</b> Læringsmål og videoer</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="visual2.html"><a href="visual2.html#video-ressourcer-1"><i class="fa fa-check"></i><b>4.1.1</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="visual2.html"><a href="visual2.html#koordinat-systemer"><i class="fa fa-check"></i><b>4.2</b> Koordinat systemer</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="visual2.html"><a href="visual2.html#zoom-coord_cartesian-expand_limits"><i class="fa fa-check"></i><b>4.2.1</b> Zoom (<code>coord_cartesian()</code>, <code>expand_limits()</code>)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visual2.html"><a href="visual2.html#transformering-af-akserne---log-sqrt-osv-scale_x_continuous."><i class="fa fa-check"></i><b>4.2.2</b> Transformering af akserne - log, sqrt osv (<code>scale_x_continuous</code>).</a></li>
+<li class="chapter" data-level="4.2.3" data-path="visual2.html"><a href="visual2.html#flip-coordinates-coord_flip"><i class="fa fa-check"></i><b>4.2.3</b> Flip coordinates (<code>coord_flip</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visual2.html"><a href="visual2.html#mere-om-farver-og-punkt-former"><i class="fa fa-check"></i><b>4.3</b> Mere om farver og punkt former</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="visual2.html"><a href="visual2.html#automatisk-farver"><i class="fa fa-check"></i><b>4.3.1</b> Automatisk farver</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visual2.html"><a href="visual2.html#manuelle-farver"><i class="fa fa-check"></i><b>4.3.2</b> Manuelle farver</a></li>
+<li class="chapter" data-level="4.3.3" data-path="visual2.html"><a href="visual2.html#punkt-former"><i class="fa fa-check"></i><b>4.3.3</b> Punkt former</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="visual2.html"><a href="visual2.html#annotations-geom_text"><i class="fa fa-check"></i><b>4.4</b> Annotations (<code>geom_text</code>)</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="visual2.html"><a href="visual2.html#tilføjelse-af-labels-direkte-på-plottet."><i class="fa fa-check"></i><b>4.4.1</b> Tilføjelse af labels direkte på plottet.</a></li>
+<li class="chapter" data-level="4.4.2" data-path="visual2.html"><a href="visual2.html#pakken-ggrepel-for-at-tilføje-tekst-labeller"><i class="fa fa-check"></i><b>4.4.2</b> Pakken <code>ggrepel</code> for at tilføje tekst labeller</a></li>
+<li class="chapter" data-level="4.4.3" data-path="visual2.html"><a href="visual2.html#tilføjelse-af-rektangler-i-regioner-af-interesse-annotate"><i class="fa fa-check"></i><b>4.4.3</b> Tilføjelse af rektangler i regioner af interesse (<code>annotate</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="visual2.html"><a href="visual2.html#adskille-plots-med-facets-facet_gridfacet_wrap"><i class="fa fa-check"></i><b>4.5</b> Adskille plots med facets (<code>facet_grid</code>/<code>facet_wrap</code>)</a></li>
+<li class="chapter" data-level="4.6" data-path="visual2.html"><a href="visual2.html#gemme-dit-plot"><i class="fa fa-check"></i><b>4.6</b> Gemme dit plot</a></li>
+<li class="chapter" data-level="4.7" data-path="visual2.html"><a href="visual2.html#problemstillinger-3"><i class="fa fa-check"></i><b>4.7</b> Problemstillinger</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>5</b> Bearbejdning dag 1</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data.html"><a href="data.html#hvad-er-tidyverse"><i class="fa fa-check"></i><b>5.1</b> Hvad er Tidyverse?</a></li>
+<li class="chapter" data-level="5.2" data-path="data.html"><a href="data.html#video-ressourcer-2"><i class="fa fa-check"></i><b>5.2</b> Video ressourcer</a></li>
+<li class="chapter" data-level="5.3" data-path="data.html"><a href="data.html#oversigt-over-pakker"><i class="fa fa-check"></i><b>5.3</b> Oversigt over pakker</a></li>
+<li class="chapter" data-level="5.4" data-path="data.html"><a href="data.html#principper-for-tidy-data"><i class="fa fa-check"></i><b>5.4</b> Principper for ‘tidy data’</a></li>
+<li class="chapter" data-level="5.5" data-path="data.html"><a href="data.html#lidt-om-tibbles"><i class="fa fa-check"></i><b>5.5</b> Lidt om <code>tibbles</code></a></li>
+<li class="chapter" data-level="5.6" data-path="data.html"><a href="data.html#transition-fra-base-r-til-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Transition fra base-R til tidyverse</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="data.html"><a href="data.html#om-titanic-datasættet"><i class="fa fa-check"></i><b>5.6.1</b> Om <strong>Titanic</strong> datasættet</a></li>
+<li class="chapter" data-level="5.6.2" data-path="data.html"><a href="data.html#titanic-rengøring"><i class="fa fa-check"></i><b>5.6.2</b> Titanic: Rengøring</a></li>
+<li class="chapter" data-level="5.6.3" data-path="data.html"><a href="data.html#pipe"><i class="fa fa-check"></i><b>5.6.3</b> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="data.html"><a href="data.html#bearbejdning-af-data-dplyr"><i class="fa fa-check"></i><b>5.7</b> Bearbejdning af data: <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="data.html"><a href="data.html#dplyr-verbs-select"><i class="fa fa-check"></i><b>5.7.1</b> dplyr verbs: <code>select()</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="data.html"><a href="data.html#dplyr-verbs-filter"><i class="fa fa-check"></i><b>5.7.2</b> dplyr verbs: <code>filter()</code></a></li>
+<li class="chapter" data-level="5.7.3" data-path="data.html"><a href="data.html#sammenligningsoperatorer"><i class="fa fa-check"></i><b>5.7.3</b> Sammenligningsoperatorer</a></li>
+<li class="chapter" data-level="5.7.4" data-path="data.html"><a href="data.html#kombinere-filter-og-select"><i class="fa fa-check"></i><b>5.7.4</b> Kombinere <code>filter()</code> og <code>select()</code></a></li>
+<li class="chapter" data-level="5.7.5" data-path="data.html"><a href="data.html#dplyr-verbs-mutate"><i class="fa fa-check"></i><b>5.7.5</b> dplyr verbs: <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.7.6" data-path="data.html"><a href="data.html#rename"><i class="fa fa-check"></i><b>5.7.6</b> <code>rename()</code></a></li>
+<li class="chapter" data-level="5.7.7" data-path="data.html"><a href="data.html#dplyr-verbs-recode"><i class="fa fa-check"></i><b>5.7.7</b> dplyr verbs: <code>recode()</code></a></li>
+<li class="chapter" data-level="5.7.8" data-path="data.html"><a href="data.html#dplyr-verbs-arrange"><i class="fa fa-check"></i><b>5.7.8</b> dplyr verbs: <code>arrange()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="data.html"><a href="data.html#visualisering-bruge-som-input-i-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Visualisering: bruge som input i ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="data.html"><a href="data.html#misc-funktioner-som-er-nyttige-at-vide"><i class="fa fa-check"></i><b>5.9</b> Misc funktioner som er nyttige at vide</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="data.html"><a href="data.html#pull"><i class="fa fa-check"></i><b>5.9.1</b> Pull</a></li>
+<li class="chapter" data-level="5.9.2" data-path="data.html"><a href="data.html#slice"><i class="fa fa-check"></i><b>5.9.2</b> Slice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="data.html"><a href="data.html#problemstillinger-4"><i class="fa fa-check"></i><b>5.10</b> Problemstillinger</a></li>
+<li class="chapter" data-level="5.11" data-path="data.html"><a href="data.html#kommentarer"><i class="fa fa-check"></i><b>5.11</b> Kommentarer</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html"><i class="fa fa-check"></i><b>6</b> Bearbejdning dag 2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#indledning-og-læringsmålene"><i class="fa fa-check"></i><b>6.1</b> Indledning og læringsmålene</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#læringsmålene"><i class="fa fa-check"></i><b>6.1.1</b> Læringsmålene</a></li>
+<li class="chapter" data-level="6.1.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#videoer"><i class="fa fa-check"></i><b>6.1.2</b> Videoer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#group_by-med-summarise-i-dplyr-pakken"><i class="fa fa-check"></i><b>6.2</b> <code>group_by()</code> med <code>summarise()</code> i dplyr-pakken</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#reference-af-summarise-funktioner"><i class="fa fa-check"></i><b>6.2.1</b> Reference af <code>summarise()</code>-funktioner</a></li>
+<li class="chapter" data-level="6.2.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#flere-summeringsstatistikker-på-én-gang"><i class="fa fa-check"></i><b>6.2.2</b> Flere summeringsstatistikker på én gang</a></li>
+<li class="chapter" data-level="6.2.3" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#mere-avanceret-group_by"><i class="fa fa-check"></i><b>6.2.3</b> Mere avanceret <code>group_by()</code></a></li>
+<li class="chapter" data-level="6.2.4" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#funktionen-ungroup"><i class="fa fa-check"></i><b>6.2.4</b> Funktionen <code>ungroup()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#pivot_longerpivot_wider-med-tidyr-pakken"><i class="fa fa-check"></i><b>6.3</b> <code>pivot_longer()</code>/<code>pivot_wider()</code> med Tidyr-pakken</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#tidyr-pakke---oversigt"><i class="fa fa-check"></i><b>6.3.1</b> Tidyr pakke - oversigt</a></li>
+<li class="chapter" data-level="6.3.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#wide---long-med-pivot_longer"><i class="fa fa-check"></i><b>6.3.2</b> Wide -&gt; Long med <code>pivot_longer()</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#separate"><i class="fa fa-check"></i><b>6.3.3</b> <code>separate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#eksempel-titanic-opsummeringsstatistikker"><i class="fa fa-check"></i><b>6.4</b> Eksempel: Titanic opsummeringsstatistikker</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#demonstration-af-pivot_wider"><i class="fa fa-check"></i><b>6.4.1</b> Demonstration af <code>pivot_wider()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#left_join-forbinde-dataframes"><i class="fa fa-check"></i><b>6.5</b> <code>left_join()</code>: forbinde dataframes</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#funktionen-left_join-fra-dplyr-pakken"><i class="fa fa-check"></i><b>6.5.1</b> Funktionen <code>left_join()</code> fra dplyr-pakken</a></li>
+<li class="chapter" data-level="6.5.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#anvend-left_join-for-vores-datasæt."><i class="fa fa-check"></i><b>6.5.2</b> Anvend <code>left_join()</code> for vores datasæt.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#problemstillinger-5"><i class="fa fa-check"></i><b>6.6</b> Problemstillinger</a></li>
+<li class="chapter" data-level="6.7" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#ekstra-links-1"><i class="fa fa-check"></i><b>6.7</b> Ekstra links</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html"><i class="fa fa-check"></i><b>7</b> Functional programming med purrr-pakken</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#inledning-og-læringsmålene"><i class="fa fa-check"></i><b>7.1</b> Inledning og læringsmålene</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#læringsmål"><i class="fa fa-check"></i><b>7.1.1</b> Læringsmål</a></li>
+<li class="chapter" data-level="7.1.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#videorressourcer"><i class="fa fa-check"></i><b>7.1.2</b> Videorressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#iterative-processer-med-map-funktioner"><i class="fa fa-check"></i><b>7.2</b> Iterative processer med <code>map()</code> funktioner</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#introduktion-til-map-funktioner"><i class="fa fa-check"></i><b>7.2.1</b> Introduktion til <code>map()</code> funktioner</a></li>
+<li class="chapter" data-level="7.2.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#reference-for-de-forskellige-map-funktioner"><i class="fa fa-check"></i><b>7.2.2</b> Reference for de forskellige map-funktioner</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#brugerdefinerede-funktioner"><i class="fa fa-check"></i><b>7.3</b> Brugerdefinerede funktioner</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#simple-funktioner"><i class="fa fa-check"></i><b>7.3.1</b> Simple funktioner</a></li>
+<li class="chapter" data-level="7.3.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#brugerdefinerede-funktioner-med-mapping"><i class="fa fa-check"></i><b>7.3.2</b> Brugerdefinerede funktioner med mapping</a></li>
+<li class="chapter" data-level="7.3.3" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#effekten-af-map-på-andre-datatyper"><i class="fa fa-check"></i><b>7.3.3</b> Effekten af <code>map</code> på andre datatyper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#nesting-med-nest"><i class="fa fa-check"></i><b>7.4</b> Nesting med <code>nest()</code></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#anvendelse-af-map-med-nested-data"><i class="fa fa-check"></i><b>7.4.1</b> Anvendelse af map() med nested data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#andre-brugbar-purrr"><i class="fa fa-check"></i><b>7.5</b> Andre brugbar purrr</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#map2-funktion-for-flere-inputs"><i class="fa fa-check"></i><b>7.5.1</b> <code>map2()</code> funktion for flere inputs</a></li>
+<li class="chapter" data-level="7.5.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#transformering-af-numeriske-variabler"><i class="fa fa-check"></i><b>7.5.2</b> Transformering af numeriske variabler</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#problemstillinger-6"><i class="fa fa-check"></i><b>7.6</b> Problemstillinger</a></li>
+<li class="chapter" data-level="7.7" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#ekstra-notater-og-næste-gang"><i class="fa fa-check"></i><b>7.7</b> Ekstra notater og næste gang</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse og visualisering af biologiske datasæt - 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functional-programming-med-purrr-pakken" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Kapitel 7</span> Functional programming med purrr-pakken<a href="functional-programming-med-purrr-pakken.html#functional-programming-med-purrr-pakken" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="plots/hex-tidyverse.png" width="15%" style="display: block; margin: auto;" /><img src="plots/purrr.png" width="15%" style="display: block; margin: auto;" /></p>
+<div id="inledning-og-læringsmålene" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Inledning og læringsmålene<a href="functional-programming-med-purrr-pakken.html#inledning-og-læringsmålene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Emnet omhandler, hvordan man kan integrere funktioner for at forbedre reproducibilitet og gennemsigtighed i dine analyser. Det er ofte tilfældet i biologi, at man arbejder med flere datasæt eller variabler, der henviser til fx forskellige prøver, replikater eller batches, og ønsker at udføre den samme proces på dem alle samtidig.</p>
+<p>I dette emne beskæftiger du dig med især pakken <code>Purrr</code> og <code>map()</code> funktioner, som kan benyttes til at lave gentagne baserende analyser i <code>R</code>.</p>
+<div id="læringsmål" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Læringsmål<a href="functional-programming-med-purrr-pakken.html#læringsmål" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Du skal være i stand til at:</p>
+<ul>
+<li>Anvende <code>map()</code>-funktioner til at udføre beregninger iterativt over flere kolonner.</li>
+<li>Bruge <code>group_by()</code> og <code>nest()</code> til at gennemføre reproducerbare analyser over forskellige dele af datasættet.</li>
+<li>Kombinere <code>map()</code> og <code>map2()</code> med brugerdefinerede funktioner for at øge fleksibiliteten i analyserne.</li>
+</ul>
+</div>
+<div id="videorressourcer" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Videorressourcer<a href="functional-programming-med-purrr-pakken.html#videorressourcer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Video 1: Introduktion til <code>map()</code>-funktioner for iteration over kolonner</li>
+</ul>
+<p>Link her hvis det ikke virker nedenunder: <a href="https://player.vimeo.com/video/549630848" class="uri">https://player.vimeo.com/video/549630848</a></p>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/549630848" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+<ul>
+<li>Video 2: Introduction to custom functions and combining them with map</li>
+</ul>
+<p>Link her hvis det ikke virker nedenunder: <a href="https://player.vimeo.com/video/549630825" class="uri">https://player.vimeo.com/video/549630825</a></p>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/549630825" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+<ul>
+<li>Video 3: Introduction to nest functions for breaking data into sections</li>
+</ul>
+<p>Link her hvis det ikke virker nedenunder: <a href="https://player.vimeo.com/video/549630798" class="uri">https://player.vimeo.com/video/549630798</a></p>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/549630798" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<div id="iterative-processer-med-map-funktioner" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Iterative processer med <code>map()</code> funktioner<a href="functional-programming-med-purrr-pakken.html#iterative-processer-med-map-funktioner" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Når man udfører en iterativ proces, vil man ofte gentage den samme handling flere gange. Det kan for eksempel være, at vi har ti variabler, og vi ønsker at beregne middelværdien for hver variabel. Vi arbejder med datasættet <code>eukaryotes</code>, som indeholder oplysninger om forskellige organismer, der tilhører eukaryoter - for eksempel deres navne, grupper, undergrupper, antal proteiner/gener, genomstørrelse, og så videre. Du kan indlæse dataene med følgende kommando og se en liste over de forskellige kolonnenavne nedenfor.</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="functional-programming-med-purrr-pakken.html#cb354-1" aria-hidden="true" tabindex="-1"></a>eukaryotes <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;https://www.dropbox.com/s/3u4nuj039itzg8l/eukaryotes.tsv?dl=1&quot;</span>)</span></code></pre></div>
+<p>Vi tager udgangspunkt i kun fire variabler. For at gøre tingene mere overskuelige har jeg brugt <code>select()</code> til kun at få de fire variabler <code>organism_name</code>, <code>center</code>, <code>group</code> og <code>subgroup</code> ind i en dataframe.</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="functional-programming-med-purrr-pakken.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="co">#eukaryotes_full &lt;- eukaryotes</span></span>
+<span id="cb355-2"><a href="functional-programming-med-purrr-pakken.html#cb355-2" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="ot">&lt;-</span> eukaryotes <span class="sc">%&gt;%</span> <span class="fu">select</span>(organism_name, center, group, subgroup)</span>
+<span id="cb355-3"><a href="functional-programming-med-purrr-pakken.html#cb355-3" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>#&gt; Rows: 11,508
+#&gt; Columns: 4
+#&gt; $ organism_name &lt;chr&gt; &quot;Pyropia yezoensis&quot;, &quot;Emiliania huxleyi CCMP1516&quot;, &quot;Arab…
+#&gt; $ center        &lt;chr&gt; &quot;Ocean University&quot;, &quot;JGI&quot;, &quot;The Arabidopsis Information …
+#&gt; $ group         &lt;chr&gt; &quot;Other&quot;, &quot;Protists&quot;, &quot;Plants&quot;, &quot;Plants&quot;, &quot;Plants&quot;, &quot;Plan…
+#&gt; $ subgroup      &lt;chr&gt; &quot;Other&quot;, &quot;Other Protists&quot;, &quot;Land Plants&quot;, &quot;Land Plants&quot;,…</code></pre>
+<p>Lad os antage, at vi gerne vil beregne antallet af unikke organismer (variablen <code>organism_name</code>). Der er en funktion, der hedder <code>n_distinct()</code>, som beregner antallet af unikke værdier i en vektor/variabel. Her vælger vi variablen <code>organism_name</code>, og tilføjer så <code>n_distinct()</code>-funktionen.</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="functional-programming-med-purrr-pakken.html#cb357-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> </span>
+<span id="cb357-2"><a href="functional-programming-med-purrr-pakken.html#cb357-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(organism_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb357-3"><a href="functional-programming-med-purrr-pakken.html#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">n_distinct</span>()</span></code></pre></div>
+<pre><code>#&gt; [1] 6111</code></pre>
+<p>Lad os forestille os, at vi også er interesseret i antallet af unikke værdier i variablerne <code>center</code>, <code>group</code> og <code>subgroup</code> - som er de tre andre kolonner i datasættet. Vi har forskellige muligheder:</p>
+<ul>
+<li>Vi kan skrive dem ud - men hvad nu hvis vi havde 100 variabler at håndtere?</li>
+</ul>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="functional-programming-med-purrr-pakken.html#cb359-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">select</span>(organism_name) <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>()</span>
+<span id="cb359-2"><a href="functional-programming-med-purrr-pakken.html#cb359-2" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">select</span>(center) <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>()</span>
+<span id="cb359-3"><a href="functional-programming-med-purrr-pakken.html#cb359-3" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">select</span>(group) <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>()</span>
+<span id="cb359-4"><a href="functional-programming-med-purrr-pakken.html#cb359-4" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">select</span>(subgroup) <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>()</span></code></pre></div>
+<pre><code>#&gt; [1] 6111
+#&gt; [1] 2137
+#&gt; [1] 5
+#&gt; [1] 19</code></pre>
+<ul>
+<li>Vi har brug for en mere automatiseret løsning på dette. Vi bruger ikke tid på det her, men der er den traditionelle programmeringsløsning: en for-løkke, som også fungerer i R:</li>
+</ul>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="functional-programming-med-purrr-pakken.html#cb361-1" aria-hidden="true" tabindex="-1"></a>col_names <span class="ot">&lt;-</span> <span class="fu">names</span>(eukaryotes_subset)</span>
+<span id="cb361-2"><a href="functional-programming-med-purrr-pakken.html#cb361-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-3"><a href="functional-programming-med-purrr-pakken.html#cb361-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(column_name <span class="cf">in</span> col_names)</span>
+<span id="cb361-4"><a href="functional-programming-med-purrr-pakken.html#cb361-4" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb361-5"><a href="functional-programming-med-purrr-pakken.html#cb361-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(eukaryotes_subset <span class="sc">%&gt;%</span> </span>
+<span id="cb361-6"><a href="functional-programming-med-purrr-pakken.html#cb361-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">select</span>(column_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb361-7"><a href="functional-programming-med-purrr-pakken.html#cb361-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">n_distinct</span>())</span>
+<span id="cb361-8"><a href="functional-programming-med-purrr-pakken.html#cb361-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>#&gt; [1] 6111
+#&gt; [1] 2137
+#&gt; [1] 5
+#&gt; [1] 19</code></pre>
+<p>Man kan i teorien nøjes med for-løkker, men jeg vil gerne præsentere <code>tidyverse</code>-løsningen, som bliver mere intuitiv og lettere at læse, når man først er blevet vant til den (den integrerer også bedre med de andre <code>tidyverse</code>-pakker).</p>
+<div id="introduktion-til-map-funktioner" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Introduktion til <code>map()</code> funktioner<a href="functional-programming-med-purrr-pakken.html#introduktion-til-map-funktioner" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>Tidyverse</code>-løsningen er de såkaldte <code>map()</code>-funktioner, som er en del af <code>purrr</code>-pakken. Jeg introducerer dem her frem for base-R-løsningerne, ikke kun fordi de er en del af <code>tidyverse</code>, men også fordi de er en meget fleksibel og letforståelig tilgang, når man først er blevet vant til dem.</p>
+<p>Jeg vil vise, hvordan de fungerer ved hjælp af <code>eukaryotes</code>-datasættet, og derefter introducere dem i konteksten af brugerdefinerede funktioner og <code>nest()</code>, som kan bruges til at opdele datasættet i forskellige dele (oveni hvilke man kan gentage den samme proces).</p>
+<p>Man anvender <code>map()</code> ved at angive funktionsnavnet <code>n_distinct</code> inden i <code>map()</code>, og <code>map()</code> beregner så <code>n_distinct()</code> for hver kolonne i datasættet.</p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="functional-programming-med-purrr-pakken.html#cb363-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">map</span>(n_distinct) <span class="co">#do &#39;n_distinct&#39; for every single column</span></span></code></pre></div>
+<pre><code>#&gt; $organism_name
+#&gt; [1] 6111
+#&gt; 
+#&gt; $center
+#&gt; [1] 2137
+#&gt; 
+#&gt; $group
+#&gt; [1] 5
+#&gt; 
+#&gt; $subgroup
+#&gt; [1] 19</code></pre>
+<p>Så kan man se, at vi har fået en <code>list</code> tilbage, der indeholder tal, som viser antallet af unikke værdier for hver af de fire kolonner. Det fungerer lidt som base-R funktionen <code>apply</code>, men med <code>apply</code> skal man bruge <code>2</code> på anden pladsen for at angive, at vi gerne vil iterere over kolonnerne.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="functional-programming-med-purrr-pakken.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(eukaryotes_subset,<span class="dv">2</span>,n_distinct)</span></code></pre></div>
+<pre><code>#&gt; organism_name        center         group      subgroup 
+#&gt;          6111          2137             5            19</code></pre>
+<p>Bemærk, at vi her har fået en vektor af tal tilbage, men med <code>map</code> har vi fået en <code>list</code>. Der er faktisk andre varianter af <code>map</code>, som kan benyttes til at returnere resultatet i forskellige datatyper. For eksempel, kan man bruge <code>map_dbl()</code> til at få en double <code>dbl</code> tilbage - en vektor af tal, ligesom vi fik med <code>apply</code> i ovenstående.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="functional-programming-med-purrr-pakken.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply n_distinct to all variables, returning a double</span></span>
+<span id="cb367-2"><a href="functional-programming-med-purrr-pakken.html#cb367-2" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(n_distinct)</span></code></pre></div>
+<pre><code>#&gt; organism_name        center         group      subgroup 
+#&gt;          6111          2137             5            19</code></pre>
+<p>Man kan også bruge <code>map_df()</code> for at få en dataramme (<code>tibble</code>) tilbage - det er særligt nyttigt for os, da vi altid tager udgangspunkt i en dataramme, når vi skal lave et plot.</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="functional-programming-med-purrr-pakken.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply n_distinct to all variables, returning a dataframe</span></span>
+<span id="cb369-2"><a href="functional-programming-med-purrr-pakken.html#cb369-2" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(n_distinct)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 4
+#&gt;   organism_name center group subgroup
+#&gt;           &lt;int&gt;  &lt;int&gt; &lt;int&gt;    &lt;int&gt;
+#&gt; 1          6111   2137     5       19</code></pre>
+<p>For eksempel, kan man tilføje de tal fra <code>map_df</code> direkte ind i et ggplot.</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="functional-programming-med-purrr-pakken.html#cb371-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset <span class="sc">%&gt;%</span> </span>
+<span id="cb371-2"><a href="functional-programming-med-purrr-pakken.html#cb371-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(n_distinct) <span class="sc">%&gt;%</span> </span>
+<span id="cb371-3"><a href="functional-programming-med-purrr-pakken.html#cb371-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb371-4"><a href="functional-programming-med-purrr-pakken.html#cb371-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable, <span class="at">y =</span> count,<span class="at">fill =</span> variable)) <span class="sc">+</span></span>
+<span id="cb371-5"><a href="functional-programming-med-purrr-pakken.html#cb371-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb371-6"><a href="functional-programming-med-purrr-pakken.html#cb371-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb371-7"><a href="functional-programming-med-purrr-pakken.html#cb371-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="07-videre1_files/figure-html/unnamed-chunk-15-1.svg" width="480" style="display: block; margin: auto;" /></p>
+<!-- ### Map funktion med arguments -->
+<!-- En ting som er vigtig at husk - hvis man gerne vil tilføje arguments indenfor de funktioner de specificer med `map()` så skal man tilføj `~` som i følgende: -->
+<!-- ```{r} -->
+<!-- eukaryotes_subset %>% map_df(n_distinct) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- eukaryotes_subset %>% map_df(~.x %>% n_distinct(na.rm=TRUE)) -->
+<!-- ``` -->
+</div>
+<div id="reference-for-de-forskellige-map-funktioner" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Reference for de forskellige map-funktioner<a href="functional-programming-med-purrr-pakken.html#reference-for-de-forskellige-map-funktioner" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dette er en kort oversigt over de forskellige <code>map</code>-funktioner i R og hvilken type data, de returnerer.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Funktion</th>
+<th>Beskrivelse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>map_lgl()</code></td>
+<td>returnerer en logisk vektor</td>
+</tr>
+<tr class="even">
+<td><code>map_int()</code></td>
+<td>returnerer en integervektor</td>
+</tr>
+<tr class="odd">
+<td><code>map_dbl()</code></td>
+<td>returnerer en doublevektor</td>
+</tr>
+<tr class="even">
+<td><code>map_chr()</code></td>
+<td>returnerer en karaktervektor</td>
+</tr>
+<tr class="odd">
+<td><code>map_df()</code></td>
+<td>returnerer en dataramme</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="brugerdefinerede-funktioner" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Brugerdefinerede funktioner<a href="functional-programming-med-purrr-pakken.html#brugerdefinerede-funktioner" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vi kan lave vores egne funktioner og benytte dem indenfor <code>map()</code>-funktionen for at yderligere øge fleksibiliteten i R. For eksempel, kan det være, at vi har en bestemt metode, vi gerne vil bruge til at normalisere vores data, og der eksisterer ikke en relevant funktion i R i forvejen. Ved at lave vores egne funktioner kan vi skræddersy vores dataanalyse til specifikke behov.</p>
+<div id="simple-funktioner" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Simple funktioner<a href="functional-programming-med-purrr-pakken.html#simple-funktioner" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vi starter med en simpel funktion fra base-R og forklarer derefter dens struktur i tabellen nedenfor. Vi benytter oftest en anden form for funktioner i <strong>tidyverse</strong>, som vi ser på næste gang, men konceptet er det samme.</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="functional-programming-med-purrr-pakken.html#cb372-1" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(.x)</span>
+<span id="cb372-2"><a href="functional-programming-med-purrr-pakken.html#cb372-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb372-3"><a href="functional-programming-med-purrr-pakken.html#cb372-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(.x)<span class="sc">/</span><span class="fu">length</span>(.x))</span>
+<span id="cb372-4"><a href="functional-programming-med-purrr-pakken.html#cb372-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kode</th>
+<th>Beskrivelse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>my_function_name</code></td>
+<td>funktionens navn</td>
+</tr>
+<tr class="even">
+<td><code>&lt;- function(.x)</code></td>
+<td>fortæller R, at vi laver en funktion, der tager data <code>.x</code> som input</td>
+</tr>
+<tr class="odd">
+<td><code>sum(.x)/length(.x)</code></td>
+<td>beregner gennemsnittet af data <code>.x</code></td>
+</tr>
+<tr class="even">
+<td><code>return()</code></td>
+<td>det output, som funktionen skal give - her gennemsnittet</td>
+</tr>
+</tbody>
+</table>
+<p>Lad os også afprøve vores nye funktion ved at beregne den gennemsnitlige værdi for <code>Sepal.Length</code> i datasættet <code>iris</code>.</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="functional-programming-med-purrr-pakken.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_function</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb373-2"><a href="functional-programming-med-purrr-pakken.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<pre><code>#&gt; [1] 5.843333
+#&gt; [1] 5.843333</code></pre>
+</div>
+<div id="brugerdefinerede-funktioner-med-mapping" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Brugerdefinerede funktioner med mapping<a href="functional-programming-med-purrr-pakken.html#brugerdefinerede-funktioner-med-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Inden for <code>tidyverse</code> skriver man funktioner på en lidt anden måde. Her er et eksempel på, hvordan den samme funktion kan skrives.</p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="functional-programming-med-purrr-pakken.html#cb375-1" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">sum</span>(.x)<span class="sc">/</span><span class="fu">length</span>(.x)</span></code></pre></div>
+<ul>
+<li><code>~</code> betyder, at vi definerer en funktion.</li>
+<li><code>.x</code> repræsenterer de data, som vi anvender funktionen på (for eksempel variablen <code>Sepal.Length</code> fra <code>iris</code>). Man bruger symbolet <code>.x</code> konsekvent, og R forstår automatisk, hvad det repræsenterer.</li>
+</ul>
+<p>Vi kan bruge <code>my_function</code> inden for <code>map()</code> for at beregne den gennemsnitlige værdi for alle variabler (uden Species), og vi kan se, at vi får et resultat, der svarer til funktionen <code>mean()</code>:</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="functional-programming-med-purrr-pakken.html#cb376-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb376-2"><a href="functional-programming-med-purrr-pakken.html#cb376-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb376-3"><a href="functional-programming-med-purrr-pakken.html#cb376-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(my_function)</span>
+<span id="cb376-4"><a href="functional-programming-med-purrr-pakken.html#cb376-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-5"><a href="functional-programming-med-purrr-pakken.html#cb376-5" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb376-6"><a href="functional-programming-med-purrr-pakken.html#cb376-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb376-7"><a href="functional-programming-med-purrr-pakken.html#cb376-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(mean)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 4
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width
+#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt; 1         5.84        3.06         3.76        1.20
+#&gt; # A tibble: 1 × 4
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width
+#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt; 1         5.84        3.06         3.76        1.20</code></pre>
+<p>Man kan også placere funktionen direkte inden for <code>map_df</code>, i stedet for at oprette og henvise til den ved navn (f.eks. <code>my_function</code>):</p>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="functional-programming-med-purrr-pakken.html#cb378-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb378-2"><a href="functional-programming-med-purrr-pakken.html#cb378-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
+<span id="cb378-3"><a href="functional-programming-med-purrr-pakken.html#cb378-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(<span class="sc">~</span> <span class="fu">sum</span>(.x)<span class="sc">/</span><span class="fu">length</span>(.x)) <span class="co">#for hver datakolonne, beregn summen og divider med længden</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 4
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width
+#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt; 1         5.84        3.06         3.76        1.20</code></pre>
+<p>Vi kan også specificere andre funktioner.</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="functional-programming-med-purrr-pakken.html#cb380-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb380-2"><a href="functional-programming-med-purrr-pakken.html#cb380-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(<span class="sc">~</span><span class="fu">nth</span>(.x,<span class="dv">10</span>)) <span class="co">#tag hver kolonne, kald den for .x og find den 10. værdi</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 5
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+#&gt; 1          4.9         3.1          1.5         0.1 setosa</code></pre>
+<p>eller når <code>nth</code> er en <strong>tidyverse</strong> funktion, kan vi bruge <code>%&gt;%</code>:</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="functional-programming-med-purrr-pakken.html#cb382-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb382-2"><a href="functional-programming-med-purrr-pakken.html#cb382-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(<span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">nth</span>(<span class="dv">10</span>)) <span class="co">#tag hver kolonne, kald den for .x og find den 10. værdi</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 5
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+#&gt; 1          4.9         3.1          1.5         0.1 setosa</code></pre>
+<p>Antallet af distinkte værdier, som ikke er <code>NA</code>:</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="functional-programming-med-purrr-pakken.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tag hver kolonne, kald den for .x og beregn n_distinct</span></span>
+<span id="cb384-2"><a href="functional-programming-med-purrr-pakken.html#cb384-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb384-3"><a href="functional-programming-med-purrr-pakken.html#cb384-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(<span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="co">#n_dinstict er fra tidyverse</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 5
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt;          &lt;int&gt;       &lt;int&gt;        &lt;int&gt;       &lt;int&gt;   &lt;int&gt;
+#&gt; 1           35          23           43          22       3</code></pre>
+<p>Bemærk, at hvis det er en indbygget funktion og vi benytter standardparametre (altså na.rm = FALSE i ovenstående), kan man blot skrive:</p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="functional-programming-med-purrr-pakken.html#cb386-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb386-2"><a href="functional-programming-med-purrr-pakken.html#cb386-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(n_distinct)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 5
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt;          &lt;int&gt;       &lt;int&gt;        &lt;int&gt;       &lt;int&gt;   &lt;int&gt;
+#&gt; 1           35          23           43          22       3</code></pre>
+<p>Et andet eksempel: læg 3 til og kvadrer resultatet:</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="functional-programming-med-purrr-pakken.html#cb388-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb388-2"><a href="functional-programming-med-purrr-pakken.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
+<span id="cb388-3"><a href="functional-programming-med-purrr-pakken.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(<span class="sc">~</span>(.x <span class="sc">+</span> <span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 6 × 4
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width
+#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt; 1         65.6        42.2         19.4        10.2
+#&gt; 2         62.4        36           19.4        10.2
+#&gt; 3         59.3        38.4         18.5        10.2
+#&gt; 4         57.8        37.2         20.2        10.2
+#&gt; 5         64          43.6         19.4        10.2
+#&gt; 6         70.6        47.6         22.1        11.6</code></pre>
+<p>Jo mere kompleks en funktion bliver, desto mere mening giver det at definere den uden for <code>map()</code>-funktionen:</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="functional-programming-med-purrr-pakken.html#cb390-1" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="er">~</span>(.x <span class="sc">-</span> <span class="fu">mean</span>(.x))<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(.x <span class="sc">-</span> <span class="fu">sd</span>(.x))<span class="sc">^</span><span class="dv">2</span> <span class="co">#en lang, meningsløs funktion</span></span>
+<span id="cb390-2"><a href="functional-programming-med-purrr-pakken.html#cb390-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb390-3"><a href="functional-programming-med-purrr-pakken.html#cb390-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb390-4"><a href="functional-programming-med-purrr-pakken.html#cb390-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
+<span id="cb390-5"><a href="functional-programming-med-purrr-pakken.html#cb390-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(my_function) <span class="co">#beregn my_function for hver kolonne og output en dataramme </span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 150 × 4
+#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width
+#&gt;           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt;  1         9.68        4.89         5.63       1.16 
+#&gt;  2         9.18        3.29         5.63       1.16 
+#&gt;  3         8.80        3.84         6.15       1.16 
+#&gt;  4         8.66        3.55         5.13       1.16 
+#&gt;  5         9.41        5.30         5.63       1.16 
+#&gt;  6        10.6         6.71         4.24       0.705
+#&gt;  7         8.66        4.51         5.63       0.916
+#&gt;  8         9.41        4.51         5.13       1.16 
+#&gt;  9         8.46        3.06         5.63       1.16 
+#&gt; 10         9.18        3.55         5.13       1.43 
+#&gt; # ℹ 140 more rows</code></pre>
+</div>
+<div id="effekten-af-map-på-andre-datatyper" class="section level3 hasAnchor" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> Effekten af <code>map</code> på andre datatyper<a href="functional-programming-med-purrr-pakken.html#effekten-af-map-på-andre-datatyper" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I det ovenstående fokuserede jeg på <code>map</code> i forhold til dataframes. I <code>group_by</code> + <code>nest</code> anvender man <code>map()</code> på en liste af dataframes, kaldet <code>data</code>, hvilket tillader os at arbejde med hvert datasæt individuelt. Det er derfor værd at bruge lidt tid på at se, hvordan <code>map()</code> håndterer forskellige datatyper.</p>
+<p><strong>Input: vektor</strong></p>
+<ul>
+<li><code>.x</code> refererer til en værdi i vektoren. Hvis man tager heltallet <code>1:10</code> og anvender <code>map</code>, så tager man hvert tal for sig og beregner en funktion med det - i det følgende simulerer man et tal fra den normale fordeling med parameteren <code>mean=.x</code>:</li>
+</ul>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="functional-programming-med-purrr-pakken.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(<span class="sc">~</span><span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean=</span>.x))</span></code></pre></div>
+<pre><code>#&gt;  [1]  0.3016283  2.5094404  4.1276167  4.8632014  5.4518661  5.7523298
+#&gt;  [7]  7.1535601  8.9206574  8.7487530 10.5228057</code></pre>
+<p><strong>Input: dataframe</strong></p>
+<ul>
+<li><code>.x</code> refererer til en variabel fra dataframe. I det ovenstående er den første variabel <code>int1</code>, og i <code>map</code> tager man det første element med funktionen <code>pluck(1)</code>.</li>
+</ul>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="functional-programming-med-purrr-pakken.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="st">&quot;int1&quot;</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="st">&quot;int2&quot;</span><span class="ot">=</span><span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="dv">1</span>))</span></code></pre></div>
+<pre><code>#&gt; $int1
+#&gt; [1] 1
+#&gt; 
+#&gt; $int2
+#&gt; [1] 21</code></pre>
+<p>Med <code>nest</code> ser vi på muligheden for at lave <code>map</code> over en liste, der er skabt med funktionen <code>nest()</code>.</p>
+<p><strong>Input: liste</strong></p>
+<ul>
+<li><code>.x</code> refererer til et element i listen - i det nedenstående er det første element <code>c(1,2)</code>, så hvis man anvender funktionen <code>max</code>, så finder man den højeste værdi (<code>2</code> i dette tilfælde).</li>
+</ul>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="functional-programming-med-purrr-pakken.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)) <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span><span class="fu">max</span>(.x))</span></code></pre></div>
+<pre><code>#&gt; [[1]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] 3
+#&gt; 
+#&gt; [[3]]
+#&gt; [1] 4</code></pre>
+<p>Bemærk, at hvis der kun kommer et tal som resultat, kan man bruge <code>map_dbl</code> i stedet for <code>map</code> - så får man en vektor som output, selvom inputtet er en liste.</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="functional-programming-med-purrr-pakken.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)) <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(<span class="sc">~</span><span class="fu">max</span>(.x))</span></code></pre></div>
+<pre><code>#&gt; [1] 2 3 4</code></pre>
+<p><strong>Liste af dataframes</strong></p>
+<ul>
+<li><code>.x</code> refererer til et datasæt - så kan man referere til de forskellige variabler i <code>.x</code>, som man plejer i tidyverse.</li>
+</ul>
+<p>Det følgende er ligesom tilfældet med konceptet “nesting” i den næste sektion. Man tager en liste af tibbles og vælger det første tal fra variablen <code>int</code>.</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="functional-programming-med-purrr-pakken.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">tibble</span>(<span class="st">&quot;int&quot;</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="fu">tibble</span>(<span class="st">&quot;int&quot;</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="fu">tibble</span>(<span class="st">&quot;int&quot;</span><span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb400-2"><a href="functional-programming-med-purrr-pakken.html#cb400-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(<span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&quot;int&quot;</span>,<span class="dv">1</span>))</span></code></pre></div>
+<pre><code>#&gt; [1] 1 1 1</code></pre>
+</div>
+</div>
+<div id="nesting-med-nest" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Nesting med <code>nest()</code><a href="functional-programming-med-purrr-pakken.html#nesting-med-nest" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vi vil i den næste lektion se, at det er meget nyttigt at bruge funktionen <code>nest()</code> til at besvare en række statistiske spørgsmål. Det kan for eksempel være:</p>
+<ul>
+<li>Vi har udført 10 eksperimenter under lidt forskellige betingelser og ønsker at udføre nøjagtig den samme analyse på alle 10.</li>
+<li>Vi har 5 forskellige typer bakterier med 3 replikater hver, og vi ønsker at transformere data på samme måde for hver type bakterie og replikat.</li>
+</ul>
+<p>Funktionen <code>nest()</code> kan virke lidt abstrakt i starten, men konceptet er faktisk ret simpelt. Vi kan opdele vores datasæt (som indeholder vores forskellige betingelser/replikater osv.) med <code>group_by()</code> og derefter bruge <code>nest()</code> til at gemme de opdelte “underdatasæt” i en liste. Disse gemmes indenfor en kolonne i en <code>tibble</code>, hvilket gør det bekvemt at arbejde med de forskellige datasæt på samme tid (med hjælp fra <code>map()</code>).</p>
+<p><img src="plots/tidyr-nest.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Lad os opdele <code>eukaryotes_subset</code> efter variablen ‘group’ og anvende <code>nest()</code>:</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="functional-programming-med-purrr-pakken.html#cb402-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset_nested <span class="ot">&lt;-</span> eukaryotes_subset <span class="sc">%&gt;%</span> </span>
+<span id="cb402-2"><a href="functional-programming-med-purrr-pakken.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb402-3"><a href="functional-programming-med-purrr-pakken.html#cb402-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>()</span>
+<span id="cb402-4"><a href="functional-programming-med-purrr-pakken.html#cb402-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-5"><a href="functional-programming-med-purrr-pakken.html#cb402-5" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset_nested</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 2
+#&gt; # Groups:   group [5]
+#&gt;   group    data                
+#&gt;   &lt;chr&gt;    &lt;list&gt;              
+#&gt; 1 Other    &lt;tibble [51 × 3]&gt;   
+#&gt; 2 Protists &lt;tibble [888 × 3]&gt;  
+#&gt; 3 Plants   &lt;tibble [1,304 × 3]&gt;
+#&gt; 4 Fungi    &lt;tibble [6,064 × 3]&gt;
+#&gt; 5 Animals  &lt;tibble [3,201 × 3]&gt;</code></pre>
+<p>Vi kan se, at vi har to variabler - <code>group</code> og <code>data</code>. Variablen <code>data</code> indeholder faktisk fem datarammer (tibbles). For eksempel indeholder det første datasæt kun observationer, hvor <code>group</code> er lig med “Other”, det andet datasæt har kun observationer, hvor <code>group</code> er lig med “Protists”, osv.</p>
+<p>Vi kan kontrollere dette ved at kigge på det første datasæt. Her er to måder at gøre det på:</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="functional-programming-med-purrr-pakken.html#cb404-1" aria-hidden="true" tabindex="-1"></a>first_dataset <span class="ot">&lt;-</span> eukaryotes_subset_nested<span class="sc">$</span>data[[<span class="dv">1</span>]] </span>
+<span id="cb404-2"><a href="functional-programming-med-purrr-pakken.html#cb404-2" aria-hidden="true" tabindex="-1"></a>first_dataset <span class="ot">&lt;-</span> eukaryotes_subset_nested <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&quot;data&quot;</span>,<span class="dv">1</span>)</span>
+<span id="cb404-3"><a href="functional-programming-med-purrr-pakken.html#cb404-3" aria-hidden="true" tabindex="-1"></a>first_dataset <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 6 × 3
+#&gt;   organism_name                         center                          subgroup
+#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                           &lt;chr&gt;   
+#&gt; 1 Pyropia yezoensis                     Ocean University                Other   
+#&gt; 2 Thalassiosira pseudonana CCMP1335     Diatom Consortium               Other   
+#&gt; 3 Guillardia theta CCMP2712             JGI                             Other   
+#&gt; 4 Cyanidioschyzon merolae strain 10D    National Institute of Genetics… Other   
+#&gt; 5 Galdieria sulphuraria                 Galdieria sulphuraria Genome P… Other   
+#&gt; 6 Phaeodactylum tricornutum CCAP 1055/1 Diatom Consortium               Other</code></pre>
+<p>Hvis vi ønsker at vende tilbage til vores oprindelige datasæt, kan vi bruge <code>unnest()</code> og specificere kolonnen <code>data</code>:</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="functional-programming-med-purrr-pakken.html#cb406-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset_nested <span class="sc">%&gt;%</span> </span>
+<span id="cb406-2"><a href="functional-programming-med-purrr-pakken.html#cb406-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb406-3"><a href="functional-programming-med-purrr-pakken.html#cb406-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 6 × 4
+#&gt; # Groups:   group [1]
+#&gt;   group organism_name                         center                    subgroup
+#&gt;   &lt;chr&gt; &lt;chr&gt;                                 &lt;chr&gt;                     &lt;chr&gt;   
+#&gt; 1 Other Pyropia yezoensis                     Ocean University          Other   
+#&gt; 2 Other Thalassiosira pseudonana CCMP1335     Diatom Consortium         Other   
+#&gt; 3 Other Guillardia theta CCMP2712             JGI                       Other   
+#&gt; 4 Other Cyanidioschyzon merolae strain 10D    National Institute of Ge… Other   
+#&gt; 5 Other Galdieria sulphuraria                 Galdieria sulphuraria Ge… Other   
+#&gt; 6 Other Phaeodactylum tricornutum CCAP 1055/1 Diatom Consortium         Other</code></pre>
+<p>Spørgsmålet er så: hvordan kan vi inkorporere “nested” data i vores analyser?</p>
+<div id="anvendelse-af-map-med-nested-data" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> Anvendelse af map() med nested data<a href="functional-programming-med-purrr-pakken.html#anvendelse-af-map-med-nested-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>De fleste gange vi arbejder med nested data, er fordi vi ønsker at udføre den samme operation på hvert af de “sub” datasæt. Derfor er det her, funktionen <code>map()</code> kommer ind i billedet. Den typiske proces er:</p>
+<ul>
+<li>Tag det nestede datasæt</li>
+<li>Tilføj en ny kolonne med <code>mutate()</code>, hvor vi:</li>
+<li>Tager hvert datasæt fra kolonnen <code>data</code> og bruger <code>map()</code>, i det nedenstående eksempel til at finde antallet af rækker.</li>
+</ul>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="functional-programming-med-purrr-pakken.html#cb408-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset_nested <span class="sc">%&gt;%</span> </span>
+<span id="cb408-2"><a href="functional-programming-med-purrr-pakken.html#cb408-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_row =</span> <span class="fu">map_dbl</span>(data,nrow))</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 3
+#&gt; # Groups:   group [5]
+#&gt;   group    data                 n_row
+#&gt;   &lt;chr&gt;    &lt;list&gt;               &lt;dbl&gt;
+#&gt; 1 Other    &lt;tibble [51 × 3]&gt;       51
+#&gt; 2 Protists &lt;tibble [888 × 3]&gt;     888
+#&gt; 3 Plants   &lt;tibble [1,304 × 3]&gt;  1304
+#&gt; 4 Fungi    &lt;tibble [6,064 × 3]&gt;  6064
+#&gt; 5 Animals  &lt;tibble [3,201 × 3]&gt;  3201</code></pre>
+<p>Vi kan også bruge en brugerdefineret funktion. I det nedenstående eksempel beregner vi antallet af unikke organismer fra variablen <code>organism_name</code> i datasættet. Husk:</p>
+<ul>
+<li><code>~</code> betyder, at vi laver en funktion, som kommer til at fungere for alle fem datasæt.</li>
+<li>Tag et datasæt og kald det for <code>.x</code> - det refererer til et bestemt datasæt fra en af de fem datasæt, som hører under kolonnen <code>data</code> i det nestede datasæt.</li>
+<li>Vælg variablen <code>organism_name</code> fra <code>.x</code></li>
+<li>Beregn <code>n_distinct</code></li>
+</ul>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="functional-programming-med-purrr-pakken.html#cb410-1" aria-hidden="true" tabindex="-1"></a>n_distinct_organisms <span class="ot">&lt;-</span> <span class="er">~</span> .x <span class="sc">%&gt;%</span> <span class="co">#tag data</span></span>
+<span id="cb410-2"><a href="functional-programming-med-purrr-pakken.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(organism_name) <span class="sc">%&gt;%</span>  <span class="co">#vælg organism_name</span></span>
+<span id="cb410-3"><a href="functional-programming-med-purrr-pakken.html#cb410-3" aria-hidden="true" tabindex="-1"></a>  n_distinct <span class="co">#returner antallet af unikke værdier</span></span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="functional-programming-med-purrr-pakken.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gentag funktionen for hver af de fem datasæt:</span></span>
+<span id="cb411-2"><a href="functional-programming-med-purrr-pakken.html#cb411-2" aria-hidden="true" tabindex="-1"></a>eukaryotes_subset_nested <span class="sc">%&gt;%</span> </span>
+<span id="cb411-3"><a href="functional-programming-med-purrr-pakken.html#cb411-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_organisms =</span> <span class="fu">map_dbl</span>(data, n_distinct_organisms))</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 3
+#&gt; # Groups:   group [5]
+#&gt;   group    data                 n_organisms
+#&gt;   &lt;chr&gt;    &lt;list&gt;                     &lt;dbl&gt;
+#&gt; 1 Other    &lt;tibble [51 × 3]&gt;             35
+#&gt; 2 Protists &lt;tibble [888 × 3]&gt;           490
+#&gt; 3 Plants   &lt;tibble [1,304 × 3]&gt;         673
+#&gt; 4 Fungi    &lt;tibble [6,064 × 3]&gt;        2926
+#&gt; 5 Animals  &lt;tibble [3,201 × 3]&gt;        1987</code></pre>
+<p>Her er et andet eksempel. Her handler det om <code>eukaryotes</code> data (ikke subsettet), som har oplysninger om fx GC-indholdet med variablen <code>gc</code>. Her bruger vi <code>pull</code> i stedet for <code>select</code> - det er næsten det samme, men med <code>pull()</code> får vi en vektor, som fungerer med <code>median</code>, som er en base-R-funktion.</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="functional-programming-med-purrr-pakken.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="co"># func_gc &lt;- ~ .x %&gt;% </span></span>
+<span id="cb413-2"><a href="functional-programming-med-purrr-pakken.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   pull(gc) %&gt;%       # ligesom select, men vi har brug for en vektor for at beregne median</span></span>
+<span id="cb413-3"><a href="functional-programming-med-purrr-pakken.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   median(.x,na.rm=T) # `na.rm` fjerner `NA` værdier)</span></span>
+<span id="cb413-4"><a href="functional-programming-med-purrr-pakken.html#cb413-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb413-5"><a href="functional-programming-med-purrr-pakken.html#cb413-5" aria-hidden="true" tabindex="-1"></a>func_gc <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">median</span>(.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gc),<span class="at">na.rm=</span>T) </span>
+<span id="cb413-6"><a href="functional-programming-med-purrr-pakken.html#cb413-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb413-7"><a href="functional-programming-med-purrr-pakken.html#cb413-7" aria-hidden="true" tabindex="-1"></a>ekaryotes_gc_by_group <span class="ot">&lt;-</span> eukaryotes <span class="sc">%&gt;%</span> </span>
+<span id="cb413-8"><a href="functional-programming-med-purrr-pakken.html#cb413-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb413-9"><a href="functional-programming-med-purrr-pakken.html#cb413-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb413-10"><a href="functional-programming-med-purrr-pakken.html#cb413-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;median_gc&quot;</span><span class="ot">=</span><span class="fu">map_dbl</span>(data, func_gc))</span>
+<span id="cb413-11"><a href="functional-programming-med-purrr-pakken.html#cb413-11" aria-hidden="true" tabindex="-1"></a>ekaryotes_gc_by_group</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 3
+#&gt; # Groups:   group [5]
+#&gt;   group    data                  median_gc
+#&gt;   &lt;chr&gt;    &lt;list&gt;                    &lt;dbl&gt;
+#&gt; 1 Other    &lt;tibble [51 × 18]&gt;         46.7
+#&gt; 2 Protists &lt;tibble [888 × 18]&gt;        49.4
+#&gt; 3 Plants   &lt;tibble [1,304 × 18]&gt;      37.9
+#&gt; 4 Fungi    &lt;tibble [6,064 × 18]&gt;      47.5
+#&gt; 5 Animals  &lt;tibble [3,201 × 18]&gt;      40.6</code></pre>
+<p>Og jeg kan bruge resultatet i et plot, ligesom vi plejer:</p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="functional-programming-med-purrr-pakken.html#cb415-1" aria-hidden="true" tabindex="-1"></a>ekaryotes_gc_by_group <span class="sc">%&gt;%</span> </span>
+<span id="cb415-2"><a href="functional-programming-med-purrr-pakken.html#cb415-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">y=</span>median_gc,<span class="at">fill=</span>group)) <span class="sc">+</span> </span>
+<span id="cb415-3"><a href="functional-programming-med-purrr-pakken.html#cb415-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb415-4"><a href="functional-programming-med-purrr-pakken.html#cb415-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb415-5"><a href="functional-programming-med-purrr-pakken.html#cb415-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div>
+<p><img src="07-videre1_files/figure-html/unnamed-chunk-40-1.svg" width="384" style="display: block; margin: auto;" /></p>
+<p><strong>flere statistik på en gang</strong></p>
+<p>Lave funktionerne:</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="functional-programming-med-purrr-pakken.html#cb416-1" aria-hidden="true" tabindex="-1"></a>func_genes <span class="ot">&lt;-</span>       <span class="er">~</span><span class="fu">median</span>(.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(genes),   <span class="at">na.rm=</span>T) </span>
+<span id="cb416-2"><a href="functional-programming-med-purrr-pakken.html#cb416-2" aria-hidden="true" tabindex="-1"></a>func_proteins <span class="ot">&lt;-</span>    <span class="er">~</span><span class="fu">median</span>(.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(proteins),<span class="at">na.rm=</span>T) </span>
+<span id="cb416-3"><a href="functional-programming-med-purrr-pakken.html#cb416-3" aria-hidden="true" tabindex="-1"></a>func_size <span class="ot">&lt;-</span>        <span class="er">~</span><span class="fu">median</span>(.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(size_mb), <span class="at">na.rm=</span>T) </span></code></pre></div>
+<p>Anvende <code>nest()</code>:</p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="functional-programming-med-purrr-pakken.html#cb417-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_nested <span class="ot">&lt;-</span> eukaryotes <span class="sc">%&gt;%</span> </span>
+<span id="cb417-2"><a href="functional-programming-med-purrr-pakken.html#cb417-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb417-3"><a href="functional-programming-med-purrr-pakken.html#cb417-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() </span></code></pre></div>
+<p>Tilføje resultatet over de fem datasæt med <code>mutate()</code>:</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="functional-programming-med-purrr-pakken.html#cb418-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_stats <span class="ot">&lt;-</span> eukaryotes_nested <span class="sc">%&gt;%</span></span>
+<span id="cb418-2"><a href="functional-programming-med-purrr-pakken.html#cb418-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_genes =</span> <span class="fu">map_dbl</span>(data,func_genes),</span>
+<span id="cb418-3"><a href="functional-programming-med-purrr-pakken.html#cb418-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">proteins =</span> <span class="fu">map_dbl</span>(data,func_proteins),</span>
+<span id="cb418-4"><a href="functional-programming-med-purrr-pakken.html#cb418-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">mean_size_mb =</span> <span class="fu">map_dbl</span>(data,func_size))</span></code></pre></div>
+<p>Husk at fjerne kolonnen <code>data</code> før man anvende <code>pivot_longer()</code> (ellers får man en advarsel):</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="functional-programming-med-purrr-pakken.html#cb419-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_stats <span class="sc">%&gt;%</span> </span>
+<span id="cb419-2"><a href="functional-programming-med-purrr-pakken.html#cb419-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb419-3"><a href="functional-programming-med-purrr-pakken.html#cb419-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>group) <span class="sc">%&gt;%</span></span>
+<span id="cb419-4"><a href="functional-programming-med-purrr-pakken.html#cb419-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">y=</span>value,<span class="at">fill=</span>group)) <span class="sc">+</span> </span>
+<span id="cb419-5"><a href="functional-programming-med-purrr-pakken.html#cb419-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb419-6"><a href="functional-programming-med-purrr-pakken.html#cb419-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name,<span class="at">scales=</span><span class="st">&quot;free&quot;</span>,<span class="at">ncol=</span><span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb419-7"><a href="functional-programming-med-purrr-pakken.html#cb419-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="07-videre1_files/figure-html/unnamed-chunk-44-1.svg" width="768" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="andre-brugbar-purrr" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Andre brugbar purrr<a href="functional-programming-med-purrr-pakken.html#andre-brugbar-purrr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="map2-funktion-for-flere-inputs" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> <code>map2()</code> funktion for flere inputs<a href="functional-programming-med-purrr-pakken.html#map2-funktion-for-flere-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Funktionen <code>map2()</code> kan bruges ligesom <code>map()</code>, men tager to “inputs” i stedet for kun én. I det følgende eksempel angiver jeg to kolonner fra datasættet <code>eukaryotes_stats</code>, <code>mean_genes</code> og <code>proteins</code>, og beregner <code>sum()</code>, som bliver gemt takket være funktionen <code>mutate</code> i kolonnen <code>colstat</code>.</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="functional-programming-med-purrr-pakken.html#cb420-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_stats <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">colstat =</span> <span class="fu">map2_dbl</span>(mean_genes,proteins,sum))</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 6
+#&gt; # Groups:   group [5]
+#&gt;   group    data                  mean_genes proteins mean_size_mb colstat
+#&gt;   &lt;chr&gt;    &lt;list&gt;                     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1 Other    &lt;tibble [51 × 18]&gt;        11354.   11240.         49.7  22594 
+#&gt; 2 Protists &lt;tibble [888 × 18]&gt;        8813     8628.         33.5  17442.
+#&gt; 3 Plants   &lt;tibble [1,304 × 18]&gt;     33146.   37660         358.   70806.
+#&gt; 4 Fungi    &lt;tibble [6,064 × 18]&gt;     10069    10034          32.2  20103 
+#&gt; 5 Animals  &lt;tibble [3,201 × 18]&gt;     20733    25161         692.   45894</code></pre>
+<p>Bemærk, at præcis det samme resultat kan opnås ved blot at lægge de to kolonner sammen:</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="functional-programming-med-purrr-pakken.html#cb422-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_stats <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">colstat2 =</span> mean_genes <span class="sc">+</span> proteins)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 6
+#&gt; # Groups:   group [5]
+#&gt;   group    data                  mean_genes proteins mean_size_mb colstat2
+#&gt;   &lt;chr&gt;    &lt;list&gt;                     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 Other    &lt;tibble [51 × 18]&gt;        11354.   11240.         49.7   22594 
+#&gt; 2 Protists &lt;tibble [888 × 18]&gt;        8813     8628.         33.5   17442.
+#&gt; 3 Plants   &lt;tibble [1,304 × 18]&gt;     33146.   37660         358.    70806.
+#&gt; 4 Fungi    &lt;tibble [6,064 × 18]&gt;     10069    10034          32.2   20103 
+#&gt; 5 Animals  &lt;tibble [3,201 × 18]&gt;     20733    25161         692.    45894</code></pre>
+<p>Der er dog mange indviklet situationer hvor man ikke kan gå udenom <code>map2</code>:</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="functional-programming-med-purrr-pakken.html#cb424-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_stats_with_plots <span class="ot">&lt;-</span> eukaryotes_stats <span class="sc">%&gt;%</span> </span>
+<span id="cb424-2"><a href="functional-programming-med-purrr-pakken.html#cb424-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log10_genes =</span> <span class="fu">map</span>(data,<span class="sc">~</span><span class="fu">log10</span>(.x <span class="sc">%&gt;%</span> <span class="fu">pull</span>(genes)))) <span class="sc">%&gt;%</span> </span>
+<span id="cb424-3"><a href="functional-programming-med-purrr-pakken.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">myplots =</span> <span class="fu">map2</span>(group,log10_genes,</span>
+<span id="cb424-4"><a href="functional-programming-med-purrr-pakken.html#cb424-4" aria-hidden="true" tabindex="-1"></a>                        <span class="sc">~</span> <span class="fu">tibble</span>(<span class="st">&quot;log10_genes&quot;</span><span class="ot">=</span>.y) <span class="sc">%&gt;%</span> </span>
+<span id="cb424-5"><a href="functional-programming-med-purrr-pakken.html#cb424-5" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>log10_genes)) <span class="sc">+</span></span>
+<span id="cb424-6"><a href="functional-programming-med-purrr-pakken.html#cb424-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">geom_density</span>(<span class="at">colour=</span><span class="st">&quot;red&quot;</span>,<span class="at">alpha=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb424-7"><a href="functional-programming-med-purrr-pakken.html#cb424-7" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">&quot;Density plot of log10(genes) in&quot;</span>,.x))))</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="functional-programming-med-purrr-pakken.html#cb425-1" aria-hidden="true" tabindex="-1"></a>eukaryotes_stats_with_plots <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&quot;myplots&quot;</span>,<span class="dv">2</span>)</span></code></pre></div>
+<p><img src="07-videre1_files/figure-html/unnamed-chunk-48-1.svg" width="384" style="display: block; margin: auto;" /></p>
+<p>Der er flere <code>map</code> funktion der tager flere <code>input</code> fk. <code>pmap</code> - jeg har ikke tid til at dække dem men du kan godt læse om dem hvis du har bruge for dem: <a href="https://purrr.tidyverse.org/reference/map2.html" class="uri">https://purrr.tidyverse.org/reference/map2.html</a></p>
+</div>
+<div id="transformering-af-numeriske-variabler" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> Transformering af numeriske variabler<a href="functional-programming-med-purrr-pakken.html#transformering-af-numeriske-variabler" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Som en sidste bemærkning, her er en nyttig variant af <code>map</code> - her kan man udføre en operation på kun bestemte variabler - for eksempel anvender jeg i det følgende funktionen <code>log2()</code> på alle numeriske variabler. Bemærk, at man er nødt til at anvende <code>as_tibble()</code> igen bagefter (som kun fungerer, hvis alle variabler stadig har samme længde efter <code>map_if()</code>):</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="functional-programming-med-purrr-pakken.html#cb426-1" aria-hidden="true" tabindex="-1"></a>eukaryotes <span class="sc">%&gt;%</span> <span class="fu">map_if</span>(is.numeric,<span class="sc">~</span><span class="fu">log2</span>(.x)) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 11,508 × 19
+#&gt;    organism_name taxid bioproject_accession bioproject_id group subgroup size_mb
+#&gt;    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+#&gt;  1 Pyropia yezo…  11.4 PRJNA589917                  19.2  Other Other       6.75
+#&gt;  2 Emiliania hu…  18.1 PRJNA77753                   16.2  Prot… Other P…    7.39
+#&gt;  3 Arabidopsis …  11.9 PRJNA10719                   13.4  Plan… Land Pl…    6.90
+#&gt;  4 Glycine max    11.9 PRJNA19861                   14.3  Plan… Land Pl…    9.94
+#&gt;  5 Medicago tru…  11.9 PRJNA10791                   13.4  Plan… Land Pl…    8.69
+#&gt;  6 Solanum lyco…  12.0 PRJNA119                      6.89 Plan… Land Pl…    9.69
+#&gt;  7 Hordeum vulg…  16.8 PRJEB34217                   19.1  Plan… Land Pl…   12.1 
+#&gt;  8 Oryza sativa…  15.3 PRJNA12269                   13.6  Plan… Land Pl…    8.55
+#&gt;  9 Triticum aes…  12.2 PRJNA392179                  18.6  Plan… Land Pl…   13.9 
+#&gt; 10 Zea mays       12.2 PRJNA10769                   13.4  Plan… Land Pl…   11.1 
+#&gt; # ℹ 11,498 more rows
+#&gt; # ℹ 12 more variables: gc &lt;dbl&gt;, assembly_accession &lt;chr&gt;, replicons &lt;chr&gt;,
+#&gt; #   wgs &lt;chr&gt;, scaffolds &lt;dbl&gt;, genes &lt;dbl&gt;, proteins &lt;dbl&gt;,
+#&gt; #   release_date &lt;date&gt;, modify_date &lt;date&gt;, status &lt;chr&gt;, center &lt;chr&gt;,
+#&gt; #   biosample_accession &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div id="problemstillinger-6" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Problemstillinger<a href="functional-programming-med-purrr-pakken.html#problemstillinger-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Problem 1)</strong> Lave Quiz på Absalon “Quiz - functional programming”</p>
+<hr />
+<p><strong>Problem 2)</strong> <em>Basis øvelser med <code>map()</code></em> Indlæse <code>diamonds</code> med <code>data(diamonds)</code>.</p>
+<p>Eksempel:</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="functional-programming-med-purrr-pakken.html#cb428-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> <span class="fu">select</span>(cut,color,depth) <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(n_distinct)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 × 3
+#&gt;     cut color depth
+#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+#&gt; 1     5     7   184</code></pre>
+<p>Husk også referencen med de forskellige varianter af <code>map()</code> som kan bruges for at få en anden output type.</p>
+<p>Brug <code>map()</code> funktioner til at beregne følgende:</p>
+<p><strong>a)</strong> Andvend <code>select</code> for at udvælge variabler <code>cut</code>, <code>color</code> og <code>clarity</code>, og dernæst beregn antallet af unikke værdier til hver (<code>n_distinct</code>-funktionen). Dit resultat skal være en list (<code>lst</code> - anvende standard <code>map()</code> funktion).</p>
+<p><strong>b)</strong> Udvalg variablerne som er numeriske og dernæst beregne gennemsnittet til hver. Dit resultat skal være en double (<code>dbl</code>).</p>
+<p><strong>c)</strong> Beregne datatypen (anvend funktionen <code>typeof()</code>) til alle variabler. Resultatet skal være en dataframe.</p>
+<!-- __d)__ Beregn variansen for hver numeriske variabel i `iris` datasættet ved hjælp af en passende `map()`-funktion. -->
+<!-- ```{r} -->
+<!-- data(iris) -->
+<!-- iris %>% select(where(is.numeric)) %>% map_dbl(var) -->
+<!-- ``` -->
+<hr />
+<p><strong>Problem 3</strong>) <em><code>map()</code> øvelse med brugerdefinerede funktioner</em> Indlæse <code>diamonds</code> med <code>data(diamonds)</code>.</p>
+<p>Husk, at når man inddrager nogle data <code>.x</code>, for eksempel når man vil bruge en custom funktion eller specificer ikke-standard indstillinger såsom <code>na.rm=TRUE</code> (for at fjerne <code>NA</code> værdier i beregningen) i funktionen, skal man angiv <code>~</code> i starten:</p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="functional-programming-med-purrr-pakken.html#cb430-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(n_distinct) <span class="co">#specificere funktion unden instillinger</span></span>
+<span id="cb430-2"><a href="functional-programming-med-purrr-pakken.html#cb430-2" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(<span class="sc">~</span><span class="fu">n_distinct</span>(.x,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="co">#custom funktion - skal have ~ og .x</span></span></code></pre></div>
+<p><strong>a</strong>) Afprøve følgende kode linjer og beskrive hvad der sker (<code>nth(.x,1)</code> angiver den første værdi fra <code>.x</code>) :</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="functional-programming-med-purrr-pakken.html#cb431-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> <span class="fu">select</span>(carat, depth, price) <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(<span class="sc">~</span><span class="fu">mean</span>(.x,<span class="at">na.rm=</span>T))</span>
+<span id="cb431-2"><a href="functional-programming-med-purrr-pakken.html#cb431-2" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> <span class="fu">select</span>(carat, depth, price) <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(<span class="sc">~</span><span class="fu">ifelse</span>(.x<span class="sc">&gt;</span><span class="fu">mean</span>(.x),<span class="st">&quot;big_value&quot;</span>,<span class="st">&quot;small_value&quot;</span>))</span>
+<span id="cb431-3"><a href="functional-programming-med-purrr-pakken.html#cb431-3" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> <span class="fu">filter</span>(cut<span class="sc">==</span><span class="st">&quot;Ideal&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;clarity&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span><span class="fu">nth</span>(.x,<span class="dv">100</span>)) </span></code></pre></div>
+<p><strong>b</strong>) Brug brugerdefinerede funktioner inden for <code>map()</code> til at beregne følgende:</p>
+<ul>
+<li>Vælg variablerne <code>carat</code>, <code>depth</code>, <code>table</code> og <code>price</code>, og for hver kolonne, læg tre til værdierne og kvadrer derefter resultatet (<code>^2</code>). Det endelige resultat skal være en dataramme.</li>
+<li>Vælg de numeriske variabler og returner <code>TRUE</code>, hvis den første værdi i kolonnen (angivet med <code>nth(.x,1)</code>) er større end medianværdien i samme kolonne. Hvis ikke, returner <code>FALSE</code>. Det endelige resultat skal være en logisk værdi.</li>
+</ul>
+<hr />
+<p><strong>Problem 4)</strong> <em>Brug af map på forskellige datatyper</em> Vi har set, at når vi anvender <code>map()</code> på en dataframe, anvendes en funktion på hver kolonne. Lad os se, hvad der sker, når vi har forskellige datatyper:</p>
+<p><strong>a</strong>) (<em>En vektor af tal</em>)</p>
+<ul>
+<li>Kør det følgende og bemærk, at funktionen i <code>map()</code> anvendes til hvert tal i vectoren.</li>
+</ul>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="functional-programming-med-purrr-pakken.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(<span class="sc">~</span>.x<span class="sc">*</span><span class="dv">2</span>)</span>
+<span id="cb432-2"><a href="functional-programming-med-purrr-pakken.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(<span class="sc">~</span><span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean=</span>.x,<span class="at">sd=</span><span class="dv">1</span>))</span></code></pre></div>
+<ul>
+<li>Tag udgangspunkt i <code>c(1:10)</code> og brug <code>map_dbl</code> til at beregne <code>log()</code> for hvert tal i vektoren (angiv indstillingen <code>base=5</code>):</li>
+</ul>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="functional-programming-med-purrr-pakken.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> ???</span></code></pre></div>
+<p><strong>b</strong>) Omdan <code>c(1:10)</code> til en liste ved at bruge <code>as.list(c(1:10))</code>. Anvend de samme funktioner som i <strong>a</strong>) på listen. Bemærk, at funktionerne denne gang anvendes på hvert element i listen. Disse elementer kan også være dataframes - ligesom i det næste spørgsmål.</p>
+<!-- __b__) (_En list af tibbles_)  -->
+<!-- ```{r,echo=T,eval=T} -->
+<!-- my_list_of_tibbles <- list( tibble("letter" = c("a","a","a"), "number" = c(1,3,3)), -->
+<!--                             tibble("letter" = c("a","b","b"), "number" = c(3,3,1)), -->
+<!--                             tibble("letter" = c("a","b","a"), "number" = c(2,3,3))) -->
+<!-- ``` -->
+<!-- * Kør følgende kode, der tager den første `tibble` i listen `my_list_of_tibbles`, udvælger observationer hvor `letter` = "a", og beregner dernæst middelværdien af "number". -->
+<!-- ```{r,echo=T,eval=F} -->
+<!-- my_list_of_tibbles %>% pluck(1) %>% filter(letter=="a") %>% summarise(mn = mean(number)) -->
+<!-- ``` -->
+<!-- * Da min kode virker for den første `tibble`, kan jeg ændre den til en funktion og anvende den med `map()` for at udføre samme proces på alle dataframes i listen. Prøv at køre følgende: -->
+<!-- ```{r,eval=F,echo=T} -->
+<!-- my_list_of_tibbles %>% map(~.x %>% filter(letter=="a") %>% summarise(mn = mean(number))) -->
+<!-- ``` -->
+<!-- ```{r,eval=F,echo=T} -->
+<!-- my_function <- ~.x %>% filter(letter=="a") %>% summarise(mn = mean(number)) -->
+<!-- my_list_of_tibbles %>% map(my_function) -->
+<!-- ``` -->
+<!-- * Tag udgangspunkt i `my_list_of_tibbles`, og for hver tibble, vælg alle tilfælde, hvor variablen `number` er 3, og tæl dernæst, hvor mange `a` der er tilbage i variablen `letter`. Du kan afprøve på den første `tibble`, hvis det hjælper. -->
+<!-- ```{r,echo=F,eval=F} -->
+<!-- my_list_of_tibbles %>% map(~.x %>% filter(number==3) %>% summarise("no_a"=sum(letter=="a"))) -->
+<!-- #my_list_of_tibbles %>% map(~.x %>% filter(number==3) %>% count(letter)) -->
+<!-- ``` -->
+<hr />
+<p><strong>Problem 5</strong>) <em>group_by/nest øvelse</em></p>
+<p><strong>a</strong>) For datasættet <code>iris</code>, anvend <code>group_by(Species)</code> og tilføj dernæst <code>nest()</code>, og kigger på resultatet.</p>
+<p><strong>b</strong>) Tag udgangspunkt i dit nested dataframe fra <strong>a</strong>)</p>
+<ul>
+<li>tilføj <code>pull(data)</code> og se på resultatet</li>
+<li>fjern <code>pull(data)</code> og tilføj <code>pluck("data",1)</code> i stedet for, for at se den første dataramme.</li>
+<li>fjern <code>pluck("data",1)</code> og tilføj <code>unnest(data)</code> i stedet for og se på resultatet</li>
+<li>fjern <code>unnest(data)</code> og tilføj følgende i stedet for og prøve at forstå hvad der sker:
+<ul>
+<li><code>mutate(new_column_nrow = map_dbl(data,nrow))</code></li>
+<li><code>mutate(new_column_ratio = map(data,~(.x$Sepal.Width/.x$Sepal.Length)))</code></li>
+</ul></li>
+</ul>
+<hr />
+<p><strong>Problem 6</strong>) Åbn datasættet <code>msleep</code> ved at bruge <code>data(msleep)</code>.</p>
+<p><strong>a</strong>) Bruge <code>map()</code>-funktionen for at beregn gennemsnitsværdierne for de numeriske variabler i <code>msleep</code>-datasættet (<code>data(msleep)</code>). Husk at anvende parameteren <code>na.rm=T</code> i <code>mean()</code>-funktionen for at fjerne manglende værdier i beregningen.</p>
+<p><strong>b</strong>) Foretag samme beregning som i <strong>a</strong>), men kun for observationerne, hvor variablen <code>vore</code> er “carni”.</p>
+<p><strong>c</strong>) Brug funktionerne <code>group_by()</code> og <code>nest()</code> til at opdele datasættet efter variablen <code>vore</code>.</p>
+<p><strong>d</strong>) Tag udgangspunkt i din nestede dataframe fra <strong>c</strong>) og anvend <code>map()</code>-funktionen inden for <code>mutate()</code> for at oprette tre nye kolonner:</p>
+<ul>
+<li><code>num_rows</code> - antallet af rækker i hver delmængde (resultat skal være heltal)</li>
+<li><code>mean_sleep</code> - gennemsnitlig søvn (variablen <code>sleep_total</code>) i hver delmængde (bruge en brugerdefinerede funktion for at fjerne NA-værdierne i beregningen og an angiv resultat som en <code>dbl</code>)</li>
+</ul>
+<p><strong>e</strong>) tilføj også en kolonne til din dataframe fra <strong>d</strong>), der hedder <code>unique_genus</code> - som viser antal unikke værdier i kolonne <code>genus</code> i hver delmængde (hint: brug funktionenerne <code>length()</code> og <code>unique()</code>, samt <code>pull</code> for at trækker variablen <code>genus</code> fra datasættet <code>.x</code>). Resultat skal være <code>int</code>.</p>
+<p><strong>f</strong>) Tag udgangspunkt i dit resultat fra <strong>d</strong>) + <strong>e</strong>) og lav plots af dine opsummeringsstatistikker.</p>
+<p><strong>f</strong>) I dette tilfælde, kunne samme plots fra <strong>e</strong>) også opnås ved at bruge <code>group()</code> og <code>summarise()</code>-funktioner på den oprindelige datasæt <code>msleep</code>. Prøv det.</p>
+<hr />
+<p><strong>Problem 7</strong>) <strong>a</strong>) Anvend <code>group_by</code> og <code>nest()</code> for at opdel <code>msleep</code> efter variablen <code>vore</code> og brug følgende funktion sammen med <code>map()</code> for at oprette en ny kolonne i din nested dataframe, der hedder <code>my_plots</code>.</p>
+<p>Funktionen er:</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="functional-programming-med-purrr-pakken.html#cb434-1" aria-hidden="true" tabindex="-1"></a>my_plot_func <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">ggplot</span>(.x,<span class="fu">aes</span>(brainwt,sleep_total)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="functional-programming-med-purrr-pakken.html#cb435-1" aria-hidden="true" tabindex="-1"></a>msleep_nested <span class="ot">&lt;-</span> msleep_nested <span class="sc">%&gt;%</span> </span>
+<span id="cb435-2"><a href="functional-programming-med-purrr-pakken.html#cb435-2" aria-hidden="true" tabindex="-1"></a>  ??? <span class="co">#opret ny kolonne her hvor du anvender funktionen</span></span></code></pre></div>
+<p><strong>b</strong>) Brug funktionen <code>grid.arrange()</code> fra R-pakken <code>gridExtra</code> til at vise plottene fra din nye kolonne (angive at parameteren <code>grobs</code> skal være din nye kolonne). Gør din plots pænere ved at tilføje et tema/farver osv. til <code>my_plot_func</code> fra <strong>a</strong>).</p>
+<hr />
+<p><strong>Problem 8</strong>) <em>Skift mellem long og wide form</em> Tag udgangspunkt i datasættet <code>iris</code>. OBS: vi tilføjer kolonnen <code>id</code> så at hver plante (række) kan identificeres når vi går fra long- til wide- form i <strong>b</strong>).</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="functional-programming-med-purrr-pakken.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co">#kør denne kode</span></span>
+<span id="cb436-2"><a href="functional-programming-med-purrr-pakken.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb436-3"><a href="functional-programming-med-purrr-pakken.html#cb436-3" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(iris)) <span class="co">#tilføj en id</span></span></code></pre></div>
+<p><strong>a</strong>) Anvend <code>group_by()</code> og <code>nest()</code> til at opdele datasættet efter <code>Species</code></p>
+<p><strong>b</strong>) Brug følgende funktion med <code>map()</code> for at tilføje en ny kolonne med navnet <code>new_column_long</code> til din nestede dataframe.</p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="functional-programming-med-purrr-pakken.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="co">#put data into long form</span></span>
+<span id="cb437-2"><a href="functional-programming-med-purrr-pakken.html#cb437-2" aria-hidden="true" tabindex="-1"></a>my_func_longer <span class="ot">&lt;-</span> <span class="er">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="sc">-</span>id)</span></code></pre></div>
+<p><strong>c</strong>) Skriv en ny funktion og anvend den på kolonnen <code>new_column_long</code> (ikke <code>data</code>), der laver hvert (long-form) datasæt i kolonnen om til wide-form igen (lav ny kolonne <code>new_column_wide</code>). Her skal du bruge parameteren <code>id_cols=id</code> for at korrekte identificere de forskellige plante (uden <code>id</code> ved funktionen ikke, om eksempelvis en bestemt <code>Sepal.Length</code> værdi og en bestemt <code>Sepal.Width</code> værdi referere til præcis samme plante og derfor skal have samme række i wide-form).</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="functional-programming-med-purrr-pakken.html#cb438-1" aria-hidden="true" tabindex="-1"></a>my_func_wider <span class="ot">&lt;-</span> ??? <span class="co">#lave long data om til wide form (husk at angiv names_from,values_from,id_cols)</span></span>
+<span id="cb438-2"><a href="functional-programming-med-purrr-pakken.html#cb438-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb438-3"><a href="functional-programming-med-purrr-pakken.html#cb438-3" aria-hidden="true" tabindex="-1"></a>iris_nested <span class="sc">%&gt;%</span> ???<span class="co">#anvend din funktion  </span></span></code></pre></div>
+<p><strong>d</strong>) Anvend <code>pluck()</code>-funktionen på kolonnerne <code>new_column_long</code> og <code>new_column_wide</code> til at kigge på den første datasæt for at se, om du har outputtet i long/wide form som forventede.</p>
+<hr />
+<p><strong>Problem 9</strong>) <em>Forberedelse til næste lektion</em> For at bedre kunne se værdien af at bruge <code>group_by()</code>/<code>nest()</code> + <code>map()</code> kan vi gennemgå en simpel eksampel som indledning til vores næste lektion.</p>
+<p><strong>a</strong>) Vi bruger følgende funktion:</p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="functional-programming-med-purrr-pakken.html#cb439-1" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">t.test</span>(.x<span class="sc">$</span>Petal.Width,.x<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<ul>
+<li>anvend <code>group_by(Species)</code> og dernæst <code>nest()</code> på datasættet <code>iris</code>.</li>
+<li>tilføj <code>mutate()</code> til at lave en ny kolon som hedder <code>t_test</code> og bruge funktionen indenfor <code>map()</code> på kolonnen <code>data</code>.</li>
+<li>tilføj <code>pull(t_test)</code> til din kommando - man får de tre t-tests frem, som man lige har beregnet.</li>
+<li>prøv <code>unnest(t_test)</code> i stedet for <code>pull(t_test)</code> - man får en advarsel fordi de t-test resultater ikke er i en god form til at vise indenfor en dataramme. Vi vil gerne ændre deres output til tidy-form først.</li>
+</ul>
+<p><strong>b</strong>) Nu installer R-pakken <code>broom</code> (<code>install.packages("broom")</code>) og indlæs pakken. Vi vil gerne bruge funktionen <code>glance()</code>, der få statistikkerne fra <code>t.test()</code> ind i en pæn form.</p>
+<ul>
+<li>Lav samme som i <strong>a</strong>) men bruge følgende funktion i stedet for:</li>
+</ul>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="functional-programming-med-purrr-pakken.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb440-2"><a href="functional-programming-med-purrr-pakken.html#cb440-2" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">t.test</span>(.x<span class="sc">$</span>Petal.Width,.x<span class="sc">$</span>Sepal.Length) <span class="sc">%&gt;%</span> <span class="fu">glance</span>()</span></code></pre></div>
+<ul>
+<li><p>Tilføj <code>pull</code> eller <code>unnest</code> til din kommando som før og se på resultatet.</p></li>
+<li><p>Man får en pæn dataramme frem med alle de forskellige statistikker fra <code>t.test()</code>.</p></li>
+<li><p>Vælg en statistik og omsætte den til et plot.</p></li>
+</ul>
+<hr />
+<p><strong>Problem 10</strong> <em>Kun ekstra hvis du vil øve mere</em> <em>group_by/nest + map</em> på datasættet <code>mtcars</code> –&gt;</p>
+<p><strong>a)</strong> Åbn <code>mtcars</code> med <code>data(mtcars)</code> og anvende <code>group_by()</code>/<code>nest()</code> for at opdele datasættet i tre efter variablen <code>cyl</code>.</p>
+<p><strong>b</strong>) Lave nye kolonner med <code>map</code> og inddrage hensigtsmæssige funktioner, som beskriver dine tre datasæt, der er lagret i kolonne <code>data</code> (outputtet skal være <code>dbl</code>):</p>
+<ul>
+<li>Antal observationer</li>
+<li>Korrelationskoefficient mellem <code>wt</code> og <code>drat</code> (funktionen <code>cor</code>)</li>
+<li>Antal unikke værdier fra variablen <code>gear</code></li>
+</ul>
+<p><strong>c</strong>) Omsætte dine statistikke til et plot for at sammenligne de tre datasæt.</p>
+<!-- --- -->
+<!-- __Problem 11__ -->
+<!-- #nestby and map VS groupby and summarise -->
+<!-- ```{r} -->
+<!-- msleep_nested <- msleep %>% group_by(vore) %>% nest -->
+<!-- msleep_nested <- msleep_nested %>% mutate("nrows" = map_int(data,nrow)) -->
+<!-- msleep %>%  -->
+<!--   group_by(vore) %>%  -->
+<!--   summarise("max_sleep_rem" = max(sleep_rem,na.rm=T)) -->
+<!-- #take a dataframe and calculate mean of the numeric columns -->
+<!-- my_func <- ~.x %>% select(where(is.numeric)) %>% map(mean,na.rm=T) -->
+<!-- msleep_nested <- msleep_nested %>%  -->
+<!--   mutate("data_means" = map_df(data, my_func)) %>%  -->
+<!--   unnest(data_means) -->
+<!-- msleep_nested %>% select(-data) %>% pivot_longer(-vore) %>%  -->
+<!--   ggplot(aes(x=vore,y=value,fill=vore)) +  -->
+<!--   geom_bar(stat="identity",position="dodge") +  -->
+<!--   facet_wrap(~name,scales="free") + -->
+<!--   theme_bw() -->
+<!-- ``` -->
+</div>
+<div id="ekstra-notater-og-næste-gang" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Ekstra notater og næste gang<a href="functional-programming-med-purrr-pakken.html#ekstra-notater-og-næste-gang" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://r4ds.had.co.nz/iteration.html" class="uri">https://r4ds.had.co.nz/iteration.html</a>
+<a href="https://sanderwuyts.com/en/blog/purrr-tutorial/" class="uri">https://sanderwuyts.com/en/blog/purrr-tutorial/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bearbejdning-dag-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-videre1.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

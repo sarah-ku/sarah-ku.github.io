@@ -856,7 +856,7 @@ __b)__ Brug din nye dataframe med dine opsummeringsstatistikker til at lave et s
 
 __c)__ Anvend `pivot_longer()` på din dataframe med dine opsummeringsstatistikker (brug indstillingen `cols = -Pclass` i funktionen).
 
-__d)__ Brug din long-form dataframe af dine opsummeringsstatistikker til at lave plots af alle opsummeringsstatistikker med én `ggplot` kommando (adskil dem ved at benytte `facet_wrap` og opdele efter `Pclass` indenfor hvert plot, ligesom i følgende).
+__d)__ Brug din long-form dataframe af dine opsummeringsstatistikker til at lave plots af alle opsummeringsstatistikker med én `ggplot` kommando (adskil dem ved at benytte `facet_wrap` så du har et plot til hvert opsummeringsstatistik og opdele efter `Pclass` indenfor hvert plot, ligesom i følgende).
 
 <img src="06-tidyverse2_files/figure-html/unnamed-chunk-49-1.svg" width="480" style="display: block; margin: auto;" />
 
