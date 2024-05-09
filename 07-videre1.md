@@ -1,7 +1,9 @@
 # Functional programming med purrr-pakken
 
-<img src="plots/hex-tidyverse.png" width="15%" style="display: block; margin: auto;" /><img src="plots/purrr.png" width="15%" style="display: block; margin: auto;" />
+<img src="plots/purrr.png" width="30%" style="display: block; margin: auto;" />
 
+
+"Den grundlæggende fordel ved data er, at de fortæller dig noget om verden, som du ikke vidste før." -= Hilary Mason
 
 
 
@@ -11,13 +13,21 @@ Emnet omhandler, hvordan man kan integrere funktioner for at forbedre reproducib
 
 I dette emne beskæftiger du dig med især pakken `Purrr` og `map()` funktioner, som kan benyttes til at lave gentagne baserende analyser i `R`.
 
-### Læringsmål
-
+:::goals
 Du skal være i stand til at:
 
 * Anvende `map()`-funktioner til at udføre beregninger iterativt over flere kolonner.
 * Bruge `group_by()` og `nest()` til at gennemføre reproducerbare analyser over forskellige dele af datasættet.
 * Kombinere `map()` og `map2()` med brugerdefinerede funktioner for at øge fleksibiliteten i analyserne.
+:::
+
+:::checklist
+* Giv feedback til Workshop 1: tidyverse
+* Se videoerne
+* Quiz på Absalon - videre dag 1
+* Lav problemstillingerne
+:::
+
 
 ### Videorressourcer
 
