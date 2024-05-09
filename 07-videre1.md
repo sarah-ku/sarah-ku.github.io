@@ -3,7 +3,7 @@
 <img src="plots/purrr.png" width="30%" style="display: block; margin: auto;" />
 
 
-"Den grundlæggende fordel ved data er, at de fortæller dig noget om verden, som du ikke vidste før." -= Hilary Mason
+"Den grundlæggende fordel ved data er, at de fortæller dig noget om verden, som du ikke vidste før." -- Hilary Mason
 
 
 
@@ -481,8 +481,8 @@ c(1:10) %>% map_dbl(~rnorm(1,mean=.x))
 ```
 
 ```
-#>  [1]  0.3016283  2.5094404  4.1276167  4.8632014  5.4518661  5.7523298
-#>  [7]  7.1535601  8.9206574  8.7487530 10.5228057
+#>  [1]  0.4132695  2.2679714  3.3596835  2.2929925  3.8344426  4.0383203
+#>  [7]  7.3924429  6.4937650  9.2375431 10.3005176
 ```
 
 __Input: dataframe__
