@@ -412,8 +412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="functional-programming-med-purrr-pakken" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Kapitel 7</span> Functional programming med purrr-pakken<a href="functional-programming-med-purrr-pakken.html#functional-programming-med-purrr-pakken" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="plots/purrr.png" width="30%" style="display: block; margin: auto;" /></p>
-<p>“Den grundlæggende fordel ved data er, at de fortæller dig noget om verden, som du ikke vidste før.” -= Hilary Mason</p>
+<p><img src="plots/purrr.png" width="25%" style="display: block; margin: auto;" /></p>
+<p>“Den grundlæggende fordel ved data er, at de fortæller dig noget om verden, som du ikke vidste før.” – Hilary Mason</p>
 <div id="inledning-og-læringsmålene" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Inledning og læringsmålene<a href="functional-programming-med-purrr-pakken.html#inledning-og-læringsmålene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Emnet omhandler, hvordan man kan integrere funktioner for at forbedre reproducibilitet og gennemsigtighed i dine analyser. Det er ofte tilfældet i biologi, at man arbejder med flere datasæt eller variabler, der henviser til fx forskellige prøver, replikater eller batches, og ønsker at udføre den samme proces på dem alle samtidig.</p>
@@ -747,8 +747,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>.x</code> refererer til en værdi i vektoren. Hvis man tager heltallet <code>1:10</code> og anvender <code>map</code>, så tager man hvert tal for sig og beregner en funktion med det - i det følgende simulerer man et tal fra den normale fordeling med parameteren <code>mean=.x</code>:</li>
 </ul>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="functional-programming-med-purrr-pakken.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(<span class="sc">~</span><span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean=</span>.x))</span></code></pre></div>
-<pre><code>#&gt;  [1]  0.3016283  2.5094404  4.1276167  4.8632014  5.4518661  5.7523298
-#&gt;  [7]  7.1535601  8.9206574  8.7487530 10.5228057</code></pre>
+<pre><code>#&gt;  [1]  0.4132695  2.2679714  3.3596835  2.2929925  3.8344426  4.0383203
+#&gt;  [7]  7.3924429  6.4937650  9.2375431 10.3005176</code></pre>
 <p><strong>Input: dataframe</strong></p>
 <ul>
 <li><code>.x</code> refererer til en variabel fra dataframe. I det ovenstående er den første variabel <code>int1</code>, og i <code>map</code> tager man det første element med funktionen <code>pluck(1)</code>.</li>

@@ -1,6 +1,6 @@
 # Functional programming med purrr-pakken
 
-<img src="plots/purrr.png" width="30%" style="display: block; margin: auto;" />
+<img src="plots/purrr.png" width="25%" style="display: block; margin: auto;" />
 
 
 "Den grundlæggende fordel ved data er, at de fortæller dig noget om verden, som du ikke vidste før." -- Hilary Mason
