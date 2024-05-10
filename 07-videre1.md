@@ -967,7 +967,7 @@ c(1:10) %>% ???
 
 
 
-__b__) Omdan `c(1:10)` til en liste ved at bruge `as.list(c(1:10))`. Anvend de samme funktioner som i __a__) på listen. Bemærk, at funktionerne denne gang anvendes på hvert element i listen. Disse elementer kan også være dataframes - ligesom i det næste spørgsmål.
+__b__) Omdan `c(1:10)` til en liste ved at bruge `as.list(c(1:10))`. Anvend de samme funktioner som i __a__) på listen. Bemærk, at funktionerne denne gang anvendes på hvert element i listen (du får samme resultat, men input er forskellige). Disse elementer kan også være dataframes - ligesom i det næste spørgsmål.
 
 <!-- __b__) (_En list af tibbles_)  -->
 
