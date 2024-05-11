@@ -16,15 +16,26 @@ library(ggsignif)
 
 
 
-## Indledning og læringsmål
+## Indledning
 
 ### Læringsmål
 
+:::goals
 Du skal være i stand til at
 
 * Anvende `nest()` og `map()` strukturen til at gentage en korrelationsanalyse over flere forskellige datasæt.
 * Bruge `ggplot` funktionen `geom_smooth()` til at visualisere lineær regression eller loess-kurver.
 * Kombinere `map()`/`nest()` og `lm()` til at beregne regressionsstatistikker for flere lineære regressionsmodeller på samme tid og sammenligne dem med `anova()`.
+:::
+
+
+:::checklist
+* Læs ekstra notat på Absalon
+* Se videoerne
+* Quizzen - visualisation of trends
+* Lav problemstillingerne
+:::
+
 
 ### Introduktion til kapitlet
 
@@ -99,7 +110,7 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/7092252
 ---
 
 * Video 5: anova+map (OBS: muligvis mest udfordrende del i kurset)
-  + Benyt funktionen `anova` for at sammenligne to modeller, beregnet på datasættet `penguins`, og få outputtet i "tidy"-format med funktionen `tidy()`
+  + Benyt funktionen `anova` for at sammenligne to modeller, beregnet på datasættet `penguins`, og få outputtet i "tidy"-format med funktionen `broom:::tidy()`
   + Lav en funktion med `anova`, der kan anvendes over alle arter med `map2()`
   + Omsæt p-værdier fra sammenligningerne til et plot og tilføj signifikansannotationer
 
@@ -716,7 +727,7 @@ Se følgende kode for anvendelse af `anova` og `tidy` på modellerne `model_sex`
 ```r
 myaov <- anova(penguins_nest_lm %>% pluck("model_sex",1),
                penguins_nest_lm %>% pluck("model_sex_bill",1))
-myaov %>% tidy #p.value for comparing the two models is in the second position
+myaov %>% tidy() #p.value for comparing the two models is in the second position
 ```
 
 ```
