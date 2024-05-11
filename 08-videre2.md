@@ -1,6 +1,6 @@
 # Visualisering af trends
 
-<img src="plots/hex-tidyverse.png" width="15%" style="display: block; margin: auto;" /><img src="plots/purrr.png" width="15%" style="display: block; margin: auto;" />
+<img src="plots/purrr.png" width="25%" style="display: block; margin: auto;" />
 
 
 
