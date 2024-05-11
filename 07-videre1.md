@@ -720,6 +720,34 @@ ekaryotes_gc_by_group
 #> 5 Animals  <tibble [3,201 × 18]>      40.6
 ```
 
+En mere "tidyverse" måde at opnå samme ting:
+
+
+```r
+func_gc <- ~.x %>% 
+  summarise(my_median = median(gc,na.rm=T)) %>% 
+  pull(my_median) 
+
+ekaryotes_gc_by_group <- eukaryotes %>% 
+  group_by(group) %>% 
+  nest() %>% 
+  mutate("median_gc"=map_dbl(data, func_gc))
+ekaryotes_gc_by_group
+```
+
+```
+#> # A tibble: 5 × 3
+#> # Groups:   group [5]
+#>   group    data                  median_gc
+#>   <chr>    <list>                    <dbl>
+#> 1 Other    <tibble [51 × 18]>         46.7
+#> 2 Protists <tibble [888 × 18]>        49.4
+#> 3 Plants   <tibble [1,304 × 18]>      37.9
+#> 4 Fungi    <tibble [6,064 × 18]>      47.5
+#> 5 Animals  <tibble [3,201 × 18]>      40.6
+```
+
+
 Og jeg kan bruge resultatet i et plot, ligesom vi plejer:
 
 
@@ -731,7 +759,7 @@ ekaryotes_gc_by_group %>%
   theme_minimal() 
 ```
 
-<img src="07-videre1_files/figure-html/unnamed-chunk-40-1.svg" width="384" style="display: block; margin: auto;" />
+<img src="07-videre1_files/figure-html/unnamed-chunk-41-1.svg" width="384" style="display: block; margin: auto;" />
 
 
 __flere statistik på en gang__
@@ -777,7 +805,7 @@ eukaryotes_stats %>%
   theme_bw()
 ```
 
-<img src="07-videre1_files/figure-html/unnamed-chunk-44-1.svg" width="768" style="display: block; margin: auto;" />
+<img src="07-videre1_files/figure-html/unnamed-chunk-45-1.svg" width="768" style="display: block; margin: auto;" />
 
 
 ## Andre brugbar purrr
@@ -840,7 +868,7 @@ eukaryotes_stats_with_plots <- eukaryotes_stats %>%
 eukaryotes_stats_with_plots %>% pluck("myplots",2)
 ```
 
-<img src="07-videre1_files/figure-html/unnamed-chunk-48-1.svg" width="384" style="display: block; margin: auto;" />
+<img src="07-videre1_files/figure-html/unnamed-chunk-49-1.svg" width="384" style="display: block; margin: auto;" />
 
 Der er flere `map` funktion der tager flere `input` fk. `pmap` - jeg har ikke tid til at dække dem  men du kan godt læse om dem hvis du har bruge for dem: https://purrr.tidyverse.org/reference/map2.html
 
