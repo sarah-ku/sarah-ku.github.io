@@ -30,7 +30,6 @@ Du skal være i stand til at
 
 
 :::checklist
-* Læs ekstra notat på Absalon
 * Se videoerne
 * Quizzen - visualisation of trends
 * Lav problemstillingerne
