@@ -211,11 +211,11 @@ __Det er dit ansvar at sikre, at din kode fungerer som helhed, og at du dermed k
 I R Markdown er der mange muligheder for at styre hver enkelt chunk i dit dokument - hvordan skal R håndtere koden med hensyn til evaluering og præsentation (især med hensyn til tabeller og plots) af en bestemt chunk i dit dokument? Det afhænger meget af, hvem du gerne vil viser dit dokument til. For eksempel, i de nuværende kursusnotater vil jeg gerne have generelt, at du ser al min kode (en global indstilling), men nogle gange vil jeg foretrække noget andet - en chunk, der viser noget, jeg ikke vil have kørt, eller ændre på størrelsen på et plotte i en bestemt chunk. For eksempel ser en chunk med indstillingen `eval=FALSE` sådan ud (fjern # symbolet)
 
 
-```r
+````r
 #```{r,eval=FALSE}
 #
 #```
-```
+````
 
 Her er nogle muligheder (sektionen "Embed code with knitr syntax"):
 
