@@ -50,7 +50,6 @@ OBS: Der er mange videoer til i dag, men de gentager samme proces fra sidste emn
 
 *OBS: Jeg sagde "antal gener" flere gange i videoen, men variablen `log10_size_mb` er faktisk genomstørrelse i megabaser.*
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/709225323
 
 ```{=html}
 <div class="vembedr">
@@ -66,7 +65,6 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/7092253
   + Jeg viser hvordan man tilføjer regression linjer på et plot
   + Jeg sammenligne linjen med resultatet fra `lm()`
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/709225203
 
 ```{=html}
 <div class="vembedr">
@@ -81,7 +79,6 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/7092252
 * Video 3: Lineær regression med `nest()` og `map()`
   + Den proces igen fra Video 1 men anvendte på lineær regression
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/709225158
 
 ```{=html}
 <div class="vembedr">
@@ -96,7 +93,6 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/7092251
 * Video 4: Multiple linær regression model
   + Den samme process men med flere modeller og flere uafhængige variabler
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/709225266
 
 ```{=html}
 <div class="vembedr">
@@ -113,7 +109,6 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/7092252
   + Lav en funktion med `anova`, der kan anvendes over alle arter med `map2()`
   + Omsæt p-værdier fra sammenligningerne til et plot og tilføj signifikansannotationer
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/710108716
 
 ```{=html}
 <div class="vembedr">

@@ -4,12 +4,22 @@
 
 ### Læringsmål
 
+:::goals
 Du skal være i stand til at: 
 
 * Beskrive hvad k-means clustering går ud på
 * Anvende `kmeans` og præsentere resultatet på en pæn (tidy) måde
 * Anvende `map` over forskellige antal clusters og vælge det antal, der passer til dataene
 * Anvende funktionen `hclust` for at lave en simpel hierarkisk clustering
+:::
+
+
+:::checklist
+* Se videoerne
+* Læs notaterne om hierarchical clustering
+* Lav Quiz - clustering
+* Lav problemstillingerne
+:::
 
 ### Indledning til kapitel
 
@@ -21,7 +31,6 @@ I dette kapitel ser vi på, hvordan vi kan implementere både __k-means clusteri
 
 * Video 1: K-means clustering 
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/553656150
 
 ```{=html}
 <div class="vembedr">
@@ -35,7 +44,6 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/5536561
 
 * Video 2: augment, glanced og tidy med K-means. __OBS__ der er en lille fejl i koden omkring 6:00 - den anden `geom_point` skal være `geom_point(data = kclust_tidy,aes(x=bill_length,y=bill_depth),shape="x,colour="black")` fordi tallerne er allerede basaserede på "scaled" data i `kclust_tidy` - se sektion \@ref(plotcentroids) for uddybelse.
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/553656139
 
 ```{=html}
 <div class="vembedr">
@@ -49,7 +57,6 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/5536561
 
 * Video 3: Hvor mange clusters skal man vælge?
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/553656129
 
 ```{=html}
 <div class="vembedr">
@@ -618,9 +625,9 @@ Så kan man se, der er fire clusters i dengrammet, og biler der er tætest på h
 
 Man kan godt tilpasse ovenstående kode til et andet datasæt - se problemstillinger, men man må også gerne udvide plottet med de forskellige viden vi har om ggplot2.
 
-### Ekstra (valgfri): afprøve andre metoder på hierachical clustering
+### Afprøve andre metoder på hierachical clustering
 
-__Valfri__ ekstra hvis du vil afprøve de fire metoder i `hclust` - "average", "single", "complete" og "ward.D".
+Ekstra hvis du vil afprøve de fire metoder i `hclust` - "average", "single", "complete" og "ward.D".
 
 
 ```r
