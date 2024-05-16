@@ -1,10 +1,3 @@
-fig:unnamed-chunk-2
-fig:unnamed-chunk-48
-fig:unnamed-chunk-49
-fig:unnamed-chunk-55
-fig:unnamed-chunk-60
-fig:unnamed-chunk-20
-fig:unnamed-chunk-23
 fig:unnamed-chunk-7
 baser
 inledning-til-kapitel
@@ -214,5 +207,5 @@ nestmap-ramme-fra-sidste-gang
 metode-2-hierarchical-clustering
 vælge-ønsket-antal-clusters
 lav-et-pænt-plot-af-dendrogrammet-med-ggplot2
-ekstra-valgfri-afprøve-andre-metoder-på-hierachical-clustering
+afprøve-andre-metoder-på-hierachical-clustering
 problemstillinger-8

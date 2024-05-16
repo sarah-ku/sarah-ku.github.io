@@ -68,9 +68,9 @@ I dette kapitel ser vi på, hvordan vi kan implementere både __k-means clusteri
 
 ---
 
-* Video 4: Hierarchical clustering
+* "Video" 4: Hierarchical clustering
 
-(OBS Video 4 mangler: se gerne kursusnotaterne og jeg laver videoen ASAP)
+Se venligst kursusnotaterne
 
 ---
 
