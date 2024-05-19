@@ -33,7 +33,6 @@ Du skal være i stand til at:
 
 * Video 1: Introduktion til `map()`-funktioner for iteration over kolonner
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/549630848
 
 ```{=html}
 <div class="vembedr">
@@ -47,7 +46,6 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/5496308
 
 * Video 2: Introduction to custom functions and combining them with map
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/549630825
 
 ```{=html}
 <div class="vembedr">
@@ -58,10 +56,8 @@ Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/5496308
 ```
 
 
-
 * Video 3: Introduction to nest functions for breaking data into sections
 
-Link her hvis det ikke virker nedenunder: https://player.vimeo.com/video/549630798
 
 ```{=html}
 <div class="vembedr">

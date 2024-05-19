@@ -1,3 +1,10 @@
+fig:unnamed-chunk-2
+fig:unnamed-chunk-48
+fig:unnamed-chunk-49
+fig:unnamed-chunk-55
+fig:unnamed-chunk-60
+fig:unnamed-chunk-20
+fig:unnamed-chunk-23
 fig:unnamed-chunk-7
 baser
 inledning-til-kapitel
@@ -209,3 +216,16 @@ vælge-ønsket-antal-clusters
 lav-et-pænt-plot-af-dendrogrammet-med-ggplot2
 afprøve-andre-metoder-på-hierachical-clustering
 problemstillinger-8
+principal-component-analysis-pca
+indledning-og-læringsmålene-1
+læringsmålene-1
+introduktion-til-kapitlet-1
+videoressourcer-1
+hvad-er-principal-component-analysis-pca
+simpelt-eksempel-med-to-dimensioner
+fit-pca-to-data-in-r
+integrering-af-pca-resultater-med-broom-pakken
+rotationsmatrix-for-at-udtrække-bidragene-fra-de-forskellige-variabler
+pakken-factoextra
+problemstillinger-9
+ekstra-læsning

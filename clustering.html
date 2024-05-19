@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="visualisering-af-trends.html"/>
-
+<link rel="next" href="principal-component-analysis-pca.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -453,6 +453,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="clustering.html"><a href="clustering.html#problemstillinger-8"><i class="fa fa-check"></i><b>9.5</b> Problemstillinger</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>10</b> Principal component analysis (PCA)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#indledning-og-læringsmålene-1"><i class="fa fa-check"></i><b>10.1</b> Indledning og læringsmålene</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#læringsmålene-1"><i class="fa fa-check"></i><b>10.1.1</b> Læringsmålene</a></li>
+<li class="chapter" data-level="10.1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#introduktion-til-kapitlet-1"><i class="fa fa-check"></i><b>10.1.2</b> Introduktion til kapitlet</a></li>
+<li class="chapter" data-level="10.1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#videoressourcer-1"><i class="fa fa-check"></i><b>10.1.3</b> Videoressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#hvad-er-principal-component-analysis-pca"><i class="fa fa-check"></i><b>10.2</b> Hvad er principal component analysis (PCA)?</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#simpelt-eksempel-med-to-dimensioner"><i class="fa fa-check"></i><b>10.2.1</b> Simpelt eksempel med to dimensioner</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#fit-pca-to-data-in-r"><i class="fa fa-check"></i><b>10.3</b> Fit PCA to data in R</a></li>
+<li class="chapter" data-level="10.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#integrering-af-pca-resultater-med-broom-pakken"><i class="fa fa-check"></i><b>10.4</b> Integrering af PCA-resultater med broom-pakken</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#rotationsmatrix-for-at-udtrække-bidragene-fra-de-forskellige-variabler"><i class="fa fa-check"></i><b>10.4.1</b> Rotationsmatrix for at udtrække bidragene fra de forskellige variabler</a></li>
+<li class="chapter" data-level="10.4.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#pakken-factoextra"><i class="fa fa-check"></i><b>10.4.2</b> Pakken <code>factoextra</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#problemstillinger-9"><i class="fa fa-check"></i><b>10.5</b> Problemstillinger</a></li>
+<li class="chapter" data-level="10.6" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#ekstra-læsning"><i class="fa fa-check"></i><b>10.6</b> Ekstra læsning</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -540,19 +561,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="method-1-k-means-clustering" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Method 1: K-means clustering<a href="clustering.html#method-1-k-means-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="clustering.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-2"><a href="clustering.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="clustering.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="clustering.html#cb506-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb506-2"><a href="clustering.html#cb506-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb506-3"><a href="clustering.html#cb506-3" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
 <p>I k-means clustering bliver samtlige observationer tilknyttet den nærmeste cluster “centroid” (se “hvordan fungerer kmeans?” nedenunder). I k-means skal man specificere antallet af clusters, som observationerne skal opdeles i, på forhånd. Derfor kræver det en vis undersøgelsesindsats at vælge det bedste antal clusters, der passer til problemstillingen, eller som bedst repræsenterer datasættet.</p>
 <p>Lad os tage udgangspunkt i datasættet <code>penguins</code>. Vi begynder med at fjerne observationerne med <code>NA</code> i mindst én variabel ved at bruge funktionen <code>drop_na</code>, og ved at specificere at <code>year</code> skal være en faktor (for at skelne den fra de andre numeriske kolonner):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="clustering.html#cb2-1" tabindex="-1"></a><span class="fu">data</span>(penguins)</span>
-<span id="cb2-2"><a href="clustering.html#cb2-2" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="clustering.html#cb2-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year=</span><span class="fu">as.factor</span>(year)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="clustering.html#cb2-4" tabindex="-1"></a>  <span class="fu">drop_na</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="clustering.html#cb507-1" tabindex="-1"></a><span class="fu">data</span>(penguins)</span>
+<span id="cb507-2"><a href="clustering.html#cb507-2" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb507-3"><a href="clustering.html#cb507-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year=</span><span class="fu">as.factor</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb507-4"><a href="clustering.html#cb507-4" tabindex="-1"></a>  <span class="fu">drop_na</span>() </span></code></pre></div>
 <p>Vi ved allerede i forvejen, at der er 3 <code>species</code> i disse data, som vi plotter her med forskellige farver.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="clustering.html#cb3-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>body_mass_g,<span class="at">colour=</span>species)) <span class="sc">+</span> </span>
-<span id="cb3-2"><a href="clustering.html#cb3-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb3-3"><a href="clustering.html#cb3-3" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="clustering.html#cb508-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>body_mass_g,<span class="at">colour=</span>species)) <span class="sc">+</span> </span>
+<span id="cb508-2"><a href="clustering.html#cb508-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb508-3"><a href="clustering.html#cb508-3" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-6-1.svg" width="480" style="display: block; margin: auto;" /></p>
 <p>Vi vil gerne bruge k-means clustering på de numeriske variabler i datasættet og beregne 3 clusters ud fra disse. Derefter kan det være interessant at sammenligne de clusters, vi får, med de tre arter af pingviner - hvor gode er disse clusters til at skelne mellem de forskellige arter, eller indfanger de en anden struktur i datasættet (for eksempel køn eller den ø, de bor på)?</p>
 <div id="hvordan-fungerer-kmeans" class="section level3 hasAnchor" number="9.2.1">
@@ -578,12 +599,12 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 <div id="kør-k-means-i-r" class="section level3 hasAnchor" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> Kør k-means i R<a href="clustering.html#kør-k-means-i-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>K-means <em>fungerer kun på numeriske data</em>, som vi kan vælge fra datasættet med <code>select()</code> i kombination med hjælpefunktionen <code>where(is.numeric)</code>. Vi bruger også <code>scale()</code>, hvilket betyder, at alle variabler får den samme skala, og det forhindrer, at nogle får mere indflydelse end andre i det endelige resultat.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="clustering.html#cb4-1" tabindex="-1"></a>penguins_scaled <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="clustering.html#cb4-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="clustering.html#cb4-3" tabindex="-1"></a>  <span class="fu">scale</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="clustering.html#cb509-1" tabindex="-1"></a>penguins_scaled <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb509-2"><a href="clustering.html#cb509-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb509-3"><a href="clustering.html#cb509-3" tabindex="-1"></a>  <span class="fu">scale</span>()</span></code></pre></div>
 <p>Man er også nødt til at specificere på forhånd, hvor mange clusters man ønsker at opdele datasættet i, så lad os sige <code>centers=3</code> inden for funktionen <code>kmeans()</code> her og beregne vores clusters:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="clustering.html#cb5-1" tabindex="-1"></a>kclust <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(penguins_scaled,<span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb5-2"><a href="clustering.html#cb5-2" tabindex="-1"></a>kclust</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="clustering.html#cb510-1" tabindex="-1"></a>kclust <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(penguins_scaled,<span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb510-2"><a href="clustering.html#cb510-2" tabindex="-1"></a>kclust</span></code></pre></div>
 <pre><code>#&gt; K-means clustering with 3 clusters of sizes 129, 119, 85
 #&gt; 
 #&gt; Cluster means:
@@ -648,8 +669,8 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 </tbody>
 </table>
 <p>For at lave et plot af clusters kan det især være nyttigt at benytte <code>augment</code>. Her kan man se, at vi har fået en kolonne, der hedder <code>.cluster</code> med i den oprindelige dataramme (jeg flyttede kolonnen til første plads i nedenstående kode, så man kan se den i outputtet af kursusnoterne).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="clustering.html#cb7-1" tabindex="-1"></a>kc1 <span class="ot">&lt;-</span> <span class="fu">augment</span>(kclust, penguins) <span class="co">#clustering = første plads, data = anden plads</span></span>
-<span id="cb7-2"><a href="clustering.html#cb7-2" tabindex="-1"></a>kc1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(.cluster,<span class="fu">all_of</span>(<span class="fu">names</span>(penguins)))</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="clustering.html#cb512-1" tabindex="-1"></a>kc1 <span class="ot">&lt;-</span> <span class="fu">augment</span>(kclust, penguins) <span class="co">#clustering = første plads, data = anden plads</span></span>
+<span id="cb512-2"><a href="clustering.html#cb512-2" tabindex="-1"></a>kc1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(.cluster,<span class="fu">all_of</span>(<span class="fu">names</span>(penguins)))</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 333 × 9
 #&gt;    .cluster species island    bill_length_mm bill_depth_mm flipper_length_mm
 #&gt;    &lt;fct&gt;    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
@@ -666,12 +687,12 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 #&gt; # ℹ 323 more rows
 #&gt; # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;fct&gt;</code></pre>
 <p>Nu benytter vi <code>kc1</code> til at lave et plot. Her giver jeg en farve efter <code>.cluster</code> og form efter <code>species</code>, så vi kan sammenligne vores beregnede clusters med de tre forskellige arter. Bemærk her, at jeg kun har to variabler i plottet, men der er faktisk fire variabler, som blev brugt til at lave clusters med funktionen <code>kmeans</code>. En anden måde er at plotte de første to principal components i stedet for to af de fire variabler - det beskæftiger vi os med næste gang.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="clustering.html#cb9-1" tabindex="-1"></a><span class="fu">ggplot</span>(kc1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(bill_length_mm), </span>
-<span id="cb9-2"><a href="clustering.html#cb9-2" tabindex="-1"></a>                <span class="at">y =</span> <span class="fu">scale</span>(bill_depth_mm))) <span class="sc">+</span> </span>
-<span id="cb9-3"><a href="clustering.html#cb9-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> .cluster, <span class="at">shape =</span> species)) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="clustering.html#cb514-1" tabindex="-1"></a><span class="fu">ggplot</span>(kc1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(bill_length_mm), </span>
+<span id="cb514-2"><a href="clustering.html#cb514-2" tabindex="-1"></a>                <span class="at">y =</span> <span class="fu">scale</span>(bill_depth_mm))) <span class="sc">+</span> </span>
+<span id="cb514-3"><a href="clustering.html#cb514-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> .cluster, <span class="at">shape =</span> species)) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-11-1.svg" width="480" style="display: block; margin: auto;" /></p>
 <p>Vi kan også f.eks. optælle, hvor mange af de tre arter vi får i hver af vores tre clusters, hvor vi kan se, at <code>Adelie</code> og <code>Chinstrap</code> er blevet mere blandet mellem to af de tre clusters end <code>Gentoo</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="clustering.html#cb10-1" tabindex="-1"></a>kc1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(.cluster, species)</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="clustering.html#cb515-1" tabindex="-1"></a>kc1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(.cluster, species)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 5 × 3
 #&gt;   .cluster species       n
 #&gt;   &lt;fct&gt;    &lt;fct&gt;     &lt;int&gt;
@@ -684,8 +705,8 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 <div id="plotcentroids" class="section level3 hasAnchor" number="9.2.5">
 <h3><span class="header-section-number">9.2.5</span> Plot cluster centroids<a href="clustering.html#plotcentroids" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Næste skridt er at se på resultatet af funktionen <code>tidy()</code> fra <code>broom</code>-pakken. Her har vi fået en overskuelig dataramme med middelværdierne (centroids) for de tre clusters over de fire variabler, som blev brugt i beregningerne.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="clustering.html#cb12-1" tabindex="-1"></a>kclust_tidy <span class="ot">&lt;-</span> kclust <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span>
-<span id="cb12-2"><a href="clustering.html#cb12-2" tabindex="-1"></a>kclust_tidy</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="clustering.html#cb517-1" tabindex="-1"></a>kclust_tidy <span class="ot">&lt;-</span> kclust <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span>
+<span id="cb517-2"><a href="clustering.html#cb517-2" tabindex="-1"></a>kclust_tidy</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 3 × 7
 #&gt;   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  size withinss
 #&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;
@@ -699,14 +720,14 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 <li>Jeg behøver ikke at anvende <code>scale()</code> på mine centroids lagret i <code>kclust_tidy</code>, så jeg angiver bare akser-variablerne i <code>aes()</code> uden at anvende <code>scale()</code>.</li>
 <li>Jeg har brugt <code>color</code> og <code>shape</code> som lokale aesthetics i den første <code>geom_point()</code> her, da de ikke eksisterer som kolonner i <code>kclust_tidy</code>.</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="clustering.html#cb14-1" tabindex="-1"></a><span class="fu">ggplot</span>(kc1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(bill_length_mm), <span class="co"># skal skalere de oprindelige data</span></span>
-<span id="cb14-2"><a href="clustering.html#cb14-2" tabindex="-1"></a>                <span class="at">y =</span> <span class="fu">scale</span>(bill_depth_mm))) <span class="sc">+</span> </span>
-<span id="cb14-3"><a href="clustering.html#cb14-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> .cluster, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb14-4"><a href="clustering.html#cb14-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> kclust_tidy, </span>
-<span id="cb14-5"><a href="clustering.html#cb14-5" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="co"># behøver ikke at skalere igen</span></span>
-<span id="cb14-6"><a href="clustering.html#cb14-6" tabindex="-1"></a>                 <span class="at">y =</span> bill_depth_mm),</span>
-<span id="cb14-7"><a href="clustering.html#cb14-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="st">&quot;x&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb14-8"><a href="clustering.html#cb14-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="clustering.html#cb519-1" tabindex="-1"></a><span class="fu">ggplot</span>(kc1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(bill_length_mm), <span class="co"># skal skalere de oprindelige data</span></span>
+<span id="cb519-2"><a href="clustering.html#cb519-2" tabindex="-1"></a>                <span class="at">y =</span> <span class="fu">scale</span>(bill_depth_mm))) <span class="sc">+</span> </span>
+<span id="cb519-3"><a href="clustering.html#cb519-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> .cluster, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb519-4"><a href="clustering.html#cb519-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> kclust_tidy, </span>
+<span id="cb519-5"><a href="clustering.html#cb519-5" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="co"># behøver ikke at skalere igen</span></span>
+<span id="cb519-6"><a href="clustering.html#cb519-6" tabindex="-1"></a>                 <span class="at">y =</span> bill_depth_mm),</span>
+<span id="cb519-7"><a href="clustering.html#cb519-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="st">&quot;x&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb519-8"><a href="clustering.html#cb519-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-14-1.svg" width="480" style="display: block; margin: auto;" /></p>
 <p>Vi kan se, at vores clusters ikke præcist fanger de samme tre grupper, som variablen <code>species</code> - der er forskelle. Det kan være, at vi også har fanget nogle oplysninger om fx den ø, pingvinerne bor på, eller deres køn.</p>
 </div>
@@ -722,24 +743,24 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 <div id="få-broom-output-for-forskellige-antal-clusters" class="section level3 hasAnchor" number="9.3.1">
 <h3><span class="header-section-number">9.3.1</span> Få Broom output for forskellige antal clusters<a href="clustering.html#få-broom-output-for-forskellige-antal-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I det følgende laver jeg en brugerdefineret funktion, der laver en clustering på datasættet <code>penguins_scaled</code>, og hvor jeg angiver, at antallet af beregnede clusters skal være <code>.x</code>, der er et heltal (fx 1,3,99 osv.). Bemærk derfor, at selve data er den samme hver gang jeg anvender funktionen - det er bare antallet af clusters jeg beregner, der kan variere.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="clustering.html#cb15-1" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">kmeans</span>(penguins_scaled,<span class="at">centers =</span> .x)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="clustering.html#cb520-1" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">kmeans</span>(penguins_scaled,<span class="at">centers =</span> .x)</span></code></pre></div>
 <p>Dernæst laver jeg en <code>tibble</code> med variablen <code>k</code>, som indeholder heltal fra 1 op til 9. Når jeg anvender funktionen <code>map</code> på kolonnen <code>k</code> med ovenstående funktion <code>my_func</code>, svarer det til, at jeg anvender <code>kmeans</code> ni gange, med antal clusters fra 1 til 9. Jeg gemmer clustering resultaterne i en kolonne kaldet <code>kclust</code>, og så anvender jeg <code>tidy</code>, <code>glance</code> og <code>augment</code> til at få de forskellige outputter fra mine clusterings.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="clustering.html#cb16-1" tabindex="-1"></a>kclusts <span class="ot">&lt;-</span> </span>
-<span id="cb16-2"><a href="clustering.html#cb16-2" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="clustering.html#cb16-3" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">kclust =</span> <span class="fu">map</span>(k, my_func),</span>
-<span id="cb16-4"><a href="clustering.html#cb16-4" tabindex="-1"></a>          <span class="at">tidied =</span> <span class="fu">map</span>(kclust, tidy),</span>
-<span id="cb16-5"><a href="clustering.html#cb16-5" tabindex="-1"></a>          <span class="at">glanced =</span> <span class="fu">map</span>(kclust, glance),</span>
-<span id="cb16-6"><a href="clustering.html#cb16-6" tabindex="-1"></a>          <span class="at">augmented =</span> <span class="fu">map</span>(kclust, <span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">augment</span>(penguins))</span>
-<span id="cb16-7"><a href="clustering.html#cb16-7" tabindex="-1"></a>        )</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="clustering.html#cb521-1" tabindex="-1"></a>kclusts <span class="ot">&lt;-</span> </span>
+<span id="cb521-2"><a href="clustering.html#cb521-2" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb521-3"><a href="clustering.html#cb521-3" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">kclust =</span> <span class="fu">map</span>(k, my_func),</span>
+<span id="cb521-4"><a href="clustering.html#cb521-4" tabindex="-1"></a>          <span class="at">tidied =</span> <span class="fu">map</span>(kclust, tidy),</span>
+<span id="cb521-5"><a href="clustering.html#cb521-5" tabindex="-1"></a>          <span class="at">glanced =</span> <span class="fu">map</span>(kclust, glance),</span>
+<span id="cb521-6"><a href="clustering.html#cb521-6" tabindex="-1"></a>          <span class="at">augmented =</span> <span class="fu">map</span>(kclust, <span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">augment</span>(penguins))</span>
+<span id="cb521-7"><a href="clustering.html#cb521-7" tabindex="-1"></a>        )</span></code></pre></div>
 <p>Husk, at for at få frem resultaterne i de forskellige formater fra <code>tidy</code>,<code>glance</code> og <code>augment</code>, er vi nødt til at anvende funktionen <code>unnest()</code> - her gemmer jeg resultaterne i tre nye dataframes, som vi kan referere til efterfølgende:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="clustering.html#cb17-1" tabindex="-1"></a>kclusts_tidy    <span class="ot">&lt;-</span> kclusts <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(tidied)</span>
-<span id="cb17-2"><a href="clustering.html#cb17-2" tabindex="-1"></a>kclusts_augment <span class="ot">&lt;-</span> kclusts <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(augmented)</span>
-<span id="cb17-3"><a href="clustering.html#cb17-3" tabindex="-1"></a>kclusts_glance <span class="ot">&lt;-</span> kclusts <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(glanced)</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="clustering.html#cb522-1" tabindex="-1"></a>kclusts_tidy    <span class="ot">&lt;-</span> kclusts <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(tidied)</span>
+<span id="cb522-2"><a href="clustering.html#cb522-2" tabindex="-1"></a>kclusts_augment <span class="ot">&lt;-</span> kclusts <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(augmented)</span>
+<span id="cb522-3"><a href="clustering.html#cb522-3" tabindex="-1"></a>kclusts_glance <span class="ot">&lt;-</span> kclusts <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(glanced)</span></code></pre></div>
 </div>
 <div id="elbow-plot-glance" class="section level3 hasAnchor" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> Elbow plot (glance)<a href="clustering.html#elbow-plot-glance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vi bruger <code>tot.withinss</code> fra outputtet fra <code>glance()</code> (dataframen <code>kclusts_glance</code>). Det giver målinger for den totale afstand af observationerne fra deres nærmeste centroid (within sum of squares).</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="clustering.html#cb18-1" tabindex="-1"></a>kclusts_glance</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="clustering.html#cb523-1" tabindex="-1"></a>kclusts_glance</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 9 × 8
 #&gt;       k kclust   tidied           totss tot.withinss betweenss  iter augmented
 #&gt;   &lt;int&gt; &lt;list&gt;   &lt;list&gt;           &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;list&gt;   
@@ -753,36 +774,36 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 #&gt; 8     8 &lt;kmeans&gt; &lt;tibble [8 × 7]&gt;  1328         172.  1.16e+ 3     3 &lt;tibble&gt; 
 #&gt; 9     9 &lt;kmeans&gt; &lt;tibble [9 × 7]&gt;  1328         167.  1.16e+ 3     3 &lt;tibble&gt;</code></pre>
 <p>Jo flere clusters, jo mindre er statistikken <code>tot.withinss</code> typisk, men vi kan se i det følgende plot, at efter 2 eller 3 clusters, er der ikke meget gevinst ved at bruge flere clusters. Derfor vælger man ofte enten 2 eller 3. Dette plot kaldes ofte for en ‘elbow’ plot - man vælger det antal, der ligger på ‘elbuen’, hvor der ikke er meget gevinst ved at inkludere flere clusters i datasættet (men det er selvfølgelig meget subjektivt, hvilket tal man vælger til sidst).</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="clustering.html#cb20-1" tabindex="-1"></a>kclusts_glance <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="clustering.html#cb20-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> k, <span class="at">y =</span> tot.withinss)) <span class="sc">+</span> </span>
-<span id="cb20-3"><a href="clustering.html#cb20-3" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb20-4"><a href="clustering.html#cb20-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb20-5"><a href="clustering.html#cb20-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="clustering.html#cb525-1" tabindex="-1"></a>kclusts_glance <span class="sc">%&gt;%</span> </span>
+<span id="cb525-2"><a href="clustering.html#cb525-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> k, <span class="at">y =</span> tot.withinss)) <span class="sc">+</span> </span>
+<span id="cb525-3"><a href="clustering.html#cb525-3" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb525-4"><a href="clustering.html#cb525-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb525-5"><a href="clustering.html#cb525-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-19-1.svg" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="automatisk-beslutning-med-pakken-nbclust" class="section level3 hasAnchor" number="9.3.3">
 <h3><span class="header-section-number">9.3.3</span> Automatisk beslutning med pakken <code>NbClust</code><a href="clustering.html#automatisk-beslutning-med-pakken-nbclust" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Man kan også overveje at prøve noget mere automatisk. For eksempel, pakken <code>NbClust</code> laver 30 forskellige clustering-algoritmer på datasættet for antal clusters fra 2 op til 9, og for hver af disse tages en beslutning om det bedste antal clusters. Man kan således se, hvilket antal clusters der blev valgt flest gange af de forskellige algoritmer.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="clustering.html#cb21-1" tabindex="-1"></a><span class="fu">library</span>(NbClust)</span>
-<span id="cb21-2"><a href="clustering.html#cb21-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">24</span>) <span class="co">#fordi outputtet fra NbClust har indbygget tilfældighed</span></span>
-<span id="cb21-3"><a href="clustering.html#cb21-3" tabindex="-1"></a>cluster_30_indexes <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(<span class="at">data =</span> penguins_scaled, </span>
-<span id="cb21-4"><a href="clustering.html#cb21-4" tabindex="-1"></a>                              <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>, </span>
-<span id="cb21-5"><a href="clustering.html#cb21-5" tabindex="-1"></a>                              <span class="at">min.nc =</span> <span class="dv">2</span>, </span>
-<span id="cb21-6"><a href="clustering.html#cb21-6" tabindex="-1"></a>                              <span class="at">max.nc =</span> <span class="dv">9</span>, </span>
-<span id="cb21-7"><a href="clustering.html#cb21-7" tabindex="-1"></a>                              <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="clustering.html#cb526-1" tabindex="-1"></a><span class="fu">library</span>(NbClust)</span>
+<span id="cb526-2"><a href="clustering.html#cb526-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">24</span>) <span class="co">#fordi outputtet fra NbClust har indbygget tilfældighed</span></span>
+<span id="cb526-3"><a href="clustering.html#cb526-3" tabindex="-1"></a>cluster_30_indexes <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(<span class="at">data =</span> penguins_scaled, </span>
+<span id="cb526-4"><a href="clustering.html#cb526-4" tabindex="-1"></a>                              <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>, </span>
+<span id="cb526-5"><a href="clustering.html#cb526-5" tabindex="-1"></a>                              <span class="at">min.nc =</span> <span class="dv">2</span>, </span>
+<span id="cb526-6"><a href="clustering.html#cb526-6" tabindex="-1"></a>                              <span class="at">max.nc =</span> <span class="dv">9</span>, </span>
+<span id="cb526-7"><a href="clustering.html#cb526-7" tabindex="-1"></a>                              <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span></code></pre></div>
 <p>Som det ses nedenfor, er enten 2 eller 3 clusters optimalt, hvilket stemmer overens med ‘elbow’ plot-metoden.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="clustering.html#cb22-1" tabindex="-1"></a><span class="fu">as_tibble</span>(cluster_30_indexes<span class="sc">$</span>Best.nc[<span class="dv">1</span>,]) <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="clustering.html#cb22-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(value))) <span class="sc">+</span> </span>
-<span id="cb22-3"><a href="clustering.html#cb22-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;count&quot;</span>,<span class="at">fill=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb22-4"><a href="clustering.html#cb22-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Antal clusters&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Antal clustering-algoritmer der vælger dette antal&quot;</span>) <span class="sc">+</span></span>
-<span id="cb22-5"><a href="clustering.html#cb22-5" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb22-6"><a href="clustering.html#cb22-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="clustering.html#cb527-1" tabindex="-1"></a><span class="fu">as_tibble</span>(cluster_30_indexes<span class="sc">$</span>Best.nc[<span class="dv">1</span>,]) <span class="sc">%&gt;%</span></span>
+<span id="cb527-2"><a href="clustering.html#cb527-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(value))) <span class="sc">+</span> </span>
+<span id="cb527-3"><a href="clustering.html#cb527-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;count&quot;</span>,<span class="at">fill=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb527-4"><a href="clustering.html#cb527-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Antal clusters&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Antal clustering-algoritmer der vælger dette antal&quot;</span>) <span class="sc">+</span></span>
+<span id="cb527-5"><a href="clustering.html#cb527-5" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb527-6"><a href="clustering.html#cb527-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-21-1.svg" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="visualisering-af-de-forskellige-antal-clusters-augment" class="section level3 hasAnchor" number="9.3.4">
 <h3><span class="header-section-number">9.3.4</span> Visualisering af de forskellige antal clusters (augment)<a href="clustering.html#visualisering-af-de-forskellige-antal-clusters-augment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vi kan også visualisere, hvordan de forskellige antal clusters tager sig ud. Her kan vi bruge vores resultater fra <code>augment</code>-funktionen (<code>kclusts_augment</code>), som indeholder tilknytningerne af observationerne til clusters for hver af de ni clusterings. Bemærk, at <code>kclusts_augment</code> har 2997 observationer. Dette svarer til 9 (antal clusterings) x 333 (antal observationer i <code>penguins</code>), fordi vi har brugt <code>unnest</code> til at samle alle resultaterne.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="clustering.html#cb23-1" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="clustering.html#cb528-1" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
 <pre><code>#&gt; Rows: 2,997
 #&gt; Columns: 13
 #&gt; $ k                 &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
@@ -799,87 +820,87 @@ Figure 9.1: source: <a href="https://towardsdatascience.com/k-means-a-complete-i
 #&gt; $ year              &lt;fct&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
 #&gt; $ .cluster          &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
 <p>I den følgende kode laver jeg et plot af <code>flipper_length_mm</code> mod <code>bill_length_mm</code> og anvender <code>facet_wrap</code>, så hver clustering får sit eget plot (så der er 333 observationer pr. plot).</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="clustering.html#cb25-1" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="clustering.html#cb25-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, <span class="at">colour=</span>.cluster)) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="clustering.html#cb25-3" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span><span class="fu">factor</span>(species)), <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb25-4"><a href="clustering.html#cb25-4" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> k) <span class="sc">+</span> </span>
-<span id="cb25-5"><a href="clustering.html#cb25-5" tabindex="-1"></a>        <span class="fu">theme_bw</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="clustering.html#cb530-1" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb530-2"><a href="clustering.html#cb530-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, <span class="at">colour=</span>.cluster)) <span class="sc">+</span></span>
+<span id="cb530-3"><a href="clustering.html#cb530-3" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span><span class="fu">factor</span>(species)), <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
+<span id="cb530-4"><a href="clustering.html#cb530-4" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> k) <span class="sc">+</span> </span>
+<span id="cb530-5"><a href="clustering.html#cb530-5" tabindex="-1"></a>        <span class="fu">theme_bw</span>() </span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Vi kan nemt inddrage <code>kclusts_tidy()</code> og lave “X”-mærker ved blot at tilføje en ekstra <code>geom_point</code> og specificere <code>kclusts_tidy</code>. Først anvender jeg funktionen <code>rename</code>, så variablen <code>cluster</code> fra <code>kclusts_tidy</code> matcher <code>.cluster</code> fra <code>kclusts_augment</code>.</p>
 <!-- Husk også at da `scale()` blev brugt til at lave clustering, skal man plotter `scale(flipper_length_mm)` og `scale(bill_length_mm)` på plottet, men `aes(x=flipper_length_mm,y=bill_length_mm)` lokalt, fordi jeg behøver ikke at anvende `scale()` igen på min centroids. -->
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="clustering.html#cb26-1" tabindex="-1"></a>kclusts_tidy <span class="ot">&lt;-</span> kclusts_tidy <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">.cluster=</span>cluster)</span>
-<span id="cb26-2"><a href="clustering.html#cb26-2" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="clustering.html#cb26-3" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb26-4"><a href="clustering.html#cb26-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(flipper_length_mm), <span class="at">y =</span> <span class="fu">scale</span>(bill_length_mm),<span class="at">colour=</span>.cluster)) <span class="sc">+</span> <span class="co">#scale here</span></span>
-<span id="cb26-5"><a href="clustering.html#cb26-5" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span><span class="fu">factor</span>(species)), <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb26-6"><a href="clustering.html#cb26-6" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> k) <span class="sc">+</span> </span>
-<span id="cb26-7"><a href="clustering.html#cb26-7" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> kclusts_tidy,</span>
-<span id="cb26-8"><a href="clustering.html#cb26-8" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">x=</span>flipper_length_mm,<span class="at">y=</span>bill_length_mm), <span class="co">#already based on scaled data, so don&#39;t scale</span></span>
-<span id="cb26-9"><a href="clustering.html#cb26-9" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="st">&quot;x&quot;</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb26-10"><a href="clustering.html#cb26-10" tabindex="-1"></a>        <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="clustering.html#cb531-1" tabindex="-1"></a>kclusts_tidy <span class="ot">&lt;-</span> kclusts_tidy <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">.cluster=</span>cluster)</span>
+<span id="cb531-2"><a href="clustering.html#cb531-2" tabindex="-1"></a></span>
+<span id="cb531-3"><a href="clustering.html#cb531-3" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb531-4"><a href="clustering.html#cb531-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(flipper_length_mm), <span class="at">y =</span> <span class="fu">scale</span>(bill_length_mm),<span class="at">colour=</span>.cluster)) <span class="sc">+</span> <span class="co">#scale here</span></span>
+<span id="cb531-5"><a href="clustering.html#cb531-5" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span><span class="fu">factor</span>(species)), <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
+<span id="cb531-6"><a href="clustering.html#cb531-6" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> k) <span class="sc">+</span> </span>
+<span id="cb531-7"><a href="clustering.html#cb531-7" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> kclusts_tidy,</span>
+<span id="cb531-8"><a href="clustering.html#cb531-8" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">x=</span>flipper_length_mm,<span class="at">y=</span>bill_length_mm), <span class="co">#already based on scaled data, so don&#39;t scale</span></span>
+<span id="cb531-9"><a href="clustering.html#cb531-9" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="st">&quot;x&quot;</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb531-10"><a href="clustering.html#cb531-10" tabindex="-1"></a>        <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Vi kan forsøge at kigge endnu dybere ind i resultaterne - her introducerer jeg <code>sex</code> som en ekstra variabel i plottet. Husk, at variablen <code>sex</code> ikke blev brugt i vores k-means clustering, men det kan være, at der er nogle aspekter ved de fire variabler, som kan fortælle os noget om kønnet på pingvinerne. For at spare plads, har jeg kun vist antallet af clusters fra 2 til 5.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="clustering.html#cb27-1" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> <span class="fu">filter</span>(k <span class="sc">%in%</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="clustering.html#cb27-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(flipper_length_mm), <span class="at">y =</span> <span class="fu">scale</span>(bill_length_mm),<span class="at">colour=</span>.cluster)) <span class="sc">+</span></span>
-<span id="cb27-3"><a href="clustering.html#cb27-3" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span><span class="fu">factor</span>(species)), <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb27-4"><a href="clustering.html#cb27-4" tabindex="-1"></a>        <span class="fu">facet_grid</span>(sex <span class="sc">~</span> k) <span class="sc">+</span> </span>
-<span id="cb27-5"><a href="clustering.html#cb27-5" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> kclusts_tidy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(k <span class="sc">%in%</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>),</span>
-<span id="cb27-6"><a href="clustering.html#cb27-6" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm,</span>
-<span id="cb27-7"><a href="clustering.html#cb27-7" tabindex="-1"></a>                       <span class="at">y =</span> bill_length_mm), </span>
-<span id="cb27-8"><a href="clustering.html#cb27-8" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="st">&quot;x&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb27-9"><a href="clustering.html#cb27-9" tabindex="-1"></a>        <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="clustering.html#cb532-1" tabindex="-1"></a>kclusts_augment <span class="sc">%&gt;%</span> <span class="fu">filter</span>(k <span class="sc">%in%</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb532-2"><a href="clustering.html#cb532-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(flipper_length_mm), <span class="at">y =</span> <span class="fu">scale</span>(bill_length_mm),<span class="at">colour=</span>.cluster)) <span class="sc">+</span></span>
+<span id="cb532-3"><a href="clustering.html#cb532-3" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span><span class="fu">factor</span>(species)), <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
+<span id="cb532-4"><a href="clustering.html#cb532-4" tabindex="-1"></a>        <span class="fu">facet_grid</span>(sex <span class="sc">~</span> k) <span class="sc">+</span> </span>
+<span id="cb532-5"><a href="clustering.html#cb532-5" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> kclusts_tidy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(k <span class="sc">%in%</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb532-6"><a href="clustering.html#cb532-6" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm,</span>
+<span id="cb532-7"><a href="clustering.html#cb532-7" tabindex="-1"></a>                       <span class="at">y =</span> bill_length_mm), </span>
+<span id="cb532-8"><a href="clustering.html#cb532-8" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="st">&quot;x&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb532-9"><a href="clustering.html#cb532-9" tabindex="-1"></a>        <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-25-1.svg" width="960" style="display: block; margin: auto;" /></p>
 </div>
 <div id="nestmap-ramme-fra-sidste-gang" class="section level3 hasAnchor" number="9.3.5">
 <h3><span class="header-section-number">9.3.5</span> Nest/map-ramme fra sidste gang<a href="clustering.html#nestmap-ramme-fra-sidste-gang" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Som en sidste bemærkning med k-means, kan man også lave en clustering for hver af de tre arter separat. I det følgende opretter jeg en nested dataframe, som indeholder tre datasæt (<code>penguins</code> opdelt efter variablen <code>species</code>), og jeg anvender den brugerdefinerede funktion <code>scale_me</code> til at udvælge de numeriske variabler og anvende <code>scale()</code> på hvert datasæt.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="clustering.html#cb28-1" tabindex="-1"></a>scale_me <span class="ot">&lt;-</span> <span class="er">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> scale</span>
-<span id="cb28-2"><a href="clustering.html#cb28-2" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="clustering.html#cb28-3" tabindex="-1"></a>penguins_nest <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb28-4"><a href="clustering.html#cb28-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="clustering.html#cb28-5" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb28-6"><a href="clustering.html#cb28-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;data_scaled&quot;</span> <span class="ot">=</span> <span class="fu">map</span>(data, scale_me))</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="clustering.html#cb533-1" tabindex="-1"></a>scale_me <span class="ot">&lt;-</span> <span class="er">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> scale</span>
+<span id="cb533-2"><a href="clustering.html#cb533-2" tabindex="-1"></a></span>
+<span id="cb533-3"><a href="clustering.html#cb533-3" tabindex="-1"></a>penguins_nest <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb533-4"><a href="clustering.html#cb533-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb533-5"><a href="clustering.html#cb533-5" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb533-6"><a href="clustering.html#cb533-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;data_scaled&quot;</span> <span class="ot">=</span> <span class="fu">map</span>(data, scale_me))</span></code></pre></div>
 <p>Dernæst laver jeg en brugerdefineret funktion til at lave en clustering på datasættet <code>.x</code>, og angiver at antallet af clusters skal være 3. Bemærk, at i den ovenstående sektion varierede vi antallet af clusters (indstilling <code>centers</code>), men her fastlægger vi antallet af clusters og varierer i stedet selve datasættet.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="clustering.html#cb29-1" tabindex="-1"></a>cluster_me <span class="ot">&lt;-</span> <span class="er">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">kmeans</span>(<span class="at">centers=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="clustering.html#cb534-1" tabindex="-1"></a>cluster_me <span class="ot">&lt;-</span> <span class="er">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">kmeans</span>(<span class="at">centers=</span><span class="dv">3</span>)</span></code></pre></div>
 <p>Jeg anvender <code>cluster_me</code> på mine skalerede datasæt, og anvender derefter <code>glance</code>, <code>augment</code> og <code>tidy</code> på clustering-resultaterne ligesom tidligere (bemærk brugen af <code>map</code> til at <code>augment</code> de opdelte datasæt).</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="clustering.html#cb30-1" tabindex="-1"></a>penguins_nest <span class="ot">&lt;-</span> penguins_nest <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="clustering.html#cb30-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clusters =</span> <span class="fu">map</span>(data_scaled,cluster_me),</span>
-<span id="cb30-3"><a href="clustering.html#cb30-3" tabindex="-1"></a>         <span class="at">clusters_glance =</span> <span class="fu">map</span>(clusters,glance),</span>
-<span id="cb30-4"><a href="clustering.html#cb30-4" tabindex="-1"></a>         <span class="at">clusters_augment =</span> <span class="fu">map2</span>(clusters,data_scaled,<span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">augment</span>(.y)), <span class="co">#I augment the scaled data so the correct scaling (based on individual datasets) appears in the next plot</span></span>
-<span id="cb30-5"><a href="clustering.html#cb30-5" tabindex="-1"></a>         <span class="at">clusters_tidy =</span> <span class="fu">map</span>(clusters,tidy))</span>
-<span id="cb30-6"><a href="clustering.html#cb30-6" tabindex="-1"></a></span>
-<span id="cb30-7"><a href="clustering.html#cb30-7" tabindex="-1"></a>nested_clusters_augment <span class="ot">&lt;-</span> penguins_nest <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(clusters_augment)</span>
-<span id="cb30-8"><a href="clustering.html#cb30-8" tabindex="-1"></a>nested_clusters_tidy <span class="ot">&lt;-</span> penguins_nest <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(clusters_tidy)</span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="clustering.html#cb535-1" tabindex="-1"></a>penguins_nest <span class="ot">&lt;-</span> penguins_nest <span class="sc">%&gt;%</span> </span>
+<span id="cb535-2"><a href="clustering.html#cb535-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clusters =</span> <span class="fu">map</span>(data_scaled,cluster_me),</span>
+<span id="cb535-3"><a href="clustering.html#cb535-3" tabindex="-1"></a>         <span class="at">clusters_glance =</span> <span class="fu">map</span>(clusters,glance),</span>
+<span id="cb535-4"><a href="clustering.html#cb535-4" tabindex="-1"></a>         <span class="at">clusters_augment =</span> <span class="fu">map2</span>(clusters,data_scaled,<span class="sc">~</span>.x <span class="sc">%&gt;%</span> <span class="fu">augment</span>(.y)), <span class="co">#I augment the scaled data so the correct scaling (based on individual datasets) appears in the next plot</span></span>
+<span id="cb535-5"><a href="clustering.html#cb535-5" tabindex="-1"></a>         <span class="at">clusters_tidy =</span> <span class="fu">map</span>(clusters,tidy))</span>
+<span id="cb535-6"><a href="clustering.html#cb535-6" tabindex="-1"></a></span>
+<span id="cb535-7"><a href="clustering.html#cb535-7" tabindex="-1"></a>nested_clusters_augment <span class="ot">&lt;-</span> penguins_nest <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(clusters_augment)</span>
+<span id="cb535-8"><a href="clustering.html#cb535-8" tabindex="-1"></a>nested_clusters_tidy <span class="ot">&lt;-</span> penguins_nest <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(clusters_tidy)</span></code></pre></div>
 <p>Til sidste laver jeg en plot af resultaterne:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="clustering.html#cb31-1" tabindex="-1"></a>nested_clusters_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb31-2"><a href="clustering.html#cb31-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>flipper_length_mm,<span class="at">colour=</span>.cluster)) <span class="sc">+</span> <span class="co">#data already scaled</span></span>
-<span id="cb31-3"><a href="clustering.html#cb31-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb31-4"><a href="clustering.html#cb31-4" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>species) <span class="sc">+</span> </span>
-<span id="cb31-5"><a href="clustering.html#cb31-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>nested_clusters_tidy,</span>
-<span id="cb31-6"><a href="clustering.html#cb31-6" tabindex="-1"></a>             <span class="at">shape=</span><span class="st">&quot;X&quot;</span>,<span class="at">colour=</span><span class="st">&quot;black&quot;</span>,</span>
-<span id="cb31-7"><a href="clustering.html#cb31-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb31-8"><a href="clustering.html#cb31-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="clustering.html#cb536-1" tabindex="-1"></a>nested_clusters_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb536-2"><a href="clustering.html#cb536-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bill_length_mm,<span class="at">y=</span>flipper_length_mm,<span class="at">colour=</span>.cluster)) <span class="sc">+</span> <span class="co">#data already scaled</span></span>
+<span id="cb536-3"><a href="clustering.html#cb536-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb536-4"><a href="clustering.html#cb536-4" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>species) <span class="sc">+</span> </span>
+<span id="cb536-5"><a href="clustering.html#cb536-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>nested_clusters_tidy,</span>
+<span id="cb536-6"><a href="clustering.html#cb536-6" tabindex="-1"></a>             <span class="at">shape=</span><span class="st">&quot;X&quot;</span>,<span class="at">colour=</span><span class="st">&quot;black&quot;</span>,</span>
+<span id="cb536-7"><a href="clustering.html#cb536-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb536-8"><a href="clustering.html#cb536-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-29-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="metode-2-hierarchical-clustering" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> Metode 2: Hierarchical clustering<a href="clustering.html#metode-2-hierarchical-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>K-means er en meget populær metode til at lave clustering, men der findes mange andre metoder, fx hierarkisk clustering. Vi skifter over til <code>mtcars</code>, og ligesom med <code>kmeans</code> skal vi først anvende <code>scale</code> på de numeriske kolonner i dataene.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="clustering.html#cb32-1" tabindex="-1"></a>mtcars_scaled <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">scale</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="clustering.html#cb537-1" tabindex="-1"></a>mtcars_scaled <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">scale</span>()</span></code></pre></div>
 <p>I modsætning til k-means skal man først beregne afstanden mellem alle observationerne i dataene for at lave hierarkisk clustering. Det gør man med funktionen <code>dist()</code> (som bruger den euklidiske afstand som standard):</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="clustering.html#cb33-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dist</span>(mtcars_scaled)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="clustering.html#cb538-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dist</span>(mtcars_scaled)</span></code></pre></div>
 <p>For at lave en hierarkisk clustering anvender man funktionen <code>hclust()</code>. Metoden <code>complete</code> er standard, men man kan afprøve andre metoder (der er ikke en fast regel for, hvilken metode man skal bruge).</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="clustering.html#cb34-1" tabindex="-1"></a>mtcars_hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;complete&quot;</span> )</span>
-<span id="cb34-2"><a href="clustering.html#cb34-2" tabindex="-1"></a><span class="co"># Metoder: &quot;average&quot;, &quot;single&quot;, &quot;complete&quot;, &quot;ward.D&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="clustering.html#cb539-1" tabindex="-1"></a>mtcars_hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;complete&quot;</span> )</span>
+<span id="cb539-2"><a href="clustering.html#cb539-2" tabindex="-1"></a><span class="co"># Metoder: &quot;average&quot;, &quot;single&quot;, &quot;complete&quot;, &quot;ward.D&quot;</span></span></code></pre></div>
 <p>I det følgende arbejder vi lidt med <code>mtcars_hc</code> for at få nogle clusters frem, og for at lave et plot.</p>
 <div id="vælge-ønsket-antal-clusters" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> Vælge ønsket antal clusters<a href="clustering.html#vælge-ønsket-antal-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Funktionen <code>cutree</code> anvendes til at få clusters fra resultaterne af funktionen <code>hclust</code>. For eksempel, hvis man gerne vil have 4 clusters, bruger man <code>k = 4</code>. Jeg specificerer <code>order_clusters_as_data = FALSE</code> for at få clusters i den rækkefølge, som passer til det plot (dendrogram) vi laver (bemærk at man skal have pakken <code>dendextend</code> installeret for at få det til at fungere).</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="clustering.html#cb35-1" tabindex="-1"></a><span class="fu">library</span>(dendextend)</span>
-<span id="cb35-2"><a href="clustering.html#cb35-2" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="clustering.html#cb35-3" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> <span class="fu">cutree</span>(mtcars_hc, <span class="at">k =</span> <span class="dv">4</span>, <span class="at">order_clusters_as_data =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="clustering.html#cb540-1" tabindex="-1"></a><span class="fu">library</span>(dendextend)</span>
+<span id="cb540-2"><a href="clustering.html#cb540-2" tabindex="-1"></a></span>
+<span id="cb540-3"><a href="clustering.html#cb540-3" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> <span class="fu">cutree</span>(mtcars_hc, <span class="at">k =</span> <span class="dv">4</span>, <span class="at">order_clusters_as_data =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Her laver jeg et overblik over, hvor mange observationer fra <code>mtcars</code> der er i hver cluster:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="clustering.html#cb36-1" tabindex="-1"></a><span class="fu">tibble</span>(<span class="st">&quot;cluster&quot;</span><span class="ot">=</span>clusters) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="clustering.html#cb541-1" tabindex="-1"></a><span class="fu">tibble</span>(<span class="st">&quot;cluster&quot;</span><span class="ot">=</span>clusters) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">n</span>())</span></code></pre></div>
 <pre><code>FALSE # A tibble: 4 × 2
 FALSE   cluster `n()`
 FALSE     &lt;int&gt; &lt;int&gt;
@@ -891,20 +912,20 @@ FALSE 4       4     5</code></pre>
 <div id="lav-et-pænt-plot-af-dendrogrammet-med-ggplot2" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">9.4.2</span> Lav et pænt plot af dendrogrammet med ggplot2<a href="clustering.html#lav-et-pænt-plot-af-dendrogrammet-med-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Først anvender jeg funktionen <code>dendro_data()</code> til at udtrække dendrogrammet fra <code>hclust()</code> resultaterne.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="clustering.html#cb38-1" tabindex="-1"></a><span class="fu">library</span>(ggdendro)</span>
-<span id="cb38-2"><a href="clustering.html#cb38-2" tabindex="-1"></a>dend_data <span class="ot">&lt;-</span> <span class="fu">dendro_data</span>(mtcars_hc <span class="sc">%&gt;%</span> as.dendrogram, <span class="at">type =</span> <span class="st">&quot;rectangle&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="clustering.html#cb543-1" tabindex="-1"></a><span class="fu">library</span>(ggdendro)</span>
+<span id="cb543-2"><a href="clustering.html#cb543-2" tabindex="-1"></a>dend_data <span class="ot">&lt;-</span> <span class="fu">dendro_data</span>(mtcars_hc <span class="sc">%&gt;%</span> as.dendrogram, <span class="at">type =</span> <span class="st">&quot;rectangle&quot;</span>)</span></code></pre></div>
 <p>Vi tilføjer vores clusters, som vi beregnede ovenfor (det er derfor, vi sikrede rækkefølgen af clusters):</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="clustering.html#cb39-1" tabindex="-1"></a>dend_data<span class="sc">$</span>labels <span class="ot">&lt;-</span> dend_data<span class="sc">$</span>labels <span class="sc">%&gt;%</span> </span>
-<span id="cb39-2"><a href="clustering.html#cb39-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> clusters)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="clustering.html#cb544-1" tabindex="-1"></a>dend_data<span class="sc">$</span>labels <span class="ot">&lt;-</span> dend_data<span class="sc">$</span>labels <span class="sc">%&gt;%</span> </span>
+<span id="cb544-2"><a href="clustering.html#cb544-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> clusters)</span></code></pre></div>
 <p>Vi benytter <code>dend_data$segments</code> og <code>dend_data$labels</code> til at lave et informativt plot af dataene med <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="clustering.html#cb40-1" tabindex="-1"></a><span class="fu">ggplot</span>(dend_data<span class="sc">$</span>segments) <span class="sc">+</span> </span>
-<span id="cb40-2"><a href="clustering.html#cb40-2" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend)) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="clustering.html#cb40-3" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb40-4"><a href="clustering.html#cb40-4" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> dend_data<span class="sc">$</span>labels, </span>
-<span id="cb40-5"><a href="clustering.html#cb40-5" tabindex="-1"></a>            <span class="fu">aes</span>(x, y, <span class="at">label =</span> label,<span class="at">col=</span><span class="fu">factor</span>(cluster)),</span>
-<span id="cb40-6"><a href="clustering.html#cb40-6" tabindex="-1"></a>            <span class="at">hjust=</span><span class="dv">1</span>,<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb40-7"><a href="clustering.html#cb40-7" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">10</span>) <span class="sc">+</span> </span>
-<span id="cb40-8"><a href="clustering.html#cb40-8" tabindex="-1"></a>  <span class="fu">theme_dendro</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="clustering.html#cb545-1" tabindex="-1"></a><span class="fu">ggplot</span>(dend_data<span class="sc">$</span>segments) <span class="sc">+</span> </span>
+<span id="cb545-2"><a href="clustering.html#cb545-2" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend)) <span class="sc">+</span></span>
+<span id="cb545-3"><a href="clustering.html#cb545-3" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb545-4"><a href="clustering.html#cb545-4" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> dend_data<span class="sc">$</span>labels, </span>
+<span id="cb545-5"><a href="clustering.html#cb545-5" tabindex="-1"></a>            <span class="fu">aes</span>(x, y, <span class="at">label =</span> label,<span class="at">col=</span><span class="fu">factor</span>(cluster)),</span>
+<span id="cb545-6"><a href="clustering.html#cb545-6" tabindex="-1"></a>            <span class="at">hjust=</span><span class="dv">1</span>,<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb545-7"><a href="clustering.html#cb545-7" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb545-8"><a href="clustering.html#cb545-8" tabindex="-1"></a>  <span class="fu">theme_dendro</span>()</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-37-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Så kan man se, der er fire clusters i dengrammet, og biler der er tætest på hinanden ligner hinanden mest - fk. Merc 280C og Merc 280 må være meget éns, og er som forventet lige ved siden af hinanden i plottet.</p>
 <p>Man kan godt tilpasse ovenstående kode til et andet datasæt - se problemstillinger, men man må også gerne udvide plottet med de forskellige viden vi har om ggplot2.</p>
@@ -912,27 +933,27 @@ FALSE 4       4     5</code></pre>
 <div id="afprøve-andre-metoder-på-hierachical-clustering" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">9.4.3</span> Afprøve andre metoder på hierachical clustering<a href="clustering.html#afprøve-andre-metoder-på-hierachical-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ekstra hvis du vil afprøve de fire metoder i <code>hclust</code> - “average”, “single”, “complete” og “ward.D”.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="clustering.html#cb41-1" tabindex="-1"></a><span class="co"># samme ggplot kommando som ovenpå lavet til en funktion </span></span>
-<span id="cb41-2"><a href="clustering.html#cb41-2" tabindex="-1"></a>den_plot <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">ggplot</span>(.x<span class="sc">$</span>segments) <span class="sc">+</span> </span>
-<span id="cb41-3"><a href="clustering.html#cb41-3" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend)) <span class="sc">+</span></span>
-<span id="cb41-4"><a href="clustering.html#cb41-4" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb41-5"><a href="clustering.html#cb41-5" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> .x<span class="sc">$</span>labels, </span>
-<span id="cb41-6"><a href="clustering.html#cb41-6" tabindex="-1"></a>            <span class="fu">aes</span>(x, y, <span class="at">label =</span> label),</span>
-<span id="cb41-7"><a href="clustering.html#cb41-7" tabindex="-1"></a>            <span class="at">hjust=</span><span class="dv">1</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb41-8"><a href="clustering.html#cb41-8" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">10</span>) <span class="sc">+</span> <span class="fu">theme_dendro</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="clustering.html#cb546-1" tabindex="-1"></a><span class="co"># samme ggplot kommando som ovenpå lavet til en funktion </span></span>
+<span id="cb546-2"><a href="clustering.html#cb546-2" tabindex="-1"></a>den_plot <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">ggplot</span>(.x<span class="sc">$</span>segments) <span class="sc">+</span> </span>
+<span id="cb546-3"><a href="clustering.html#cb546-3" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend)) <span class="sc">+</span></span>
+<span id="cb546-4"><a href="clustering.html#cb546-4" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb546-5"><a href="clustering.html#cb546-5" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> .x<span class="sc">$</span>labels, </span>
+<span id="cb546-6"><a href="clustering.html#cb546-6" tabindex="-1"></a>            <span class="fu">aes</span>(x, y, <span class="at">label =</span> label),</span>
+<span id="cb546-7"><a href="clustering.html#cb546-7" tabindex="-1"></a>            <span class="at">hjust=</span><span class="dv">1</span>,<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb546-8"><a href="clustering.html#cb546-8" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">10</span>) <span class="sc">+</span> <span class="fu">theme_dendro</span>()</span></code></pre></div>
 <p>Vi iterate over de fire metoder og lave samme process som ovenpå med map. Derefter kan man lave et plot fk. med grid.arrange:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="clustering.html#cb42-1" tabindex="-1"></a><span class="co"># fire metoder:</span></span>
-<span id="cb42-2"><a href="clustering.html#cb42-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;average&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;complete&quot;</span>, <span class="st">&quot;ward.D&quot;</span>)</span>
-<span id="cb42-3"><a href="clustering.html#cb42-3" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="clustering.html#cb42-4" tabindex="-1"></a>hc_results <span class="ot">&lt;-</span> </span>
-<span id="cb42-5"><a href="clustering.html#cb42-5" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">method =</span> m) <span class="sc">%&gt;%</span></span>
-<span id="cb42-6"><a href="clustering.html#cb42-6" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">kclust =</span> <span class="fu">map</span>(method, <span class="sc">~</span><span class="fu">hclust</span>(d, <span class="at">method =</span> .x)), </span>
-<span id="cb42-7"><a href="clustering.html#cb42-7" tabindex="-1"></a>          <span class="at">dendrogram =</span> <span class="fu">map</span>(kclust,as.dendrogram),</span>
-<span id="cb42-8"><a href="clustering.html#cb42-8" tabindex="-1"></a>          <span class="at">den_dat =</span> <span class="fu">map</span>(dendrogram,<span class="sc">~</span><span class="fu">dendro_data</span>(.x,<span class="at">type=</span><span class="st">&quot;rectangle&quot;</span>)),</span>
-<span id="cb42-9"><a href="clustering.html#cb42-9" tabindex="-1"></a>          <span class="at">plot =</span> <span class="fu">map</span>(den_dat,den_plot))</span>
-<span id="cb42-10"><a href="clustering.html#cb42-10" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="clustering.html#cb42-11" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb42-12"><a href="clustering.html#cb42-12" tabindex="-1"></a><span class="fu">grid.arrange</span>(<span class="at">grobs =</span> hc_results <span class="sc">%&gt;%</span> <span class="fu">pull</span>(plot),<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="clustering.html#cb547-1" tabindex="-1"></a><span class="co"># fire metoder:</span></span>
+<span id="cb547-2"><a href="clustering.html#cb547-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;average&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;complete&quot;</span>, <span class="st">&quot;ward.D&quot;</span>)</span>
+<span id="cb547-3"><a href="clustering.html#cb547-3" tabindex="-1"></a></span>
+<span id="cb547-4"><a href="clustering.html#cb547-4" tabindex="-1"></a>hc_results <span class="ot">&lt;-</span> </span>
+<span id="cb547-5"><a href="clustering.html#cb547-5" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">method =</span> m) <span class="sc">%&gt;%</span></span>
+<span id="cb547-6"><a href="clustering.html#cb547-6" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">kclust =</span> <span class="fu">map</span>(method, <span class="sc">~</span><span class="fu">hclust</span>(d, <span class="at">method =</span> .x)), </span>
+<span id="cb547-7"><a href="clustering.html#cb547-7" tabindex="-1"></a>          <span class="at">dendrogram =</span> <span class="fu">map</span>(kclust,as.dendrogram),</span>
+<span id="cb547-8"><a href="clustering.html#cb547-8" tabindex="-1"></a>          <span class="at">den_dat =</span> <span class="fu">map</span>(dendrogram,<span class="sc">~</span><span class="fu">dendro_data</span>(.x,<span class="at">type=</span><span class="st">&quot;rectangle&quot;</span>)),</span>
+<span id="cb547-9"><a href="clustering.html#cb547-9" tabindex="-1"></a>          <span class="at">plot =</span> <span class="fu">map</span>(den_dat,den_plot))</span>
+<span id="cb547-10"><a href="clustering.html#cb547-10" tabindex="-1"></a></span>
+<span id="cb547-11"><a href="clustering.html#cb547-11" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb547-12"><a href="clustering.html#cb547-12" tabindex="-1"></a><span class="fu">grid.arrange</span>(<span class="at">grobs =</span> hc_results <span class="sc">%&gt;%</span> <span class="fu">pull</span>(plot),<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="09-clustering_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -953,10 +974,10 @@ FALSE 4       4     5</code></pre>
 <hr />
 <p><strong>Problem 3</strong>) <em>Hierarchical clustering øvelse</em></p>
 <p>Vi laver en analyse af det <code>msleep</code> datasæt. Jeg har lavet oprydningen og scaling for dig:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="clustering.html#cb43-1" tabindex="-1"></a><span class="fu">data</span>(msleep)</span>
-<span id="cb43-2"><a href="clustering.html#cb43-2" tabindex="-1"></a>msleep_clean <span class="ot">&lt;-</span> msleep <span class="sc">%&gt;%</span> <span class="fu">select</span>(name,<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb43-3"><a href="clustering.html#cb43-3" tabindex="-1"></a>msleep_scaled <span class="ot">&lt;-</span> msleep_clean <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>name) <span class="sc">%&gt;%</span> scale</span>
-<span id="cb43-4"><a href="clustering.html#cb43-4" tabindex="-1"></a><span class="fu">row.names</span>(msleep_scaled) <span class="ot">&lt;-</span> msleep_clean<span class="sc">$</span>name</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="clustering.html#cb548-1" tabindex="-1"></a><span class="fu">data</span>(msleep)</span>
+<span id="cb548-2"><a href="clustering.html#cb548-2" tabindex="-1"></a>msleep_clean <span class="ot">&lt;-</span> msleep <span class="sc">%&gt;%</span> <span class="fu">select</span>(name,<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb548-3"><a href="clustering.html#cb548-3" tabindex="-1"></a>msleep_scaled <span class="ot">&lt;-</span> msleep_clean <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>name) <span class="sc">%&gt;%</span> scale</span>
+<span id="cb548-4"><a href="clustering.html#cb548-4" tabindex="-1"></a><span class="fu">row.names</span>(msleep_scaled) <span class="ot">&lt;-</span> msleep_clean<span class="sc">$</span>name</span></code></pre></div>
 <p>Tilpas min kode fra kursusnotaterne (sektion 9.4) til at lave følgende:</p>
 <p><strong>a</strong>) Benyt funktioner <code>dist()</code> og dernæst <code>hclust()</code> på datasættet <code>msleep_scaled</code>.</p>
 <p><strong>b</strong>) Benyt <code>cutree</code> for at finde 5 clusters fra dine <code>hclust</code>-resultater, og kalde det for <code>clusters</code>. Husk at anvende <code>order_clusters_as_data = FALSE</code> så at vi har den korrekt rækkefølge for et plot (<em>OBS man skal installere/indlæse pakken <code>dendextend</code></em>)</p>
@@ -965,7 +986,7 @@ FALSE 4       4     5</code></pre>
 <hr />
 <p><strong>Problem 4)</strong></p>
 <p>Inlæs data</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="clustering.html#cb44-1" tabindex="-1"></a>wholesale <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.dropbox.com/s/7nb5pkruqt4fqn4/Wholesale%20customers%20data.csv?dl=1&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="clustering.html#cb549-1" tabindex="-1"></a>wholesale <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.dropbox.com/s/7nb5pkruqt4fqn4/Wholesale%20customers%20data.csv?dl=1&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><strong>a</strong>) Foretag ændringer i datasættet i henhold til følgende instruktioner (og husk at gemme):</p>
 <ul>
 <li>Channel - anvend <code>recode</code> for at ændre til navne
@@ -1008,8 +1029,8 @@ FALSE 4       4     5</code></pre>
           </div>
         </div>
       </div>
-<a href="visualisering-af-trends.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="visualisering-af-trends.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="principal-component-analysis-pca.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1063,6 +1084,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
