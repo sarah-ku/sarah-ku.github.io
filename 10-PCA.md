@@ -221,6 +221,8 @@ Der er flere ting, som kan være nyttige at gøre med vores PCA-resultater:
 * Se, hvor meget af variansen i datasættet der er forklaret af de forskellige komponenter
 * Bruge rotationsmatricen til at se, hvordan variablerne forholder sig i forhold til hinanden
 
+### Lave plot af principal componenets
+
 For at lave vores plot af principal components kan vi benytte funktionen `augment()`, ligesom vi gjorde i vores sidste lektion med k-means clustering. Her får vi værdierne for hver af de fire principal components sammen med det oprindelige datasæt.
 
 
@@ -279,7 +281,8 @@ kclust %>% augment(pca_fit_augment)  %>%
 
 <img src="10-PCA_files/figure-html/unnamed-chunk-15-1.svg" width="480" style="display: block; margin: auto;" />
 
-__Output med tidy__
+
+### Forklarede variance
 
 Næst vil vi se på variansen i datasættet, som er blevet fanget af hver af de forskellige komponenter. Man kan udtrække oplysningerne ved at benytte funktionen `tidy()` fra pakken `broom` og ved at angive `matrix = "eigenvalues"` inden for `tidy`.
 
@@ -321,7 +324,7 @@ pca_fit_tidy %>%
 
 På den ene side, hvis der er meget varians, der er forklaret af de første komponenter tilsammen, betyder det, at der er en del redundans i datasættet, fordi mange af variablerne har en tæt sammenhæng med hinanden. På den anden side, hvis der er en meget lille andel af variansen, der er forklaret af de første komponenter tilsammen, betyder det, at det er svært at beskrive datasættet i færre dimensioner (fordi der næsten ingen sammenhæng er mellem variablerne) - i dette tilfælde, hvor datasættet er mere komplekst, er PCA mindre effektiv.
 
-### Rotationsmatrix for at udtrække bidragene fra de forskellige variabler
+### Rotationsmatrix: bidragene fra de forskellige variabler
 
 Eigenvalues kan anvendes til at undersøge variansen i datasættet, men deres tilsvarende eigenvectors fortæller os om, hvordan de forskellige variabler kombineres for at opnå de endelige principal component værdier, som vi fx bruger i et scatter plot. Eigenvectors bruges til at lave en matrix, der kaldes en 'rotationsmatrix'. 
 
@@ -347,6 +350,7 @@ pca_fit_rotate
 
 Denne rotationsmatrix fortæller os, hvordan man beregner værdierne for de principal components for alle observationer. For eksempel tager vi vores første observation, beregner 0.45 gange bill length, og så minus 0.4 gange bill depth, og så plus 0.58 x flipper length og så plus 0.55 x body_mass. Og så har vi værdien for observationen langs den første principal component. 
 
+Man kan lave et plot af hver af de principal components, der viser, hvordan hvert variable bidrage til componentens værdier:
 
 
 ```r
@@ -363,6 +367,8 @@ pca_fit %>%
 ```
 
 <img src="10-PCA_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" />
+
+Her er eksempelvis to fortolkinger ud fra ovenstående plot:
 
 * Pingviner med en større flipper length ville være plottet på højre på den første principal component, men til venstre hvis man plotter din 4. principal componoent.
 * Pingviner med en store bill_depth ville være plottet på venstre på både den første principal compenent og den anden principal component.

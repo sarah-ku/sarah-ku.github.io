@@ -229,3 +229,6 @@ rotationsmatrix-for-at-udtrække-bidragene-fra-de-forskellige-variabler
 pakken-factoextra
 problemstillinger-9
 ekstra-læsning
+lave-plot-af-principal-componenets
+forklarede-variance
+rotationsmatrix-bidragene-fra-de-forskellige-variabler
