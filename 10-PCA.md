@@ -418,13 +418,10 @@ __Problem 1__) Quiz på Absalon
 
 ---
 
-Vi arbejder med en breast cancer datasæt. 
+Vi arbejder med en breast cancer datasæt. Here is the description from Kaggle https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset:
 
-_Here is the description from Kaggle https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset:
-
-Breast cancer is the most common cancer amongst women in the world. It accounts for 25% of all cancer cases, and affected over 2.1 Million people in 2015 alone. It starts when cells in the breast begin to grow out of control. These cells usually form tumors that can be seen via X-ray or felt as lumps in the breast area.
-
-The key challenges against it’s detection is how to classify tumors into malignant (cancerous) or benign(non cancerous)_
+* Breast cancer is the most common cancer amongst women in the world. It accounts for 25% of all cancer cases, and affected over 2.1 Million people in 2015 alone. It starts when cells in the breast begin to grow out of control. These cells usually form tumors that can be seen via X-ray or felt as lumps in the breast area.
+* The key challenges against it’s detection is how to classify tumors into malignant (cancerous) or benign(non cancerous)_
 
 Download følgende datasæt ved at køre følgende kode chunk:
 
@@ -470,14 +467,58 @@ cancer %>% glimpse()
 #> $ fractal_dimension_worst <dbl> 0.11890, 0.08902, 0.08758, 0.17300, 0.07678, 0…
 ```
 
-
 I variablen `diagnosis`: M betyder 'Malignant' og B betyder 'Benign' - du kan overveje at ændre på variablen i dit indlæste datasæt for at gøre det mere klart. 
 
-__Problem 2__)  Anvend funktionen `ggscatmat` fra pakken `GGally` til at lave et plot, hvor man sammenligne fem af variablerne. 
+---
 
-* Man kan lave en tilfældig sample af fem variabler med at angive `columns = sample(2:31,5)` som parameter indenfor funktionen `ggscatmat`(husk at installere og indlæse `GGally`-pakken).
+__Problem 2__)  Først vil vi gerne visualisere datasættet _uden at bruge principal component analyse_. Anvend funktionen `ggscatmat` fra pakken `GGally` til at lave et plot, hvor man sammenligne fem af variablerne. 
+
+* Der er mange variabler, derfor kan man angive en tilfældig sample af fem variabler med `columns = sample(2:31,5)` som parameter indenfor funktionen `ggscatmat`(husk at installere og indlæse `GGally`-pakken).
 * Giv farver efter factor variablen `diagnosis` og vælger "pearson" som parameteren `corMethod`.
-* Opfatter du, at der er en del redundans i datasættet (dvs., er der stærke korrelationer mellem de forskellige variabler, der gør det muligt at forudsige den ene ud fra den anden)? Prøv at køre din kode igen, så du får forskellige samplings af fem variabler.
+* Prøv at køre din kode et par gange, så du får forskellige samplings af fem variabler. Opfatter du, at der er en del redundans i datasættet (dvs., er der stærke korrelationer mellem de forskellige variabler, der gør at hvis man ved en værdi fra den ene, kan man gætte på den tilsvarende værdi fra den anden)? 
+
+
+
+---
+
+__Problem 3__) Benyt funktionen `prcomp()` til at beregne en principal component analysis af datasættet:
+
+* 1. Husk at det skal kun være numeriske variabler og angiv `scale=TRUE` inde i funktionen.
+* 2. Anvend `augment()`-funktionen til at tilføje dit rå datasæt til ovenstående resultater fra `prcomp`.
+* 3. Brug den til at lave et scatter plot af de første to principal components, hvor du giver farver efter variablen `diagnosis`
+* 4. Skriv kort om man kan skelne imellem Malignant og Benign tumours (variablen `diagnosis`) ud fra de første to principal components.
+* 5. Skriv også kort - hvilke af de to components er bedre til at skelne mellem Malignant og Benign tumours?
+
+
+<!-- * Hvad er proportionen af variansen, der er forklaret af den første principal component? -->
+<!-- * Hvad er proportionen af variansen, som er forklaret af de første to principal components tilsammen? -->
+
+
+
+
+
+
+
+
+
+
+<!-- --- -->
+
+<!-- __Problem 4__) *Augment og plot* Anvend `augment()`-funktionen til at tilføje dit rå datasæt til ovenstående resultater fra `prcomp`. -->
+
+<!-- * Brug den til at lave et scatter plot af de første to principal components -->
+<!-- * Giv farver efter variablen `diagnosis` -->
+<!-- * Skriv kort om man kan skelne imellem Malignant og Benign tumours (variablen `diagnosis`) ud fra de første to principal components. -->
+<!-- * Skriv også kort - hvilke af de to components er bedre til at skelne mellem Malignant og Benign tumours? -->
+
+---
+
+__Problem 4__) *Integrere kmeans clustering*. Lav et clustering med `kmeans` på datasættet, med to clusters (husk at udvælge numeriske variabler og scale inden du anvender funktionen `kmeans`), og:
+
+* 1. Augment resultaterne af `kmeans` til dit datasæt, der allerede har `prcomp` resultater tilføjet. 
+* 2. Lav et plot og give farver efter `.cluster` og former efter `diagnosis`.
+* 3. Sammenligne dine to clusters med `diagnosis`.
+
 
 
 
@@ -485,46 +526,7 @@ __Problem 2__)  Anvend funktionen `ggscatmat` fra pakken `GGally` til at lave et
 ---
 
 
-__Problem 3__) Benyt funktionen `prcomp()` til at beregne en principal component analysis af datasættet.
-
-* Husk at det skal kun være numeriske variabler og angiv `scale=TRUE` inde i funktionen.
-* Lav et `summary` af resultaterne. Hvad er proportionen af variansen, der er forklaret af den første principal component?
-* Hvad er proportionen af variansen, som er forklaret af de første to principal components tilsammen?
-
-
-
----
-
-__Problem 4__) *Augment og plot* Anvend `augment()`-funktionen til at tilføje dit rå datasæt til ovenstående resultater fra `prcomp`.
-
-* Brug den til at lave et scatter plot af de første to principal components
-* Giv farver efter variablen `diagnosis`
-* Skriv kort om man kan skelne imellem Malignant og Benign tumours (variablen `diagnosis`) ud fra de første to principal components.
-* Skriv også kort - hvilke af de to components er bedre til at skelne mellem Malignant og Benign tumours?
-
-
-
-
-
-
----
-
-__Problem 5__) *Integrere kmeans clustering*. Lav et clustering med `kmeans` på datasættet, med to clusters (husk at udvælge numeriske variabler og scale inden du anvender funktionen `kmeans`). 
-
-* Augment resultaterne af `kmeans` til dit datasæt, der allerede har `prcomp` resultater tilføjet. 
-* Lav et plot og give farver efter `.cluster` og former efter `diagnosis`.
-* Sammenligne dine to clusters med `diagnosis`.
-
-
-
-
-
-
-
----
-
-
-__Problem 6__) *tidy form og variansen* Anvende `tidy(matrix = "eigenvalues")` på din PCA resultater til at få bidragen af de forskellige components til den overordnet varianse i datasættet.
+__Problem 5__) *tidy form og variansen* Anvende `tidy(matrix = "eigenvalues")` på din PCA resultater til at få bidragen af de forskellige components til den overordnet varianse i datasættet.
 
 * Lav et barplot som viser de components på x-aksen og `percent` på y-aksen.
 
@@ -533,7 +535,7 @@ __Problem 6__) *tidy form og variansen* Anvende `tidy(matrix = "eigenvalues")` p
 
 ---
 
-__Problem 7__) *tidy form og rotation matrix* 
+__Problem 6__) *tidy form og rotation matrix* 
 
 __a__) Anvende `tidy(matrix = "rotation")` til at få den rotation matrix og lav følgende:
 
@@ -550,13 +552,13 @@ __b__) Værdierne i den rotation matrix fortæller, hvordan en givet variabel bi
 
 ---
 
-__Problem 8)__  Udvidelse af __Problem 5)__: Fra din augmented resultater med både dine principal components og clusters: Beregne middelværdierne af din første to principal components for hver af de to clusters. Tilføj dine beregnede middelværdierne til plottet som "x". 
+__Problem 7)__  Udvidelse af __Problem 4)__: Fra din augmented resultater med både dine principal components og clusters: Beregne middelværdierne af din første to principal components for hver af de to clusters. Tilføj dine beregnede middelværdierne til plottet som "x". 
 
 
 
 ---
 
-__Problem 9)__ EKSTRA: Gå ind i Kaggle linket (https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset) og klik på "Code". I den "Search" klik på "Filters" til højre og vælge "R" som language. Kig på analyserne, som andre har lavet på samme datasæt.
+__Problem 8)__ EKSTRA: Gå ind i Kaggle linket (https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset) og klik på "Code". I den "Search" klik på "Filters" til højre og vælge "R" som language. Kig på analyserne, som andre har lavet på samme datasæt.
 
 
 ## Ekstra læsning

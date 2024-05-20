@@ -775,10 +775,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.5</span> Problemstillinger<a href="principal-component-analysis-pca.html#problemstillinger-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Problem 1</strong>) Quiz på Absalon</p>
 <hr />
-<p>Vi arbejder med en breast cancer datasæt.</p>
-<p>_Here is the description from Kaggle <a href="https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset" class="uri">https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset</a>:</p>
-<p>Breast cancer is the most common cancer amongst women in the world. It accounts for 25% of all cancer cases, and affected over 2.1 Million people in 2015 alone. It starts when cells in the breast begin to grow out of control. These cells usually form tumors that can be seen via X-ray or felt as lumps in the breast area.</p>
-<p>The key challenges against it’s detection is how to classify tumors into malignant (cancerous) or benign(non cancerous)_</p>
+<p>Vi arbejder med en breast cancer datasæt. Here is the description from Kaggle <a href="https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset" class="uri">https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset</a>:</p>
+<ul>
+<li>Breast cancer is the most common cancer amongst women in the world. It accounts for 25% of all cancer cases, and affected over 2.1 Million people in 2015 alone. It starts when cells in the breast begin to grow out of control. These cells usually form tumors that can be seen via X-ray or felt as lumps in the breast area.</li>
+<li>The key challenges against it’s detection is how to classify tumors into malignant (cancerous) or benign(non cancerous)_</li>
+</ul>
 <p>Download følgende datasæt ved at køre følgende kode chunk:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="principal-component-analysis-pca.html#cb22-1" tabindex="-1"></a>cancer <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">url</span>(<span class="st">&quot;https://www.dropbox.com/s/4qa37itw9wtwtjg/breast-cancer.csv?dl=1&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>id)</span>
 <span id="cb22-2"><a href="principal-component-analysis-pca.html#cb22-2" tabindex="-1"></a>cancer <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
@@ -816,41 +817,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; $ symmetry_worst          &lt;dbl&gt; 0.4601, 0.2750, 0.3613, 0.6638, 0.2364, 0.3985…
 #&gt; $ fractal_dimension_worst &lt;dbl&gt; 0.11890, 0.08902, 0.08758, 0.17300, 0.07678, 0…</code></pre>
 <p>I variablen <code>diagnosis</code>: M betyder ‘Malignant’ og B betyder ‘Benign’ - du kan overveje at ændre på variablen i dit indlæste datasæt for at gøre det mere klart.</p>
-<p><strong>Problem 2</strong>) Anvend funktionen <code>ggscatmat</code> fra pakken <code>GGally</code> til at lave et plot, hvor man sammenligne fem af variablerne.</p>
+<hr />
+<p><strong>Problem 2</strong>) Først vil vi gerne visualisere datasættet <em>uden at bruge principal component analyse</em>. Anvend funktionen <code>ggscatmat</code> fra pakken <code>GGally</code> til at lave et plot, hvor man sammenligne fem af variablerne.</p>
 <ul>
-<li>Man kan lave en tilfældig sample af fem variabler med at angive <code>columns = sample(2:31,5)</code> som parameter indenfor funktionen <code>ggscatmat</code>(husk at installere og indlæse <code>GGally</code>-pakken).</li>
+<li>Der er mange variabler, derfor kan man angive en tilfældig sample af fem variabler med <code>columns = sample(2:31,5)</code> som parameter indenfor funktionen <code>ggscatmat</code>(husk at installere og indlæse <code>GGally</code>-pakken).</li>
 <li>Giv farver efter factor variablen <code>diagnosis</code> og vælger “pearson” som parameteren <code>corMethod</code>.</li>
-<li>Opfatter du, at der er en del redundans i datasættet (dvs., er der stærke korrelationer mellem de forskellige variabler, der gør det muligt at forudsige den ene ud fra den anden)? Prøv at køre din kode igen, så du får forskellige samplings af fem variabler.</li>
+<li>Prøv at køre din kode et par gange, så du får forskellige samplings af fem variabler. Opfatter du, at der er en del redundans i datasættet (dvs., er der stærke korrelationer mellem de forskellige variabler, der gør at hvis man ved en værdi fra den ene, kan man gætte på den tilsvarende værdi fra den anden)?</li>
 </ul>
 <hr />
-<p><strong>Problem 3</strong>) Benyt funktionen <code>prcomp()</code> til at beregne en principal component analysis af datasættet.</p>
+<p><strong>Problem 3</strong>) Benyt funktionen <code>prcomp()</code> til at beregne en principal component analysis af datasættet:</p>
 <ul>
+<li><ol style="list-style-type: decimal">
 <li>Husk at det skal kun være numeriske variabler og angiv <code>scale=TRUE</code> inde i funktionen.</li>
-<li>Lav et <code>summary</code> af resultaterne. Hvad er proportionen af variansen, der er forklaret af den første principal component?</li>
-<li>Hvad er proportionen af variansen, som er forklaret af de første to principal components tilsammen?</li>
-</ul>
-<hr />
-<p><strong>Problem 4</strong>) <em>Augment og plot</em> Anvend <code>augment()</code>-funktionen til at tilføje dit rå datasæt til ovenstående resultater fra <code>prcomp</code>.</p>
-<ul>
-<li>Brug den til at lave et scatter plot af de første to principal components</li>
-<li>Giv farver efter variablen <code>diagnosis</code></li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Anvend <code>augment()</code>-funktionen til at tilføje dit rå datasæt til ovenstående resultater fra <code>prcomp</code>.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Brug den til at lave et scatter plot af de første to principal components, hvor du giver farver efter variablen <code>diagnosis</code></li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
 <li>Skriv kort om man kan skelne imellem Malignant og Benign tumours (variablen <code>diagnosis</code>) ud fra de første to principal components.</li>
+</ol></li>
+<li><ol start="5" style="list-style-type: decimal">
 <li>Skriv også kort - hvilke af de to components er bedre til at skelne mellem Malignant og Benign tumours?</li>
+</ol></li>
 </ul>
+<!-- * Hvad er proportionen af variansen, der er forklaret af den første principal component? -->
+<!-- * Hvad er proportionen af variansen, som er forklaret af de første to principal components tilsammen? -->
+<!-- --- -->
+<!-- __Problem 4__) *Augment og plot* Anvend `augment()`-funktionen til at tilføje dit rå datasæt til ovenstående resultater fra `prcomp`. -->
+<!-- * Brug den til at lave et scatter plot af de første to principal components -->
+<!-- * Giv farver efter variablen `diagnosis` -->
+<!-- * Skriv kort om man kan skelne imellem Malignant og Benign tumours (variablen `diagnosis`) ud fra de første to principal components. -->
+<!-- * Skriv også kort - hvilke af de to components er bedre til at skelne mellem Malignant og Benign tumours? -->
 <hr />
-<p><strong>Problem 5</strong>) <em>Integrere kmeans clustering</em>. Lav et clustering med <code>kmeans</code> på datasættet, med to clusters (husk at udvælge numeriske variabler og scale inden du anvender funktionen <code>kmeans</code>).</p>
+<p><strong>Problem 4</strong>) <em>Integrere kmeans clustering</em>. Lav et clustering med <code>kmeans</code> på datasættet, med to clusters (husk at udvælge numeriske variabler og scale inden du anvender funktionen <code>kmeans</code>), og:</p>
 <ul>
+<li><ol style="list-style-type: decimal">
 <li>Augment resultaterne af <code>kmeans</code> til dit datasæt, der allerede har <code>prcomp</code> resultater tilføjet.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
 <li>Lav et plot og give farver efter <code>.cluster</code> og former efter <code>diagnosis</code>.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
 <li>Sammenligne dine to clusters med <code>diagnosis</code>.</li>
+</ol></li>
 </ul>
 <hr />
-<p><strong>Problem 6</strong>) <em>tidy form og variansen</em> Anvende <code>tidy(matrix = "eigenvalues")</code> på din PCA resultater til at få bidragen af de forskellige components til den overordnet varianse i datasættet.</p>
+<p><strong>Problem 5</strong>) <em>tidy form og variansen</em> Anvende <code>tidy(matrix = "eigenvalues")</code> på din PCA resultater til at få bidragen af de forskellige components til den overordnet varianse i datasættet.</p>
 <ul>
 <li>Lav et barplot som viser de components på x-aksen og <code>percent</code> på y-aksen.</li>
 </ul>
 <hr />
-<p><strong>Problem 7</strong>) <em>tidy form og rotation matrix</em></p>
+<p><strong>Problem 6</strong>) <em>tidy form og rotation matrix</em></p>
 <p><strong>a</strong>) Anvende <code>tidy(matrix = "rotation")</code> til at få den rotation matrix og lav følgende:</p>
 <ul>
 <li>Anvend funktionen <code>pivot_wider</code> til at få den til wide form</li>
@@ -863,9 +883,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Kig igen på dit plot i <strong>Problem 5</strong>) - hvad effekt ville en forhøjet værdi af <code>compactness_mean</code> have på den PC1-værdien til en givet tumour? Ville det gøre det mindre eller mere sandsynligt, at den er “benign”?</li>
 </ul>
 <hr />
-<p><strong>Problem 8)</strong> Udvidelse af <strong>Problem 5)</strong>: Fra din augmented resultater med både dine principal components og clusters: Beregne middelværdierne af din første to principal components for hver af de to clusters. Tilføj dine beregnede middelværdierne til plottet som “x”.</p>
+<p><strong>Problem 7)</strong> Udvidelse af <strong>Problem 4)</strong>: Fra din augmented resultater med både dine principal components og clusters: Beregne middelværdierne af din første to principal components for hver af de to clusters. Tilføj dine beregnede middelværdierne til plottet som “x”.</p>
 <hr />
-<p><strong>Problem 9)</strong> EKSTRA: Gå ind i Kaggle linket (<a href="https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset" class="uri">https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset</a>) og klik på “Code”. I den “Search” klik på “Filters” til højre og vælge “R” som language. Kig på analyserne, som andre har lavet på samme datasæt.</p>
+<p><strong>Problem 8)</strong> EKSTRA: Gå ind i Kaggle linket (<a href="https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset" class="uri">https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset</a>) og klik på “Code”. I den “Search” klik på “Filters” til højre og vælge “R” som language. Kig på analyserne, som andre har lavet på samme datasæt.</p>
 </div>
 <div id="ekstra-læsning" class="section level2 hasAnchor" number="10.6">
 <h2><span class="header-section-number">10.6</span> Ekstra læsning<a href="principal-component-analysis-pca.html#ekstra-læsning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
