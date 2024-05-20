@@ -563,6 +563,19 @@ __Problem 7)__  Udvidelse af __Problem 4)__: Fra din augmented resultater med b�
 
 ``` r
 happiness <- read_csv("https://www.dropbox.com/scl/fi/6rt17anzk31mjyexm16o6/world_happiness_data.csv?rlkey=44qxe2voahqvaxnxlgy01i2ls&dl=1")
+happiness %>% glimpse()
+```
+
+```
+#> Rows: 146
+#> Columns: 7
+#> $ Country                   <chr> "Finland", "Denmark", "Iceland", "Switzerlan…
+#> $ `GDP per capita`          <dbl> 1.892, 1.953, 1.936, 2.026, 1.945, 2.209, 1.…
+#> $ `Social support`          <dbl> 1.258, 1.243, 1.320, 1.226, 1.206, 1.155, 1.…
+#> $ `Healthy life expectancy` <dbl> 0.775, 0.777, 0.803, 0.822, 0.787, 0.790, 0.…
+#> $ `Freedom of life choices` <dbl> 0.736, 0.719, 0.718, 0.677, 0.651, 0.700, 0.…
+#> $ Generosity                <dbl> 0.109, 0.188, 0.270, 0.147, 0.271, 0.120, 0.…
+#> $ `Corruption perception`   <dbl> 0.534, 0.532, 0.191, 0.461, 0.419, 0.388, 0.…
 ```
 
 __Problem 8)__ Lav en principal component analyse på dataframen `happiness`:
@@ -602,8 +615,8 @@ __Problem 11__ EKSTRA: Kan du lav samme test til de andre principal components (
 
 
 
-
 ---
+
 __Problem 12)__ EKSTRA: Gå ind i Kaggle linket til breast cancer dataset (https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset) og klik på "Code". I den "Search" klik på "Filters" til højre og vælge "R" som language. Kig på analyserne, som andre har lavet på samme datasæt.
 
 
