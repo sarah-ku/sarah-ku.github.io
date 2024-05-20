@@ -225,10 +225,9 @@ hvad-er-principal-component-analysis-pca
 simpelt-eksempel-med-to-dimensioner
 fit-pca-to-data-in-r
 integrering-af-pca-resultater-med-broom-pakken
-rotationsmatrix-for-at-udtrække-bidragene-fra-de-forskellige-variabler
-pakken-factoextra
-problemstillinger-9
-ekstra-læsning
 lave-plot-af-principal-componenets
 forklarede-variance
 rotationsmatrix-bidragene-fra-de-forskellige-variabler
+pakken-factoextra
+problemstillinger-9
+ekstra-læsning

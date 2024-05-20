@@ -540,7 +540,7 @@ __Problem 6__) *tidy form og rotation matrix*
 __a__) Anvende `tidy(matrix = "rotation")` til at få den rotation matrix og lav følgende:
 
 * Anvend funktionen `pivot_wider` til at få den til wide form
-* Lav et scatter plot som viser de forskellige variabler relativ til hinanden
+* Lav et scatter plot som viser bidragerne af de forskellige variabler på den første og den anden principal components
 * Anvend `geom_text_repel` til at give labels til de variabler (kan være en god idé at anvend `show.legend=F`)
 
 __b__) Værdierne i den rotation matrix fortæller, hvordan en givet variabel bidrager til den endelige principal component beregning (dvs. værdierne som er plottet i __Problem 5__). Fk. variablen `radius_mean` har en positiv værdi i PC2, som gøre, at en højere værdi af `radius_mean` vil resultatere i en højere værdi på PC2 for en givet observation.
@@ -558,7 +558,53 @@ __Problem 7)__  Udvidelse af __Problem 4)__: Fra din augmented resultater med b�
 
 ---
 
-__Problem 8)__ EKSTRA: Gå ind i Kaggle linket (https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset) og klik på "Code". I den "Search" klik på "Filters" til højre og vælge "R" som language. Kig på analyserne, som andre har lavet på samme datasæt.
+Åbn "world happiness data" og 
+
+
+``` r
+happiness <- read_csv("https://www.dropbox.com/scl/fi/6rt17anzk31mjyexm16o6/world_happiness_data.csv?rlkey=44qxe2voahqvaxnxlgy01i2ls&dl=1")
+```
+
+__Problem 8)__ Lav en principal component analyse på dataframen `happiness`:
+
+* Lav et scatter plot af de first to principal components
+* Giv hvert punkt sin egen label efter `Country`
+
+
+
+
+
+---
+
+__Problem 9)__ Lav barplots der viser bidragene af variablerne til hvert component og angiv en foltolking til en af variablerne.
+
+
+
+---
+
+__Problem 10)__ Har lande med et "Generosity" af mere end 0.15 signifikant højere værdier på den anden principal component? 
+
+* 1. Opret en kolon, `is_generous` med dine to grupper ("Yes" hvis `Generosity` > 0.15 og "No" hvis ikke). 
+* 2. Plotte de "generøs" lande med egen farve på din punkt plot, der viser de første to principal componenter.
+* 3. Lav en passende test for at svarer på ovenstående spørgsmålet
+
+
+
+
+
+
+
+
+
+---
+
+__Problem 11__ EKSTRA: Kan du lav samme test til de andre principal components (OBS: der er 6 PCs - kan du komme frem til en løsning med funktionel programmering?)
+
+
+
+
+---
+__Problem 12)__ EKSTRA: Gå ind i Kaggle linket til breast cancer dataset (https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset) og klik på "Code". I den "Search" klik på "Filters" til højre og vælge "R" som language. Kig på analyserne, som andre har lavet på samme datasæt.
 
 
 ## Ekstra læsning
