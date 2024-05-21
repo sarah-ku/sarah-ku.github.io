@@ -22,7 +22,7 @@ Du skal være i stand til at
 :::checklist
 * Se dagens forelæsning om Broom-pakken
 * Se videoerne
-* Læs 10.4.1 - lidt ekstra tekst om fortolkingen af rotation matrix
+* Læs 10.4.3 - lidt ekstra tekst om fortolkingen af rotation matrix
 * Lav Quiz - Emne 10: PCA
 * Lav problemstillingerne
 :::
