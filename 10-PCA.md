@@ -77,7 +77,7 @@ Principal component analysis er en meget populær og ofte benyttet statistisk me
 </div>
 ```
 
-* Efter videoer - lidt ekstra læsning i 10.4.1
+* Efter videoer - lidt ekstra læsning i 10.4.3 (bidragende af de forskellige variabler)
 
 ## Hvad er principal component analysis (PCA)?
 
