@@ -930,31 +930,14 @@ __b__) For at undersøge mulige batch-effektor bruger vi samme process som i kur
 
 
 
-``` r
-cse50.transpose <- cse50 %>% rotate_df(cn=TRUE,rn="cell")
-```
 
 __c__) Udfør en prinicipal component analyse og tilføj din transposed-datasæt til dit resultat
 
 
-``` r
-pca_fit <- cse50.transpose %>%
-  select(where(is.numeric)) %>% # behold kun numeriske kolonner
-  prcomp(scale = TRUE) # udfør PCA på skalerede data
-
-pca_fit_augment <- pca_fit %>% 
-  augment(cse50.transpose)
-```
 
 __d__) Tilføj batch oplysning til din nye dataframe fra __c__ (som har dine principal components).
 
 
-``` r
-pca_fit_augment <- pca_fit_augment %>% 
-  left_join(batches,by="cell")
-
-pca_fit_augment <- pca_fit_augment %>% mutate(batch=as.factor(batch))
-```
 
 
 __e__) Lav et tilpassende plot af dine første to principal components, hvor du farver punkterne efter de forskellige batches.
