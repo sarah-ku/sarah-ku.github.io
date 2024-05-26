@@ -4,7 +4,10 @@
 
 "Amatører sidder og venter på inspiration, resten af os står bare op og går på arbejde." - Stephen King
 
-<img src="plots/fallacy_poster_PNG.png" width="90%" height="90%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="plots/fallacy_poster_PNG.png" alt="Image just for fun" width="90%" height="90%" />
+<p class="caption">(\#fig:unnamed-chunk-2)Image just for fun</p>
+</div>
 
 ## Inledning og læringsmålene
 
