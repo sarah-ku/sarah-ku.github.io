@@ -23,6 +23,15 @@ I skal være i stand til at
 * Undersøge for batch-effekter med PCA
 :::
 
+
+:::checklist
+* Læs kursusnotaterne om randomisation, replikation, blocking + confounding
+* Se videorne til "Simpson's Paradoks" og "Anscombe's quartet"
+* Læs kursusnotaterne om batch effekt undersøgelse
+* Quiz - eksperimental (på Absalon)
+* Lav problemstillingerne og sige til hvis du har bruge for hjælp :)
+:::
+
 ### Video ressourcer
 
 * Part 1: randomisation, replikation, blocking + confounding
@@ -30,7 +39,7 @@ I skal være i stand til at
     
 ---
 
-* Part 2: Simpson's paradox 
+* Part 2: Simpson's Paradoks 
 
 
 ```{=html}

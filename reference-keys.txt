@@ -244,7 +244,7 @@ optagelse-på-berkeley
 case-studies-anscombes-kvartet
 undersøgelse-af-batch-effekter
 principal-component-analyse
+ekstra-heatmap
 ekstra-batch-effect-correction-med-combat-funktionen
 problemstillinger-10
 yderligere-læsning
-ekstra-heatmap
