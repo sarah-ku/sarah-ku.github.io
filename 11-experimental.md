@@ -961,6 +961,7 @@ __f__) Som alternativ visualisering lav også boxplots for de første to prinpic
 
 
 
+
 ---
 
 
@@ -971,7 +972,7 @@ __a__) Lav en heatmap af cellerne i datasættet med `heatmap`-funktionen()
 
 
 
-__b__) Anvend ComBat-function på datasættet (du skal nstnaller `sva` pakke) og gentage samme undersøgelsen som du lavede i __Problem 6__ for at se, om batch-effekterne er blevet fjernet fra datasættet.
+__b__) Anvend ComBat-function på datasættet (husk at installere `sva`-pakken - når den ikke er på CRAN se kode for gøre det i notaterne ovenpå) og gentage samme undersøgelsen som du lavede i __Problem 6__ for at se, om batch-effekterne findes stadig i datasættet.
 
 
 
@@ -1000,19 +1001,19 @@ airlines <- airlines %>%
   rename(flights = ontime)
 ```
 
-__a__) Hvor mange flights er der i alt og hvor mange flights var forskinket? Opsummer antallet af `flights` og antallet af `delayed` over de forskellige lufthavne for at få et samlet tal for hver flyselskab.
+__a__) For hvert flyselskab opsummer antallet af `flights` og antallet af `delayed`.
 
 
 
-__b__) Beregn også andelen (proportionen) af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.
+__b__) Beregn også andelen (proportionen) af flyvninger, der er forsinkede, i hvert flyselskab. Lav et søjlediagram for at vise proportionerne.
 
 
 
-__c__) Denne gang, opsummer over de to flyselskaber for at få et samlet tal for hver lufthavn. Beregn også andelen af flyvninger, der er forsinkede, og lav et plot.
+__c__) Denne gang, lave samme opsummerings beregninger som i __a__ og __b__ men til hver lufthavn (i stedet for hvert flyselskab). Lav et plot.
 
 
 
-__d__) Denne gang, beregn andelen af flyvninger, der er forsinkede, for hver kombination af både lufthavn og flyselskab. Omsæt igen dette til et plot.
+__d__) Denne gang, beregn andelen af flyvninger, der er forsinkede, for hver kombination af __både__ lufthavn og flyselskab. Omsæt igen dette til et plot.
 
 
 

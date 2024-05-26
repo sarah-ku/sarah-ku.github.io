@@ -1135,7 +1135,7 @@ FALSE # ℹ 1,836 more rows</code></pre>
 <hr />
 <p><strong>Problem 6</strong>) Som tilføjelse til <strong>Problem 5</strong>), prøve</p>
 <p><strong>a</strong>) Lav en heatmap af cellerne i datasættet med <code>heatmap</code>-funktionen()</p>
-<p><strong>b</strong>) Anvend ComBat-function på datasættet (du skal nstnaller <code>sva</code> pakke) og gentage samme undersøgelsen som du lavede i <strong>Problem 6</strong> for at se, om batch-effekterne er blevet fjernet fra datasættet.</p>
+<p><strong>b</strong>) Anvend ComBat-function på datasættet (husk at installere <code>sva</code>-pakken - når den ikke er på CRAN se kode for gøre det i notaterne ovenpå) og gentage samme undersøgelsen som du lavede i <strong>Problem 6</strong> for at se, om batch-effekterne findes stadig i datasættet.</p>
 <hr />
 <p><strong>Problem 7</strong>) <em>Yderligere Simpson’s paradoks</em></p>
 <p>Kør følgende kode for at indlæse og bearbejde det følgende datasæt <code>airlines</code>.</p>
@@ -1148,10 +1148,10 @@ FALSE # ℹ 1,836 more rows</code></pre>
 <span id="cb47-7"><a href="emner-fra-eksperimental-design.html#cb47-7" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>status,<span class="at">values_from=</span>value) <span class="sc">%&gt;%</span> </span>
 <span id="cb47-8"><a href="emner-fra-eksperimental-design.html#cb47-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;ontime&quot;</span> <span class="ot">=</span> ontime <span class="sc">+</span> delayed) <span class="sc">%&gt;%</span> </span>
 <span id="cb47-9"><a href="emner-fra-eksperimental-design.html#cb47-9" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">flights =</span> ontime)</span></code></pre></div>
-<p><strong>a</strong>) Hvor mange flights er der i alt og hvor mange flights var forskinket? Opsummer antallet af <code>flights</code> og antallet af <code>delayed</code> over de forskellige lufthavne for at få et samlet tal for hver flyselskab.</p>
-<p><strong>b</strong>) Beregn også andelen (proportionen) af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.</p>
-<p><strong>c</strong>) Denne gang, opsummer over de to flyselskaber for at få et samlet tal for hver lufthavn. Beregn også andelen af flyvninger, der er forsinkede, og lav et plot.</p>
-<p><strong>d</strong>) Denne gang, beregn andelen af flyvninger, der er forsinkede, for hver kombination af både lufthavn og flyselskab. Omsæt igen dette til et plot.</p>
+<p><strong>a</strong>) For hvert flyselskab opsummer antallet af <code>flights</code> og antallet af <code>delayed</code>.</p>
+<p><strong>b</strong>) Beregn også andelen (proportionen) af flyvninger, der er forsinkede, i hvert flyselskab. Lav et søjlediagram for at vise proportionerne.</p>
+<p><strong>c</strong>) Denne gang, lave samme opsummerings beregninger som i <strong>a</strong> og <strong>b</strong> men til hver lufthavn (i stedet for hvert flyselskab). Lav et plot.</p>
+<p><strong>d</strong>) Denne gang, beregn andelen af flyvninger, der er forsinkede, for hver kombination af <strong>både</strong> lufthavn og flyselskab. Omsæt igen dette til et plot.</p>
 <p><strong>e</strong>) Kan du forklare dette? Hint: kig eksempelvis på rådataene og især lufthavnen “Phoenix”.</p>
 </div>
 <div id="yderligere-læsning" class="section level2 hasAnchor" number="11.7">
