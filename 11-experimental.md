@@ -17,7 +17,7 @@ I skal være i stand til at
 * Beskrive randomisering, replikation og blokering
 * Beskrive Simpsons paradoks
 * Beskrive Anscombes kvartet
-* Kontrollere for batch-effekter med PCA
+* Undersøge for batch-effekter med PCA
 :::
 
 ### Video ressourcer
