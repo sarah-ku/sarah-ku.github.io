@@ -653,6 +653,8 @@ Samples som har en stækere sammenhænge forekommer tættere på hinanden i ræk
 
 `sva`-pakken i R har en funktionen der hedder `ComBat`, der kan hjælpe med at korrigere for batch-effekter, så forskelle mellem prøver skyldes biologisk variation og ikke tekniske forskelle. 
 
+Se her for ydereligere om ComBat: https://rdrr.io/bioc/sva/man/ComBat.html
+
 
 ``` r
 #if (!require("BiocManager", quietly = TRUE))
@@ -828,7 +830,7 @@ __Problem 1__) Quiz på Absalon - experimental
 
 ---
 
-Problem 2) Eksperimentelt design
+__Problem 2__) Eksperimentelt design
 
 Jeg udfører et eksperiment, hvor patienter modtager et af tre forskellige kosttilskud (Gruppe 1, 2 og 3). Der er 5 patienter i hver gruppe, og jeg ønsker at undersøge, om patienternes energiniveau i gennemsnit varierer mellem de tre grupper. Alderen på patienterne i hver af de tre grupper er:
 
@@ -871,9 +873,7 @@ __b__) Lav samme plot, men adskilt efter `Age.Group`, og beskriv, hvordan det er
 
  
 
-
 __c)__ Lav et boxplot med `Age` på y-aksen og `Smoke` på x-aksen for at understøtte forklaringen på, hvorfor man ser Simpsons paradoks i dette datasæt.
-
 
 
 
@@ -964,12 +964,19 @@ __f__) Som alternativ visualisering lav også boxplots for de første to prinpic
 ---
 
 
-__Problem 6__) Batch effekts med microbiome data
+__Problem 6__) Som tilføjelse til __Problem 5__), prøve
+
+__a__) Lav en heatmap af cellerne i datasættet
 
 
 
 
----
+__b__) Anvend ComBat-function på datasættet (du skal nstnaller `sva` pakke) og gentage samme producer som du gjørde i __Problem 6__.
+
+
+
+
+--
 
 __Problem 7__ _Yderligere Simpson's paradoks_
 
