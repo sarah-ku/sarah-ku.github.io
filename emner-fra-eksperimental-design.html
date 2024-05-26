@@ -1134,10 +1134,10 @@ FALSE # ℹ 1,836 more rows</code></pre>
 <p><strong>f</strong>) Som alternativ visualisering lav også boxplots for de første to prinpical components fordelt efter <code>batch</code>. Kommenter kort på eventuelle batch effekts i datasættet ud fra <strong>e</strong>) og <strong>f</strong>).</p>
 <hr />
 <p><strong>Problem 6</strong>) Som tilføjelse til <strong>Problem 5</strong>), prøve</p>
-<p><strong>a</strong>) Lav en heatmap af cellerne i datasættet</p>
-<p><strong>b</strong>) Anvend ComBat-function på datasættet (du skal nstnaller <code>sva</code> pakke) og gentage samme producer som du gjørde i <strong>Problem 6</strong>.</p>
-<p>–</p>
-<p><strong>Problem 7</strong> <em>Yderligere Simpson’s paradoks</em></p>
+<p><strong>a</strong>) Lav en heatmap af cellerne i datasættet med <code>heatmap</code>-funktionen()</p>
+<p><strong>b</strong>) Anvend ComBat-function på datasættet (du skal nstnaller <code>sva</code> pakke) og gentage samme undersøgelsen som du lavede i <strong>Problem 6</strong> for at se, om batch-effekterne er blevet fjernet fra datasættet.</p>
+<hr />
+<p><strong>Problem 7</strong>) <em>Yderligere Simpson’s paradoks</em></p>
 <p>Kør følgende kode for at indlæse og bearbejde det følgende datasæt <code>airlines</code>.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="emner-fra-eksperimental-design.html#cb47-1" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;http://www.utsc.utoronto.ca/~butler/d29/airlines.txt&quot;</span>,<span class="at">header=</span>T)</span>
 <span id="cb47-2"><a href="emner-fra-eksperimental-design.html#cb47-2" tabindex="-1"></a></span>
@@ -1148,8 +1148,8 @@ FALSE # ℹ 1,836 more rows</code></pre>
 <span id="cb47-7"><a href="emner-fra-eksperimental-design.html#cb47-7" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>status,<span class="at">values_from=</span>value) <span class="sc">%&gt;%</span> </span>
 <span id="cb47-8"><a href="emner-fra-eksperimental-design.html#cb47-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;ontime&quot;</span> <span class="ot">=</span> ontime <span class="sc">+</span> delayed) <span class="sc">%&gt;%</span> </span>
 <span id="cb47-9"><a href="emner-fra-eksperimental-design.html#cb47-9" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">flights =</span> ontime)</span></code></pre></div>
-<p><strong>a</strong>) Opsummer antallet af <code>flights</code> og antallet af <code>delayed</code> over de forskellige lufthavne for at få et samlet tal for hver flyselskab.</p>
-<p><strong>b</strong>) Beregn også andelen af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.</p>
+<p><strong>a</strong>) Hvor mange flights er der i alt og hvor mange flights var forskinket? Opsummer antallet af <code>flights</code> og antallet af <code>delayed</code> over de forskellige lufthavne for at få et samlet tal for hver flyselskab.</p>
+<p><strong>b</strong>) Beregn også andelen (proportionen) af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.</p>
 <p><strong>c</strong>) Denne gang, opsummer over de to flyselskaber for at få et samlet tal for hver lufthavn. Beregn også andelen af flyvninger, der er forsinkede, og lav et plot.</p>
 <p><strong>d</strong>) Denne gang, beregn andelen af flyvninger, der er forsinkede, for hver kombination af både lufthavn og flyselskab. Omsæt igen dette til et plot.</p>
 <p><strong>e</strong>) Kan du forklare dette? Hint: kig eksempelvis på rådataene og især lufthavnen “Phoenix”.</p>

@@ -966,19 +966,24 @@ __f__) Som alternativ visualisering lav også boxplots for de første to prinpic
 
 __Problem 6__) Som tilføjelse til __Problem 5__), prøve
 
-__a__) Lav en heatmap af cellerne i datasættet
+__a__) Lav en heatmap af cellerne i datasættet med `heatmap`-funktionen()
 
 
 
 
-__b__) Anvend ComBat-function på datasættet (du skal nstnaller `sva` pakke) og gentage samme producer som du gjørde i __Problem 6__.
+__b__) Anvend ComBat-function på datasættet (du skal nstnaller `sva` pakke) og gentage samme undersøgelsen som du lavede i __Problem 6__ for at se, om batch-effekterne er blevet fjernet fra datasættet.
 
 
 
 
---
 
-__Problem 7__ _Yderligere Simpson's paradoks_
+
+
+
+
+---
+
+__Problem 7__) _Yderligere Simpson's paradoks_
 
 Kør følgende kode for at indlæse og bearbejde det følgende datasæt `airlines`.
 
@@ -995,11 +1000,11 @@ airlines <- airlines %>%
   rename(flights = ontime)
 ```
 
-__a__) Opsummer antallet af `flights` og antallet af `delayed` over de forskellige lufthavne for at få et samlet tal for hver flyselskab.
+__a__) Hvor mange flights er der i alt og hvor mange flights var forskinket? Opsummer antallet af `flights` og antallet af `delayed` over de forskellige lufthavne for at få et samlet tal for hver flyselskab.
 
 
 
-__b__) Beregn også andelen af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.
+__b__) Beregn også andelen (proportionen) af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.
 
 
 
