@@ -247,3 +247,4 @@ principal-component-analyse
 ekstra-batch-effect-correction-med-combat-funktionen
 problemstillinger-10
 yderligere-læsning
+ekstra-heatmap

@@ -615,22 +615,31 @@ grid.arrange(p1,p2,ncol=2)
 
 <img src="11-experimental_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" />
 
-Man kan også lav en heatmap:
+### EKSTRA: Heatmap
+
+Man kan også lav en heatmap for at undersøge batch effektor. Jeg begynder med at lave en korrelationsmatrix af mine data, som indeholder sammenhængene (pearson's korrelationskoefficient) mellem de forskellige variabler (husk at drop den første kolonne, da den ikke er numeriske):
 
 
 ``` r
 cor_mat <- cor(norm.cts[,-1])
+```
+
+Jeg laver en heatmap med `heatmap`-funktionen i ovenstående:
+
+
+``` r
 row.names(cor_mat) <- coldata$batch
 colnames(cor_mat) <- coldata$strain
 heatmap(cor_mat)
 ```
 
-<img src="11-experimental_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-experimental_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
 
+Samples som har en stækere sammenhænge forekommer tættere på hinanden i rækkerne/kolonnerne. Her kan man se, at samples fra batch 7 er mere ofte sammen oppe på de ydereste rækkere i forhold til batch 4, hvor samples er mere ofte på de nederste rækker. 
 
 ### EKSTRA: Batch effect correction med ComBat()-funktionen
 
-ComBat-pakken i R hjælper med at korrigere for batch-effekter, så forskelle mellem prøver skyldes biologisk variation og ikke tekniske forskelle. 
+`sva`-pakken i R har en funktionen der hedder `ComBat`, der kan hjælpe med at korrigere for batch-effekter, så forskelle mellem prøver skyldes biologisk variation og ikke tekniske forskelle. 
 
 
 ``` r
@@ -640,10 +649,9 @@ ComBat-pakken i R hjælper med at korrigere for batch-effekter, så forskelle me
 #BiocManager::install("sva")
 
 library(sva)
-corrected <- sva::ComBat(dat=norm.cts[1:100,] %>% select(-gene),batch=coldata %>% pull(batch))
-corrected <- as_tibble(corrected) %>% mutate(gene = norm.cts[1:100,] %>% pull(gene),.before=1)
+corrected <- sva::ComBat(dat=norm.cts %>% select(-gene),batch=coldata %>% pull(batch))
+corrected <- as_tibble(corrected) %>% mutate(gene = norm.cts %>% pull(gene),.before=1)
 ```
-
 
 
 Så kan man lave præcis samme procedure som i ovenstående på den korrigede dataframe:
@@ -686,7 +694,7 @@ PCA2 <- pca_fit_augment %>%
 grid.arrange(PCA1,PCA2,ncol=2)
 ```
 
-<img src="11-experimental_files/figure-html/unnamed-chunk-38-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-experimental_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 <!-- Husk, at når man udfører en principal component analyse, får man rotationsmatricen, der anvendes til at se, hvor de forskellige prøver ligger i forhold til hinanden over de forskellige principal komponenter - dvs. at prøver, der ligner hinanden, vises på samme sted på plottet. Rotationsmatricen udtrækkes med funktionen `tidy()`: -->
@@ -818,7 +826,7 @@ Gruppe 2: 24, 29, 35, 21, 30
 
 Gruppe 3: 43, 52, 33, 39, 40
 
-a) Hvad er problemet med det eksperimentelle design her? Lav boxplots for at illustrere fordelingen af alderne for hver af de tre grupper (du skal starte med at lave en __tibble__, der indeholder dataene).
+a) Hvad er problemet med det eksperimentelle design her? Lav boxplots for at illustrere fordelingen af alderne for hver af de tre grupper (du skal starte med at lave en __tibble__, der indeholder dataene - se tilbage til __Emne 5.5__ hvis du har glemt, hvordan man laver en __tibble__).
 
 b) Hvis man finder en signifikant forskel mellem de tre kosttilskud, kan man så stole på resultaterne?
 
@@ -910,42 +918,65 @@ __Problem 5__) Vi vil gerne undersøge eventuelle batcheffekter i det følgende 
 ``` r
 cse50 <- read.table("https://www.dropbox.com/s/o0wzojpcsekeg6z/cell_mix_50_counts.txt?dl=1")
 batches <- read.table("https://www.dropbox.com/s/4t382bfgro46ka5/cell_mix_50_batches.txt?dl=1")
-batches <- tibble("batch"=batches %>% pull(batch))
-cse50 <- tibble(cse50)
+batches <- tibble("batch"=batches %>% pull(batch),cell=paste0("cell_",c(1:500)))
+cse50 <- as_tibble(cse50,rownames="gene") %>% mutate(gene = paste0("gene_",gene))
 ```
 
-__a__) Anvend `map_df` til at transformere disse data til log-skala (tilføj 1 først og tag logaritmen bagefter).
+__a__) Transformere værdierne i `cse50` til log-skala (tilføj 1 først og tag logaritmen bagefter).
   
 
   
-__b__) Udfør PCA på det transformeret datasæt.
+__b__) For at undersøge mulige batch-effektor bruger vi samme process som i kursusnotaterne ovenstående. Lav en transpose af `cse50` således at cellerne er i rækkerne og generne er i kolonnerne.
 
 
 
-__c__) Brug dine PCA-resultater til at få den rotation matrix
+``` r
+cse50.transpose <- cse50 %>% rotate_df(cn=TRUE,rn="cell")
+```
+
+__c__) Udfør en prinicipal component analyse og tilføj din transposed-datasæt til dit resultat
 
 
+``` r
+pca_fit <- cse50.transpose %>%
+  select(where(is.numeric)) %>% # behold kun numeriske kolonner
+  prcomp(scale = TRUE) # udfør PCA på skalerede data
 
-  
-__d__) Tilføj oplysningerne fra dataframen `batches` til din rotation matrix (tilføj først en ny kolonne "column" til `batches`, der er lig med `names(cse50)`).
+pca_fit_augment <- pca_fit %>% 
+  augment(cse50.transpose)
+```
+
+__d__) Tilføj batch oplysning til din nye dataframe fra __c__ (som har dine principal components).
+
+
+``` r
+pca_fit_augment <- pca_fit_augment %>% 
+  left_join(batches,by="cell")
+
+pca_fit_augment <- pca_fit_augment %>% mutate(batch=as.factor(batch))
+```
+
+
+__e__) Lav et tilpassende plot af dine første to principal components, hvor du farver punkterne efter de forskellige batches.
       
 
 
-
-__e__) Brug `pivot_wider` og lav et plot af de første to principal komponenter, hvor du angiver farve efter `batch`.
-
-
-
-
-
-__f__) Lav også boxplots for de første to prinpical components fordelt efter `batch` og kommenter kort på eventuelle batch effekts i datasættet.
+__f__) Som alternativ visualisering lav også boxplots for de første to prinpical components fordelt efter `batch`. Kommenter kort på eventuelle batch effekts i datasættet ud fra __e__) og __f__).
 
 
 
 
 ---
 
-__Problem 6__ _Yderligere Simpson's paradoks_
+
+__Problem 6__) Batch effekts med microbiome data
+
+
+
+
+---
+
+__Problem 7__ _Yderligere Simpson's paradoks_
 
 Kør følgende kode for at indlæse og bearbejde det følgende datasæt `airlines`.
 
