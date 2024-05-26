@@ -466,17 +466,19 @@ Så man kan se, at både stammen er repræsenteret med tre eller fire prøver i 
 
 Man kan undersøge mulige batch-effekter via principal component analyse. 
 
-Først skal vi lave en "transpose" af datasættet således at variablerne (samples) bliver i rækkerne og observationerne (genes) er som kolonnerne. Det er ikke helt ligetil i tidyverse, men her er en måde at gøre det på:
+Først skal vi lave en "transpose" af datasættet således at variablerne (samples) bliver i rækkerne og observationerne (genes) er som kolonnerne. 
+
+Det er ikke helt ligetil i tidyverse, men her er en måde at gøre det på:
 
 
 ``` r
-norm.cts.transpose <- as_tibble(t(norm.cts[,-1]))
-colnames(norm.cts.transpose) <- norm.cts %>% pull(gene)
-norm.cts.transpose %>% mutate(sample = colnames(norm.cts)[-1],.before=1)
+norm.cts.transpose <- as_tibble(t(norm.cts[,-1])) #lave transpose med t() funktion (drop genenavne)
+colnames(norm.cts.transpose) <- norm.cts %>% pull(gene) #tilføje gene som kolonnenavne
+norm.cts.transpose %>% mutate(sample = colnames(norm.cts)[-1],.before=1) #sample skal være den første kolonne
 ```
 
 ```
-#> # A tibble: 21 × 10,194
+#> # A tibble: 21 × 1,001
 #>    sample    ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
 #>    <chr>                  <dbl>              <dbl>              <dbl>
 #>  1 SRX033480               6.35               3.51               3.19
@@ -490,7 +492,7 @@ norm.cts.transpose %>% mutate(sample = colnames(norm.cts)[-1],.before=1)
 #>  9 SRX033478               6.30               3.42               3.73
 #> 10 SRX033479               5.88               3.98               3.24
 #> # ℹ 11 more rows
-#> # ℹ 10,190 more variables: ENSMUSG00000000078 <dbl>, ENSMUSG00000000088 <dbl>,
+#> # ℹ 997 more variables: ENSMUSG00000000078 <dbl>, ENSMUSG00000000088 <dbl>,
 #> #   ENSMUSG00000000093 <dbl>, ENSMUSG00000000120 <dbl>,
 #> #   ENSMUSG00000000125 <dbl>, ENSMUSG00000000126 <dbl>,
 #> #   ENSMUSG00000000127 <dbl>, ENSMUSG00000000131 <dbl>,
@@ -498,32 +500,39 @@ norm.cts.transpose %>% mutate(sample = colnames(norm.cts)[-1],.before=1)
 #> #   ENSMUSG00000000168 <dbl>, ENSMUSG00000000171 <dbl>, …
 ```
 
-Heldigvis er der en pakke, som kan gøre processen meget hurtigere:
+Heldigvis er der en pakke, som kan gøre processen meget hurtigere, som vi kan benytte os af her:
 
 
 ``` r
 library(sjmisc)
 norm.cts.transpose <- norm.cts %>% 
-                          rotate_df(cn=TRUE,rn="sample")
+                          rotate_df(cn=TRUE,rn="sample") %>% 
+                          as_tibble()
 
-norm.cts.transpose[1:6,1:5]
+norm.cts.transpose
 ```
 
 ```
-#>      sample ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
-#> 1 SRX033480           6.352707           3.514892           3.190250
-#> 2 SRX033488           6.317191           3.560812           3.495351
-#> 3 SRX033481           6.208840           3.571591           3.079332
-#> 4 SRX033489           6.289602           3.265114           3.210200
-#> 5 SRX033482           6.307351           2.989835           3.136775
-#> 6 SRX033490           6.268945           3.613359           3.090954
-#>   ENSMUSG00000000078
-#> 1           6.689454
-#> 2           6.477961
-#> 3           6.377990
-#> 4           6.345142
-#> 5           6.389898
-#> 6           6.337397
+#> # A tibble: 21 × 1,001
+#>    sample    ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
+#>    <chr>                  <dbl>              <dbl>              <dbl>
+#>  1 SRX033480               6.35               3.51               3.19
+#>  2 SRX033488               6.32               3.56               3.50
+#>  3 SRX033481               6.21               3.57               3.08
+#>  4 SRX033489               6.29               3.27               3.21
+#>  5 SRX033482               6.31               2.99               3.14
+#>  6 SRX033490               6.27               3.61               3.09
+#>  7 SRX033483               6.30               3.56               3.22
+#>  8 SRX033476               6.03               3.69               2.83
+#>  9 SRX033478               6.30               3.42               3.73
+#> 10 SRX033479               5.88               3.98               3.24
+#> # ℹ 11 more rows
+#> # ℹ 997 more variables: ENSMUSG00000000078 <dbl>, ENSMUSG00000000088 <dbl>,
+#> #   ENSMUSG00000000093 <dbl>, ENSMUSG00000000120 <dbl>,
+#> #   ENSMUSG00000000125 <dbl>, ENSMUSG00000000126 <dbl>,
+#> #   ENSMUSG00000000127 <dbl>, ENSMUSG00000000131 <dbl>,
+#> #   ENSMUSG00000000149 <dbl>, ENSMUSG00000000167 <dbl>,
+#> #   ENSMUSG00000000168 <dbl>, ENSMUSG00000000171 <dbl>, …
 ```
 
 Nu kan vi udføre en principal component analyse:

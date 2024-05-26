@@ -835,11 +835,12 @@ Figure 11.2: source: wikipedia
 <div id="principal-component-analyse" class="section level3 hasAnchor" number="11.5.1">
 <h3><span class="header-section-number">11.5.1</span> Principal component analyse<a href="emner-fra-eksperimental-design.html#principal-component-analyse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Man kan undersøge mulige batch-effekter via principal component analyse.</p>
-<p>Først skal vi lave en “transpose” af datasættet således at variablerne (samples) bliver i rækkerne og observationerne (genes) er som kolonnerne. Det er ikke helt ligetil i tidyverse, men her er en måde at gøre det på:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="emner-fra-eksperimental-design.html#cb27-1" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">t</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>]))</span>
-<span id="cb27-2"><a href="emner-fra-eksperimental-design.html#cb27-2" tabindex="-1"></a><span class="fu">colnames</span>(norm.cts.transpose) <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene)</span>
-<span id="cb27-3"><a href="emner-fra-eksperimental-design.html#cb27-3" tabindex="-1"></a>norm.cts.transpose <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sample =</span> <span class="fu">colnames</span>(norm.cts)[<span class="sc">-</span><span class="dv">1</span>],<span class="at">.before=</span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>#&gt; # A tibble: 21 × 10,194
+<p>Først skal vi lave en “transpose” af datasættet således at variablerne (samples) bliver i rækkerne og observationerne (genes) er som kolonnerne.</p>
+<p>Det er ikke helt ligetil i tidyverse, men her er en måde at gøre det på:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="emner-fra-eksperimental-design.html#cb27-1" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">t</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>])) <span class="co">#lave transpose med t() funktion (drop genenavne)</span></span>
+<span id="cb27-2"><a href="emner-fra-eksperimental-design.html#cb27-2" tabindex="-1"></a><span class="fu">colnames</span>(norm.cts.transpose) <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene) <span class="co">#tilføje gene som kolonnenavne</span></span>
+<span id="cb27-3"><a href="emner-fra-eksperimental-design.html#cb27-3" tabindex="-1"></a>norm.cts.transpose <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sample =</span> <span class="fu">colnames</span>(norm.cts)[<span class="sc">-</span><span class="dv">1</span>],<span class="at">.before=</span><span class="dv">1</span>) <span class="co">#sample skal være den første kolonne</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 1,001
 #&gt;    sample    ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
 #&gt;    &lt;chr&gt;                  &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
 #&gt;  1 SRX033480               6.35               3.51               3.19
@@ -853,32 +854,39 @@ Figure 11.2: source: wikipedia
 #&gt;  9 SRX033478               6.30               3.42               3.73
 #&gt; 10 SRX033479               5.88               3.98               3.24
 #&gt; # ℹ 11 more rows
-#&gt; # ℹ 10,190 more variables: ENSMUSG00000000078 &lt;dbl&gt;, ENSMUSG00000000088 &lt;dbl&gt;,
+#&gt; # ℹ 997 more variables: ENSMUSG00000000078 &lt;dbl&gt;, ENSMUSG00000000088 &lt;dbl&gt;,
 #&gt; #   ENSMUSG00000000093 &lt;dbl&gt;, ENSMUSG00000000120 &lt;dbl&gt;,
 #&gt; #   ENSMUSG00000000125 &lt;dbl&gt;, ENSMUSG00000000126 &lt;dbl&gt;,
 #&gt; #   ENSMUSG00000000127 &lt;dbl&gt;, ENSMUSG00000000131 &lt;dbl&gt;,
 #&gt; #   ENSMUSG00000000149 &lt;dbl&gt;, ENSMUSG00000000167 &lt;dbl&gt;,
 #&gt; #   ENSMUSG00000000168 &lt;dbl&gt;, ENSMUSG00000000171 &lt;dbl&gt;, …</code></pre>
-<p>Heldigvis er der en pakke, som kan gøre processen meget hurtigere:</p>
+<p>Heldigvis er der en pakke, som kan gøre processen meget hurtigere, som vi kan benytte os af her:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="emner-fra-eksperimental-design.html#cb29-1" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
 <span id="cb29-2"><a href="emner-fra-eksperimental-design.html#cb29-2" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> </span>
-<span id="cb29-3"><a href="emner-fra-eksperimental-design.html#cb29-3" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb29-4"><a href="emner-fra-eksperimental-design.html#cb29-4" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="emner-fra-eksperimental-design.html#cb29-5" tabindex="-1"></a>norm.cts.transpose[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
-<pre><code>#&gt;      sample ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
-#&gt; 1 SRX033480           6.352707           3.514892           3.190250
-#&gt; 2 SRX033488           6.317191           3.560812           3.495351
-#&gt; 3 SRX033481           6.208840           3.571591           3.079332
-#&gt; 4 SRX033489           6.289602           3.265114           3.210200
-#&gt; 5 SRX033482           6.307351           2.989835           3.136775
-#&gt; 6 SRX033490           6.268945           3.613359           3.090954
-#&gt;   ENSMUSG00000000078
-#&gt; 1           6.689454
-#&gt; 2           6.477961
-#&gt; 3           6.377990
-#&gt; 4           6.345142
-#&gt; 5           6.389898
-#&gt; 6           6.337397</code></pre>
+<span id="cb29-3"><a href="emner-fra-eksperimental-design.html#cb29-3" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="emner-fra-eksperimental-design.html#cb29-4" tabindex="-1"></a>                          <span class="fu">as_tibble</span>()</span>
+<span id="cb29-5"><a href="emner-fra-eksperimental-design.html#cb29-5" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="emner-fra-eksperimental-design.html#cb29-6" tabindex="-1"></a>norm.cts.transpose</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 1,001
+#&gt;    sample    ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
+#&gt;    &lt;chr&gt;                  &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
+#&gt;  1 SRX033480               6.35               3.51               3.19
+#&gt;  2 SRX033488               6.32               3.56               3.50
+#&gt;  3 SRX033481               6.21               3.57               3.08
+#&gt;  4 SRX033489               6.29               3.27               3.21
+#&gt;  5 SRX033482               6.31               2.99               3.14
+#&gt;  6 SRX033490               6.27               3.61               3.09
+#&gt;  7 SRX033483               6.30               3.56               3.22
+#&gt;  8 SRX033476               6.03               3.69               2.83
+#&gt;  9 SRX033478               6.30               3.42               3.73
+#&gt; 10 SRX033479               5.88               3.98               3.24
+#&gt; # ℹ 11 more rows
+#&gt; # ℹ 997 more variables: ENSMUSG00000000078 &lt;dbl&gt;, ENSMUSG00000000088 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000093 &lt;dbl&gt;, ENSMUSG00000000120 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000125 &lt;dbl&gt;, ENSMUSG00000000126 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000127 &lt;dbl&gt;, ENSMUSG00000000131 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000149 &lt;dbl&gt;, ENSMUSG00000000167 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000168 &lt;dbl&gt;, ENSMUSG00000000171 &lt;dbl&gt;, …</code></pre>
 <p>Nu kan vi udføre en principal component analyse:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="emner-fra-eksperimental-design.html#cb31-1" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> norm.cts.transpose <span class="sc">%&gt;%</span></span>
 <span id="cb31-2"><a href="emner-fra-eksperimental-design.html#cb31-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="co"># behold kun numeriske kolonner</span></span>
