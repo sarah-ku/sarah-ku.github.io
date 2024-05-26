@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 11 Emner fra eksperimental design | Analyse og visualisering af biologiske datasæt - 2024</title>
+  <meta name="description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 11 Emner fra eksperimental design | Analyse og visualisering af biologiske datasæt - 2024" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
+  <meta property="og:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 11 Emner fra eksperimental design | Analyse og visualisering af biologiske datasæt - 2024" />
+  
+  <meta name="twitter:description" content="Course materials for Analyse og visualisering af biologiske datasæt 2024" />
+  <meta name="twitter:image" content="https://sarah-ku.github.io/ai_cover.jpeg" />
+
+<meta name="author" content="Sarah Rennie" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="principal-component-analysis-pca.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Visualisering_2024</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lidt om kurset</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#outline"><i class="fa fa-check"></i>Outline</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#bedømmelse"><i class="fa fa-check"></i>Bedømmelse</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#bare-lidt-om-mig"><i class="fa fa-check"></i>Bare lidt om mig</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="baser.html"><a href="baser.html"><i class="fa fa-check"></i><b>1</b> Grundlæggende R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="baser.html"><a href="baser.html#inledning-til-kapitel"><i class="fa fa-check"></i><b>1.1</b> Inledning til kapitel</a></li>
+<li class="chapter" data-level="1.2" data-path="baser.html"><a href="baser.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="baser.html"><a href="baser.html#de-forskellige-vinduer-i-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> De forskellige vinduer i RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="baser.html"><a href="baser.html#working-directory"><i class="fa fa-check"></i><b>1.3</b> Working directory</a></li>
+<li class="chapter" data-level="1.4" data-path="baser.html"><a href="baser.html#r-pakker"><i class="fa fa-check"></i><b>1.4</b> R pakker</a></li>
+<li class="chapter" data-level="1.5" data-path="baser.html"><a href="baser.html#hvor-kommer-vores-data-fra"><i class="fa fa-check"></i><b>1.5</b> Hvor kommer vores data fra?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="baser.html"><a href="baser.html#indbyggede-datasæt"><i class="fa fa-check"></i><b>1.5.1</b> Indbyggede datasæt</a></li>
+<li class="chapter" data-level="1.5.2" data-path="baser.html"><a href="baser.html#importering-af-data-fra-.txt-fil"><i class="fa fa-check"></i><b>1.5.2</b> Importering af data fra .txt fil</a></li>
+<li class="chapter" data-level="1.5.3" data-path="baser.html"><a href="baser.html#importering-af-data-fra-excel"><i class="fa fa-check"></i><b>1.5.3</b> Importering af data fra Excel</a></li>
+<li class="chapter" data-level="1.5.4" data-path="baser.html"><a href="baser.html#kaggle"><i class="fa fa-check"></i><b>1.5.4</b> Kaggle</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="baser.html"><a href="baser.html#beregninger-i-r"><i class="fa fa-check"></i><b>1.6</b> Beregninger i R</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="baser.html"><a href="baser.html#objektor"><i class="fa fa-check"></i><b>1.6.1</b> Objektor</a></li>
+<li class="chapter" data-level="1.6.2" data-path="baser.html"><a href="baser.html#vectorer"><i class="fa fa-check"></i><b>1.6.2</b> Vectorer</a></li>
+<li class="chapter" data-level="1.6.3" data-path="baser.html"><a href="baser.html#datatyper"><i class="fa fa-check"></i><b>1.6.3</b> datatyper</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="baser.html"><a href="baser.html#dataframes"><i class="fa fa-check"></i><b>1.7</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="baser.html"><a href="baser.html#delmængder-af-dataframes"><i class="fa fa-check"></i><b>1.7.1</b> Delmængder af dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="baser.html"><a href="baser.html#ifelse"><i class="fa fa-check"></i><b>1.8</b> If/else</a></li>
+<li class="chapter" data-level="1.9" data-path="baser.html"><a href="baser.html#loops"><i class="fa fa-check"></i><b>1.9</b> Loops</a></li>
+<li class="chapter" data-level="1.10" data-path="baser.html"><a href="baser.html#descriptive-statistics"><i class="fa fa-check"></i><b>1.10</b> Descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="baser.html"><a href="baser.html#simulere-data-fra-den-normale-fordeling"><i class="fa fa-check"></i><b>1.10.1</b> Simulere data fra den normale fordeling</a></li>
+<li class="chapter" data-level="1.10.2" data-path="baser.html"><a href="baser.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>1.10.2</b> Measures of central tendency</a></li>
+<li class="chapter" data-level="1.10.3" data-path="baser.html"><a href="baser.html#tapply"><i class="fa fa-check"></i><b>1.10.3</b> <code>tapply()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="baser.html"><a href="baser.html#statistike-tester"><i class="fa fa-check"></i><b>1.11</b> Statistike tester</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="baser.html"><a href="baser.html#p-værdien"><i class="fa fa-check"></i><b>1.11.1</b> P-værdien</a></li>
+<li class="chapter" data-level="1.11.2" data-path="baser.html"><a href="baser.html#korrelation"><i class="fa fa-check"></i><b>1.11.2</b> Korrelation</a></li>
+<li class="chapter" data-level="1.11.3" data-path="baser.html"><a href="baser.html#test-for-uafhængighed-chi-sq-test"><i class="fa fa-check"></i><b>1.11.3</b> Test for uafhængighed (chi-sq test)</a></li>
+<li class="chapter" data-level="1.11.4" data-path="baser.html"><a href="baser.html#sample-t-test"><i class="fa fa-check"></i><b>1.11.4</b> 1 sample t-test</a></li>
+<li class="chapter" data-level="1.11.5" data-path="baser.html"><a href="baser.html#sample-t-test-1"><i class="fa fa-check"></i><b>1.11.5</b> 2-sample t-test</a></li>
+<li class="chapter" data-level="1.11.6" data-path="baser.html"><a href="baser.html#paired-t-test"><i class="fa fa-check"></i><b>1.11.6</b> Paired t-test</a></li>
+<li class="chapter" data-level="1.11.7" data-path="baser.html"><a href="baser.html#anova-variansanalyse"><i class="fa fa-check"></i><b>1.11.7</b> ANOVA (variansanalyse)</a></li>
+<li class="chapter" data-level="1.11.8" data-path="baser.html"><a href="baser.html#lineær-regression"><i class="fa fa-check"></i><b>1.11.8</b> Lineær regression</a></li>
+<li class="chapter" data-level="1.11.9" data-path="baser.html"><a href="baser.html#r-squared-coefficient-of-determination"><i class="fa fa-check"></i><b>1.11.9</b> R-squared coefficient of determination</a></li>
+<li class="chapter" data-level="1.11.10" data-path="baser.html"><a href="baser.html#antagelser---lineær-regression"><i class="fa fa-check"></i><b>1.11.10</b> Antagelser - lineær regression</a></li>
+<li class="chapter" data-level="1.11.11" data-path="baser.html"><a href="baser.html#multiple-lineær-regression"><i class="fa fa-check"></i><b>1.11.11</b> Multiple lineær regression</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="baser.html"><a href="baser.html#problemstillinger"><i class="fa fa-check"></i><b>1.12</b> Problemstillinger</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="baser.html"><a href="baser.html#quiz---basics"><i class="fa fa-check"></i><b>1.12.1</b> Quiz - Basics</a></li>
+<li class="chapter" data-level="1.12.2" data-path="baser.html"><a href="baser.html#grundlæggende-r"><i class="fa fa-check"></i><b>1.12.2</b> Grundlæggende R</a></li>
+<li class="chapter" data-level="1.12.3" data-path="baser.html"><a href="baser.html#kort-analyse-med-reaktionstider"><i class="fa fa-check"></i><b>1.12.3</b> Kort analyse med reaktionstider</a></li>
+<li class="chapter" data-level="1.12.4" data-path="baser.html"><a href="baser.html#øvelse-med-co2"><i class="fa fa-check"></i><b>1.12.4</b> Øvelse med CO2</a></li>
+<li class="chapter" data-level="1.12.5" data-path="baser.html"><a href="baser.html#ekstra-øvelser-med-statistik-tests"><i class="fa fa-check"></i><b>1.12.5</b> Ekstra øvelser med statistik tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2</b> Introduktion til R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#inledning-til-kapital"><i class="fa fa-check"></i><b>2.1</b> Inledning til kapital</a></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#hvad-er-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Hvad er R Markdown?</a></li>
+<li class="chapter" data-level="2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installere-r-markdown"><i class="fa fa-check"></i><b>2.3</b> Installere R Markdown</a></li>
+<li class="chapter" data-level="2.4" data-path="rmarkdown.html"><a href="rmarkdown.html#videodemonstrationer"><i class="fa fa-check"></i><b>2.4</b> Videodemonstrationer</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#video-1"><i class="fa fa-check"></i><b>2.4.1</b> Video 1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#video-2"><i class="fa fa-check"></i><b>2.4.2</b> Video 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rmarkdown.html"><a href="rmarkdown.html#oprette-et-nyt-dokument-i-r-markdown"><i class="fa fa-check"></i><b>2.5</b> Oprette et nyt dokument i R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml"><i class="fa fa-check"></i><b>2.5.1</b> YAML</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rmarkdown.html"><a href="rmarkdown.html#globale-options"><i class="fa fa-check"></i><b>2.5.2</b> Globale options</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rmarkdown.html"><a href="rmarkdown.html#skrive-baseret-tekst"><i class="fa fa-check"></i><b>2.6</b> Skrive baseret tekst</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#headers"><i class="fa fa-check"></i><b>2.6.1</b> Headers</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#liste"><i class="fa fa-check"></i><b>2.6.2</b> liste</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html#knitte-kode"><i class="fa fa-check"></i><b>2.7</b> Knitte kode</a></li>
+<li class="chapter" data-level="2.8" data-path="rmarkdown.html"><a href="rmarkdown.html#kode-chunks"><i class="fa fa-check"></i><b>2.8</b> Kode chunks</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#et-godt-råd-når-man-arbejder-med-chunks"><i class="fa fa-check"></i><b>2.8.1</b> Et godt råd når man arbejder med chunks</a></li>
+<li class="chapter" data-level="2.8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#chunk-indstillinger"><i class="fa fa-check"></i><b>2.8.2</b> Chunk indstillinger</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="rmarkdown.html"><a href="rmarkdown.html#r-beregninger-inden-for-teksten-i-dokumentet-inline-code"><i class="fa fa-check"></i><b>2.9</b> R beregninger inden for teksten i dokumentet (‘inline code’)</a></li>
+<li class="chapter" data-level="2.10" data-path="rmarkdown.html"><a href="rmarkdown.html#working-directory-1"><i class="fa fa-check"></i><b>2.10</b> Working directory</a></li>
+<li class="chapter" data-level="2.11" data-path="rmarkdown.html"><a href="rmarkdown.html#matematik"><i class="fa fa-check"></i><b>2.11</b> Matematik</a></li>
+<li class="chapter" data-level="2.12" data-path="rmarkdown.html"><a href="rmarkdown.html#ofte-set-fejl"><i class="fa fa-check"></i><b>2.12</b> Ofte set fejl</a></li>
+<li class="chapter" data-level="2.13" data-path="rmarkdown.html"><a href="rmarkdown.html#problemstillinger-1"><i class="fa fa-check"></i><b>2.13</b> Problemstillinger</a></li>
+<li class="chapter" data-level="2.14" data-path="rmarkdown.html"><a href="rmarkdown.html#færdig-for-i-dag-og-næste-gang"><i class="fa fa-check"></i><b>2.14</b> Færdig for i dag og næste gang</a></li>
+<li class="chapter" data-level="2.15" data-path="rmarkdown.html"><a href="rmarkdown.html#ekstra-links"><i class="fa fa-check"></i><b>2.15</b> Ekstra links</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visual1.html"><a href="visual1.html"><i class="fa fa-check"></i><b>3</b> Visualisering - ggplot2 dag 1</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visual1.html"><a href="visual1.html#læringsmålene-og-videoer"><i class="fa fa-check"></i><b>3.1</b> Læringsmålene og videoer</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="visual1.html"><a href="visual1.html#hvad-er-ggplot2"><i class="fa fa-check"></i><b>3.1.1</b> Hvad er <strong>ggplot2</strong>?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="visual1.html"><a href="visual1.html#brugen-af-materialerne"><i class="fa fa-check"></i><b>3.1.2</b> Brugen af materialerne</a></li>
+<li class="chapter" data-level="3.1.3" data-path="visual1.html"><a href="visual1.html#video-ressourcer"><i class="fa fa-check"></i><b>3.1.3</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="visual1.html"><a href="visual1.html#transition-fra-base-r-til-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Transition fra base R til ggplot2</a></li>
+<li class="chapter" data-level="3.3" data-path="visual1.html"><a href="visual1.html#vores-første-ggplot"><i class="fa fa-check"></i><b>3.3</b> Vores første ggplot</a></li>
+<li class="chapter" data-level="3.4" data-path="visual1.html"><a href="visual1.html#lidt-om-ggplot2"><i class="fa fa-check"></i><b>3.4</b> Lidt om ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="visual1.html"><a href="visual1.html#syntax"><i class="fa fa-check"></i><b>3.4.1</b> Syntax</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visual1.html"><a href="visual1.html#hvad-betyder-egentlig-grammar-of-graphics"><i class="fa fa-check"></i><b>3.4.2</b> Hvad betyder egentlig grammar of graphics?</a></li>
+<li class="chapter" data-level="3.4.3" data-path="visual1.html"><a href="visual1.html#globale-versus-lokale-æstetik"><i class="fa fa-check"></i><b>3.4.3</b> Globale versus lokale æstetik</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visual1.html"><a href="visual1.html#specificere-etiketter-og-titel"><i class="fa fa-check"></i><b>3.5</b> Specificere etiketter og titel</a></li>
+<li class="chapter" data-level="3.6" data-path="visual1.html"><a href="visual1.html#ændre-farver"><i class="fa fa-check"></i><b>3.6</b> Ændre farver</a></li>
+<li class="chapter" data-level="3.7" data-path="visual1.html"><a href="visual1.html#ændre-tema"><i class="fa fa-check"></i><b>3.7</b> Ændre tema</a></li>
+<li class="chapter" data-level="3.8" data-path="visual1.html"><a href="visual1.html#forskellige-geoms"><i class="fa fa-check"></i><b>3.8</b> Forskellige geoms</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="visual1.html"><a href="visual1.html#boxplot-geom_box"><i class="fa fa-check"></i><b>3.8.1</b> Boxplot (<code>geom_box</code>)</a></li>
+<li class="chapter" data-level="3.8.2" data-path="visual1.html"><a href="visual1.html#barplot-geom_bar"><i class="fa fa-check"></i><b>3.8.2</b> Barplot (<code>geom_bar</code>)</a></li>
+<li class="chapter" data-level="3.8.3" data-path="visual1.html"><a href="visual1.html#histogram-geom_histogram"><i class="fa fa-check"></i><b>3.8.3</b> Histogram (<code>geom_histogram</code>)</a></li>
+<li class="chapter" data-level="3.8.4" data-path="visual1.html"><a href="visual1.html#density-geom_density"><i class="fa fa-check"></i><b>3.8.4</b> Density (<code>geom_density</code>)</a></li>
+<li class="chapter" data-level="3.8.5" data-path="visual1.html"><a href="visual1.html#line-plot-geom_line"><i class="fa fa-check"></i><b>3.8.5</b> Line plot (<code>geom_line()</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="visual1.html"><a href="visual1.html#troubleshooting"><i class="fa fa-check"></i><b>3.9</b> Troubleshooting</a></li>
+<li class="chapter" data-level="3.10" data-path="visual1.html"><a href="visual1.html#problemstillinger-2"><i class="fa fa-check"></i><b>3.10</b> Problemstillinger</a></li>
+<li class="chapter" data-level="3.11" data-path="visual1.html"><a href="visual1.html#næste-gang"><i class="fa fa-check"></i><b>3.11</b> Næste gang</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visual2.html"><a href="visual2.html"><i class="fa fa-check"></i><b>4</b> Visualisering - ggplot2 dag 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="visual2.html"><a href="visual2.html#læringsmål-og-videoer"><i class="fa fa-check"></i><b>4.1</b> Læringsmål og videoer</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="visual2.html"><a href="visual2.html#video-ressourcer-1"><i class="fa fa-check"></i><b>4.1.1</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="visual2.html"><a href="visual2.html#koordinat-systemer"><i class="fa fa-check"></i><b>4.2</b> Koordinat systemer</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="visual2.html"><a href="visual2.html#zoom-coord_cartesian-expand_limits"><i class="fa fa-check"></i><b>4.2.1</b> Zoom (<code>coord_cartesian()</code>, <code>expand_limits()</code>)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visual2.html"><a href="visual2.html#transformering-af-akserne---log-sqrt-osv-scale_x_continuous."><i class="fa fa-check"></i><b>4.2.2</b> Transformering af akserne - log, sqrt osv (<code>scale_x_continuous</code>).</a></li>
+<li class="chapter" data-level="4.2.3" data-path="visual2.html"><a href="visual2.html#flip-coordinates-coord_flip"><i class="fa fa-check"></i><b>4.2.3</b> Flip coordinates (<code>coord_flip</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visual2.html"><a href="visual2.html#mere-om-farver-og-punkt-former"><i class="fa fa-check"></i><b>4.3</b> Mere om farver og punkt former</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="visual2.html"><a href="visual2.html#automatisk-farver"><i class="fa fa-check"></i><b>4.3.1</b> Automatisk farver</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visual2.html"><a href="visual2.html#manuelle-farver"><i class="fa fa-check"></i><b>4.3.2</b> Manuelle farver</a></li>
+<li class="chapter" data-level="4.3.3" data-path="visual2.html"><a href="visual2.html#punkt-former"><i class="fa fa-check"></i><b>4.3.3</b> Punkt former</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="visual2.html"><a href="visual2.html#annotations-geom_text"><i class="fa fa-check"></i><b>4.4</b> Annotations (<code>geom_text</code>)</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="visual2.html"><a href="visual2.html#tilføjelse-af-labels-direkte-på-plottet."><i class="fa fa-check"></i><b>4.4.1</b> Tilføjelse af labels direkte på plottet.</a></li>
+<li class="chapter" data-level="4.4.2" data-path="visual2.html"><a href="visual2.html#pakken-ggrepel-for-at-tilføje-tekst-labeller"><i class="fa fa-check"></i><b>4.4.2</b> Pakken <code>ggrepel</code> for at tilføje tekst labeller</a></li>
+<li class="chapter" data-level="4.4.3" data-path="visual2.html"><a href="visual2.html#tilføjelse-af-rektangler-i-regioner-af-interesse-annotate"><i class="fa fa-check"></i><b>4.4.3</b> Tilføjelse af rektangler i regioner af interesse (<code>annotate</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="visual2.html"><a href="visual2.html#adskille-plots-med-facets-facet_gridfacet_wrap"><i class="fa fa-check"></i><b>4.5</b> Adskille plots med facets (<code>facet_grid</code>/<code>facet_wrap</code>)</a></li>
+<li class="chapter" data-level="4.6" data-path="visual2.html"><a href="visual2.html#gemme-dit-plot"><i class="fa fa-check"></i><b>4.6</b> Gemme dit plot</a></li>
+<li class="chapter" data-level="4.7" data-path="visual2.html"><a href="visual2.html#problemstillinger-3"><i class="fa fa-check"></i><b>4.7</b> Problemstillinger</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>5</b> Bearbejdning dag 1</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data.html"><a href="data.html#hvad-er-tidyverse"><i class="fa fa-check"></i><b>5.1</b> Hvad er Tidyverse?</a></li>
+<li class="chapter" data-level="5.2" data-path="data.html"><a href="data.html#video-ressourcer-2"><i class="fa fa-check"></i><b>5.2</b> Video ressourcer</a></li>
+<li class="chapter" data-level="5.3" data-path="data.html"><a href="data.html#oversigt-over-pakker"><i class="fa fa-check"></i><b>5.3</b> Oversigt over pakker</a></li>
+<li class="chapter" data-level="5.4" data-path="data.html"><a href="data.html#principper-for-tidy-data"><i class="fa fa-check"></i><b>5.4</b> Principper for ‘tidy data’</a></li>
+<li class="chapter" data-level="5.5" data-path="data.html"><a href="data.html#lidt-om-tibbles"><i class="fa fa-check"></i><b>5.5</b> Lidt om <code>tibbles</code></a></li>
+<li class="chapter" data-level="5.6" data-path="data.html"><a href="data.html#transition-fra-base-r-til-tidyverse"><i class="fa fa-check"></i><b>5.6</b> Transition fra base-R til tidyverse</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="data.html"><a href="data.html#om-titanic-datasættet"><i class="fa fa-check"></i><b>5.6.1</b> Om <strong>Titanic</strong> datasættet</a></li>
+<li class="chapter" data-level="5.6.2" data-path="data.html"><a href="data.html#titanic-rengøring"><i class="fa fa-check"></i><b>5.6.2</b> Titanic: Rengøring</a></li>
+<li class="chapter" data-level="5.6.3" data-path="data.html"><a href="data.html#pipe"><i class="fa fa-check"></i><b>5.6.3</b> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="data.html"><a href="data.html#bearbejdning-af-data-dplyr"><i class="fa fa-check"></i><b>5.7</b> Bearbejdning af data: <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="data.html"><a href="data.html#dplyr-verbs-select"><i class="fa fa-check"></i><b>5.7.1</b> dplyr verbs: <code>select()</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="data.html"><a href="data.html#dplyr-verbs-filter"><i class="fa fa-check"></i><b>5.7.2</b> dplyr verbs: <code>filter()</code></a></li>
+<li class="chapter" data-level="5.7.3" data-path="data.html"><a href="data.html#sammenligningsoperatorer"><i class="fa fa-check"></i><b>5.7.3</b> Sammenligningsoperatorer</a></li>
+<li class="chapter" data-level="5.7.4" data-path="data.html"><a href="data.html#kombinere-filter-og-select"><i class="fa fa-check"></i><b>5.7.4</b> Kombinere <code>filter()</code> og <code>select()</code></a></li>
+<li class="chapter" data-level="5.7.5" data-path="data.html"><a href="data.html#dplyr-verbs-mutate"><i class="fa fa-check"></i><b>5.7.5</b> dplyr verbs: <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.7.6" data-path="data.html"><a href="data.html#rename"><i class="fa fa-check"></i><b>5.7.6</b> <code>rename()</code></a></li>
+<li class="chapter" data-level="5.7.7" data-path="data.html"><a href="data.html#dplyr-verbs-recode"><i class="fa fa-check"></i><b>5.7.7</b> dplyr verbs: <code>recode()</code></a></li>
+<li class="chapter" data-level="5.7.8" data-path="data.html"><a href="data.html#dplyr-verbs-arrange"><i class="fa fa-check"></i><b>5.7.8</b> dplyr verbs: <code>arrange()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="data.html"><a href="data.html#visualisering-bruge-som-input-i-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Visualisering: bruge som input i ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="data.html"><a href="data.html#misc-funktioner-som-er-nyttige-at-vide"><i class="fa fa-check"></i><b>5.9</b> Misc funktioner som er nyttige at vide</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="data.html"><a href="data.html#pull"><i class="fa fa-check"></i><b>5.9.1</b> Pull</a></li>
+<li class="chapter" data-level="5.9.2" data-path="data.html"><a href="data.html#slice"><i class="fa fa-check"></i><b>5.9.2</b> Slice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="data.html"><a href="data.html#problemstillinger-4"><i class="fa fa-check"></i><b>5.10</b> Problemstillinger</a></li>
+<li class="chapter" data-level="5.11" data-path="data.html"><a href="data.html#kommentarer"><i class="fa fa-check"></i><b>5.11</b> Kommentarer</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html"><i class="fa fa-check"></i><b>6</b> Bearbejdning dag 2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#indledning-og-læringsmålene"><i class="fa fa-check"></i><b>6.1</b> Indledning og læringsmålene</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#læringsmålene"><i class="fa fa-check"></i><b>6.1.1</b> Læringsmålene</a></li>
+<li class="chapter" data-level="6.1.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#videoer"><i class="fa fa-check"></i><b>6.1.2</b> Videoer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#group_by-med-summarise-i-dplyr-pakken"><i class="fa fa-check"></i><b>6.2</b> <code>group_by()</code> med <code>summarise()</code> i dplyr-pakken</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#reference-af-summarise-funktioner"><i class="fa fa-check"></i><b>6.2.1</b> Reference af <code>summarise()</code>-funktioner</a></li>
+<li class="chapter" data-level="6.2.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#flere-summeringsstatistikker-på-én-gang"><i class="fa fa-check"></i><b>6.2.2</b> Flere summeringsstatistikker på én gang</a></li>
+<li class="chapter" data-level="6.2.3" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#mere-avanceret-group_by"><i class="fa fa-check"></i><b>6.2.3</b> Mere avanceret <code>group_by()</code></a></li>
+<li class="chapter" data-level="6.2.4" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#funktionen-ungroup"><i class="fa fa-check"></i><b>6.2.4</b> Funktionen <code>ungroup()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#pivot_longerpivot_wider-med-tidyr-pakken"><i class="fa fa-check"></i><b>6.3</b> <code>pivot_longer()</code>/<code>pivot_wider()</code> med Tidyr-pakken</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#tidyr-pakke---oversigt"><i class="fa fa-check"></i><b>6.3.1</b> Tidyr pakke - oversigt</a></li>
+<li class="chapter" data-level="6.3.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#wide---long-med-pivot_longer"><i class="fa fa-check"></i><b>6.3.2</b> Wide -&gt; Long med <code>pivot_longer()</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#separate"><i class="fa fa-check"></i><b>6.3.3</b> <code>separate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#eksempel-titanic-opsummeringsstatistikker"><i class="fa fa-check"></i><b>6.4</b> Eksempel: Titanic opsummeringsstatistikker</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#demonstration-af-pivot_wider"><i class="fa fa-check"></i><b>6.4.1</b> Demonstration af <code>pivot_wider()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#left_join-forbinde-dataframes"><i class="fa fa-check"></i><b>6.5</b> <code>left_join()</code>: forbinde dataframes</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#funktionen-left_join-fra-dplyr-pakken"><i class="fa fa-check"></i><b>6.5.1</b> Funktionen <code>left_join()</code> fra dplyr-pakken</a></li>
+<li class="chapter" data-level="6.5.2" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#anvend-left_join-for-vores-datasæt."><i class="fa fa-check"></i><b>6.5.2</b> Anvend <code>left_join()</code> for vores datasæt.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#problemstillinger-5"><i class="fa fa-check"></i><b>6.6</b> Problemstillinger</a></li>
+<li class="chapter" data-level="6.7" data-path="bearbejdning-dag-2.html"><a href="bearbejdning-dag-2.html#ekstra-links-1"><i class="fa fa-check"></i><b>6.7</b> Ekstra links</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html"><i class="fa fa-check"></i><b>7</b> Functional programming med purrr-pakken</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#inledning-og-læringsmålene"><i class="fa fa-check"></i><b>7.1</b> Inledning og læringsmålene</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#videorressourcer"><i class="fa fa-check"></i><b>7.1.1</b> Videorressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#iterative-processer-med-map-funktioner"><i class="fa fa-check"></i><b>7.2</b> Iterative processer med <code>map()</code> funktioner</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#introduktion-til-map-funktioner"><i class="fa fa-check"></i><b>7.2.1</b> Introduktion til <code>map()</code> funktioner</a></li>
+<li class="chapter" data-level="7.2.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#reference-for-de-forskellige-map-funktioner"><i class="fa fa-check"></i><b>7.2.2</b> Reference for de forskellige map-funktioner</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#brugerdefinerede-funktioner"><i class="fa fa-check"></i><b>7.3</b> Brugerdefinerede funktioner</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#simple-funktioner"><i class="fa fa-check"></i><b>7.3.1</b> Simple funktioner</a></li>
+<li class="chapter" data-level="7.3.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#brugerdefinerede-funktioner-med-mapping"><i class="fa fa-check"></i><b>7.3.2</b> Brugerdefinerede funktioner med mapping</a></li>
+<li class="chapter" data-level="7.3.3" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#effekten-af-map-på-andre-datatyper"><i class="fa fa-check"></i><b>7.3.3</b> Effekten af <code>map</code> på andre datatyper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#nesting-med-nest"><i class="fa fa-check"></i><b>7.4</b> Nesting med <code>nest()</code></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#anvendelse-af-map-med-nested-data"><i class="fa fa-check"></i><b>7.4.1</b> Anvendelse af map() med nested data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#andre-brugbar-purrr"><i class="fa fa-check"></i><b>7.5</b> Andre brugbar purrr</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#map2-funktion-for-flere-inputs"><i class="fa fa-check"></i><b>7.5.1</b> <code>map2()</code> funktion for flere inputs</a></li>
+<li class="chapter" data-level="7.5.2" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#transformering-af-numeriske-variabler"><i class="fa fa-check"></i><b>7.5.2</b> Transformering af numeriske variabler</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#problemstillinger-6"><i class="fa fa-check"></i><b>7.6</b> Problemstillinger</a></li>
+<li class="chapter" data-level="7.7" data-path="functional-programming-med-purrr-pakken.html"><a href="functional-programming-med-purrr-pakken.html#ekstra-notater-og-næste-gang"><i class="fa fa-check"></i><b>7.7</b> Ekstra notater og næste gang</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html"><i class="fa fa-check"></i><b>8</b> Visualisering af trends</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#indledning"><i class="fa fa-check"></i><b>8.1</b> Indledning</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#læringsmål"><i class="fa fa-check"></i><b>8.1.1</b> Læringsmål</a></li>
+<li class="chapter" data-level="8.1.2" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#introduktion-til-kapitlet"><i class="fa fa-check"></i><b>8.1.2</b> Introduktion til kapitlet</a></li>
+<li class="chapter" data-level="8.1.3" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#videoressourcer"><i class="fa fa-check"></i><b>8.1.3</b> Videoressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#nest-og-map-eksempel-med-korrelation"><i class="fa fa-check"></i><b>8.2</b> <code>nest()</code> og <code>map()</code>: eksempel med korrelation</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#korrelation-over-flere-datasæt-på-en-gang"><i class="fa fa-check"></i><b>8.2.1</b> Korrelation over flere datasæt på en gang</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#lineær-regression---visualisering"><i class="fa fa-check"></i><b>8.3</b> Lineær regression - visualisering</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#lineære-trends"><i class="fa fa-check"></i><b>8.3.1</b> Lineære trends</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#geom_smooth-lm-trendlinjer"><i class="fa fa-check"></i><b>8.3.2</b> <code>geom_smooth()</code>: <code>lm</code> trendlinjer</a></li>
+<li class="chapter" data-level="8.3.3" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#geom_smooth-flere-lm-trendlinjer-på-samme-plot"><i class="fa fa-check"></i><b>8.3.3</b> <code>geom_smooth()</code>: flere <code>lm</code> trendlinjer på samme plot</a></li>
+<li class="chapter" data-level="8.3.4" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#trendlinjer-med-methodloess"><i class="fa fa-check"></i><b>8.3.4</b> Trendlinjer med <code>method=="loess"</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#plot-linear-regresion-estimates"><i class="fa fa-check"></i><b>8.4</b> Plot linear regresion estimates</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#anvendelse-af-lm-over-nestede-datasæt"><i class="fa fa-check"></i><b>8.4.1</b> Anvendelse af <code>lm()</code> over nestede datasæt</a></li>
+<li class="chapter" data-level="8.4.2" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#funktionen-glue-til-at-tilføje-etiketter"><i class="fa fa-check"></i><b>8.4.2</b> Funktionen <code>glue()</code> til at tilføje etiketter</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#multipel-regression-og-model-sammenligning"><i class="fa fa-check"></i><b>8.5</b> Multipel regression og model sammenligning</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#anova-til-at-sammenligne-de-forskellige-modeller"><i class="fa fa-check"></i><b>8.5.1</b> <code>anova</code> til at sammenligne de forskellige modeller</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#problemstillinger-7"><i class="fa fa-check"></i><b>8.6</b> Problemstillinger</a></li>
+<li class="chapter" data-level="8.7" data-path="visualisering-af-trends.html"><a href="visualisering-af-trends.html#ekstra"><i class="fa fa-check"></i><b>8.7</b> Ekstra</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>9</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="clustering.html"><a href="clustering.html#indledning-og-læringsmål"><i class="fa fa-check"></i><b>9.1</b> Indledning og læringsmål</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="clustering.html"><a href="clustering.html#læringsmål-1"><i class="fa fa-check"></i><b>9.1.1</b> Læringsmål</a></li>
+<li class="chapter" data-level="9.1.2" data-path="clustering.html"><a href="clustering.html#indledning-til-kapitel"><i class="fa fa-check"></i><b>9.1.2</b> Indledning til kapitel</a></li>
+<li class="chapter" data-level="9.1.3" data-path="clustering.html"><a href="clustering.html#video-ressourcer-3"><i class="fa fa-check"></i><b>9.1.3</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="clustering.html"><a href="clustering.html#method-1-k-means-clustering"><i class="fa fa-check"></i><b>9.2</b> Method 1: K-means clustering</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="clustering.html"><a href="clustering.html#hvordan-fungerer-kmeans"><i class="fa fa-check"></i><b>9.2.1</b> Hvordan fungerer kmeans?</a></li>
+<li class="chapter" data-level="9.2.2" data-path="clustering.html"><a href="clustering.html#withinbetween-sum-of-squares"><i class="fa fa-check"></i><b>9.2.2</b> Within/between sum of squares</a></li>
+<li class="chapter" data-level="9.2.3" data-path="clustering.html"><a href="clustering.html#kør-k-means-i-r"><i class="fa fa-check"></i><b>9.2.3</b> Kør k-means i R</a></li>
+<li class="chapter" data-level="9.2.4" data-path="clustering.html"><a href="clustering.html#ryd-op-i-k-means-resultaterne-med-pakken-broom"><i class="fa fa-check"></i><b>9.2.4</b> Ryd op i k-means resultaterne med pakken <code>broom</code></a></li>
+<li class="chapter" data-level="9.2.5" data-path="clustering.html"><a href="clustering.html#plotcentroids"><i class="fa fa-check"></i><b>9.2.5</b> Plot cluster centroids</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="clustering.html"><a href="clustering.html#kmeans-hvor-mange-clusters"><i class="fa fa-check"></i><b>9.3</b> Kmeans: hvor mange clusters?</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="clustering.html"><a href="clustering.html#få-broom-output-for-forskellige-antal-clusters"><i class="fa fa-check"></i><b>9.3.1</b> Få Broom output for forskellige antal clusters</a></li>
+<li class="chapter" data-level="9.3.2" data-path="clustering.html"><a href="clustering.html#elbow-plot-glance"><i class="fa fa-check"></i><b>9.3.2</b> Elbow plot (glance)</a></li>
+<li class="chapter" data-level="9.3.3" data-path="clustering.html"><a href="clustering.html#automatisk-beslutning-med-pakken-nbclust"><i class="fa fa-check"></i><b>9.3.3</b> Automatisk beslutning med pakken <code>NbClust</code></a></li>
+<li class="chapter" data-level="9.3.4" data-path="clustering.html"><a href="clustering.html#visualisering-af-de-forskellige-antal-clusters-augment"><i class="fa fa-check"></i><b>9.3.4</b> Visualisering af de forskellige antal clusters (augment)</a></li>
+<li class="chapter" data-level="9.3.5" data-path="clustering.html"><a href="clustering.html#nestmap-ramme-fra-sidste-gang"><i class="fa fa-check"></i><b>9.3.5</b> Nest/map-ramme fra sidste gang</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="clustering.html"><a href="clustering.html#metode-2-hierarchical-clustering"><i class="fa fa-check"></i><b>9.4</b> Metode 2: Hierarchical clustering</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="clustering.html"><a href="clustering.html#vælge-ønsket-antal-clusters"><i class="fa fa-check"></i><b>9.4.1</b> Vælge ønsket antal clusters</a></li>
+<li class="chapter" data-level="9.4.2" data-path="clustering.html"><a href="clustering.html#lav-et-pænt-plot-af-dendrogrammet-med-ggplot2"><i class="fa fa-check"></i><b>9.4.2</b> Lav et pænt plot af dendrogrammet med ggplot2</a></li>
+<li class="chapter" data-level="9.4.3" data-path="clustering.html"><a href="clustering.html#afprøve-andre-metoder-på-hierachical-clustering"><i class="fa fa-check"></i><b>9.4.3</b> Afprøve andre metoder på hierachical clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="clustering.html"><a href="clustering.html#problemstillinger-8"><i class="fa fa-check"></i><b>9.5</b> Problemstillinger</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>10</b> Principal component analysis (PCA)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#indledning-og-læringsmålene-1"><i class="fa fa-check"></i><b>10.1</b> Indledning og læringsmålene</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#læringsmålene-1"><i class="fa fa-check"></i><b>10.1.1</b> Læringsmålene</a></li>
+<li class="chapter" data-level="10.1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#introduktion-til-kapitlet-1"><i class="fa fa-check"></i><b>10.1.2</b> Introduktion til kapitlet</a></li>
+<li class="chapter" data-level="10.1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#videoressourcer-1"><i class="fa fa-check"></i><b>10.1.3</b> Videoressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#hvad-er-principal-component-analysis-pca"><i class="fa fa-check"></i><b>10.2</b> Hvad er principal component analysis (PCA)?</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#simpelt-eksempel-med-to-dimensioner"><i class="fa fa-check"></i><b>10.2.1</b> Simpelt eksempel med to dimensioner</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#fit-pca-to-data-in-r"><i class="fa fa-check"></i><b>10.3</b> Fit PCA to data in R</a></li>
+<li class="chapter" data-level="10.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#integrering-af-pca-resultater-med-broom-pakken"><i class="fa fa-check"></i><b>10.4</b> Integrering af PCA-resultater med broom-pakken</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#lave-plot-af-principal-componenets"><i class="fa fa-check"></i><b>10.4.1</b> Lave plot af principal componenets</a></li>
+<li class="chapter" data-level="10.4.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#forklarede-variance"><i class="fa fa-check"></i><b>10.4.2</b> Forklarede variance</a></li>
+<li class="chapter" data-level="10.4.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#rotationsmatrix-bidragene-fra-de-forskellige-variabler"><i class="fa fa-check"></i><b>10.4.3</b> Rotationsmatrix: bidragene fra de forskellige variabler</a></li>
+<li class="chapter" data-level="10.4.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#pakken-factoextra"><i class="fa fa-check"></i><b>10.4.4</b> Pakken <code>factoextra</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#problemstillinger-9"><i class="fa fa-check"></i><b>10.5</b> Problemstillinger</a></li>
+<li class="chapter" data-level="10.6" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#ekstra-læsning"><i class="fa fa-check"></i><b>10.6</b> Ekstra læsning</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html"><i class="fa fa-check"></i><b>11</b> Emner fra eksperimental design</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#inledning-og-læringsmålene-1"><i class="fa fa-check"></i><b>11.1</b> Inledning og læringsmålene</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#video-ressourcer-4"><i class="fa fa-check"></i><b>11.1.1</b> Video ressourcer</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#grundlæggende-principper-i-eksperimentelt-design"><i class="fa fa-check"></i><b>11.2</b> Grundlæggende principper i eksperimentelt design</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#randomisering-og-replikation"><i class="fa fa-check"></i><b>11.2.1</b> Randomisering og replikation</a></li>
+<li class="chapter" data-level="11.2.2" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#eksempel-med-datasættet-toothgrowth"><i class="fa fa-check"></i><b>11.2.2</b> Eksempel med datasættet <code>ToothGrowth</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#case-studies-simpsons-paradoks"><i class="fa fa-check"></i><b>11.3</b> Case studies: Simpsons paradoks</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#optagelse-på-berkeley"><i class="fa fa-check"></i><b>11.3.1</b> Optagelse på Berkeley</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#case-studies-anscombes-kvartet"><i class="fa fa-check"></i><b>11.4</b> Case studies: Anscombes kvartet</a></li>
+<li class="chapter" data-level="11.5" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#undersøgelse-af-batch-effekter"><i class="fa fa-check"></i><b>11.5</b> Undersøgelse af “batch-effekter”</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#principal-component-analyse"><i class="fa fa-check"></i><b>11.5.1</b> Principal component analyse</a></li>
+<li class="chapter" data-level="11.5.2" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#ekstra-batch-effect-correction-med-combat-funktionen"><i class="fa fa-check"></i><b>11.5.2</b> EKSTRA: Batch effect correction med ComBat()-funktionen</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#problemstillinger-10"><i class="fa fa-check"></i><b>11.6</b> Problemstillinger</a></li>
+<li class="chapter" data-level="11.7" data-path="emner-fra-eksperimental-design.html"><a href="emner-fra-eksperimental-design.html#yderligere-læsning"><i class="fa fa-check"></i><b>11.7</b> Yderligere læsning</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyse og visualisering af biologiske datasæt - 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="emner-fra-eksperimental-design" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Kapitel 11</span> Emner fra eksperimental design<a href="emner-fra-eksperimental-design.html#emner-fra-eksperimental-design" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>“Amatører sidder og venter på inspiration, resten af os står bare op og går på arbejde.” - Stephen King</p>
+<p><img src="plots/fallacy_poster_PNG.png" width="90%" height="90%" style="display: block; margin: auto;" /></p>
+<div id="inledning-og-læringsmålene-1" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Inledning og læringsmålene<a href="emner-fra-eksperimental-design.html#inledning-og-læringsmålene-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Formålet med dette kapitel er at spørge: Hvordan kan vi anvende de værktøjer, vi har lært i kurset, til at undersøge forskellige emner inden for eksperimentelt design? Dette er ikke en grundig introduktion til eksperimentelt design, men snarere en præsentation af nogle nyttige og interessante emner, der effektivt illustrerer, hvorfor det er vigtigt at lave passende visualiseringer af dine data. Forståelsen af, hvordan batch-effekter påvirker en analyse, er særlig vigtig inden for biologifaget, hvor mange store sekventeringsprojekter involverer data indsamlet eller sekventeret over forskellige batches, sekventeringsmaskiner eller forskellige forberedelsesmetoder.</p>
+<div class="goals">
+<p>I skal være i stand til at</p>
+<ul>
+<li>Beskrive randomisering, replikation og blokering</li>
+<li>Beskrive Simpsons paradoks</li>
+<li>Beskrive Anscombes kvartet</li>
+<li>Kontrollere for batch-effekter med PCA</li>
+</ul>
+</div>
+<div id="video-ressourcer-4" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Video ressourcer<a href="emner-fra-eksperimental-design.html#video-ressourcer-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Part 1: randomisation, replikation, blocking + confounding
+<ul>
+<li>Ingen video: læs gerne notaterne nedenfor</li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li>Part 2: Simpson’s paradox</li>
+</ul>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/556581563" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+<hr />
+<ul>
+<li>Part 3: Anscombe’s quartet</li>
+</ul>
+<div class="vembedr">
+<div>
+<iframe class="vimeo-embed" src="https://player.vimeo.com/video/556581540" width="533" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+<hr />
+<ul>
+<li>Part 4: Batch effects and principal component analysis.</li>
+</ul>
+<!-- _OBS Man kan selvfølgelige også anvende `map_if()` til at log-transformere._ -->
+<!-- Der er også nogle esktra notater om heatmaps (hvis interesseret, frivilligt) -->
+</div>
+</div>
+<div id="grundlæggende-principper-i-eksperimentelt-design" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Grundlæggende principper i eksperimentelt design<a href="emner-fra-eksperimental-design.html#grundlæggende-principper-i-eksperimentelt-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="randomisering-og-replikation" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Randomisering og replikation<a href="emner-fra-eksperimental-design.html#randomisering-og-replikation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man laver et <strong>eksperiment</strong> for at få svar på et bestemt spørgsmål eller en hypotese. Eksperimentet designes ud fra principper, der gør det muligt at fortolke resultaterne fra analysen af datasættet efterfølgende. For at et eksperiment skal være gyldigt, skal det kunne demonstrere hensigtsmæssig <strong>replikation</strong> og <strong>randomisering</strong>.</p>
+<p><strong>Randomisering</strong></p>
+<p>Målet er at udelukke, at konklusionerne simpelthen kan skyldes varians som følge af en faktor, der ikke direkte er interessant i eksperimentet. Derfor bruger man randomisering til at fordele disse faktorer over de forskellige behandlingsgrupper. Et eksempel kan være ‘double-blinding’ i kliniske eksperimenter - både lægen og patienten har ikke kendskab til, hvem der hører til de forskellige grupper, således at forskelsbehandling indenfor grupperne, som kan påvirke de endelige resultater, undgås.</p>
+<p><strong>Replikation</strong></p>
+<p>Dette sker, når man gentager et eksperiment flere gange - for eksempel ved at have flere patienter i hver behandlingsgruppe. Dette tillader os at beregne variabiliteten i data, som er nødvendig for at kunne konkludere om, der er en forskel mellem grupperne. Man kan altså ikke generalisere resultater, som kun er målt på én person.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="plots/randomisation.png" alt="randomisation og replikation" width="100%" />
+<p class="caption">
+Figure 11.1: randomisation og replikation
+</p>
+</div>
+<p>I ovenstående figur er der 6 replikationer i hver gruppe, der enten er “behandling” eller “kontrol”. I tilfældet “God randomisering” er objekter, som er taget tilfældigt fra populationen, godt matchet mellem de to grupper. I det andet tilfælde, “Dårlig randomisering”, kan man se, at objekternes farver er godt matchet inden for de samme grupper. Dette gør det derfor umuligt at afgøre, om en eventuel forskel mellem “behandling” og “kontrol” i virkeligheden er resultatet af farven frem for de målinger, man gerne vil sammenligne.</p>
+<p><strong>Forvekslingsvariabler</strong></p>
+<p>Figuren nedenfor illustrerer alder som en forvekslingsvariabel i et eksperiment, hvor man prøver at forstå sammenhængen mellem aktivitetsniveau og vægtøgning. Det kan se ud som om, at et lavt aktivitetsniveau (afhængig variabel) forklarer vægtøgning (uafhængig variabel), men man er nødt til at tage andre variable i betragtning for at sikre, at sammenhængen ikke skyldes noget andet. For eksempel kunne gruppen med det høje aktivitetsniveau bestå af personer, der er yngre end personerne i gruppen med det lave aktivitetsniveau, og deres alder kan påvirke deres vægtøgning (måske på grund af forskelle i stressniveauer, kost osv.).</p>
+<p><img src="plots/confounding_illus.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><strong>Blokering</strong></p>
+<p>Man kan forsøge at kontrollere for ekstra variable, som vi ikke er interesseret i, gennem “blokering”. Blokering udføres ved først at identificere grupper af individer, der ligner hinanden så meget som muligt. Det kan for eksempel være, at tre forskellige forskere har medvirket til at udføre et stort eksperiment med mange patienter og forskellige behandlingsgrupper. Vi er interesseret i, om der er forskelle mellem behandlingsgrupperne, men ikke i, om der er en forskel i forskernes behandling af patienterne. Derfor vil vi gerne ‘blokere’ efter forsker - altså kontrollere for dem som en “batch” effekt. Man kan også blokere efter fx køn, for at sikre at forskellene i behandlingsgrupperne ikke skyldes forskelle mellem mænd og kvinder. Blokering udføres som en del af en lineær model, efter data er indsamlet, men det er nyttigt at tænke over det fra starten.</p>
+</div>
+<div id="eksempel-med-datasættet-toothgrowth" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Eksempel med datasættet <code>ToothGrowth</code><a href="emner-fra-eksperimental-design.html#eksempel-med-datasættet-toothgrowth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Et godt eksempel på et veludført eksperimentelt design er datasættet <code>ToothGrowth</code>, som er baseret på marsvin - de fik forskellige kosttilskud og doser, og derefter blev længden af deres tænder målt.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="emner-fra-eksperimental-design.html#cb1-1" tabindex="-1"></a><span class="fu">data</span>(ToothGrowth)</span>
+<span id="cb1-2"><a href="emner-fra-eksperimental-design.html#cb1-2" tabindex="-1"></a>ToothGrowth <span class="ot">&lt;-</span> ToothGrowth <span class="sc">%&gt;%</span> <span class="fu">tibble</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">dose =</span> <span class="fu">as.factor</span>(dose))</span>
+<span id="cb1-3"><a href="emner-fra-eksperimental-design.html#cb1-3" tabindex="-1"></a><span class="fu">summary</span>(ToothGrowth)</span></code></pre></div>
+<pre><code>#&gt;       len        supp     dose   
+#&gt;  Min.   : 4.20   OJ:30   0.5:20  
+#&gt;  1st Qu.:13.07   VC:30   1  :20  
+#&gt;  Median :19.25           2  :20  
+#&gt;  Mean   :18.81                   
+#&gt;  3rd Qu.:25.27                   
+#&gt;  Max.   :33.90</code></pre>
+<p>Her kan man se, at for hver gruppe (efter <code>supp</code> og <code>dose</code>) er der 10 marsvin - vi har således replikationer over grupperne, og hver <code>supp</code> (supplement) har hver af de tre mulige værdier for “dose”. Hvis vi for eksempel ikke var interesseret i <code>supp</code> men kun i dosis, kunne vi ‘blokere’ efter <code>supp</code> for at afbøde forskelle i effekten af de to supplementer i <code>supp</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="emner-fra-eksperimental-design.html#cb3-1" tabindex="-1"></a>ToothGrowth <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">count</span>(supp,dose) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="emner-fra-eksperimental-design.html#cb3-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(dose),<span class="at">y=</span>n,<span class="at">fill=</span><span class="fu">factor</span>(dose))) <span class="sc">+</span> </span>
+<span id="cb3-3"><a href="emner-fra-eksperimental-design.html#cb3-3" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb3-4"><a href="emner-fra-eksperimental-design.html#cb3-4" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Antal marsvin&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="emner-fra-eksperimental-design.html#cb3-5" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Dosering&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="emner-fra-eksperimental-design.html#cb3-6" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>supp) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="emner-fra-eksperimental-design.html#cb3-7" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-9-1.svg" width="432" style="display: block; margin: auto;" /></p>
+<p>Man skal dog være opmærksom, fordi vi ved ikke, hvordan marsvinene blev tildelt til de forskellige grupper. For eksempel, hvis hanner og hunner ikke er tildelt tilfældigt, kan det forekomme, at supp “OJ” og dosis “0.5” kun har hanmarsvin, og supp “OJ” med dosis “1.0” kun har hunmarsvin. I sådanne tilfælde kunne vi ikke afgøre, om forskellen i dosis “0.5” versus “1.0” er resultatet af dosis eller køn.</p>
+</div>
+</div>
+<div id="case-studies-simpsons-paradoks" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Case studies: Simpsons paradoks<a href="emner-fra-eksperimental-design.html#case-studies-simpsons-paradoks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(Se også videoressourcer Del 2).</p>
+<p>Simpsons paradoks er et fascinerende statistisk fænomen, der er en vigtig påmindelse om, at korrelation ikke nødvendigvis indebærer kausalitet, og at det er afgørende at forstå de underliggende data og ikke kun de aggregerede statistikker. Simpsons paradoks opstår, når man drager to modsatte konklusioner fra det samme datasæt - på den ene side, når man kigger på dataene samlet, og på den anden side, når man tager visse grupper i betragtning. Vi kan visualisere Simpsons paradoks gennem eksemplet nedenfor - her har vi to variable <code>x</code> og <code>y</code>, som vi kan bruge til at lave et scatterplot, samt nogle forskellige grupper inden for variablen <code>group</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="emner-fra-eksperimental-design.html#cb4-1" tabindex="-1"></a><span class="co">#library(datasauRus)</span></span>
+<span id="cb4-2"><a href="emner-fra-eksperimental-design.html#cb4-2" tabindex="-1"></a>simpsons_paradox <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/ysh3qpc7qv0ceut/simpsons_paradox_groups.txt?dl=1&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb4-3"><a href="emner-fra-eksperimental-design.html#cb4-3" tabindex="-1"></a>simpsons_paradox <span class="ot">&lt;-</span> simpsons_paradox <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span>
+<span id="cb4-4"><a href="emner-fra-eksperimental-design.html#cb4-4" tabindex="-1"></a>simpsons_paradox</span></code></pre></div>
+<pre><code>FALSE # A tibble: 222 × 3
+FALSE        x     y group
+FALSE    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+FALSE  1  62.2 70.6  D    
+FALSE  2  52.3 14.7  B    
+FALSE  3  56.4 46.4  C    
+FALSE  4  66.8 66.2  D    
+FALSE  5  66.5 89.2  E    
+FALSE  6  62.4 91.5  E    
+FALSE  7  38.9  6.76 A    
+FALSE  8  39.4 63.1  C    
+FALSE  9  60.9 92.6  E    
+FALSE 10  56.6 45.8  C    
+FALSE # ℹ 212 more rows</code></pre>
+<p>Hvis vi ignorerer <code>group</code> og kigger på dataene samlet, kan vi se, at der er en stærk positiv sammenhæng mellem x og y. Men når vi opdeler efter de forskellige grupper ved at skrive <code>colour = group</code>, opnår vi faktisk en negativ sammenhæng indenfor hver af grupperne.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="emner-fra-eksperimental-design.html#cb6-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> simpsons_paradox <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="emner-fra-eksperimental-design.html#cb6-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="emner-fra-eksperimental-design.html#cb6-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="emner-fra-eksperimental-design.html#cb6-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="emner-fra-eksperimental-design.html#cb6-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb6-6"><a href="emner-fra-eksperimental-design.html#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="emner-fra-eksperimental-design.html#cb6-7" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> simpsons_paradox <span class="sc">%&gt;%</span> </span>
+<span id="cb6-8"><a href="emner-fra-eksperimental-design.html#cb6-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x,y,<span class="at">colour=</span>group)) <span class="sc">+</span> </span>
+<span id="cb6-9"><a href="emner-fra-eksperimental-design.html#cb6-9" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-10"><a href="emner-fra-eksperimental-design.html#cb6-10" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="fu">aes</span>(<span class="at">group=</span>group),<span class="at">colour=</span><span class="st">&quot;black&quot;</span>,<span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="emner-fra-eksperimental-design.html#cb6-11" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb6-12"><a href="emner-fra-eksperimental-design.html#cb6-12" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="emner-fra-eksperimental-design.html#cb6-13" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb6-14"><a href="emner-fra-eksperimental-design.html#cb6-14" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-11-1.svg" width="864" style="display: block; margin: auto;" /></p>
+<p>Simpsons paradoks forekommer oftere end man skulle tro, og derfor er det vigtigt at overveje, hvilke andre variable man også er nødt til at tage i betragtning.</p>
+<div id="optagelse-på-berkeley" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Optagelse på Berkeley<a href="emner-fra-eksperimental-design.html#optagelse-på-berkeley" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Det mest berømte eksempel på Simpsons paradoks drejer sig om optagelsen på Berkeley Universitetet i 1973. Følgende tabel fra Wikipedia (<a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox" class="uri">https://en.wikipedia.org/wiki/Simpson%27s_paradox</a>) viser statistikker over antallet af ansøgere samt procentdelen, der blev optaget på universitetet generelt, opdelt efter køn.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="plots/admissions.png" alt="source: wikipedia" width="85%" />
+<p class="caption">
+Figure 11.2: source: wikipedia
+</p>
+</div>
+<p>Hvis vi laver et søjlediagram af tallene, kan man se, at der er en højere procentdel af mænd end kvinder, som blev optaget på universitetet (sagen medførte en retssag mod universitetet).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="emner-fra-eksperimental-design.html#cb7-1" tabindex="-1"></a>admissions_all <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;sex&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;all&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;women&quot;</span>),<span class="at">admitted=</span><span class="fu">c</span>(<span class="st">&quot;41&quot;</span>,<span class="st">&quot;44&quot;</span>,<span class="st">&quot;35&quot;</span>))</span>
+<span id="cb7-2"><a href="emner-fra-eksperimental-design.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="emner-fra-eksperimental-design.html#cb7-3" tabindex="-1"></a>admissions_all <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex,<span class="at">y=</span>admitted,<span class="at">fill=</span>sex)) <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="emner-fra-eksperimental-design.html#cb7-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="emner-fra-eksperimental-design.html#cb7-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb7-6"><a href="emner-fra-eksperimental-design.html#cb7-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Procent optaget&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="emner-fra-eksperimental-design.html#cb7-7" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">&quot;women&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;all&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="emner-fra-eksperimental-design.html#cb7-8" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-13-1.svg" width="480" style="display: block; margin: auto;" /></p>
+<p>Da man dog kiggede lidt nærmere på de samme tal, men opdelte efter de forskellige fakulteter på universitetet, fik man et anderledes billede af situationen. I følgende tabel har vi optagelsestallene for mænd og kvinder på hver af de forskellige fakulteter (A til F).</p>
+<!-- optagelses statistik efter afdeling -->
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="emner-fra-eksperimental-design.html#cb8-1" tabindex="-1"></a>admissions_separate <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb8-2"><a href="emner-fra-eksperimental-design.html#cb8-2" tabindex="-1"></a>  <span class="sc">~</span>department,   <span class="sc">~</span>all,   <span class="sc">~</span>men,  <span class="sc">~</span>women,</span>
+<span id="cb8-3"><a href="emner-fra-eksperimental-design.html#cb8-3" tabindex="-1"></a>  <span class="co">#------------|-------|-------|--------#</span></span>
+<span id="cb8-4"><a href="emner-fra-eksperimental-design.html#cb8-4" tabindex="-1"></a>  <span class="st">&quot;A&quot;</span>,            <span class="dv">64</span>,     <span class="dv">62</span>,      <span class="dv">82</span>,</span>
+<span id="cb8-5"><a href="emner-fra-eksperimental-design.html#cb8-5" tabindex="-1"></a>  <span class="st">&quot;B&quot;</span>,            <span class="dv">63</span>,     <span class="dv">63</span>,      <span class="dv">68</span>,</span>
+<span id="cb8-6"><a href="emner-fra-eksperimental-design.html#cb8-6" tabindex="-1"></a>  <span class="st">&quot;C&quot;</span>,            <span class="dv">35</span>,     <span class="dv">37</span>,      <span class="dv">34</span>,</span>
+<span id="cb8-7"><a href="emner-fra-eksperimental-design.html#cb8-7" tabindex="-1"></a>  <span class="st">&quot;D&quot;</span>,            <span class="dv">34</span>,     <span class="dv">33</span>,      <span class="dv">35</span>,</span>
+<span id="cb8-8"><a href="emner-fra-eksperimental-design.html#cb8-8" tabindex="-1"></a>  <span class="st">&quot;E&quot;</span>,            <span class="dv">25</span>,     <span class="dv">28</span>,      <span class="dv">24</span>,</span>
+<span id="cb8-9"><a href="emner-fra-eksperimental-design.html#cb8-9" tabindex="-1"></a>  <span class="st">&quot;F&quot;</span>,             <span class="dv">6</span>,      <span class="dv">6</span>,       <span class="dv">7</span></span>
+<span id="cb8-10"><a href="emner-fra-eksperimental-design.html#cb8-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>Man kan se, at for de fleste af fakulteterne er der ikke en markant forskel mellem mænd og kvinder, og i nogle tilfælde havde kvinder faktisk en større sandsynlighed for at blive optaget.</p>
+<!-- lave et plot af de data opdelte efter afdeling -->
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="emner-fra-eksperimental-design.html#cb9-1" tabindex="-1"></a>admissions_separate <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="emner-fra-eksperimental-design.html#cb9-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>department,<span class="at">names_to=</span><span class="st">&quot;sex&quot;</span>,<span class="at">values_to=</span><span class="st">&quot;admitted&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="emner-fra-eksperimental-design.html#cb9-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>department,<span class="at">y=</span>admitted,<span class="at">fill=</span>sex)) <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="emner-fra-eksperimental-design.html#cb9-4" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Procent optaget&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="emner-fra-eksperimental-design.html#cb9-5" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>,<span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb9-6"><a href="emner-fra-eksperimental-design.html#cb9-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-15-1.svg" width="384" style="display: block; margin: auto;" /></p>
+<p>Hvad skyldes denne sammenhæng? Det viste sig, at kvinder havde en tendens til at ansøge indenfor de fakulteter, som var sværest at komme ind på. For eksempel kan man se her, at fakultet E har en relativt lav optagelsesprocent. Det samme fakultet var dog et af dem, hvor betydeligt flere kvinder ansøgte end mænd.</p>
+<!-- lave et plot af ansøgelse statistik for afdeling E -->
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="emner-fra-eksperimental-design.html#cb10-1" tabindex="-1"></a>applications_E <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;sex&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;all&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;woman&quot;</span>),<span class="at">applications=</span><span class="fu">c</span>(<span class="st">&quot;584&quot;</span>,<span class="st">&quot;191&quot;</span>,<span class="st">&quot;393&quot;</span>))</span>
+<span id="cb10-2"><a href="emner-fra-eksperimental-design.html#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="emner-fra-eksperimental-design.html#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="emner-fra-eksperimental-design.html#cb10-4" tabindex="-1"></a>applications_E <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex,<span class="at">y=</span>applications,<span class="at">fill=</span>sex)) <span class="sc">+</span> </span>
+<span id="cb10-5"><a href="emner-fra-eksperimental-design.html#cb10-5" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb10-6"><a href="emner-fra-eksperimental-design.html#cb10-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb10-7"><a href="emner-fra-eksperimental-design.html#cb10-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Number of applications to dep. E&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="emner-fra-eksperimental-design.html#cb10-8" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">&quot;woman&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;all&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="emner-fra-eksperimental-design.html#cb10-9" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-16-1.svg" width="480" style="display: block; margin: auto;" /></p>
+<p>Derfor, selvom kvinder ikke havde en lavere sandsynlighed for at blive optaget end mænd i deres fortrukne fag, var antallet af kvinder, der blev optaget i det hele taget på tværs af alle afdelinger, faktisk lavere end antallet af mænd.</p>
+</div>
+</div>
+<div id="case-studies-anscombes-kvartet" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Case studies: Anscombes kvartet<a href="emner-fra-eksperimental-design.html#case-studies-anscombes-kvartet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(Se også videoressourcer Del 3).</p>
+<p>Anscombes kvartet (se også <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet" class="uri">https://en.wikipedia.org/wiki/Anscombe%27s_quartet</a>) er et meget nyttigt og berømt eksempel fra 1973, der fremhæver vigtigheden af at visualisere datasættet. Vi kan hente dataene fra linket nedenfor - der er x-værdier og y-værdier, som kan anvendes til at lave et scatterplot, og der er også <code>set</code>, der refererer til fire forskellige datasæt (derfor ‘kvartet’).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="emner-fra-eksperimental-design.html#cb11-1" tabindex="-1"></a>anscombe <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/mlt7crdik3eih9a/anscombe_long_format.txt?dl=1&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb11-2"><a href="emner-fra-eksperimental-design.html#cb11-2" tabindex="-1"></a>anscombe <span class="ot">&lt;-</span> anscombe <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span>
+<span id="cb11-3"><a href="emner-fra-eksperimental-design.html#cb11-3" tabindex="-1"></a>anscombe</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 44 × 3
+#&gt;      set     x     y
+#&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+#&gt;  1     1    10  8.04
+#&gt;  2     1     8  6.95
+#&gt;  3     1    13  7.58
+#&gt;  4     1     9  8.81
+#&gt;  5     1    11  8.33
+#&gt;  6     1    14  9.96
+#&gt;  7     1     6  7.24
+#&gt;  8     1     4  4.26
+#&gt;  9     1    12 10.8 
+#&gt; 10     1     7  4.82
+#&gt; # ℹ 34 more rows</code></pre>
+<p>Formålet med datasættet er, at vi gerne vil fitte en lineær regressionsmodel for at finde den forventede y-værdi afhængig af x (husk <code>lm(y ~ x)</code>). Da vi har fire datasæt, kan vi opdele datasættet efter <code>set</code> og anvende funktionerne <code>nest</code> og <code>map</code> (se Kapitel 7) til at fitte de fire lineære regressionsmodeller. Vi anvender også <code>tidy</code> og <code>glance</code> for at få resuméstatistikker fra de fire modeller:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="emner-fra-eksperimental-design.html#cb13-1" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> .x)</span>
+<span id="cb13-2"><a href="emner-fra-eksperimental-design.html#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="emner-fra-eksperimental-design.html#cb13-3" tabindex="-1"></a>tidy_anscombe_models <span class="ot">&lt;-</span> anscombe <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="emner-fra-eksperimental-design.html#cb13-4" tabindex="-1"></a>  <span class="fu">group_nest</span>(set) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-5"><a href="emner-fra-eksperimental-design.html#cb13-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fit =</span> <span class="fu">map</span>(data, my_func),</span>
+<span id="cb13-6"><a href="emner-fra-eksperimental-design.html#cb13-6" tabindex="-1"></a>         <span class="at">tidy =</span> <span class="fu">map</span>(fit, tidy),</span>
+<span id="cb13-7"><a href="emner-fra-eksperimental-design.html#cb13-7" tabindex="-1"></a>         <span class="at">glance =</span> <span class="fu">map</span>(fit, glance))</span></code></pre></div>
+<p>Vi kan anvende <code>unnest</code> på outputtet fra <code>tidy</code> og se på skæringspunktet og hældningen af de fire modeller. Man kan se, at de to parametre er næsten identiske for de fire modeller:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="emner-fra-eksperimental-design.html#cb14-1" tabindex="-1"></a>tidy_anscombe_models <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(<span class="st">&quot;tidy&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="emner-fra-eksperimental-design.html#cb14-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">&quot;set&quot;</span>,<span class="at">names_from =</span> <span class="st">&quot;term&quot;</span>,<span class="at">values_from=</span><span class="st">&quot;estimate&quot;</span>) </span></code></pre></div>
+<pre><code>#&gt; # A tibble: 4 × 3
+#&gt;     set `(Intercept)`     x
+#&gt;   &lt;int&gt;         &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1     1          3.00 0.500
+#&gt; 2     2          3.00 0.5  
+#&gt; 3     3          3.00 0.500
+#&gt; 4     4          3.00 0.500</code></pre>
+<p>Hvad med de andre parametre fra modellen - lad os eksempelvis kigge på <code>r.squared</code> og <code>p.value</code> fra modellerne, som kan findes i outputtet fra <code>glance</code>. Her kan vi igen se, at de er næsten identiske.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="emner-fra-eksperimental-design.html#cb16-1" tabindex="-1"></a>tidy_anscombe_models <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="emner-fra-eksperimental-design.html#cb16-2" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(glance)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="emner-fra-eksperimental-design.html#cb16-3" tabindex="-1"></a>  <span class="fu">select</span>(set, r.squared,p.value)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 4 × 3
+#&gt;     set r.squared p.value
+#&gt;   &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1     1     0.667 0.00217
+#&gt; 2     2     0.666 0.00218
+#&gt; 3     3     0.666 0.00218
+#&gt; 4     4     0.667 0.00216</code></pre>
+<p>Hvad med korrelation? Den er også næsten den samme:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="emner-fra-eksperimental-design.html#cb18-1" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">cor</span>(.x<span class="sc">$</span>x,.x<span class="sc">$</span>y)</span>
+<span id="cb18-2"><a href="emner-fra-eksperimental-design.html#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="emner-fra-eksperimental-design.html#cb18-3" tabindex="-1"></a>anscombe <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="emner-fra-eksperimental-design.html#cb18-4" tabindex="-1"></a>  <span class="fu">group_nest</span>(set) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-5"><a href="emner-fra-eksperimental-design.html#cb18-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cor =</span> <span class="fu">map</span>(data, my_func)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-6"><a href="emner-fra-eksperimental-design.html#cb18-6" tabindex="-1"></a>  <span class="fu">unnest</span>(cor) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="emner-fra-eksperimental-design.html#cb18-7" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 4 × 2
+#&gt;     set   cor
+#&gt;   &lt;int&gt; &lt;dbl&gt;
+#&gt; 1     1 0.816
+#&gt; 2     2 0.816
+#&gt; 3     3 0.816
+#&gt; 4     4 0.817</code></pre>
+<p>Kan vi så konkludere, at de fire datasæt, som underbygger de forskellige modeller, er identiske? Lad os lave et scatter plot af de fire datasæt (som vi faktisk burde have gjort i starten af vores analyse).</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="emner-fra-eksperimental-design.html#cb20-1" tabindex="-1"></a>anscombe <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="emner-fra-eksperimental-design.html#cb20-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y,<span class="at">colour=</span><span class="fu">factor</span>(set))) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="emner-fra-eksperimental-design.html#cb20-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="emner-fra-eksperimental-design.html#cb20-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>set) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="emner-fra-eksperimental-design.html#cb20-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb20-6"><a href="emner-fra-eksperimental-design.html#cb20-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-22-1.svg" width="768" style="display: block; margin: auto;" /></p>
+<p>De fire datasæt er meget forskellige. Vi ved, at de alle har samme bedste tilpasning med rette linjer, men de underliggende data er slet ikke de samme. Det første datasæt ser egnet ud til en lineær regressionsanalyse, men vi kan se i datasæt nummer to, at der ikke engang er en lineær sammenhæng. Og de andre to har outlier værdier, hvilket gør, at den bedst tilpassede rette linje ikke passer særlig godt til punkterne.</p>
+</div>
+<div id="undersøgelse-af-batch-effekter" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Undersøgelse af “batch-effekter”<a href="emner-fra-eksperimental-design.html#undersøgelse-af-batch-effekter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(Se også videoressourcer Part 4).</p>
+<p>En “batch-effekt” er en systematisk teknisk bias, der opstår, når målinger (f.eks. genekspression) udføres i flere omgange eller “batches”. Dette kan potentielt føre til betydelige forvrængninger og fejlagtige konklusioner i dataanalyse, hvis det ikke tages højde for.</p>
+<p>Forestil dig, at du udfører et eksperiment, hvor du sammenligner genekspressionen i sundt væv med kræftvæv. Du udfører dine eksperimenter over flere dage, og det viser sig, at alle dine sunde prøver blev behandlet på mandag, og alle dine kræftprøver blev behandlet på tirsdag. Hvis der er en systematisk forskel i, hvordan dine eksperimenter blev udført på de to dage (måske et reagens var lidt anderledes, eller instrumentet blev brugt på en anden måde), vil du se en stor forskel i genekspression mellem dine sunde og kræftprøver. Men denne forskel skyldes faktisk batch-effekten, ikke forskellen mellem sundt og kræftvæv.</p>
+<p>Man kan også anvende visualiseringer til at undersøge eventuelle batch-effekter eller forvirrende variabler i datasættet. Dette er især vigtigt i store eksperimenter, hvor forskellige prøver eller dele af datasættet bliver indsamlet på forskellige tidspunkter, steder, eller af forskellige personer. Det er ofte tilfældet i sekvenseringsbaserede datasæt, at man ser batch-effekter, og det kan skyldes mange ting, bl.a.:</p>
+<ul>
+<li>Sekvenseringsdybde</li>
+<li>Grupper af prøver lavet på forskellige tidspunkter af forskellige individer</li>
+<li>Sekvenseringsmaskiner - prøver sekvenseret på forskellige maskiner eller ‘lanes’.</li>
+</ul>
+<p>Lad os tage udgangspunkt i nogle genekspressionssekvenseringsdata fra mus (vi så også dette datasæt, da vi lærte om <code>pivot_longer</code> kombineret med <code>left_join</code>).</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="emner-fra-eksperimental-design.html#cb21-1" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/3vhwnsnhzsy35nd/bottomly_count_table_normalised.txt?dl=1&quot;</span>)</span>
+<span id="cb21-2"><a href="emner-fra-eksperimental-design.html#cb21-2" tabindex="-1"></a>coldata <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/el3sm9ncvzbq6xf/bottomly_phenodata.txt?dl=1&quot;</span>)</span>
+<span id="cb21-3"><a href="emner-fra-eksperimental-design.html#cb21-3" tabindex="-1"></a>coldata <span class="ot">&lt;-</span> coldata <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span>
+<span id="cb21-4"><a href="emner-fra-eksperimental-design.html#cb21-4" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,],<span class="at">rownames=</span><span class="st">&quot;gene&quot;</span>)</span></code></pre></div>
+<p>Jeg begynder med at vælge kun de rækker, der har mindst 50 counts, for at undgå gener med lave ekspressionsniveauer. Det næste jeg gør er at transformere dataene til logaritmisk form (funktion <code>map_if()</code>) for at opnå en bedre fordeling i datasættet.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="emner-fra-eksperimental-design.html#cb22-1" tabindex="-1"></a><span class="co">#normalisere og filtrere dataene</span></span>
+<span id="cb22-2"><a href="emner-fra-eksperimental-design.html#cb22-2" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="emner-fra-eksperimental-design.html#cb22-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(norm.cts <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gene))<span class="sc">&gt;</span><span class="dv">50</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="emner-fra-eksperimental-design.html#cb22-4" tabindex="-1"></a>  <span class="fu">map_if</span>(is.numeric,<span class="sc">~</span><span class="fu">log</span>(.x<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb22-5"><a href="emner-fra-eksperimental-design.html#cb22-5" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="emner-fra-eksperimental-design.html#cb22-6" tabindex="-1"></a>norm.cts</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 10,193 × 22
+#&gt;    gene    SRX033480 SRX033488 SRX033481 SRX033489 SRX033482 SRX033490 SRX033483
+#&gt;    &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1 ENSMUS…      6.35      6.32      6.21      6.29      6.31      6.27      6.30
+#&gt;  2 ENSMUS…      3.51      3.56      3.57      3.27      2.99      3.61      3.56
+#&gt;  3 ENSMUS…      3.19      3.50      3.08      3.21      3.14      3.09      3.22
+#&gt;  4 ENSMUS…      6.69      6.48      6.38      6.35      6.39      6.34      6.50
+#&gt;  5 ENSMUS…      6.05      6.37      6.17      6.26      6.16      6.06      6.13
+#&gt;  6 ENSMUS…      2.89      2.94      3.16      3.21      3.77      3.30      3.11
+#&gt;  7 ENSMUS…      3.42      3.12      3.86      4.36      3.77      3.99      4.24
+#&gt;  8 ENSMUS…      3.42      2.94      3.52      3.41      3.57      3.60      2.99
+#&gt;  9 ENSMUS…      5.02      4.98      4.49      4.27      4.67      4.35      4.81
+#&gt; 10 ENSMUS…      5.13      4.88      4.97      4.76      4.82      4.79      4.96
+#&gt; # ℹ 10,183 more rows
+#&gt; # ℹ 14 more variables: SRX033476 &lt;dbl&gt;, SRX033478 &lt;dbl&gt;, SRX033479 &lt;dbl&gt;,
+#&gt; #   SRX033472 &lt;dbl&gt;, SRX033473 &lt;dbl&gt;, SRX033474 &lt;dbl&gt;, SRX033475 &lt;dbl&gt;,
+#&gt; #   SRX033491 &lt;dbl&gt;, SRX033484 &lt;dbl&gt;, SRX033492 &lt;dbl&gt;, SRX033485 &lt;dbl&gt;,
+#&gt; #   SRX033493 &lt;dbl&gt;, SRX033486 &lt;dbl&gt;, SRX033494 &lt;dbl&gt;</code></pre>
+<p>Så der er omkring 10.000 gener i rækkerne, og der er 21 forskellige prøver, der spreder sig over kolonnerne. Vi har også nogle prøveoplysninger - der er to forskellige stammer af mus og også forskellige batches, som vi gerne vil undersøge nærmere.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="emner-fra-eksperimental-design.html#cb24-1" tabindex="-1"></a>coldata</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 5
+#&gt;    column    num.tech.reps strain   batch lane.number
+#&gt;    &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;    &lt;int&gt;       &lt;int&gt;
+#&gt;  1 SRX033480             1 C57BL.6J     6           1
+#&gt;  2 SRX033488             1 C57BL.6J     7           1
+#&gt;  3 SRX033481             1 C57BL.6J     6           2
+#&gt;  4 SRX033489             1 C57BL.6J     7           2
+#&gt;  5 SRX033482             1 C57BL.6J     6           3
+#&gt;  6 SRX033490             1 C57BL.6J     7           3
+#&gt;  7 SRX033483             1 C57BL.6J     6           5
+#&gt;  8 SRX033476             1 C57BL.6J     4           6
+#&gt;  9 SRX033478             1 C57BL.6J     4           7
+#&gt; 10 SRX033479             1 C57BL.6J     4           8
+#&gt; # ℹ 11 more rows</code></pre>
+<p>Vi kan se på, hvor mange prøver vi har for hver kombination af stamme og batch i datasættet:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="emner-fra-eksperimental-design.html#cb26-1" tabindex="-1"></a><span class="fu">table</span>(coldata<span class="sc">$</span>strain, coldata<span class="sc">$</span>batch)</span></code></pre></div>
+<pre><code>#&gt;           
+#&gt;            4 6 7
+#&gt;   C57BL.6J 3 4 3
+#&gt;   DBA.2J   4 3 4</code></pre>
+<p>Så man kan se, at både stammen er repræsenteret med tre eller fire prøver i hver af de tre batches. Der er derfor <em>replikation</em>, og da vi har fået repræsenteret hver kombination af stamme og batch, kan vi eventuelt <strong>blokere</strong> efter batch for at fjerne dens effekt. Her har vi ikke tid til at se på metoder til at fjerne batch-effekter, men det er vigtigt, at vi er i stand til at opdage dem.</p>
+<div id="principal-component-analyse" class="section level3 hasAnchor" number="11.5.1">
+<h3><span class="header-section-number">11.5.1</span> Principal component analyse<a href="emner-fra-eksperimental-design.html#principal-component-analyse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Man kan undersøge mulige batch-effekter via principal component analyse.</p>
+<p>Først skal vi lave en “transpose” af datasættet således at variablerne (samples) bliver i rækkerne og observationerne (genes) er som kolonnerne. Det er ikke helt ligetil i tidyverse, men her er en måde at gøre det på:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="emner-fra-eksperimental-design.html#cb28-1" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">t</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>]))</span>
+<span id="cb28-2"><a href="emner-fra-eksperimental-design.html#cb28-2" tabindex="-1"></a><span class="fu">colnames</span>(norm.cts.transpose) <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene)</span>
+<span id="cb28-3"><a href="emner-fra-eksperimental-design.html#cb28-3" tabindex="-1"></a>norm.cts.transpose <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sample =</span> <span class="fu">colnames</span>(norm.cts)[<span class="sc">-</span><span class="dv">1</span>],<span class="at">.before=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 10,194
+#&gt;    sample    ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
+#&gt;    &lt;chr&gt;                  &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
+#&gt;  1 SRX033480               6.35               3.51               3.19
+#&gt;  2 SRX033488               6.32               3.56               3.50
+#&gt;  3 SRX033481               6.21               3.57               3.08
+#&gt;  4 SRX033489               6.29               3.27               3.21
+#&gt;  5 SRX033482               6.31               2.99               3.14
+#&gt;  6 SRX033490               6.27               3.61               3.09
+#&gt;  7 SRX033483               6.30               3.56               3.22
+#&gt;  8 SRX033476               6.03               3.69               2.83
+#&gt;  9 SRX033478               6.30               3.42               3.73
+#&gt; 10 SRX033479               5.88               3.98               3.24
+#&gt; # ℹ 11 more rows
+#&gt; # ℹ 10,190 more variables: ENSMUSG00000000078 &lt;dbl&gt;, ENSMUSG00000000088 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000093 &lt;dbl&gt;, ENSMUSG00000000120 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000125 &lt;dbl&gt;, ENSMUSG00000000126 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000127 &lt;dbl&gt;, ENSMUSG00000000131 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000149 &lt;dbl&gt;, ENSMUSG00000000167 &lt;dbl&gt;,
+#&gt; #   ENSMUSG00000000168 &lt;dbl&gt;, ENSMUSG00000000171 &lt;dbl&gt;, …</code></pre>
+<p>Heldigvis er der en pakke, som kan gøre processen meget hurtigere:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="emner-fra-eksperimental-design.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
+<span id="cb30-2"><a href="emner-fra-eksperimental-design.html#cb30-2" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="emner-fra-eksperimental-design.html#cb30-3" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb30-4"><a href="emner-fra-eksperimental-design.html#cb30-4" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="emner-fra-eksperimental-design.html#cb30-5" tabindex="-1"></a>norm.cts.transpose[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>#&gt;      sample ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
+#&gt; 1 SRX033480           6.352707           3.514892           3.190250
+#&gt; 2 SRX033488           6.317191           3.560812           3.495351
+#&gt; 3 SRX033481           6.208840           3.571591           3.079332
+#&gt; 4 SRX033489           6.289602           3.265114           3.210200
+#&gt; 5 SRX033482           6.307351           2.989835           3.136775
+#&gt; 6 SRX033490           6.268945           3.613359           3.090954
+#&gt;   ENSMUSG00000000078
+#&gt; 1           6.689454
+#&gt; 2           6.477961
+#&gt; 3           6.377990
+#&gt; 4           6.345142
+#&gt; 5           6.389898
+#&gt; 6           6.337397</code></pre>
+<p>Nu kan vi udføre en principal component analyse:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="emner-fra-eksperimental-design.html#cb32-1" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> norm.cts.transpose <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="emner-fra-eksperimental-design.html#cb32-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="co"># behold kun numeriske kolonner</span></span>
+<span id="cb32-3"><a href="emner-fra-eksperimental-design.html#cb32-3" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="co"># udfør PCA på skalerede data</span></span></code></pre></div>
+<p>Så kan vi bruge vores standarde måde at visualisere principal components på:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="emner-fra-eksperimental-design.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb33-2"><a href="emner-fra-eksperimental-design.html#cb33-2" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="emner-fra-eksperimental-design.html#cb33-3" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="emner-fra-eksperimental-design.html#cb33-4" tabindex="-1"></a>  <span class="fu">augment</span>(norm.cts.transpose)</span>
+<span id="cb33-5"><a href="emner-fra-eksperimental-design.html#cb33-5" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="emner-fra-eksperimental-design.html#cb33-6" tabindex="-1"></a>pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb33-7"><a href="emner-fra-eksperimental-design.html#cb33-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2)) <span class="sc">+</span> </span>
+<span id="cb33-8"><a href="emner-fra-eksperimental-design.html#cb33-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb33-9"><a href="emner-fra-eksperimental-design.html#cb33-9" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb33-10"><a href="emner-fra-eksperimental-design.html#cb33-10" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-30-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Anvend left_join til at få oplysningen med:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="emner-fra-eksperimental-design.html#cb34-1" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="emner-fra-eksperimental-design.html#cb34-2" tabindex="-1"></a>  <span class="fu">left_join</span>(coldata <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">sample =</span> column),<span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="emner-fra-eksperimental-design.html#cb35-1" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">colnames</span>(pca_fit_augment))</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;.fittedPC20&quot;   &quot;.fittedPC21&quot;   &quot;num.tech.reps&quot; &quot;strain&quot;       
+#&gt; [5] &quot;batch&quot;         &quot;lane.number&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="emner-fra-eksperimental-design.html#cb37-1" tabindex="-1"></a>pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="emner-fra-eksperimental-design.html#cb37-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">colour=</span><span class="fu">as.factor</span>(batch),<span class="at">shape=</span>strain)) <span class="sc">+</span> </span>
+<span id="cb37-3"><a href="emner-fra-eksperimental-design.html#cb37-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb37-4"><a href="emner-fra-eksperimental-design.html#cb37-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb37-5"><a href="emner-fra-eksperimental-design.html#cb37-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<!-- lave boxplot af PC1 og PC2 opdelt efter batch-->
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="emner-fra-eksperimental-design.html#cb38-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="emner-fra-eksperimental-design.html#cb38-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(batch),<span class="at">y=</span>.fittedPC1,<span class="at">fill=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Batches PC1&quot;</span>)</span>
+<span id="cb38-3"><a href="emner-fra-eksperimental-design.html#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="emner-fra-eksperimental-design.html#cb38-4" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span></span>
+<span id="cb38-5"><a href="emner-fra-eksperimental-design.html#cb38-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(batch),<span class="at">y=</span>.fittedPC2,<span class="at">fill=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Batch PC2&quot;</span>)</span>
+<span id="cb38-6"><a href="emner-fra-eksperimental-design.html#cb38-6" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="emner-fra-eksperimental-design.html#cb38-7" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb38-8"><a href="emner-fra-eksperimental-design.html#cb38-8" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Man kan også lav en heatmap:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="emner-fra-eksperimental-design.html#cb39-1" tabindex="-1"></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb39-2"><a href="emner-fra-eksperimental-design.html#cb39-2" tabindex="-1"></a><span class="fu">row.names</span>(cor_mat) <span class="ot">&lt;-</span> coldata<span class="sc">$</span>batch</span>
+<span id="cb39-3"><a href="emner-fra-eksperimental-design.html#cb39-3" tabindex="-1"></a><span class="fu">colnames</span>(cor_mat) <span class="ot">&lt;-</span> coldata<span class="sc">$</span>strain</span>
+<span id="cb39-4"><a href="emner-fra-eksperimental-design.html#cb39-4" tabindex="-1"></a><span class="fu">heatmap</span>(cor_mat)</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ekstra-batch-effect-correction-med-combat-funktionen" class="section level3 hasAnchor" number="11.5.2">
+<h3><span class="header-section-number">11.5.2</span> EKSTRA: Batch effect correction med ComBat()-funktionen<a href="emner-fra-eksperimental-design.html#ekstra-batch-effect-correction-med-combat-funktionen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>ComBat-pakken i R hjælper med at korrigere for batch-effekter, så forskelle mellem prøver skyldes biologisk variation og ikke tekniske forskelle.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="emner-fra-eksperimental-design.html#cb40-1" tabindex="-1"></a><span class="co">#if (!require(&quot;BiocManager&quot;, quietly = TRUE))</span></span>
+<span id="cb40-2"><a href="emner-fra-eksperimental-design.html#cb40-2" tabindex="-1"></a><span class="co">#    install.packages(&quot;BiocManager&quot;)</span></span>
+<span id="cb40-3"><a href="emner-fra-eksperimental-design.html#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="emner-fra-eksperimental-design.html#cb40-4" tabindex="-1"></a><span class="co">#BiocManager::install(&quot;sva&quot;)</span></span>
+<span id="cb40-5"><a href="emner-fra-eksperimental-design.html#cb40-5" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="emner-fra-eksperimental-design.html#cb40-6" tabindex="-1"></a><span class="fu">library</span>(sva)</span>
+<span id="cb40-7"><a href="emner-fra-eksperimental-design.html#cb40-7" tabindex="-1"></a>corrected <span class="ot">&lt;-</span> sva<span class="sc">::</span><span class="fu">ComBat</span>(<span class="at">dat=</span>norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,] <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gene),<span class="at">batch=</span>coldata <span class="sc">%&gt;%</span> <span class="fu">pull</span>(batch))</span>
+<span id="cb40-8"><a href="emner-fra-eksperimental-design.html#cb40-8" tabindex="-1"></a>corrected <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(corrected) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">gene =</span> norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,] <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene),<span class="at">.before=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Så kan man lave præcis samme procedure som i ovenstående på den korrigede dataframe:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="emner-fra-eksperimental-design.html#cb41-1" tabindex="-1"></a>corrected.transpose <span class="ot">&lt;-</span> corrected <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="emner-fra-eksperimental-design.html#cb41-2" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb41-3"><a href="emner-fra-eksperimental-design.html#cb41-3" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="emner-fra-eksperimental-design.html#cb41-4" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> corrected.transpose <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="emner-fra-eksperimental-design.html#cb41-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="co"># behold kun numeriske kolonner</span></span>
+<span id="cb41-6"><a href="emner-fra-eksperimental-design.html#cb41-6" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="co"># udfør PCA på skalerede data</span></span>
+<span id="cb41-7"><a href="emner-fra-eksperimental-design.html#cb41-7" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="emner-fra-eksperimental-design.html#cb41-8" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit <span class="sc">%&gt;%</span> </span>
+<span id="cb41-9"><a href="emner-fra-eksperimental-design.html#cb41-9" tabindex="-1"></a>  <span class="fu">augment</span>(corrected.transpose)</span>
+<span id="cb41-10"><a href="emner-fra-eksperimental-design.html#cb41-10" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="emner-fra-eksperimental-design.html#cb41-11" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb41-12"><a href="emner-fra-eksperimental-design.html#cb41-12" tabindex="-1"></a>  <span class="fu">left_join</span>(coldata <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">sample =</span> column),<span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb41-13"><a href="emner-fra-eksperimental-design.html#cb41-13" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="emner-fra-eksperimental-design.html#cb41-14" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">batch=</span><span class="fu">as.factor</span>(batch))</span></code></pre></div>
+<p>Og så lav en plot:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="emner-fra-eksperimental-design.html#cb42-1" tabindex="-1"></a>PCA1 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="emner-fra-eksperimental-design.html#cb42-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">colour=</span>batch,<span class="at">shape=</span>strain)) <span class="sc">+</span> </span>
+<span id="cb42-3"><a href="emner-fra-eksperimental-design.html#cb42-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb42-4"><a href="emner-fra-eksperimental-design.html#cb42-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb42-5"><a href="emner-fra-eksperimental-design.html#cb42-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb42-6"><a href="emner-fra-eksperimental-design.html#cb42-6" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="emner-fra-eksperimental-design.html#cb42-7" tabindex="-1"></a>PCA2 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb42-8"><a href="emner-fra-eksperimental-design.html#cb42-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">shape=</span>batch,<span class="at">colour=</span>strain)) <span class="sc">+</span> </span>
+<span id="cb42-9"><a href="emner-fra-eksperimental-design.html#cb42-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb42-10"><a href="emner-fra-eksperimental-design.html#cb42-10" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb42-11"><a href="emner-fra-eksperimental-design.html#cb42-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb42-12"><a href="emner-fra-eksperimental-design.html#cb42-12" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="emner-fra-eksperimental-design.html#cb42-13" tabindex="-1"></a><span class="fu">grid.arrange</span>(PCA1,PCA2,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="11-experimental_files/figure-html/unnamed-chunk-38-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<!-- Husk, at når man udfører en principal component analyse, får man rotationsmatricen, der anvendes til at se, hvor de forskellige prøver ligger i forhold til hinanden over de forskellige principal komponenter - dvs. at prøver, der ligner hinanden, vises på samme sted på plottet. Rotationsmatricen udtrækkes med funktionen `tidy()`: -->
+<!-- ```{r} -->
+<!-- rot_matrix <- pca_fit %>% -->
+<!--   tidy(matrix = "rotation")  -->
+<!-- ``` -->
+<!-- Vi vil gerne lave et plot af rotationsmatricen, men først vil vi gerne tilføje prøveoplysningerne med `left_join`, så vi kan se de forskellige batches eller stammer. Begge dataframes har en kolonne, der hedder `column`, som refererer til prøvenavne, så jeg forbinder efter `column` her. -->
+<!-- ```{r} -->
+<!-- rot_matrix <- rot_matrix  %>%  -->
+<!--   left_join(coldata,by="column") -->
+<!-- ``` -->
+<!-- Brug `pivot_wider()` til at få det i bred format, så vi kan plotte "PC1" og "PC2" i et scatter plot: -->
+<!-- ```{r} -->
+<!-- rot_matrix_wide <- rot_matrix %>%  -->
+<!--   pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") -->
+<!-- rot_matrix_wide -->
+<!-- ``` -->
+<!-- Jeg tildeler farver og former efter de tre batches. Man kan se, at jeg har fået alle prøver fra batch nummer 2 på samme sted i plottet. -->
+<!-- ```{r,fig.width=6,fig.height=4} -->
+<!-- rot_matrix_wide %>% -->
+<!--   ggplot(aes(PC1,PC2,shape=factor(batch),colour=factor(batch))) +  -->
+<!--   geom_point(size=3) + -->
+<!--   theme_minimal() -->
+<!-- ``` -->
+<!-- Jeg kan også tildele farver efter stamme, hvor man kan se, at der sandsynligvis er en forskel mellem de to stammer her. -->
+<!-- ```{r,fig.width=6,fig.height=4} -->
+<!-- rot_matrix_wide %>% -->
+<!--   ggplot(aes(PC1,PC2,shape=factor(strain),colour=factor(strain))) +  -->
+<!--   geom_point(size=3) + -->
+<!--   theme_minimal() -->
+<!-- ``` -->
+<!-- Man kan også se på dataene på en anden måde ved at lave boksdiagrammer for de to første principale komponenter, opdelt efter batch. Vi får bekræftet vores observation om, at der er en markant forskel mellem batch 7 og de andre to batches langs den første principale komponent, og det er et problem, som muligvis skal korrigeres, før man foretager yderligere analyser af dataene. -->
+<!-- <!-- lave boxplot af PC1 og PC2 opdelt efter batch-->
+<p>–&gt;
+<!-- ```{r,comment=FALSE,message=FALSE} -->
+<!-- p1 <- rot_matrix_wide %>%  -->
+<!--   ggplot(aes(x=factor(batch),y=PC1,fill=factor(batch))) + geom_boxplot(show.legend = F) + geom_jitter(show.legend = F) + theme_minimal() --></p>
+<!-- p2 <- rot_matrix_wide %>%  -->
+<!--   ggplot(aes(x=factor(batch),y=PC2,fill=factor(batch))) + geom_boxplot(show.legend = F) + geom_jitter(show.legend = F) + theme_minimal() -->
+<!-- library(gridExtra) -->
+<!-- grid.arrange(p1,p2,ncol=2) -->
+<!-- ``` -->
+<!-- ### Ekstra: Pheatmap tilgang! -->
+<!-- Det er også meget almindeligt at se "heatmaps" indenfor biologi fag. I en heatmap kan man visualisere korrelationerne i ekspressionen mellem de forskellige samples. Samples som har tætteste sammenhænge fremstå ved siden af hinanden på heatmappen ( ligesom i en dendrogram i hierarchical clustering, men med korrelation i stedet for afstand). -->
+<!-- I følgende beregner jeg korrelationkoffeficient mellem de forskellige variabler: -->
+<!-- ```{r} -->
+<!-- norm.cts.cor <- norm.cts %>% select(-gene) %>% cor() -->
+<!-- ``` -->
+<!-- I følgende laver jeg en heatmap med funktionen `pheatmap` som findes i pakken `pheatmap`.  -->
+<!-- ```{r,fig.width=6,fig.height=5} -->
+<!-- library(pheatmap) #installer pakken hvis nødvendigt -->
+<!-- pheatmap(norm.cts.cor) -->
+<!-- ``` -->
+<!-- Samme samples stå på både rækkerne og kolonnerne, og farverne representere hvor stærk korrelationen er mellem hver par samples. Hver sample har en korrelationskoefficient af 1 med sig selv, så man får en rød farve langt diagonelen, som betyder perfekt korrelation. Men det er svært at se, om der er en effekt pga. de forskellige batches. Hvordan kan vi gøre heatmappen mere informativ? -->
+<!-- I følgende anvender jeg unite til at lave mere informativ navne i variablen "info_name": -->
+<!-- ```{r} -->
+<!-- info_new_names <- coldata %>%  -->
+<!--   unite(strain,batch,lane.number,col = "info_name",remove = F) -->
+<!-- info_new_names -->
+<!-- ``` -->
+<!-- Jeg ændrer navnerne på kolonnerne og rækkerne i min korrelation matrix og laver en ny heatmap: -->
+<!-- ```{r,fig.width=6,fig.height=5} -->
+<!-- colnames(norm.cts.cor) <- info_new_names %>% pull(info_name) -->
+<!-- row.names(norm.cts.cor) <-  info_new_names %>% pull(info_name) -->
+<!-- pheatmap(norm.cts.cor) -->
+<!-- ``` -->
+<!-- Det er bedre - jeg tilføjer også nogle flere annotations til at gøre det mere informativ: -->
+<!-- ```{r,fig.width=6.75,fig.height=5} -->
+<!-- annotations <- info_new_names %>%  -->
+<!--   select(batch,lane.number,strain) %>%  -->
+<!--   mutate(batch = as.factor(batch),lane.number=as.factor(lane.number)) %>% as.data.frame() -->
+<!-- row.names(annotations) <- info_new_names$info_name -->
+<!-- pheatmap(norm.cts.cor,annotation_col = annotations) -->
+<!-- ``` -->
+</div>
+</div>
+<div id="problemstillinger-10" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Problemstillinger<a href="emner-fra-eksperimental-design.html#problemstillinger-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Problem 1</strong>) Quiz på Absalon - experimental</p>
+<hr />
+<p>Problem 2) Eksperimentelt design</p>
+<p>Jeg udfører et eksperiment, hvor patienter modtager et af tre forskellige kosttilskud (Gruppe 1, 2 og 3). Der er 5 patienter i hver gruppe, og jeg ønsker at undersøge, om patienternes energiniveau i gennemsnit varierer mellem de tre grupper. Alderen på patienterne i hver af de tre grupper er:</p>
+<p>Gruppe 1: 18, 23, 31, 25, 19</p>
+<p>Gruppe 2: 24, 29, 35, 21, 30</p>
+<p>Gruppe 3: 43, 52, 33, 39, 40</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Hvad er problemet med det eksperimentelle design her? Lav boxplots for at illustrere fordelingen af alderne for hver af de tre grupper (du skal starte med at lave en <strong>tibble</strong>, der indeholder dataene).</p></li>
+<li><p>Hvis man finder en signifikant forskel mellem de tre kosttilskud, kan man så stole på resultaterne?</p></li>
+<li><p>Hvilke andre variabler end alder kunne være årsag til en eventuel forskel mellem de tre kosttilskud, og som muligvis skulle tages i betragtning?</p></li>
+<li><p>Hvad kan man gøre for at løse problemet med det ovenstående eksperimentelle design?</p></li>
+</ol>
+<hr />
+<p><strong>Problem 3</strong>) <em>Simpsons paradoks</em> <strong>Genbesøg af Lung Cap-data</strong></p>
+<p>Indlæs <code>LungCapData</code> og tilføj den kategoriske variabel <code>Age.Group</code>:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="emner-fra-eksperimental-design.html#cb43-1" tabindex="-1"></a>LungCapData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.dropbox.com/s/ke27fs5d37ks1hm/LungCapData.csv?dl=1&quot;</span>)</span>
+<span id="cb43-2"><a href="emner-fra-eksperimental-design.html#cb43-2" tabindex="-1"></a>LungCapData<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span> <span class="fu">cut</span>(LungCapData<span class="sc">$</span>Age,<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>),<span class="at">right=</span><span class="cn">FALSE</span>,<span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-3"><a href="emner-fra-eksperimental-design.html#cb43-3" tabindex="-1"></a><span class="fu">levels</span>(LungCapData<span class="sc">$</span>Age.Group) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;&lt;13&quot;</span>,<span class="st">&quot;13-14&quot;</span>,<span class="st">&quot;15-16&quot;</span>,<span class="st">&quot;17+&quot;</span>)</span></code></pre></div>
+<p><strong>a</strong>) Lav boxplots med <code>smoke</code> på x-aksen og <code>LungCap</code> på y-aksen.
++ Bemærk hvilken gruppe der har den højeste lungekapacitet.</p>
+<p><strong>b</strong>) Lav samme plot, men adskilt efter <code>Age.Group</code>, og beskriv, hvordan det er et eksempel på Simpsons paradoks.</p>
+<p><strong>c)</strong> Lav et boxplot med <code>Age</code> på y-aksen og <code>Smoke</code> på x-aksen for at understøtte forklaringen på, hvorfor man ser Simpsons paradoks i dette datasæt.</p>
+<hr />
+<p><strong>Problem 4</strong>) <em>Anscombes analyse</em> Gentag Anscombes analyse med dinosaurdatasættet:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="emner-fra-eksperimental-design.html#cb44-1" tabindex="-1"></a><span class="fu">library</span>(datasauRus) <span class="co">#installer denne pakke</span></span>
+<span id="cb44-2"><a href="emner-fra-eksperimental-design.html#cb44-2" tabindex="-1"></a>data_dozen <span class="ot">&lt;-</span> datasauRus<span class="sc">::</span>datasaurus_dozen</span>
+<span id="cb44-3"><a href="emner-fra-eksperimental-design.html#cb44-3" tabindex="-1"></a>data_dozen</span></code></pre></div>
+<pre><code>FALSE # A tibble: 1,846 × 3
+FALSE    dataset     x     y
+FALSE    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+FALSE  1 dino     55.4  97.2
+FALSE  2 dino     51.5  96.0
+FALSE  3 dino     46.2  94.5
+FALSE  4 dino     42.8  91.4
+FALSE  5 dino     40.8  88.3
+FALSE  6 dino     38.7  84.9
+FALSE  7 dino     35.6  79.9
+FALSE  8 dino     33.1  77.6
+FALSE  9 dino     29.0  74.5
+FALSE 10 dino     26.2  71.4
+FALSE # ℹ 1,836 more rows</code></pre>
+<p><strong>a</strong>) Fit en lineær regressionsmodel for hvert af datasættene (brug <code>group_by</code>, <code>nest</code> og <code>map</code> i kombination med en custom funktion), hvor <code>y</code> er den afhængige variabel og <code>x</code> er den uafhængige variabel. Anvend også <code>tidy</code> og <code>glance</code> på alle modellerne.</p>
+<p><strong>b</strong>) Brug resultaterne fra <code>tidy</code> til at undersøge hældning og skæring med y-aksen for de forskellige modeller - ligner de hinanden?</p>
+<p><strong>c</strong>) Brug også resultaterne fra <code>glance</code> til at undersøge <code>r.squared</code> og <code>p.value</code>.</p>
+<p><strong>d</strong>) Er de alle det samme datasæt? Lav et scatter plot opdelt efter de forskellige datasæt. Hvordan ser de bedste rette linjer ud på plottene?</p>
+<hr />
+<p><strong>Problem 5</strong>) Vi vil gerne undersøge eventuelle batcheffekter i det følgende datasæt. Det er simulerede “single cell”-sekvenserings count data (dataframen <code>cse50</code>) samt dataframen <code>batches</code>, som angiver hvilken batch hver af de 500 celler tilhører.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="emner-fra-eksperimental-design.html#cb46-1" tabindex="-1"></a>cse50 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/o0wzojpcsekeg6z/cell_mix_50_counts.txt?dl=1&quot;</span>)</span>
+<span id="cb46-2"><a href="emner-fra-eksperimental-design.html#cb46-2" tabindex="-1"></a>batches <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/4t382bfgro46ka5/cell_mix_50_batches.txt?dl=1&quot;</span>)</span>
+<span id="cb46-3"><a href="emner-fra-eksperimental-design.html#cb46-3" tabindex="-1"></a>batches <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;batch&quot;</span><span class="ot">=</span>batches <span class="sc">%&gt;%</span> <span class="fu">pull</span>(batch))</span>
+<span id="cb46-4"><a href="emner-fra-eksperimental-design.html#cb46-4" tabindex="-1"></a>cse50 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(cse50)</span></code></pre></div>
+<p><strong>a</strong>) Anvend <code>map_df</code> til at transformere disse data til log-skala (tilføj 1 først og tag logaritmen bagefter).</p>
+<p><strong>b</strong>) Udfør PCA på det transformeret datasæt.</p>
+<p><strong>c</strong>) Brug dine PCA-resultater til at få den rotation matrix</p>
+<p><strong>d</strong>) Tilføj oplysningerne fra dataframen <code>batches</code> til din rotation matrix (tilføj først en ny kolonne “column” til <code>batches</code>, der er lig med <code>names(cse50)</code>).</p>
+<p><strong>e</strong>) Brug <code>pivot_wider</code> og lav et plot af de første to principal komponenter, hvor du angiver farve efter <code>batch</code>.</p>
+<p><strong>f</strong>) Lav også boxplots for de første to prinpical components fordelt efter <code>batch</code> og kommenter kort på eventuelle batch effekts i datasættet.</p>
+<hr />
+<p><strong>Problem 6</strong> <em>Yderligere Simpson’s paradoks</em></p>
+<p>Kør følgende kode for at indlæse og bearbejde det følgende datasæt <code>airlines</code>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="emner-fra-eksperimental-design.html#cb47-1" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;http://www.utsc.utoronto.ca/~butler/d29/airlines.txt&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb47-2"><a href="emner-fra-eksperimental-design.html#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="emner-fra-eksperimental-design.html#cb47-3" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> airlines <span class="sc">%&gt;%</span> </span>
+<span id="cb47-4"><a href="emner-fra-eksperimental-design.html#cb47-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>airport) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-5"><a href="emner-fra-eksperimental-design.html#cb47-5" tabindex="-1"></a>  <span class="fu">separate</span>(name,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;airline&quot;</span>,<span class="st">&quot;status&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-6"><a href="emner-fra-eksperimental-design.html#cb47-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">airline =</span> <span class="fu">recode</span>(airline, <span class="at">aa =</span> <span class="st">&quot;Alaska&quot;</span>, <span class="at">aw =</span> <span class="st">&quot;American&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-7"><a href="emner-fra-eksperimental-design.html#cb47-7" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>status,<span class="at">values_from=</span>value) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-8"><a href="emner-fra-eksperimental-design.html#cb47-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;ontime&quot;</span> <span class="ot">=</span> ontime <span class="sc">+</span> delayed) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-9"><a href="emner-fra-eksperimental-design.html#cb47-9" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">flights =</span> ontime)</span></code></pre></div>
+<p><strong>a</strong>) Opsummer antallet af <code>flights</code> og antallet af <code>delayed</code> over de forskellige lufthavne for at få et samlet tal for hver flyselskab.</p>
+<p><strong>b</strong>) Beregn også andelen af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.</p>
+<p><strong>c</strong>) Denne gang, opsummer over de to flyselskaber for at få et samlet tal for hver lufthavn. Beregn også andelen af flyvninger, der er forsinkede, og lav et plot.</p>
+<p><strong>d</strong>) Denne gang, beregn andelen af flyvninger, der er forsinkede, for hver kombination af både lufthavn og flyselskab. Omsæt igen dette til et plot.</p>
+<p><strong>e</strong>) Kan du forklare dette? Hint: kig eksempelvis på rådataene og især lufthavnen “Phoenix”.</p>
+</div>
+<div id="yderligere-læsning" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Yderligere læsning<a href="emner-fra-eksperimental-design.html#yderligere-læsning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simpson’s paradox og airlines: <a href="http://ritsokiguess.site/docs/2018/04/07/simpson-s-paradox-log-linear-modelling-and-the-tidyverse/" class="uri">http://ritsokiguess.site/docs/2018/04/07/simpson-s-paradox-log-linear-modelling-and-the-tidyverse/</a></p>
+<p>Batch effekt correction: <a href="https://en.wikipedia.org/wiki/Batch_effect#Correction" class="uri">https://en.wikipedia.org/wiki/Batch_effect#Correction</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="principal-component-analysis-pca.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-experimental.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
