@@ -6,6 +6,8 @@ fig:unnamed-chunk-60
 fig:unnamed-chunk-20
 fig:unnamed-chunk-23
 fig:unnamed-chunk-7
+fig:unnamed-chunk-6
+fig:unnamed-chunk-12
 baser
 inledning-til-kapitel
 rstudio
@@ -231,13 +233,8 @@ rotationsmatrix-bidragene-fra-de-forskellige-variabler
 pakken-factoextra
 problemstillinger-9
 ekstra-læsning
-fig:unnamed-chunk-5
-fig:unnamed-chunk-11
 emner-fra-eksperimental-design
 inledning-og-læringsmålene-1
-indledning-og-læringsmål-1
-læringsmål-2
-indledning-til-kapitlet
 video-ressourcer-4
 grundlæggende-principper-i-eksperimentelt-design
 randomisering-og-replikation
@@ -247,9 +244,6 @@ optagelse-på-berkeley
 case-studies-anscombes-kvartet
 undersøgelse-af-batch-effekter
 principal-component-analyse
+ekstra-batch-effect-correction-med-combat-funktionen
 problemstillinger-10
 yderligere-læsning
-fig:unnamed-chunk-6
-fig:unnamed-chunk-12
-batch-effect-correction-med-combat-funktionen
-ekstra-batch-effect-correction-med-combat-funktionen

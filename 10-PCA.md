@@ -543,10 +543,10 @@ __a__) Anvende `tidy(matrix = "rotation")` til at få den rotation matrix og lav
 * Lav et scatter plot som viser bidragerne af de forskellige variabler på den første og den anden principal components
 * Anvend `geom_text_repel` til at give labels til de variabler (kan være en god idé at anvend `show.legend=F`)
 
-__b__) Værdierne i den rotation matrix fortæller, hvordan en givet variabel bidrager til den endelige principal component beregning (dvs. værdierne som er plottet i __Problem 5__). Fk. variablen `radius_mean` har en positiv værdi i PC2, som gøre, at en højere værdi af `radius_mean` vil resultatere i en højere værdi på PC2 for en givet observation.
+__b__) Værdierne i den rotation matrix fortæller, hvordan en givet variabel bidrager til den endelige principal component beregning (dvs. værdierne som er plottet i __Problem 4__). Fk. variablen `radius_mean` har en positiv værdi i PC2, som gøre, at en højere værdi af `radius_mean` vil resultatere i en højere værdi på PC2 for en givet observation.
 
 * Kig på placeringen af variablen `compactness_mean` på plottet. Bidrager den negativ eller positiv værdi til PC1? 
-* Kig igen på dit plot i __Problem 5__) - hvad effekt ville en forhøjet værdi af `compactness_mean` have på den PC1-værdien til en givet tumour? Ville det gøre det mindre eller mere sandsynligt, at den er "benign"?  
+* Kig igen på dit plot i __Problem 4__) - hvad effekt ville en forhøjet værdi af `compactness_mean` have på den PC1-værdien til en givet tumour? Ville det gøre det mindre eller mere sandsynligt, at den er "benign"?  
 
 
 
