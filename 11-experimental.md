@@ -570,6 +570,8 @@ pca_fit_augment <- pca_fit_augment %>%
   left_join(coldata %>% rename(sample = column),by="sample")
 ```
 
+Når der er så mange kolonnerne i `pca_fit_augment` bruger jeg `tail`-funktionen ovenpå `colnames` så jeg kan se, hvad for nogle oplysningsvariabler vi har fået med: 
+
 
 ``` r
 tail(colnames(pca_fit_augment))
@@ -580,6 +582,8 @@ tail(colnames(pca_fit_augment))
 #> [5] "batch"         "lane.number"
 ```
 
+
+Vi er interesseret i at undersøge mulige batch-effektor, så lad os give en forskellige farve efter `batch` og en forskellige form efter `strain`:
 
 
 ``` r
@@ -593,6 +597,7 @@ pca_fit_augment %>%
 <img src="11-experimental_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" />
 
 
+Man kan også se på dataene på en anden måde ved at lave boksdiagrammer for de to første principale komponenter, opdelt efter batch. Vi får bekræftet vores observation om, at der er en markant forskel mellem batch 4 og de andre to batches, og det er et problem, som bør korrigeres, før man foretager yderligere analyser af dataene.
 
 
 <!-- lave boxplot af PC1 og PC2 opdelt efter batch-->
