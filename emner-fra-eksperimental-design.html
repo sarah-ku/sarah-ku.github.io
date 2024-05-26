@@ -666,7 +666,7 @@ Figure 11.2: source: wikipedia
 </p>
 </div>
 <p>Hvis vi laver et søjlediagram af tallene, kan man se, at der er en højere procentdel af mænd end kvinder, som blev optaget på universitetet (sagen medførte en retssag mod universitetet).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="emner-fra-eksperimental-design.html#cb7-1" tabindex="-1"></a>admissions_all <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;sex&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;all&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;women&quot;</span>),<span class="at">admitted=</span><span class="fu">c</span>(<span class="st">&quot;41&quot;</span>,<span class="st">&quot;44&quot;</span>,<span class="st">&quot;35&quot;</span>))</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="emner-fra-eksperimental-design.html#cb7-1" tabindex="-1"></a>admissions_all <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;sex&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;all&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;women&quot;</span>),<span class="at">admitted=</span><span class="fu">c</span>(<span class="dv">41</span>,<span class="dv">44</span>,<span class="dv">35</span>))</span>
 <span id="cb7-2"><a href="emner-fra-eksperimental-design.html#cb7-2" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="emner-fra-eksperimental-design.html#cb7-3" tabindex="-1"></a>admissions_all <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex,<span class="at">y=</span>admitted,<span class="at">fill=</span>sex)) <span class="sc">+</span> </span>
 <span id="cb7-4"><a href="emner-fra-eksperimental-design.html#cb7-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
@@ -698,7 +698,7 @@ Figure 11.2: source: wikipedia
 <p><img src="11-experimental_files/figure-html/unnamed-chunk-15-1.svg" width="384" style="display: block; margin: auto;" /></p>
 <p>Hvad skyldes denne sammenhæng? Det viste sig, at kvinder havde en tendens til at ansøge indenfor de fakulteter, som var sværest at komme ind på. For eksempel kan man se her, at fakultet E har en relativt lav optagelsesprocent. Det samme fakultet var dog et af dem, hvor betydeligt flere kvinder ansøgte end mænd.</p>
 <!-- lave et plot af ansøgelse statistik for afdeling E -->
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="emner-fra-eksperimental-design.html#cb10-1" tabindex="-1"></a>applications_E <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;sex&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;all&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;woman&quot;</span>),<span class="at">applications=</span><span class="fu">c</span>(<span class="st">&quot;584&quot;</span>,<span class="st">&quot;191&quot;</span>,<span class="st">&quot;393&quot;</span>))</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="emner-fra-eksperimental-design.html#cb10-1" tabindex="-1"></a>applications_E <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;sex&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;all&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;woman&quot;</span>),<span class="at">applications=</span><span class="fu">c</span>(<span class="dv">584</span>,<span class="dv">191</span>,<span class="dv">393</span>))</span>
 <span id="cb10-2"><a href="emner-fra-eksperimental-design.html#cb10-2" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="emner-fra-eksperimental-design.html#cb10-3" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="emner-fra-eksperimental-design.html#cb10-4" tabindex="-1"></a>applications_E <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex,<span class="at">y=</span>applications,<span class="at">fill=</span>sex)) <span class="sc">+</span> </span>
@@ -801,34 +801,16 @@ Figure 11.2: source: wikipedia
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="emner-fra-eksperimental-design.html#cb21-1" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/3vhwnsnhzsy35nd/bottomly_count_table_normalised.txt?dl=1&quot;</span>)</span>
 <span id="cb21-2"><a href="emner-fra-eksperimental-design.html#cb21-2" tabindex="-1"></a>coldata <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/el3sm9ncvzbq6xf/bottomly_phenodata.txt?dl=1&quot;</span>)</span>
 <span id="cb21-3"><a href="emner-fra-eksperimental-design.html#cb21-3" tabindex="-1"></a>coldata <span class="ot">&lt;-</span> coldata <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span>
-<span id="cb21-4"><a href="emner-fra-eksperimental-design.html#cb21-4" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,],<span class="at">rownames=</span><span class="st">&quot;gene&quot;</span>)</span></code></pre></div>
-<p>Jeg begynder med at vælge kun de rækker, der har mindst 50 counts, for at undgå gener med lave ekspressionsniveauer. Det næste jeg gør er at transformere dataene til logaritmisk form (funktion <code>map_if()</code>) for at opnå en bedre fordeling i datasættet.</p>
+<span id="cb21-4"><a href="emner-fra-eksperimental-design.html#cb21-4" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(norm.cts,<span class="at">rownames=</span><span class="st">&quot;gene&quot;</span>)</span></code></pre></div>
+<p>Jeg begynder med at vælge kun de rækker, der har mindst 50 counts, for at undgå gener med lave ekspressionsniveauer. Det næste jeg gør er at transformere dataene til logaritmisk form (funktion <code>map_if()</code>) for at opnå en bedre fordeling i datasættet. Derefter tager jeg kun de første 1000 rækker med, kun for at gøre det nemmere at køre mine koder på en laptop.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="emner-fra-eksperimental-design.html#cb22-1" tabindex="-1"></a><span class="co">#normalisere og filtrere dataene</span></span>
 <span id="cb22-2"><a href="emner-fra-eksperimental-design.html#cb22-2" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> </span>
 <span id="cb22-3"><a href="emner-fra-eksperimental-design.html#cb22-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(norm.cts <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gene))<span class="sc">&gt;</span><span class="dv">50</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb22-4"><a href="emner-fra-eksperimental-design.html#cb22-4" tabindex="-1"></a>  <span class="fu">map_if</span>(is.numeric,<span class="sc">~</span><span class="fu">log</span>(.x<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
 <span id="cb22-5"><a href="emner-fra-eksperimental-design.html#cb22-5" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="emner-fra-eksperimental-design.html#cb22-6" tabindex="-1"></a>norm.cts</span></code></pre></div>
-<pre><code>#&gt; # A tibble: 10,193 × 22
-#&gt;    gene    SRX033480 SRX033488 SRX033481 SRX033489 SRX033482 SRX033490 SRX033483
-#&gt;    &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-#&gt;  1 ENSMUS…      6.35      6.32      6.21      6.29      6.31      6.27      6.30
-#&gt;  2 ENSMUS…      3.51      3.56      3.57      3.27      2.99      3.61      3.56
-#&gt;  3 ENSMUS…      3.19      3.50      3.08      3.21      3.14      3.09      3.22
-#&gt;  4 ENSMUS…      6.69      6.48      6.38      6.35      6.39      6.34      6.50
-#&gt;  5 ENSMUS…      6.05      6.37      6.17      6.26      6.16      6.06      6.13
-#&gt;  6 ENSMUS…      2.89      2.94      3.16      3.21      3.77      3.30      3.11
-#&gt;  7 ENSMUS…      3.42      3.12      3.86      4.36      3.77      3.99      4.24
-#&gt;  8 ENSMUS…      3.42      2.94      3.52      3.41      3.57      3.60      2.99
-#&gt;  9 ENSMUS…      5.02      4.98      4.49      4.27      4.67      4.35      4.81
-#&gt; 10 ENSMUS…      5.13      4.88      4.97      4.76      4.82      4.79      4.96
-#&gt; # ℹ 10,183 more rows
-#&gt; # ℹ 14 more variables: SRX033476 &lt;dbl&gt;, SRX033478 &lt;dbl&gt;, SRX033479 &lt;dbl&gt;,
-#&gt; #   SRX033472 &lt;dbl&gt;, SRX033473 &lt;dbl&gt;, SRX033474 &lt;dbl&gt;, SRX033475 &lt;dbl&gt;,
-#&gt; #   SRX033491 &lt;dbl&gt;, SRX033484 &lt;dbl&gt;, SRX033492 &lt;dbl&gt;, SRX033485 &lt;dbl&gt;,
-#&gt; #   SRX033493 &lt;dbl&gt;, SRX033486 &lt;dbl&gt;, SRX033494 &lt;dbl&gt;</code></pre>
-<p>Så der er omkring 10.000 gener i rækkerne, og der er 21 forskellige prøver, der spreder sig over kolonnerne. Vi har også nogle prøveoplysninger - der er to forskellige stammer af mus og også forskellige batches, som vi gerne vil undersøge nærmere.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="emner-fra-eksperimental-design.html#cb24-1" tabindex="-1"></a>coldata</span></code></pre></div>
+<span id="cb22-6"><a href="emner-fra-eksperimental-design.html#cb22-6" tabindex="-1"></a>norm.cts <span class="ot">&lt;-</span> norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,] <span class="co">#take a subset to save loading times on laptop</span></span></code></pre></div>
+<p>Så der er 1000 gener i rækkerne, og der er 21 forskellige prøver, der spreder sig over kolonnerne. Vi har også nogle prøveoplysninger - der er to forskellige stammer af mus og også forskellige batches, som vi gerne vil undersøge nærmere.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="emner-fra-eksperimental-design.html#cb23-1" tabindex="-1"></a>coldata</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 21 × 5
 #&gt;    column    num.tech.reps strain   batch lane.number
 #&gt;    &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;    &lt;int&gt;       &lt;int&gt;
@@ -844,7 +826,7 @@ Figure 11.2: source: wikipedia
 #&gt; 10 SRX033479             1 C57BL.6J     4           8
 #&gt; # ℹ 11 more rows</code></pre>
 <p>Vi kan se på, hvor mange prøver vi har for hver kombination af stamme og batch i datasættet:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="emner-fra-eksperimental-design.html#cb26-1" tabindex="-1"></a><span class="fu">table</span>(coldata<span class="sc">$</span>strain, coldata<span class="sc">$</span>batch)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="emner-fra-eksperimental-design.html#cb25-1" tabindex="-1"></a><span class="fu">table</span>(coldata<span class="sc">$</span>strain, coldata<span class="sc">$</span>batch)</span></code></pre></div>
 <pre><code>#&gt;           
 #&gt;            4 6 7
 #&gt;   C57BL.6J 3 4 3
@@ -854,9 +836,9 @@ Figure 11.2: source: wikipedia
 <h3><span class="header-section-number">11.5.1</span> Principal component analyse<a href="emner-fra-eksperimental-design.html#principal-component-analyse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Man kan undersøge mulige batch-effekter via principal component analyse.</p>
 <p>Først skal vi lave en “transpose” af datasættet således at variablerne (samples) bliver i rækkerne og observationerne (genes) er som kolonnerne. Det er ikke helt ligetil i tidyverse, men her er en måde at gøre det på:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="emner-fra-eksperimental-design.html#cb28-1" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">t</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>]))</span>
-<span id="cb28-2"><a href="emner-fra-eksperimental-design.html#cb28-2" tabindex="-1"></a><span class="fu">colnames</span>(norm.cts.transpose) <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene)</span>
-<span id="cb28-3"><a href="emner-fra-eksperimental-design.html#cb28-3" tabindex="-1"></a>norm.cts.transpose <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sample =</span> <span class="fu">colnames</span>(norm.cts)[<span class="sc">-</span><span class="dv">1</span>],<span class="at">.before=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="emner-fra-eksperimental-design.html#cb27-1" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">t</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>]))</span>
+<span id="cb27-2"><a href="emner-fra-eksperimental-design.html#cb27-2" tabindex="-1"></a><span class="fu">colnames</span>(norm.cts.transpose) <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene)</span>
+<span id="cb27-3"><a href="emner-fra-eksperimental-design.html#cb27-3" tabindex="-1"></a>norm.cts.transpose <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sample =</span> <span class="fu">colnames</span>(norm.cts)[<span class="sc">-</span><span class="dv">1</span>],<span class="at">.before=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 21 × 10,194
 #&gt;    sample    ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
 #&gt;    &lt;chr&gt;                  &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
@@ -878,11 +860,11 @@ Figure 11.2: source: wikipedia
 #&gt; #   ENSMUSG00000000149 &lt;dbl&gt;, ENSMUSG00000000167 &lt;dbl&gt;,
 #&gt; #   ENSMUSG00000000168 &lt;dbl&gt;, ENSMUSG00000000171 &lt;dbl&gt;, …</code></pre>
 <p>Heldigvis er der en pakke, som kan gøre processen meget hurtigere:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="emner-fra-eksperimental-design.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
-<span id="cb30-2"><a href="emner-fra-eksperimental-design.html#cb30-2" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> </span>
-<span id="cb30-3"><a href="emner-fra-eksperimental-design.html#cb30-3" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb30-4"><a href="emner-fra-eksperimental-design.html#cb30-4" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="emner-fra-eksperimental-design.html#cb30-5" tabindex="-1"></a>norm.cts.transpose[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="emner-fra-eksperimental-design.html#cb29-1" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
+<span id="cb29-2"><a href="emner-fra-eksperimental-design.html#cb29-2" tabindex="-1"></a>norm.cts.transpose <span class="ot">&lt;-</span> norm.cts <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="emner-fra-eksperimental-design.html#cb29-3" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb29-4"><a href="emner-fra-eksperimental-design.html#cb29-4" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="emner-fra-eksperimental-design.html#cb29-5" tabindex="-1"></a>norm.cts.transpose[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>#&gt;      sample ENSMUSG00000000001 ENSMUSG00000000056 ENSMUSG00000000058
 #&gt; 1 SRX033480           6.352707           3.514892           3.190250
 #&gt; 2 SRX033488           6.317191           3.560812           3.495351
@@ -898,90 +880,90 @@ Figure 11.2: source: wikipedia
 #&gt; 5           6.389898
 #&gt; 6           6.337397</code></pre>
 <p>Nu kan vi udføre en principal component analyse:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="emner-fra-eksperimental-design.html#cb32-1" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> norm.cts.transpose <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="emner-fra-eksperimental-design.html#cb32-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="co"># behold kun numeriske kolonner</span></span>
-<span id="cb32-3"><a href="emner-fra-eksperimental-design.html#cb32-3" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="co"># udfør PCA på skalerede data</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="emner-fra-eksperimental-design.html#cb31-1" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> norm.cts.transpose <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="emner-fra-eksperimental-design.html#cb31-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="co"># behold kun numeriske kolonner</span></span>
+<span id="cb31-3"><a href="emner-fra-eksperimental-design.html#cb31-3" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="co"># udfør PCA på skalerede data</span></span></code></pre></div>
 <p>Så kan vi bruge vores standarde måde at visualisere principal components på:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="emner-fra-eksperimental-design.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb33-2"><a href="emner-fra-eksperimental-design.html#cb33-2" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="emner-fra-eksperimental-design.html#cb33-3" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit <span class="sc">%&gt;%</span> </span>
-<span id="cb33-4"><a href="emner-fra-eksperimental-design.html#cb33-4" tabindex="-1"></a>  <span class="fu">augment</span>(norm.cts.transpose)</span>
-<span id="cb33-5"><a href="emner-fra-eksperimental-design.html#cb33-5" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="emner-fra-eksperimental-design.html#cb33-6" tabindex="-1"></a>pca_fit_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb33-7"><a href="emner-fra-eksperimental-design.html#cb33-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2)) <span class="sc">+</span> </span>
-<span id="cb33-8"><a href="emner-fra-eksperimental-design.html#cb33-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb33-9"><a href="emner-fra-eksperimental-design.html#cb33-9" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
-<span id="cb33-10"><a href="emner-fra-eksperimental-design.html#cb33-10" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="emner-fra-eksperimental-design.html#cb32-1" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb32-2"><a href="emner-fra-eksperimental-design.html#cb32-2" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="emner-fra-eksperimental-design.html#cb32-3" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="emner-fra-eksperimental-design.html#cb32-4" tabindex="-1"></a>  <span class="fu">augment</span>(norm.cts.transpose)</span>
+<span id="cb32-5"><a href="emner-fra-eksperimental-design.html#cb32-5" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="emner-fra-eksperimental-design.html#cb32-6" tabindex="-1"></a>pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb32-7"><a href="emner-fra-eksperimental-design.html#cb32-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2)) <span class="sc">+</span> </span>
+<span id="cb32-8"><a href="emner-fra-eksperimental-design.html#cb32-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb32-9"><a href="emner-fra-eksperimental-design.html#cb32-9" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="emner-fra-eksperimental-design.html#cb32-10" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="11-experimental_files/figure-html/unnamed-chunk-30-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Anvend left_join til at få oplysningen med:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="emner-fra-eksperimental-design.html#cb34-1" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="emner-fra-eksperimental-design.html#cb34-2" tabindex="-1"></a>  <span class="fu">left_join</span>(coldata <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">sample =</span> column),<span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="emner-fra-eksperimental-design.html#cb35-1" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">colnames</span>(pca_fit_augment))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="emner-fra-eksperimental-design.html#cb33-1" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="emner-fra-eksperimental-design.html#cb33-2" tabindex="-1"></a>  <span class="fu">left_join</span>(coldata <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">sample =</span> column),<span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="emner-fra-eksperimental-design.html#cb34-1" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">colnames</span>(pca_fit_augment))</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;.fittedPC20&quot;   &quot;.fittedPC21&quot;   &quot;num.tech.reps&quot; &quot;strain&quot;       
 #&gt; [5] &quot;batch&quot;         &quot;lane.number&quot;</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="emner-fra-eksperimental-design.html#cb37-1" tabindex="-1"></a>pca_fit_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a href="emner-fra-eksperimental-design.html#cb37-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">colour=</span><span class="fu">as.factor</span>(batch),<span class="at">shape=</span>strain)) <span class="sc">+</span> </span>
-<span id="cb37-3"><a href="emner-fra-eksperimental-design.html#cb37-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb37-4"><a href="emner-fra-eksperimental-design.html#cb37-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
-<span id="cb37-5"><a href="emner-fra-eksperimental-design.html#cb37-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="emner-fra-eksperimental-design.html#cb36-1" tabindex="-1"></a>pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="emner-fra-eksperimental-design.html#cb36-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">colour=</span><span class="fu">as.factor</span>(batch),<span class="at">shape=</span>strain)) <span class="sc">+</span> </span>
+<span id="cb36-3"><a href="emner-fra-eksperimental-design.html#cb36-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb36-4"><a href="emner-fra-eksperimental-design.html#cb36-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="emner-fra-eksperimental-design.html#cb36-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="11-experimental_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <!-- lave boxplot af PC1 og PC2 opdelt efter batch-->
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="emner-fra-eksperimental-design.html#cb38-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="emner-fra-eksperimental-design.html#cb38-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(batch),<span class="at">y=</span>.fittedPC1,<span class="at">fill=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Batches PC1&quot;</span>)</span>
-<span id="cb38-3"><a href="emner-fra-eksperimental-design.html#cb38-3" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="emner-fra-eksperimental-design.html#cb38-4" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span></span>
-<span id="cb38-5"><a href="emner-fra-eksperimental-design.html#cb38-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(batch),<span class="at">y=</span>.fittedPC2,<span class="at">fill=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Batch PC2&quot;</span>)</span>
-<span id="cb38-6"><a href="emner-fra-eksperimental-design.html#cb38-6" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="emner-fra-eksperimental-design.html#cb38-7" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb38-8"><a href="emner-fra-eksperimental-design.html#cb38-8" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="emner-fra-eksperimental-design.html#cb37-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="emner-fra-eksperimental-design.html#cb37-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(batch),<span class="at">y=</span>.fittedPC1,<span class="at">fill=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Batches PC1&quot;</span>)</span>
+<span id="cb37-3"><a href="emner-fra-eksperimental-design.html#cb37-3" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="emner-fra-eksperimental-design.html#cb37-4" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span></span>
+<span id="cb37-5"><a href="emner-fra-eksperimental-design.html#cb37-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(batch),<span class="at">y=</span>.fittedPC2,<span class="at">fill=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Batch PC2&quot;</span>)</span>
+<span id="cb37-6"><a href="emner-fra-eksperimental-design.html#cb37-6" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="emner-fra-eksperimental-design.html#cb37-7" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb37-8"><a href="emner-fra-eksperimental-design.html#cb37-8" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="11-experimental_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Man kan også lav en heatmap:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="emner-fra-eksperimental-design.html#cb39-1" tabindex="-1"></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb39-2"><a href="emner-fra-eksperimental-design.html#cb39-2" tabindex="-1"></a><span class="fu">row.names</span>(cor_mat) <span class="ot">&lt;-</span> coldata<span class="sc">$</span>batch</span>
-<span id="cb39-3"><a href="emner-fra-eksperimental-design.html#cb39-3" tabindex="-1"></a><span class="fu">colnames</span>(cor_mat) <span class="ot">&lt;-</span> coldata<span class="sc">$</span>strain</span>
-<span id="cb39-4"><a href="emner-fra-eksperimental-design.html#cb39-4" tabindex="-1"></a><span class="fu">heatmap</span>(cor_mat)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="emner-fra-eksperimental-design.html#cb38-1" tabindex="-1"></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(norm.cts[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb38-2"><a href="emner-fra-eksperimental-design.html#cb38-2" tabindex="-1"></a><span class="fu">row.names</span>(cor_mat) <span class="ot">&lt;-</span> coldata<span class="sc">$</span>batch</span>
+<span id="cb38-3"><a href="emner-fra-eksperimental-design.html#cb38-3" tabindex="-1"></a><span class="fu">colnames</span>(cor_mat) <span class="ot">&lt;-</span> coldata<span class="sc">$</span>strain</span>
+<span id="cb38-4"><a href="emner-fra-eksperimental-design.html#cb38-4" tabindex="-1"></a><span class="fu">heatmap</span>(cor_mat)</span></code></pre></div>
 <p><img src="11-experimental_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="ekstra-batch-effect-correction-med-combat-funktionen" class="section level3 hasAnchor" number="11.5.2">
 <h3><span class="header-section-number">11.5.2</span> EKSTRA: Batch effect correction med ComBat()-funktionen<a href="emner-fra-eksperimental-design.html#ekstra-batch-effect-correction-med-combat-funktionen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ComBat-pakken i R hjælper med at korrigere for batch-effekter, så forskelle mellem prøver skyldes biologisk variation og ikke tekniske forskelle.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="emner-fra-eksperimental-design.html#cb40-1" tabindex="-1"></a><span class="co">#if (!require(&quot;BiocManager&quot;, quietly = TRUE))</span></span>
-<span id="cb40-2"><a href="emner-fra-eksperimental-design.html#cb40-2" tabindex="-1"></a><span class="co">#    install.packages(&quot;BiocManager&quot;)</span></span>
-<span id="cb40-3"><a href="emner-fra-eksperimental-design.html#cb40-3" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="emner-fra-eksperimental-design.html#cb40-4" tabindex="-1"></a><span class="co">#BiocManager::install(&quot;sva&quot;)</span></span>
-<span id="cb40-5"><a href="emner-fra-eksperimental-design.html#cb40-5" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="emner-fra-eksperimental-design.html#cb40-6" tabindex="-1"></a><span class="fu">library</span>(sva)</span>
-<span id="cb40-7"><a href="emner-fra-eksperimental-design.html#cb40-7" tabindex="-1"></a>corrected <span class="ot">&lt;-</span> sva<span class="sc">::</span><span class="fu">ComBat</span>(<span class="at">dat=</span>norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,] <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gene),<span class="at">batch=</span>coldata <span class="sc">%&gt;%</span> <span class="fu">pull</span>(batch))</span>
-<span id="cb40-8"><a href="emner-fra-eksperimental-design.html#cb40-8" tabindex="-1"></a>corrected <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(corrected) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">gene =</span> norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,] <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene),<span class="at">.before=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="emner-fra-eksperimental-design.html#cb39-1" tabindex="-1"></a><span class="co">#if (!require(&quot;BiocManager&quot;, quietly = TRUE))</span></span>
+<span id="cb39-2"><a href="emner-fra-eksperimental-design.html#cb39-2" tabindex="-1"></a><span class="co">#    install.packages(&quot;BiocManager&quot;)</span></span>
+<span id="cb39-3"><a href="emner-fra-eksperimental-design.html#cb39-3" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="emner-fra-eksperimental-design.html#cb39-4" tabindex="-1"></a><span class="co">#BiocManager::install(&quot;sva&quot;)</span></span>
+<span id="cb39-5"><a href="emner-fra-eksperimental-design.html#cb39-5" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="emner-fra-eksperimental-design.html#cb39-6" tabindex="-1"></a><span class="fu">library</span>(sva)</span>
+<span id="cb39-7"><a href="emner-fra-eksperimental-design.html#cb39-7" tabindex="-1"></a>corrected <span class="ot">&lt;-</span> sva<span class="sc">::</span><span class="fu">ComBat</span>(<span class="at">dat=</span>norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,] <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gene),<span class="at">batch=</span>coldata <span class="sc">%&gt;%</span> <span class="fu">pull</span>(batch))</span>
+<span id="cb39-8"><a href="emner-fra-eksperimental-design.html#cb39-8" tabindex="-1"></a>corrected <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(corrected) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">gene =</span> norm.cts[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,] <span class="sc">%&gt;%</span> <span class="fu">pull</span>(gene),<span class="at">.before=</span><span class="dv">1</span>)</span></code></pre></div>
 <p>Så kan man lave præcis samme procedure som i ovenstående på den korrigede dataframe:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="emner-fra-eksperimental-design.html#cb41-1" tabindex="-1"></a>corrected.transpose <span class="ot">&lt;-</span> corrected <span class="sc">%&gt;%</span> </span>
-<span id="cb41-2"><a href="emner-fra-eksperimental-design.html#cb41-2" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb41-3"><a href="emner-fra-eksperimental-design.html#cb41-3" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="emner-fra-eksperimental-design.html#cb41-4" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> corrected.transpose <span class="sc">%&gt;%</span></span>
-<span id="cb41-5"><a href="emner-fra-eksperimental-design.html#cb41-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="co"># behold kun numeriske kolonner</span></span>
-<span id="cb41-6"><a href="emner-fra-eksperimental-design.html#cb41-6" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="co"># udfør PCA på skalerede data</span></span>
-<span id="cb41-7"><a href="emner-fra-eksperimental-design.html#cb41-7" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="emner-fra-eksperimental-design.html#cb41-8" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit <span class="sc">%&gt;%</span> </span>
-<span id="cb41-9"><a href="emner-fra-eksperimental-design.html#cb41-9" tabindex="-1"></a>  <span class="fu">augment</span>(corrected.transpose)</span>
-<span id="cb41-10"><a href="emner-fra-eksperimental-design.html#cb41-10" tabindex="-1"></a></span>
-<span id="cb41-11"><a href="emner-fra-eksperimental-design.html#cb41-11" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb41-12"><a href="emner-fra-eksperimental-design.html#cb41-12" tabindex="-1"></a>  <span class="fu">left_join</span>(coldata <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">sample =</span> column),<span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
-<span id="cb41-13"><a href="emner-fra-eksperimental-design.html#cb41-13" tabindex="-1"></a></span>
-<span id="cb41-14"><a href="emner-fra-eksperimental-design.html#cb41-14" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">batch=</span><span class="fu">as.factor</span>(batch))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="emner-fra-eksperimental-design.html#cb40-1" tabindex="-1"></a>corrected.transpose <span class="ot">&lt;-</span> corrected <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="emner-fra-eksperimental-design.html#cb40-2" tabindex="-1"></a>                          <span class="fu">rotate_df</span>(<span class="at">cn=</span><span class="cn">TRUE</span>,<span class="at">rn=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb40-3"><a href="emner-fra-eksperimental-design.html#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="emner-fra-eksperimental-design.html#cb40-4" tabindex="-1"></a>pca_fit <span class="ot">&lt;-</span> corrected.transpose <span class="sc">%&gt;%</span></span>
+<span id="cb40-5"><a href="emner-fra-eksperimental-design.html#cb40-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="co"># behold kun numeriske kolonner</span></span>
+<span id="cb40-6"><a href="emner-fra-eksperimental-design.html#cb40-6" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="co"># udfør PCA på skalerede data</span></span>
+<span id="cb40-7"><a href="emner-fra-eksperimental-design.html#cb40-7" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="emner-fra-eksperimental-design.html#cb40-8" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit <span class="sc">%&gt;%</span> </span>
+<span id="cb40-9"><a href="emner-fra-eksperimental-design.html#cb40-9" tabindex="-1"></a>  <span class="fu">augment</span>(corrected.transpose)</span>
+<span id="cb40-10"><a href="emner-fra-eksperimental-design.html#cb40-10" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="emner-fra-eksperimental-design.html#cb40-11" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb40-12"><a href="emner-fra-eksperimental-design.html#cb40-12" tabindex="-1"></a>  <span class="fu">left_join</span>(coldata <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">sample =</span> column),<span class="at">by=</span><span class="st">&quot;sample&quot;</span>)</span>
+<span id="cb40-13"><a href="emner-fra-eksperimental-design.html#cb40-13" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="emner-fra-eksperimental-design.html#cb40-14" tabindex="-1"></a>pca_fit_augment <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">batch=</span><span class="fu">as.factor</span>(batch))</span></code></pre></div>
 <p>Og så lav en plot:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="emner-fra-eksperimental-design.html#cb42-1" tabindex="-1"></a>PCA1 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb42-2"><a href="emner-fra-eksperimental-design.html#cb42-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">colour=</span>batch,<span class="at">shape=</span>strain)) <span class="sc">+</span> </span>
-<span id="cb42-3"><a href="emner-fra-eksperimental-design.html#cb42-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb42-4"><a href="emner-fra-eksperimental-design.html#cb42-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
-<span id="cb42-5"><a href="emner-fra-eksperimental-design.html#cb42-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb42-6"><a href="emner-fra-eksperimental-design.html#cb42-6" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="emner-fra-eksperimental-design.html#cb42-7" tabindex="-1"></a>PCA2 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
-<span id="cb42-8"><a href="emner-fra-eksperimental-design.html#cb42-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">shape=</span>batch,<span class="at">colour=</span>strain)) <span class="sc">+</span> </span>
-<span id="cb42-9"><a href="emner-fra-eksperimental-design.html#cb42-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb42-10"><a href="emner-fra-eksperimental-design.html#cb42-10" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
-<span id="cb42-11"><a href="emner-fra-eksperimental-design.html#cb42-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb42-12"><a href="emner-fra-eksperimental-design.html#cb42-12" tabindex="-1"></a></span>
-<span id="cb42-13"><a href="emner-fra-eksperimental-design.html#cb42-13" tabindex="-1"></a><span class="fu">grid.arrange</span>(PCA1,PCA2,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="emner-fra-eksperimental-design.html#cb41-1" tabindex="-1"></a>PCA1 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="emner-fra-eksperimental-design.html#cb41-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">colour=</span>batch,<span class="at">shape=</span>strain)) <span class="sc">+</span> </span>
+<span id="cb41-3"><a href="emner-fra-eksperimental-design.html#cb41-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb41-4"><a href="emner-fra-eksperimental-design.html#cb41-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb41-5"><a href="emner-fra-eksperimental-design.html#cb41-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-6"><a href="emner-fra-eksperimental-design.html#cb41-6" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="emner-fra-eksperimental-design.html#cb41-7" tabindex="-1"></a>PCA2 <span class="ot">&lt;-</span> pca_fit_augment <span class="sc">%&gt;%</span> </span>
+<span id="cb41-8"><a href="emner-fra-eksperimental-design.html#cb41-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.fittedPC1,<span class="at">y=</span>.fittedPC2,<span class="at">shape=</span>batch,<span class="at">colour=</span>strain)) <span class="sc">+</span> </span>
+<span id="cb41-9"><a href="emner-fra-eksperimental-design.html#cb41-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb41-10"><a href="emner-fra-eksperimental-design.html#cb41-10" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>sample)) <span class="sc">+</span></span>
+<span id="cb41-11"><a href="emner-fra-eksperimental-design.html#cb41-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb41-12"><a href="emner-fra-eksperimental-design.html#cb41-12" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="emner-fra-eksperimental-design.html#cb41-13" tabindex="-1"></a><span class="fu">grid.arrange</span>(PCA1,PCA2,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="11-experimental_files/figure-html/unnamed-chunk-38-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <!-- Husk, at når man udfører en principal component analyse, får man rotationsmatricen, der anvendes til at se, hvor de forskellige prøver ligger i forhold til hinanden over de forskellige principal komponenter - dvs. at prøver, der ligner hinanden, vises på samme sted på plottet. Rotationsmatricen udtrækkes med funktionen `tidy()`: -->
 <!-- ```{r} -->
@@ -1076,18 +1058,18 @@ Figure 11.2: source: wikipedia
 <hr />
 <p><strong>Problem 3</strong>) <em>Simpsons paradoks</em> <strong>Genbesøg af Lung Cap-data</strong></p>
 <p>Indlæs <code>LungCapData</code> og tilføj den kategoriske variabel <code>Age.Group</code>:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="emner-fra-eksperimental-design.html#cb43-1" tabindex="-1"></a>LungCapData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.dropbox.com/s/ke27fs5d37ks1hm/LungCapData.csv?dl=1&quot;</span>)</span>
-<span id="cb43-2"><a href="emner-fra-eksperimental-design.html#cb43-2" tabindex="-1"></a>LungCapData<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span> <span class="fu">cut</span>(LungCapData<span class="sc">$</span>Age,<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>),<span class="at">right=</span><span class="cn">FALSE</span>,<span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb43-3"><a href="emner-fra-eksperimental-design.html#cb43-3" tabindex="-1"></a><span class="fu">levels</span>(LungCapData<span class="sc">$</span>Age.Group) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;&lt;13&quot;</span>,<span class="st">&quot;13-14&quot;</span>,<span class="st">&quot;15-16&quot;</span>,<span class="st">&quot;17+&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="emner-fra-eksperimental-design.html#cb42-1" tabindex="-1"></a>LungCapData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.dropbox.com/s/ke27fs5d37ks1hm/LungCapData.csv?dl=1&quot;</span>)</span>
+<span id="cb42-2"><a href="emner-fra-eksperimental-design.html#cb42-2" tabindex="-1"></a>LungCapData<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span> <span class="fu">cut</span>(LungCapData<span class="sc">$</span>Age,<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>),<span class="at">right=</span><span class="cn">FALSE</span>,<span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb42-3"><a href="emner-fra-eksperimental-design.html#cb42-3" tabindex="-1"></a><span class="fu">levels</span>(LungCapData<span class="sc">$</span>Age.Group) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;&lt;13&quot;</span>,<span class="st">&quot;13-14&quot;</span>,<span class="st">&quot;15-16&quot;</span>,<span class="st">&quot;17+&quot;</span>)</span></code></pre></div>
 <p><strong>a</strong>) Lav boxplots med <code>smoke</code> på x-aksen og <code>LungCap</code> på y-aksen.
 + Bemærk hvilken gruppe der har den højeste lungekapacitet.</p>
 <p><strong>b</strong>) Lav samme plot, men adskilt efter <code>Age.Group</code>, og beskriv, hvordan det er et eksempel på Simpsons paradoks.</p>
 <p><strong>c)</strong> Lav et boxplot med <code>Age</code> på y-aksen og <code>Smoke</code> på x-aksen for at understøtte forklaringen på, hvorfor man ser Simpsons paradoks i dette datasæt.</p>
 <hr />
 <p><strong>Problem 4</strong>) <em>Anscombes analyse</em> Gentag Anscombes analyse med dinosaurdatasættet:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="emner-fra-eksperimental-design.html#cb44-1" tabindex="-1"></a><span class="fu">library</span>(datasauRus) <span class="co">#installer denne pakke</span></span>
-<span id="cb44-2"><a href="emner-fra-eksperimental-design.html#cb44-2" tabindex="-1"></a>data_dozen <span class="ot">&lt;-</span> datasauRus<span class="sc">::</span>datasaurus_dozen</span>
-<span id="cb44-3"><a href="emner-fra-eksperimental-design.html#cb44-3" tabindex="-1"></a>data_dozen</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="emner-fra-eksperimental-design.html#cb43-1" tabindex="-1"></a><span class="fu">library</span>(datasauRus) <span class="co">#installer denne pakke</span></span>
+<span id="cb43-2"><a href="emner-fra-eksperimental-design.html#cb43-2" tabindex="-1"></a>data_dozen <span class="ot">&lt;-</span> datasauRus<span class="sc">::</span>datasaurus_dozen</span>
+<span id="cb43-3"><a href="emner-fra-eksperimental-design.html#cb43-3" tabindex="-1"></a>data_dozen</span></code></pre></div>
 <pre><code>FALSE # A tibble: 1,846 × 3
 FALSE    dataset     x     y
 FALSE    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -1108,10 +1090,10 @@ FALSE # ℹ 1,836 more rows</code></pre>
 <p><strong>d</strong>) Er de alle det samme datasæt? Lav et scatter plot opdelt efter de forskellige datasæt. Hvordan ser de bedste rette linjer ud på plottene?</p>
 <hr />
 <p><strong>Problem 5</strong>) Vi vil gerne undersøge eventuelle batcheffekter i det følgende datasæt. Det er simulerede “single cell”-sekvenserings count data (dataframen <code>cse50</code>) samt dataframen <code>batches</code>, som angiver hvilken batch hver af de 500 celler tilhører.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="emner-fra-eksperimental-design.html#cb46-1" tabindex="-1"></a>cse50 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/o0wzojpcsekeg6z/cell_mix_50_counts.txt?dl=1&quot;</span>)</span>
-<span id="cb46-2"><a href="emner-fra-eksperimental-design.html#cb46-2" tabindex="-1"></a>batches <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/4t382bfgro46ka5/cell_mix_50_batches.txt?dl=1&quot;</span>)</span>
-<span id="cb46-3"><a href="emner-fra-eksperimental-design.html#cb46-3" tabindex="-1"></a>batches <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;batch&quot;</span><span class="ot">=</span>batches <span class="sc">%&gt;%</span> <span class="fu">pull</span>(batch))</span>
-<span id="cb46-4"><a href="emner-fra-eksperimental-design.html#cb46-4" tabindex="-1"></a>cse50 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(cse50)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="emner-fra-eksperimental-design.html#cb45-1" tabindex="-1"></a>cse50 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/o0wzojpcsekeg6z/cell_mix_50_counts.txt?dl=1&quot;</span>)</span>
+<span id="cb45-2"><a href="emner-fra-eksperimental-design.html#cb45-2" tabindex="-1"></a>batches <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/4t382bfgro46ka5/cell_mix_50_batches.txt?dl=1&quot;</span>)</span>
+<span id="cb45-3"><a href="emner-fra-eksperimental-design.html#cb45-3" tabindex="-1"></a>batches <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">&quot;batch&quot;</span><span class="ot">=</span>batches <span class="sc">%&gt;%</span> <span class="fu">pull</span>(batch))</span>
+<span id="cb45-4"><a href="emner-fra-eksperimental-design.html#cb45-4" tabindex="-1"></a>cse50 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(cse50)</span></code></pre></div>
 <p><strong>a</strong>) Anvend <code>map_df</code> til at transformere disse data til log-skala (tilføj 1 først og tag logaritmen bagefter).</p>
 <p><strong>b</strong>) Udfør PCA på det transformeret datasæt.</p>
 <p><strong>c</strong>) Brug dine PCA-resultater til at få den rotation matrix</p>
@@ -1121,15 +1103,15 @@ FALSE # ℹ 1,836 more rows</code></pre>
 <hr />
 <p><strong>Problem 6</strong> <em>Yderligere Simpson’s paradoks</em></p>
 <p>Kør følgende kode for at indlæse og bearbejde det følgende datasæt <code>airlines</code>.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="emner-fra-eksperimental-design.html#cb47-1" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;http://www.utsc.utoronto.ca/~butler/d29/airlines.txt&quot;</span>,<span class="at">header=</span>T)</span>
-<span id="cb47-2"><a href="emner-fra-eksperimental-design.html#cb47-2" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="emner-fra-eksperimental-design.html#cb47-3" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> airlines <span class="sc">%&gt;%</span> </span>
-<span id="cb47-4"><a href="emner-fra-eksperimental-design.html#cb47-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>airport) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-5"><a href="emner-fra-eksperimental-design.html#cb47-5" tabindex="-1"></a>  <span class="fu">separate</span>(name,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;airline&quot;</span>,<span class="st">&quot;status&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb47-6"><a href="emner-fra-eksperimental-design.html#cb47-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">airline =</span> <span class="fu">recode</span>(airline, <span class="at">aa =</span> <span class="st">&quot;Alaska&quot;</span>, <span class="at">aw =</span> <span class="st">&quot;American&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-7"><a href="emner-fra-eksperimental-design.html#cb47-7" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>status,<span class="at">values_from=</span>value) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-8"><a href="emner-fra-eksperimental-design.html#cb47-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;ontime&quot;</span> <span class="ot">=</span> ontime <span class="sc">+</span> delayed) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-9"><a href="emner-fra-eksperimental-design.html#cb47-9" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">flights =</span> ontime)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="emner-fra-eksperimental-design.html#cb46-1" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;http://www.utsc.utoronto.ca/~butler/d29/airlines.txt&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb46-2"><a href="emner-fra-eksperimental-design.html#cb46-2" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="emner-fra-eksperimental-design.html#cb46-3" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> airlines <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="emner-fra-eksperimental-design.html#cb46-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>airport) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-5"><a href="emner-fra-eksperimental-design.html#cb46-5" tabindex="-1"></a>  <span class="fu">separate</span>(name,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;airline&quot;</span>,<span class="st">&quot;status&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="emner-fra-eksperimental-design.html#cb46-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">airline =</span> <span class="fu">recode</span>(airline, <span class="at">aa =</span> <span class="st">&quot;Alaska&quot;</span>, <span class="at">aw =</span> <span class="st">&quot;American&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-7"><a href="emner-fra-eksperimental-design.html#cb46-7" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>status,<span class="at">values_from=</span>value) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-8"><a href="emner-fra-eksperimental-design.html#cb46-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">&quot;ontime&quot;</span> <span class="ot">=</span> ontime <span class="sc">+</span> delayed) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-9"><a href="emner-fra-eksperimental-design.html#cb46-9" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">flights =</span> ontime)</span></code></pre></div>
 <p><strong>a</strong>) Opsummer antallet af <code>flights</code> og antallet af <code>delayed</code> over de forskellige lufthavne for at få et samlet tal for hver flyselskab.</p>
 <p><strong>b</strong>) Beregn også andelen af flyvninger, der er forsinkede, i hvert flyselskab (igen samlet over alle lufthavne). Lav et søjlediagram for at vise proportionerne.</p>
 <p><strong>c</strong>) Denne gang, opsummer over de to flyselskaber for at få et samlet tal for hver lufthavn. Beregn også andelen af flyvninger, der er forsinkede, og lav et plot.</p>

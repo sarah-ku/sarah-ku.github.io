@@ -202,7 +202,7 @@ Hvis vi laver et søjlediagram af tallene, kan man se, at der er en højere proc
 
 
 ``` r
-admissions_all <- tibble("sex"=c("all","men","women"),admitted=c("41","44","35"))
+admissions_all <- tibble("sex"=c("all","men","women"),admitted=c(41,44,35))
 
 admissions_all %>% ggplot(aes(x=sex,y=admitted,fill=sex)) + 
   geom_bar(stat="identity") + 
@@ -251,7 +251,7 @@ Hvad skyldes denne sammenhæng? Det viste sig, at kvinder havde en tendens til a
 <!-- lave et plot af ansøgelse statistik for afdeling E -->
 
 ``` r
-applications_E <- tibble("sex"=c("all","men","woman"),applications=c("584","191","393"))
+applications_E <- tibble("sex"=c("all","men","woman"),applications=c(584,191,393))
 
 
 applications_E %>% ggplot(aes(x=sex,y=applications,fill=sex)) + 
@@ -407,10 +407,10 @@ Lad os tage udgangspunkt i nogle genekspressionssekvenseringsdata fra mus (vi s�
 norm.cts <- read.table("https://www.dropbox.com/s/3vhwnsnhzsy35nd/bottomly_count_table_normalised.txt?dl=1")
 coldata <- read.table("https://www.dropbox.com/s/el3sm9ncvzbq6xf/bottomly_phenodata.txt?dl=1")
 coldata <- coldata %>% tibble()
-norm.cts <- as_tibble(norm.cts[1:1000,],rownames="gene")
+norm.cts <- as_tibble(norm.cts,rownames="gene")
 ```
 
-Jeg begynder med at vælge kun de rækker, der har mindst 50 counts, for at undgå gener med lave ekspressionsniveauer. Det næste jeg gør er at transformere dataene til logaritmisk form (funktion `map_if()`) for at opnå en bedre fordeling i datasættet.
+Jeg begynder med at vælge kun de rækker, der har mindst 50 counts, for at undgå gener med lave ekspressionsniveauer. Det næste jeg gør er at transformere dataene til logaritmisk form (funktion `map_if()`) for at opnå en bedre fordeling i datasættet. Derefter tager jeg kun de første 1000 rækker med, kun for at gøre det nemmere at køre mine koder på en laptop.
 
 
 ``` r
@@ -419,31 +419,10 @@ norm.cts <- norm.cts %>%
   filter(rowSums(norm.cts %>% select(-gene))>50) %>% 
   map_if(is.numeric,~log(.x+1)) %>% as_tibble()
 
-norm.cts
+norm.cts <- norm.cts[1:1000,] #take a subset to save loading times on laptop
 ```
 
-```
-#> # A tibble: 10,193 × 22
-#>    gene    SRX033480 SRX033488 SRX033481 SRX033489 SRX033482 SRX033490 SRX033483
-#>    <chr>       <dbl>     <dbl>     <dbl>     <dbl>     <dbl>     <dbl>     <dbl>
-#>  1 ENSMUS…      6.35      6.32      6.21      6.29      6.31      6.27      6.30
-#>  2 ENSMUS…      3.51      3.56      3.57      3.27      2.99      3.61      3.56
-#>  3 ENSMUS…      3.19      3.50      3.08      3.21      3.14      3.09      3.22
-#>  4 ENSMUS…      6.69      6.48      6.38      6.35      6.39      6.34      6.50
-#>  5 ENSMUS…      6.05      6.37      6.17      6.26      6.16      6.06      6.13
-#>  6 ENSMUS…      2.89      2.94      3.16      3.21      3.77      3.30      3.11
-#>  7 ENSMUS…      3.42      3.12      3.86      4.36      3.77      3.99      4.24
-#>  8 ENSMUS…      3.42      2.94      3.52      3.41      3.57      3.60      2.99
-#>  9 ENSMUS…      5.02      4.98      4.49      4.27      4.67      4.35      4.81
-#> 10 ENSMUS…      5.13      4.88      4.97      4.76      4.82      4.79      4.96
-#> # ℹ 10,183 more rows
-#> # ℹ 14 more variables: SRX033476 <dbl>, SRX033478 <dbl>, SRX033479 <dbl>,
-#> #   SRX033472 <dbl>, SRX033473 <dbl>, SRX033474 <dbl>, SRX033475 <dbl>,
-#> #   SRX033491 <dbl>, SRX033484 <dbl>, SRX033492 <dbl>, SRX033485 <dbl>,
-#> #   SRX033493 <dbl>, SRX033486 <dbl>, SRX033494 <dbl>
-```
-
-Så der er omkring 10.000 gener i rækkerne, og der er 21 forskellige prøver, der spreder sig over kolonnerne. Vi har også nogle prøveoplysninger - der er to forskellige stammer af mus og også forskellige batches, som vi gerne vil undersøge nærmere.
+Så der er 1000 gener i rækkerne, og der er 21 forskellige prøver, der spreder sig over kolonnerne. Vi har også nogle prøveoplysninger - der er to forskellige stammer af mus og også forskellige batches, som vi gerne vil undersøge nærmere.
 
 
 ``` r
