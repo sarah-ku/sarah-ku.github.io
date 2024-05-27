@@ -10,8 +10,6 @@
 </div>
 
 
-
-
 Pakkerne vi bruger i emnet:
 
 
@@ -21,7 +19,6 @@ library(tidyverse)
 library(ranger) #install this, random forest
 library(palmerpenguins)
 ```
-
 
 
 ## Indledning og læringsmål
@@ -106,6 +103,7 @@ Pakken `rsample` har funktionen `initial_split`, der opdeler datasættet, såled
 
 
 ``` r
+library(rsample) #husk at installere pakken hvis nødvendigt
 penguins_split <- initial_split(penguins, prop = 0.75)
 penguins_split
 ```
