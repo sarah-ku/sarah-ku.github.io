@@ -546,7 +546,7 @@ Figure 11.1: Image just for fun
 <ul>
 <li>Læs kursusnotaterne om randomisation, replikation, blocking + confounding</li>
 <li>Se videorne til “Simpson’s Paradoks” og “Anscombe’s quartet”</li>
-<li>Læs kursusnotaterne om batch effekt undersøgelse</li>
+<li>Læs kursusnotaterne om batch effekt undersøgelse (11.5)</li>
 <li>Quiz - eksperimental (på Absalon)</li>
 <li>Lav problemstillingerne og sige til hvis du har bruge for hjælp :)</li>
 </ul>
@@ -556,12 +556,18 @@ Figure 11.1: Image just for fun
 <ul>
 <li>Part 1: randomisation, replikation, blocking + confounding
 <ul>
-<li>Ingen video: læs gerne notaterne nedenfor</li>
+<li>Ingen video: læs gerne notaterne nedenfor 11.2 “Grundlæggende principper i eksperimentelt design”</li>
+<li>Lav problemstilling <strong>Problem 2</strong>)</li>
 </ul></li>
 </ul>
 <hr />
 <ul>
-<li>Part 2: Simpson’s Paradoks</li>
+<li>Part 2: Simpson’s Paradoks
+<ul>
+<li>Se videoen nedenfor samt 11.3 “Case studies: Simpson’s paradoks” i kursusnotaterne</li>
+<li>Lav problemstilling <strong>Problem 3</strong>)</li>
+<li>Problemstilling <strong>Problem 7</strong>) giver endnu et eksempel på Simpon’s paradoks</li>
+</ul></li>
 </ul>
 <div class="vembedr">
 <div>
@@ -570,7 +576,11 @@ Figure 11.1: Image just for fun
 </div>
 <hr />
 <ul>
-<li>Part 3: Anscombe’s quartet</li>
+<li>Part 3: Anscombe’s quartet
+<ul>
+<li>Se videoen nedenfor samt 11.4 “Case studies: Anscombes kvartet” i kursusnotaterne</li>
+<li>Lav <strong>Problem 4</strong>) i problemstillingerne</li>
+</ul></li>
 </ul>
 <div class="vembedr">
 <div>
@@ -579,7 +589,11 @@ Figure 11.1: Image just for fun
 </div>
 <hr />
 <ul>
-<li>Part 4: Batch effects and principal component analysis.</li>
+<li>Part 4: Batch effects and principal component analysis.
+<ul>
+<li>Læs 11.5: “Undersøgelse af batch effekts”</li>
+<li>Lav <strong>Problem 5</strong>) og <strong>Problem 6</strong>) )</li>
+</ul></li>
 </ul>
 <!-- _OBS Man kan selvfølgelige også anvende `map_if()` til at log-transformere._ -->
 <!-- Der er også nogle esktra notater om heatmaps (hvis interesseret, frivilligt) -->
@@ -803,7 +817,6 @@ Figure 11.3: source: wikipedia
 </div>
 <div id="undersøgelse-af-batch-effekter" class="section level2 hasAnchor" number="11.5">
 <h2><span class="header-section-number">11.5</span> Undersøgelse af “batch-effekter”<a href="emner-fra-eksperimental-design.html#undersøgelse-af-batch-effekter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>(Se også videoressourcer Part 4).</p>
 <p>En “batch-effekt” er en systematisk teknisk bias, der opstår, når målinger (f.eks. genekspression) udføres i flere omgange eller “batches”. Dette kan potentielt føre til betydelige forvrængninger og fejlagtige konklusioner i dataanalyse, hvis det ikke tages højde for.</p>
 <p>Forestil dig, at du udfører et eksperiment, hvor du sammenligner genekspressionen i sundt væv med kræftvæv. Du udfører dine eksperimenter over flere dage, og det viser sig, at alle dine sunde prøver blev behandlet på mandag, og alle dine kræftprøver blev behandlet på tirsdag. Hvis der er en systematisk forskel i, hvordan dine eksperimenter blev udført på de to dage (måske et reagens var lidt anderledes, eller instrumentet blev brugt på en anden måde), vil du se en stor forskel i genekspression mellem dine sunde og kræftprøver. Men denne forskel skyldes faktisk batch-effekten, ikke forskellen mellem sundt og kræftvæv.</p>
 <p>Man kan også anvende visualiseringer til at undersøge eventuelle batch-effekter eller forvirrende variabler i datasættet. Dette er især vigtigt i store eksperimenter, hvor forskellige prøver eller dele af datasættet bliver indsamlet på forskellige tidspunkter, steder, eller af forskellige personer. Det er ofte tilfældet i sekvenseringsbaserede datasæt, at man ser batch-effekter, og det kan skyldes mange ting, bl.a.:</p>

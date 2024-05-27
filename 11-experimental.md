@@ -27,7 +27,7 @@ I skal være i stand til at
 :::checklist
 * Læs kursusnotaterne om randomisation, replikation, blocking + confounding
 * Se videorne til "Simpson's Paradoks" og "Anscombe's quartet"
-* Læs kursusnotaterne om batch effekt undersøgelse
+* Læs kursusnotaterne om batch effekt undersøgelse (11.5)
 * Quiz - eksperimental (på Absalon)
 * Lav problemstillingerne og sige til hvis du har bruge for hjælp :)
 :::
@@ -35,11 +35,15 @@ I skal være i stand til at
 ### Video ressourcer
 
 * Part 1: randomisation, replikation, blocking + confounding
-    + Ingen video: læs gerne notaterne nedenfor
+    + Ingen video: læs gerne notaterne nedenfor 11.2 "Grundlæggende principper i eksperimentelt design"
+    + Lav problemstilling __Problem 2__)
     
 ---
 
 * Part 2: Simpson's Paradoks 
+    + Se videoen nedenfor samt 11.3 "Case studies: Simpson's paradoks" i kursusnotaterne
+    + Lav problemstilling __Problem 3__) 
+    + Problemstilling __Problem 7__) giver endnu et eksempel på Simpon's paradoks
 
 
 ```{=html}
@@ -53,6 +57,8 @@ I skal være i stand til at
 ---
 
 * Part 3: Anscombe's quartet 
+    + Se videoen nedenfor samt 11.4 "Case studies: Anscombes kvartet" i kursusnotaterne
+    + Lav __Problem 4__) i problemstillingerne
 
 
 ```{=html}
@@ -66,6 +72,8 @@ I skal være i stand til at
 --- 
 
 * Part 4: Batch effects and principal component analysis. 
+    + Læs 11.5: "Undersøgelse af batch effekts"
+    + Lav __Problem 5__) og __Problem 6__) )
 
 <!-- _OBS Man kan selvfølgelige også anvende `map_if()` til at log-transformere._ -->
 
@@ -399,8 +407,6 @@ anscombe %>%
 De fire datasæt er meget forskellige. Vi ved, at de alle har samme bedste tilpasning med rette linjer, men de underliggende data er slet ikke de samme. Det første datasæt ser egnet ud til en lineær regressionsanalyse, men vi kan se i datasæt nummer to, at der ikke engang er en lineær sammenhæng. Og de andre to har outlier værdier, hvilket gør, at den bedst tilpassede rette linje ikke passer særlig godt til punkterne.
 
 ## Undersøgelse af "batch-effekter"
-
-(Se også videoressourcer Part 4).
 
 En "batch-effekt" er en systematisk teknisk bias, der opstår, når målinger (f.eks. genekspression) udføres i flere omgange eller "batches". Dette kan potentielt føre til betydelige forvrængninger og fejlagtige konklusioner i dataanalyse, hvis det ikke tages højde for.
 
