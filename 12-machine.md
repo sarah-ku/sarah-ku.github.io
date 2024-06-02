@@ -1,14 +1,11 @@
 # Maskinslæring i tidyverse
 
-
 "Absorber hvad der er nyttigt, afvis det, der er ubrugeligt, tilføj det, der specifikt er dit eget." - Bruce Lee
-
 
 <div class="figure" style="text-align: center">
 <img src="plots/tidymodels_hex.png" alt="We don't use all these packages here but R/tidyverse has a good set of tools for machine learning" width="55%" />
 <p class="caption">(\#fig:unnamed-chunk-1)We don't use all these packages here but R/tidyverse has a good set of tools for machine learning</p>
 </div>
-
 
 Pakkerne vi bruger i emnet:
 
@@ -19,7 +16,6 @@ library(tidyverse)
 library(ranger) #install this, random forest
 library(palmerpenguins)
 ```
-
 
 ## Indledning og læringsmål
 
@@ -32,20 +28,21 @@ Jeg har bestræbt mig på at arbejde så vidt muligt kun inden for tidyverse-ram
 <!-- En anvendelse af modellen kan være, at hvis der kommer nye observationer, så hvor godt kan vi bruge modellen til at beregne deres vægt? Det kan fortæller også om hvordan målingerne relatere til vægten, samt brugbar i situationer hvor man ikke kender pingviners vægt - mange lignende situationer opstå mange gange i biologi og medicin: -->
 
 <!-- * Man har målinger om en patient og gerne vil beregne risiko for, at patienten udvikler en bestemt sygdomme ud fra målingerne -->
+
 <!-- * Man har et billede fk. fra en biopsi og man gerne vil anvende mæskinlærings for at classificere status på patienten. -->
 
 ### Læringsmålene
 
 Du skal være i stand til at:
 
-* Kende anvendelsen af test- og træningsdatasæt og beskrive processen for krydsvalidering
-* Anvende 5-fold krydsvalidering til at udvikle en model og beregne statistikker til evaluering af modellen
-* Oprette en klassifikationsmodel til at forudsige, hvem der overlevede Titanic
-* Finjustere en parameter og beslutte om en "endelig" model
+-   Kende anvendelsen af test- og træningsdatasæt og beskrive processen for krydsvalidering
+-   Anvende 5-fold krydsvalidering til at udvikle en model og beregne statistikker til evaluering af modellen
+-   Oprette en klassifikationsmodel til at forudsige, hvem der overlevede Titanic
+-   Finjustere en parameter og beslutte om en "endelig" model
 
 ## Videomateriale
 
-* Video 1: Data splitting and cross-fold validation i en regression kontekst
+-   Video 1: Data splitting and cross-fold validation i en regression kontekst
 
 
 ```{=html}
@@ -56,9 +53,9 @@ Du skal være i stand til at:
 </div>
 ```
 
----
+------------------------------------------------------------------------
 
-* Video 2: Cross-fold validation i en classifcation contekst (random forest)
+-   Video 2: Cross-fold validation i en classifcation contekst (random forest)
 
 
 ```{=html}
@@ -69,9 +66,9 @@ Du skal være i stand til at:
 </div>
 ```
 
----
+------------------------------------------------------------------------
 
-* Video 3: Tuning af parametre i classification og variabel importance
+-   Video 3: Tuning af parametre i classification og variabel importance
 
 
 ```{=html}
@@ -81,7 +78,6 @@ Du skal være i stand til at:
 </div>
 </div>
 ```
-
 
 ## Regressionsmodeller
 
@@ -96,9 +92,8 @@ penguins <- penguins %>% drop_na()
 
 Hvordan kan vi vide, om en model er god til at forudsige, hvad der vil ske med nye observationer? Med andre ord, fungerer modellen kun godt på de observationer, der blev brugt til at opbygge modellen (kaldet "overfitting"), eller kan modellen generalisere til andre lignende situationer? For at få svar på dette overvejer vi at opdele datasættet, inden vi opbygger modellen. Det betyder, at vi har et datasæt, som vi bruger til at opbygge modellen, og et andet datasæt, som vi kan bruge som "nye observationer" til at teste, hvor godt modellen faktisk er (fordi i dette datasæt kender vi de faktiske værdier, som vi kan sammenligne med vores forudsigelser fra modellen).
 
-
 <img src="plots/machine_step1.png" width="90%" style="display: block; margin: auto;" />
- 
+
 Pakken `rsample` har funktionen `initial_split`, der opdeler datasættet, således at 75% af observationerne tilhører træningssættet og 25% tilhører testssættet:
 
 
@@ -129,10 +124,10 @@ For at udvikle min model med mit træningssæt anvender jeg "5-fold krydsvalider
 
 <img src="plots/machine_step1_step2.png" width="100%" style="display: block; margin: auto;" />
 
-
 Tilgangen har mange fordele. Hvis der for eksempel kun var én testmængde, og ved tilfældighed indeholdt den observationer, der er særligt lette at forudsige, ville vi få en fejlagtig opfattelse af, at modellen er bedre end den egentlig er i virkeligheden. Ved at anvende 5 folds (forskellige valideringssæt), der dækker hele træningssættet, undgår vi dette. Vi kan dermed søge efter en kombination af parametre, der konsekvent giver en god model på tværs af alle valideringssæt. På den måde kan vi være mere sikre på at få en model, der fungerer godt på vores testmængde til sidst.
 
 <!-- * Man kan få en fornemmelse af hvor meget hvors evne til at forudsige på nye data variare afhængig af observatiorene der ligger i enten testing eller træning sæt. -->
+
 <!-- * Minimire "overfitting" modellen - det vil sige, at modellen er meget godt til at forstå hvad der sker i datasættet men dårlig til at forudsige hvad der forgår med hensyn til nye observationer. -->
 
 Der er en nem funktion man kan bruge i `rsample`-pakken, der hedder `vfold_cv()` til at lave krydsvalidering. Her angiver jeg `v=5` for at vise, at jeg gerne vil have 5 folds.
@@ -225,7 +220,7 @@ Jeg vil gerne sammenligne mine nye forudsigelser direkte med de virkelige værdi
 prediction_df <- cv_prep_lm %>% select(id, actual_mass, predicted_mass) %>% unnest(c(actual_mass, predicted_mass))
 ```
 
-For hver af de fem folds beregner jeg statistikken "mean absolute error", der tager afstanden mellem de forventede værdier (`predicted_mass`) og de virkelige værdier (`actual_mass`) og tager herefter middelværdien (over deres absolutte værdier dvs. uden minus tegn). Jo mindre "mae" er, jo bedre er modellen. 
+For hver af de fem folds beregner jeg statistikken "mean absolute error", der tager afstanden mellem de forventede værdier (`predicted_mass`) og de virkelige værdier (`actual_mass`) og tager herefter middelværdien (over deres absolutte værdier dvs. uden minus tegn). Jo mindre "mae" er, jo bedre er modellen.
 
 
 ``` r
@@ -234,7 +229,6 @@ mae_df <- prediction_df %>% group_by(id) %>% summarise("mae" = mean(abs(actual_m
 ```
 
 Her er et plot af statistikken "mae" for de forskellige folds. I gennemsnit er det 231.4934331, hvilket betyder, at vores forudsigelser i gennemsnit er ude/forkerte med knap 300 g - ikke dårligt, når den gennemsnitlige pingvin vejer 4207.06 g.
-
 
 
 ``` r
@@ -369,8 +363,7 @@ Dernæst vil vi gerne anvende en model på de fem træningssæt. Et godt eksempe
 
 <img src="plots/random_forest_titanic.png" width="70%" style="display: block; margin: auto;" />
 
-
-I det følgende anvender jeg funktionen `ranger()` (installer pakken `ranger`), der passer en random forest i R på datasættet. 
+I det følgende anvender jeg funktionen `ranger()` (installer pakken `ranger`), der passer en random forest i R på datasættet.
 
 
 ``` r
@@ -382,9 +375,9 @@ ranger_model <- ~ranger(formula = Survived ~ . ,  # . betyder alle variabler i d
 
 Lidt om `ranger`-modellens parametre:
 
-* Jeg angiver en formel - variablen `Survived` er afhængig, og alle andre variabler er uafhængige (betegnet ved "." for at spare tid).
-* data er `.x` og refererer til et træningssæt for en af vores "folds" i vores cross-fold validation datasæt.
-* `num.trees` fortæller, hvor mange træer jeg vil lave (jo flere, jo bedre, men der er en balance mellem tid/energi).
+-   Jeg angiver en formel - variablen `Survived` er afhængig, og alle andre variabler er uafhængige (betegnet ved "." for at spare tid).
+-   data er `.x` og refererer til et træningssæt for en af vores "folds" i vores cross-fold validation datasæt.
+-   `num.trees` fortæller, hvor mange træer jeg vil lave (jo flere, jo bedre, men der er en balance mellem tid/energi).
 
 ### Anvende modellen og lave predictions
 
@@ -408,6 +401,7 @@ cv_models_rf
 #> 4 <split [428/107]> Fold4 <tibble [428 × 7]> <tibble [107 × 7]> <ranger>
 #> 5 <split [428/107]> Fold5 <tibble [428 × 7]> <tibble [107 × 7]> <ranger>
 ```
+
 Næste skridt er at lave forudsigelser over de fem `validate` datasæt med funktionen `predict()`. Det fungerer på samme måde som i ovenstående regressionsmodel, men med `ranger` er man nødt til at udtrække selve forudsigelserne ved at tilføje `$predictions`, ligesom i den følgende funktion `my_prediction_function`:
 
 
@@ -482,12 +476,9 @@ ggplot(aes(x=id,y=accuracy,fill=id)) +
 
 <img src="12-machine_files/figure-html/unnamed-chunk-30-1.svg" width="672" style="display: block; margin: auto;" />
 
-
-
 ### Parameterjustering
 
-I funktionen `ranger` var der faktisk nogle parametre, der kan have indflydelse på modellens forudsigelser til sidst - én af dem er for eksempel `num.trees` - hvis man bruger fx. 100 træer, får man sandsynligvis bedre resultater end hvis man anvender kun et træ. En anden parameter, som vi angav som "default" i ovenstående analyse, er `mtry`. Den angiver hvor mange variabler vi skal inddrage i en enkelt beregning i træerne (det inddrager mere tilfældighed i algoritmen og undgår, at 1-2 variabler har for meget indflydelse på resultaterne). 
-Vi vil gerne prøve de forskellige værdier for `mtry` i modellen og se, hvilken værdi der giver de bedste resultater. I `tidyr`-pakken er der en nyttig funktion `crossing`, der laver kopier af de forskellige folds datasæt, én til hver mulig værdi af `mtry`:
+I funktionen `ranger` var der faktisk nogle parametre, der kan have indflydelse på modellens forudsigelser til sidst - én af dem er for eksempel `num.trees` - hvis man bruger fx. 100 træer, får man sandsynligvis bedre resultater end hvis man anvender kun et træ. En anden parameter, som vi angav som "default" i ovenstående analyse, er `mtry`. Den angiver hvor mange variabler vi skal inddrage i en enkelt beregning i træerne (det inddrager mere tilfældighed i algoritmen og undgår, at 1-2 variabler har for meget indflydelse på resultaterne). Vi vil gerne prøve de forskellige værdier for `mtry` i modellen og se, hvilken værdi der giver de bedste resultater. I `tidyr`-pakken er der en nyttig funktion `crossing`, der laver kopier af de forskellige folds datasæt, én til hver mulig værdi af `mtry`:
 
 
 ``` r
@@ -586,7 +577,6 @@ my_accuracies %>% ggplot(aes(fill=id,x=mtry,y=accuracy)) +
 
 <img src="12-machine_files/figure-html/unnamed-chunk-36-1.svg" width="384" style="display: block; margin: auto;" />
 
-
 ### Oprette endelig model med titanic datasæt
 
 I min endelige model anvender jeg de parametre, jeg valgte i min cross-validation proces, og træner jeg min model over hele `titanic_training` datasættet på én gang.
@@ -629,7 +619,6 @@ final_RF <- ranger(formula = Survived ~ . ,  data = titanic_training,
                                               num.trees = 100)
 ```
 
-
 Til sidst vil vi gerne vide, bidraget fra de forskellige variabler i modellen:
 
 
@@ -651,6 +640,7 @@ mod
 #> 5 Port    5.78
 #> 6 Fare   68.1
 ```
+
 Jo højere værdien er, jo vigtigere er variablen:
 
 
@@ -668,12 +658,11 @@ Så kan man se, at variablen Fare er meget vigtig for at bestemme, hvem der over
 
 ## Problemstillinger
 
+**Problem 1)**: Quiz - maskinslæring
 
-__Problem 1)__: Quiz - maskinslæring
+------------------------------------------------------------------------
 
----
-
-__Classification med penguins__
+**Classification med penguins**
 
 I datasættet "penguins" vil vi gerne anvende en klassifikationsmodel for at forudsige "male" og "female" pingviner (variablen `sex`) baseret på de andre variabler i datasættet. Først åbner vi datasættet:
 
@@ -683,97 +672,90 @@ library(palmerpenguins)
 penguins <- penguins %>% drop_na()
 ```
 
+OBS: **Vi tilpasser koden tæt til ovenstående eksempel med datasættet `titanic` - i de følgende spørgsmål, følg koden fra Sektion 12.4**
 
-OBS: __Vi tilpasser koden tæt til ovenstående eksempel med datasættet `titanic` - i de følgende spørgsmål, følg koden fra Sektion 12.4__
-
----
+------------------------------------------------------------------------
 
 Lad os begynde med at opdele datasættet i to, og bruge testdata til at lave en "nested" dataframe, som vi kan bruge til at lave 5-fold-cross-validation.
 
-__Problem 2)__ _Oprettelse af cross-validation rammer_
+**Problem 2)** *Oprettelse af cross-validation rammer*
 
-__a)__ Opdel datasættet "penguins" i to, således at 80 procent af observationerne er i træningsdatasættet (og 20 procent er i testdatasættet). Kald dit resultat `penguins_split`. Hvor mange observationer er blevet tildelt trænings- og testdatasættene?
+**a)** Opdel datasættet "penguins" i to, således at 80 procent af observationerne er i træningsdatasættet (og 20 procent er i testdatasættet). Kald dit resultat `penguins_split`. Hvor mange observationer er blevet tildelt trænings- og testdatasættene?
 
 
 
-__b)__ Uddrag de to datasæt fra `penguins_split` og kald dem `penguins_training` og `penguins_test`.
-
+**b)** Uddrag de to datasæt fra `penguins_split` og kald dem `penguins_training` og `penguins_test`.
 
 
 
 Vi sætter datasættet `penguins_test` til side (vi får brug for det senere) og arbejder kun med datasættet `penguins_training` for at udvikle vores model.
 
-__c__) Anvend `penguins_training` til at lave en 5-fold-cross-validation dataframe kaldet `cv_split`. 
+**c**) Anvend `penguins_training` til at lave en 5-fold-cross-validation dataframe kaldet `cv_split`.
 
 
 
-
-__d)__ Uddrag de fem test- og træningsdatasæt fra kolonnen `splits` og gem dem i egne kolonner (kald deres kolonner henholdsvis `validate` og `train`). Kald din nye "nested" dataframe for `cv_data`.
-
+**d)** Uddrag de fem test- og træningsdatasæt fra kolonnen `splits` og gem dem i egne kolonner (kald deres kolonner henholdsvis `validate` og `train`). Kald din nye "nested" dataframe for `cv_data`.
 
 
----
+
+------------------------------------------------------------------------
 
 Nu vil vi gerne lave den samme model 5 gange - en gang for hvert datasæt i kolonnen `train` i vores nye `cv_data` dataframe. Denne model skal være en 'klassifikations' model, da vi gerne vil forudsige "male" eller "female" pingviner (vores afhængige variabel er `sex`, som er kategorisk med to mulige værdier).
 
-__Problem 3)__ _Oprettelse af modellen_
+**Problem 3)** *Oprettelse af modellen*
 
-__a__) Lad os starte med det første datasæt og generalisere bagefter til en brugerdefineret funktion i __b__). Anvend `pluck` for at få adgang til det første datasæt i kolonnen `train`, og anvend derefter funktionen `ranger` for at lave en klassifikationsmodel med variablen `sex` som afhængig variabel, og alle de andre variabler som uafhængige variabler (betegnet med `~ .` i modellen). Angiv `num.trees=100` (vi ignorerer andre mulige parametre indtil videre).
-
-
-
-__b__) Når vi har fået modellen med `ranger` til at virke på det første datasæt, laver vi en brugerdefineret funktion, der kan anvendes på alle datasæt i kolonnen `train` - tilpas din `ranger`-model fra __a)__ til en brugerdefineret funktion og kald den `ranger_function`.
+**a**) Lad os starte med det første datasæt og generalisere bagefter til en brugerdefineret funktion i **b**). Anvend `pluck` for at få adgang til det første datasæt i kolonnen `train`, og anvend derefter funktionen `ranger` for at lave en klassifikationsmodel med variablen `sex` som afhængig variabel, og alle de andre variabler som uafhængige variabler (betegnet med `~ .` i modellen). Angiv `num.trees=100` (vi ignorerer andre mulige parametre indtil videre).
 
 
 
-
-__c__) Anvend `ranger_function` på samtlige datasæt i kolonnen "train" (opret en ny kolonne i `cv_data`, der hedder `model`, hvor dine fem modeller bliver gemt).
-
+**b**) Når vi har fået modellen med `ranger` til at virke på det første datasæt, laver vi en brugerdefineret funktion, der kan anvendes på alle datasæt i kolonnen `train` - tilpas din `ranger`-model fra **a)** til en brugerdefineret funktion og kald den `ranger_function`.
 
 
----
+
+**c**) Anvend `ranger_function` på samtlige datasæt i kolonnen "train" (opret en ny kolonne i `cv_data`, der hedder `model`, hvor dine fem modeller bliver gemt).
+
+
+
+------------------------------------------------------------------------
 
 Nu har vi lavet en klassifikationsmodel til hvert træningssæt! Vi vil gerne vide, hvor gode modellerne er til at forudsige `sex` i de fem datasæt i kolonnen `validate` (husk at `validate` indeholder den del, der ikke blev brugt i træningen for den relevante `id`(fold)). Vi skal sammenligne to ting fra vores valideringssæt - hvad er vores forudsigelser ud fra modellerne ("male" eller "female" til hver pingvin), og hvad er de virkelige værdier for variablen `sex` (igen "male" eller "female").
 
-__Problem 4)__ _Lav forudsigelser ud fra modellen_
+**Problem 4)** *Lav forudsigelser ud fra modellen*
 
-__a__) Brug `map`/`map2` til at lave to nye kolonner i `cv_data`:
+**a**) Brug `map`/`map2` til at lave to nye kolonner i `cv_data`:
 
-* `actual`, hvor du uddrager de virkelige værdier for variablen `sex`
-* `prediction`, hvor du anvender `predict` med dine modeller (betegnet som .x) og dine valideringssæt (betegnet som .y)
-
-
-
-__b__) Vælg `id`, `actual` og `prediction`, unnest og beregn "nøjagtighed" (proportion af svar, der er korrekte) for hver af de 5 folds.
+-   `actual`, hvor du uddrager de virkelige værdier for variablen `sex`
+-   `prediction`, hvor du anvender `predict` med dine modeller (betegnet som .x) og dine valideringssæt (betegnet som .y)
 
 
 
-
-__c__) Lav et søjlediagram for at se din nøjagtighed over de 5 folds.
-
+**b**) Vælg `id`, `actual` og `prediction`, unnest og beregn "nøjagtighed" (proportion af svar, der er korrekte) for hver af de 5 folds.
 
 
 
----
-
-_Nu har vi lavet 5-fold-cross validation til at træne en klassifikationsmodel. Vi vil gerne udvide processen lidt, fordi der er nogle parametre, der kan ændres i funktionen `ranger`. Det er gennem denne udviklingsproces, at vi begynder at forstå fordelen ved at bruge cross-fold-validation. Lad os prøve at ændre parameteren `mtry` for at se, om vi kan forbedre modellen. Igen følger vi meget tæt på de ovenstående kursusnotater._
-
-__Problem 5)__ Finjuster parameteren `mtry`. 
-
-__a__) Anvend funktionen `crossing` for at inddrage `mtry` (fra 2 til 6, som er antallet af uafhængige variabler) som en kolonne i `cv_data`. Kald din nye dataframe for `cv_tune`. Hvor mange datasæt er der nu i kolonnen `train`?
+**c**) Lav et søjlediagram for at se din nøjagtighed over de 5 folds.
 
 
 
-__b__) Tilpas din brugerdefinerede ranger funktion fra __Spørgsmål 3__, hvor du nu inddrager parameteren `mtry` (med værdi betegnet som `.y`) og anvender din model på de forskellige træningssæt i kolonnen `train` for hver mulig værdi af `mtry` (husk at bruge `map2` her).
+------------------------------------------------------------------------
+
+*Nu har vi lavet 5-fold-cross validation til at træne en klassifikationsmodel. Vi vil gerne udvide processen lidt, fordi der er nogle parametre, der kan ændres i funktionen `ranger`. Det er gennem denne udviklingsproces, at vi begynder at forstå fordelen ved at bruge cross-fold-validation. Lad os prøve at ændre parameteren `mtry` for at se, om vi kan forbedre modellen. Igen følger vi meget tæt på de ovenstående kursusnotater.*
+
+**Problem 5)** Finjuster parameteren `mtry`.
+
+**a**) Anvend funktionen `crossing` for at inddrage `mtry` (fra 2 til 6, som er antallet af uafhængige variabler) som en kolonne i `cv_data`. Kald din nye dataframe for `cv_tune`. Hvor mange datasæt er der nu i kolonnen `train`?
 
 
 
-__c__) Lav forudsigelser ud fra samtlige modeller og dine valideringssæt (kolonnen `validate`) og udtræk både dine "faktiske" og "forudsagte" værdier præcis som før.
+**b**) Tilpas din brugerdefinerede ranger funktion fra **Spørgsmål 3**, hvor du nu inddrager parameteren `mtry` (med værdi betegnet som `.y`) og anvender din model på de forskellige træningssæt i kolonnen `train` for hver mulig værdi af `mtry` (husk at bruge `map2` her).
 
 
 
+**c**) Lav forudsigelser ud fra samtlige modeller og dine valideringssæt (kolonnen `validate`) og udtræk både dine "faktiske" og "forudsagte" værdier præcis som før.
 
-__d__) Beregn nøjagtighed for samtlige sæt (alle kombinationer af `id` og `mtry`), lav et stablet søjlediagram og vælg den bedste mulige værdi for `mtry`.
+
+
+**d**) Beregn nøjagtighed for samtlige sæt (alle kombinationer af `id` og `mtry`), lav et stablet søjlediagram og vælg den bedste mulige værdi for `mtry`.
 
 
 
@@ -781,38 +763,37 @@ __d__) Beregn nøjagtighed for samtlige sæt (alle kombinationer af `id` og `mtr
 
 
 
+------------------------------------------------------------------------
 
----
+*Nu, da vi har valgt en værdi for parameteren `mtry`, lad os gå videre og lave en "endelig" model! Når vi har lavet den endelige model, kan vi endelig kigge på vores `penguins_test` datasæt, som vi tidligere lagde til side. Husk, at valideringssættene blev brugt til at teste modellen undervejs i udviklingsprocessen, men de var stadig en del af `penguins_training`. Man kigger på testsættet kun én gang til sidst for at stille spørgsmålet - hvor god er vores endelige model?*
 
-_Nu, da vi har valgt en værdi for parameteren `mtry`, lad os gå videre og lave en "endelig" model! Når vi har lavet den endelige model, kan vi endelig kigge på vores `penguins_test` datasæt, som vi tidligere lagde til side. Husk, at valideringssættene blev brugt til at teste modellen undervejs i udviklingsprocessen, men de var stadig en del af `penguins_training`. Man kigger på testsættet kun én gang til sidst for at stille spørgsmålet - hvor god er vores endelige model?_
+**Problem 6)** *Lav en `endelig` model*
 
-__Problem 6)__ _Lav en `endelig` model_
-
-__a__) Anvend funktionen `ranger` for at lave en klassifikationsmodel på datasættet `penguins_training`. Angiv `num.trees=100` og din valgte værdi for parameteren `mtry`.
-
-
-
-__b__) Lav forudsigelser med funktionen `predict`, hvor du angiver din "endelige" model samt dit "penguins_test" datasæt. Beregn nøjagtigheden fra din model ved at sammenligne de faktiske værdier for variablen `sex` i dit testsæt med dine beregnede værdier fra `predict()`.
+**a**) Anvend funktionen `ranger` for at lave en klassifikationsmodel på datasættet `penguins_training`. Angiv `num.trees=100` og din valgte værdi for parameteren `mtry`.
 
 
 
----
-
-_Nu, da vi er færdige med at lave og bedømme vores "endelige" model, er vi interesserede i - hvilke variabler havde den største indflydelse på vores forudsigelser af "male" og "female" pingviner?_
-
-__Problem 7)__ _Variable importance_
-
-__a__) Anvend din funktion på din "endelige" model og angiv indstillingen `importance = "impurity"` i funktionen. Kør modellen og udtræk din variable importance vektor med `final_RF$variable.importance`.
+**b**) Lav forudsigelser med funktionen `predict`, hvor du angiver din "endelige" model samt dit "penguins_test" datasæt. Beregn nøjagtigheden fra din model ved at sammenligne de faktiske værdier for variablen `sex` i dit testsæt med dine beregnede værdier fra `predict()`.
 
 
 
-__b__) Omsæt dine importance scores til et søjlediagram, hvor du angiver rækkefølgen af søjlerne efter vigtigheden af de forskellige variabler (den mest vigtige til venstre).
+------------------------------------------------------------------------
+
+*Nu, da vi er færdige med at lave og bedømme vores "endelige" model, er vi interesserede i - hvilke variabler havde den største indflydelse på vores forudsigelser af "male" og "female" pingviner?*
+
+**Problem 7)** *Variable importance*
+
+**a**) Anvend din funktion på din "endelige" model og angiv indstillingen `importance = "impurity"` i funktionen. Kør modellen og udtræk din variable importance vektor med `final_RF$variable.importance`.
 
 
 
----
+**b**) Omsæt dine importance scores til et søjlediagram, hvor du angiver rækkefølgen af søjlerne efter vigtigheden af de forskellige variabler (den mest vigtige til venstre).
 
-__Problem 8)__ Gentag samme proces med et andet datasæt, men i en regressionskontekst:
+
+
+------------------------------------------------------------------------
+
+**Problem 8)** Gentag samme proces med et andet datasæt, men i en regressionskontekst:
 
 
 ``` r
@@ -831,13 +812,12 @@ glimpse(LungCapData)
 #> $ Caesarean <chr> "no", "no", "yes", "no", "no", "no", "yes", "no", "no", "no"…
 ```
 
-Følg processen fra Sektion 12.3 igennem med datasættet `LungCapData`: 
+Følg processen fra Sektion 12.3 igennem med datasættet `LungCapData`:
 
-  * forudsig `LungCap` som afhængig variabel og alle andre variabler som uafhængige variabler
-  * Del datasættet (75% træning, 25% test) og anvend 10-fold cross-validation på dit træningsdatasæt
-  * Beregn "mean absolute error" for dine forskellige folds
-  * Lav en endelig model og beregn "mean absolute error"
-
+-   forudsig `LungCap` som afhængig variabel og alle andre variabler som uafhængige variabler
+-   Del datasættet (75% træning, 25% test) og anvend 10-fold cross-validation på dit træningsdatasæt
+-   Beregn "mean absolute error" for dine forskellige folds
+-   Lav en endelig model og beregn "mean absolute error"
 
 
 
@@ -845,82 +825,110 @@ Følg processen fra Sektion 12.3 igennem med datasættet `LungCapData`:
 
 Jeg spang over mange nyttige pakker og funktioner, der kan bruges til at lave maskinslæring processer i R
 
-* `Yardstick`-pakken er til metrics - fk. accuracy/precesion/recall osv. man kan også lave ROC curves osv. Jeg anvendte kun accuracy i kurset (til at vise processen/iden men begrænser overordnet læs i emnet) men man plejer at anvende forskellige metrics i virkeligheden.
-* `Tidymodels`-pakken er en generel pakke, hvor man få en "fælles" tilgang til at opbygge modeller der stammer fra mange forskellige pakke - man kan fk. bruge samme tilgang til at lave blandt andet regression eller bayesian modeller, random forest, support vector machines osv. - alle modeller har nu samme syntaksen i den `Tidymodels` tilgang.
-* Der er mange bøger der handler om machine learning n the tidyverse, fk. se her https://livebook.manning.com/book/machine-learning-for-mortals-mere-and-otherwise/chapter-1/v-4/1
+-   `Yardstick`-pakken er til metrics - fk. accuracy/precesion/recall osv. man kan også lave ROC curves osv. Jeg anvendte kun accuracy i kurset (til at vise processen/iden men begrænser overordnet læs i emnet) men man plejer at anvende forskellige metrics i virkeligheden.
+-   `Tidymodels`-pakken er en generel pakke, hvor man få en "fælles" tilgang til at opbygge modeller der stammer fra mange forskellige pakke - man kan fk. bruge samme tilgang til at lave blandt andet regression eller bayesian modeller, random forest, support vector machines osv. - alle modeller har nu samme syntaksen i den `Tidymodels` tilgang.
+-   Der er mange bøger der handler om machine learning n the tidyverse, fk. se her <https://livebook.manning.com/book/machine-learning-for-mortals-mere-and-otherwise/chapter-1/v-4/1>
 
 <!-- ```{r} -->
+
 <!-- data = read.csv("https://www.dropbox.com/s/1km3x2hd55eoty4/heart_cleveland_upload.csv?dl=1") -->
+
 <!-- data <- as_tibble(data) -->
 
-
-
 <!-- data <- data %>% filter(thal>0) -->
+
 <!-- data <- data %>% mutate(slope = recode(slope,`0`="upsloping",`1`="flat",`2`="downsloping"), -->
+
 <!--                         restecg = recode(restecg,`0`="normal",`1`="stt",`2`="hypertrophy"), -->
+
 <!--                         exang = recode(exang, `0`="no", `1`="yes"), -->
+
 <!--                         thal = recode(thal, `1`="normal", `2`="fixed", `3`="reversible")) -->
 
 <!-- data <- data %>% mutate(sex = recode(sex,`0` = "female",`1` = "male"), -->
+
 <!--                         condition = recode(condition,`0` = "no",`1` = "yes"), -->
+
 <!--                         condition = factor(condition,levels=c("yes","no")), -->
+
 <!--                         fbs = recode(fbs,`0`="false",`1`="true"), -->
+
 <!--                         cp = recode(cp,`0`="typical_ang",`1`="atypical_ang",`2`="non_anginal_pain",`3`="asymptomatic")) -->
 
 <!-- heart <- data -->
-<!-- ``` -->
 
+<!-- ``` -->
 
 <!-- __Problem 2)__ (split data) -->
 
 <!-- ```{r} -->
+
 <!-- heart_split <- initial_split(heart, prop = 0.75) -->
 
 <!-- heart_training <- heart_split %>% training() -->
+
 <!-- heart_test <- heart_split %>% testing() -->
+
 <!-- ``` -->
 
 <!-- __Problem 3)__  make cross-validation dataframe -->
 
 <!-- ```{r,set.seed=333} -->
+
 <!-- cv_split <- vfold_cv(heart_training, v = 5) -->
 
 <!-- cv_data <- cv_split %>%  -->
+
 <!--   mutate( -->
+
 <!--     train = map(splits, ~training(.x)),  -->
+
 <!--     validate = map(splits, ~testing(.x)) -->
+
 <!--   ) -->
 
 <!-- cv_data -->
+
 <!-- ``` -->
-
-
 
 <!-- __Problem 5)__ make classification model -->
 
 <!-- ```{r} -->
+
 <!-- ranger_model <- ~ranger(formula = condition ~.,  -->
+
 <!--                                               data = .x, -->
+
 <!--                                               num.trees = 100) -->
+
 <!-- cv_models_rf <- cv_data %>%  -->
+
 <!--   mutate(model = map(train, ranger_model)) -->
+
 <!-- ``` -->
 
 <!-- __Problem 6)__ make predictions -->
 
 <!-- ```{r} -->
+
 <!-- cv_prep_rf <- cv_models_rf %>%  -->
+
 <!--   mutate( -->
+
 <!--     validate_actual = map(validate, ~.x %>% pull(condition)), -->
+
 <!--     validate_predicted = map2(.x = model, .y = validate, ~predict(.x, .y)$predictions) -->
+
 <!--   ) -->
 
 <!-- predictions <- cv_prep_rf %>% select(id,validate_predicted,validate_actual) %>% unnest(validate_predicted,validate_actual) -->
+
 <!-- ``` -->
 
 <!-- __Problem 7)__ prediction visualiation -->
 
 <!-- ```{r} -->
+
 <!-- my_metrics <- yardstick::metric_set(accuracy,precision,recall) -->
 
 <!-- my_metrics_results <- predictions %>% group_by(id) %>% my_metrics(truth = validate_actual,estimate=validate_predicted) -->
@@ -928,30 +936,41 @@ Jeg spang over mange nyttige pakker og funktioner, der kan bruges til at lave ma
 <!-- my_metrics_results -->
 
 <!-- my_metrics_results %>%  -->
+
 <!-- ggplot(aes(x=.metric,y=.estimate,fill=id)) +   -->
+
 <!--   geom_bar(stat="identity",position="dodge",colour="black") +  -->
+
 <!--   theme_bw() -->
+
 <!-- ``` -->
 
 <!-- __Problem 9)__ Make final model and test -->
 
 <!-- ```{r} -->
+
 <!-- final_RF <- ranger(formula = condition ~ . ,  # ~ . betyder all variabler i datasættet som afhængig -->
+
 <!--                                               data = heart_training, -->
+
 <!--                                               mtry = 3,  -->
+
 <!--                                               importance = "impurity", -->
+
 <!--                                               num.trees = 100) -->
 
 <!-- predictions <- tibble("actual"=heart_test$condition,"predicted"=predict(final_RF, heart_test)$predictions) -->
 
 <!-- predictions %>% my_metrics(truth=actual,estimate=predicted) -->
-<!-- ``` -->
 
+<!-- ``` -->
 
 <!-- __Problem 9)__ variable importance -->
 
 <!-- ```{r} -->
-<!-- mod <- cv_prep_rf %>% pluck("model",1) -->
-<!-- mod$variable.importance -->
-<!-- ``` -->
 
+<!-- mod <- cv_prep_rf %>% pluck("model",1) -->
+
+<!-- mod$variable.importance -->
+
+<!-- ``` -->
